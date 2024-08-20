@@ -1,0 +1,54 @@
+project:
+  type: website
+  output-dir: docs
+website:
+  title: "R for Biochemists @UAM"
+  search:
+    location: navbar
+    type: overlay
+  navbar:
+    background: dark
+    pinned: true
+    logo: r4biochemists.png
+    tools:
+    - icon: github
+      href: https://github.com/r4biochemists/r4biochemists.github.io
+    - icon: cloud-download
+      href: https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/r4biochemists/r4biochemists.github.io/tree/main/data
+      text: Download Data
+    right:
+    - href: index.qmd
+      text: Home
+    - text: Course Contents
+      menu:
+      - r1.qmd
+      - r2.qmd
+      - r3.qmd
+      - r4.qmd
+      - r5.qmd
+      - r6.qmd
+      - r7.qmd
+      - r8.qmd
+      - r9.qmd
+  page-footer:
+    left: "Modesto Redrejo Rodríguez & Luis del Peso, 2024"
+    right:
+    - icon: badge-cc-fill
+      href: https://creativecommons.org/licenses/by-nc/2.0/
+    - icon: twitter
+      href: https://twitter.com/mredrejo
+  page-navigation: true
+  back-to-top-navigation: true
+format:
+  html:
+    theme: united
+    css:
+    - styles.css
+    - include/webex.css
+    toc: true
+    include-after-body: include/webex.js
+    smooth-scroll: true
+    anchor-sections: true
+    link-external-icon: true
+    link-external-newwindow: true
+editor: visual
