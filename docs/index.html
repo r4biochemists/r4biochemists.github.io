@@ -108,18 +108,9 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./r1.html">
  <span class="dropdown-text">R1: Variables, Operators and data structures</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./r2.html">
- <span class="dropdown-text">R2: Flow Control</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./r3.html">
- <span class="dropdown-text">R3: Read and write data in R</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./r4.html">
- <span class="dropdown-text">R4: Functions in R</span></a>
-  </li>  
+        <li class="dropdown-header">r2.qmd</li>
+        <li class="dropdown-header">r3.qmd</li>
+        <li class="dropdown-header">r4.qmd</li>
         <li>
     <a class="dropdown-item" href="./r5.html">
  <span class="dropdown-text">R5: Base plots in R</span></a>
@@ -219,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 20, 2024</p>
+      <p class="date-modified">October 31, 2024</p>
     </div>
   </div>
     
@@ -256,7 +247,7 @@ Under construction, note that it can be updated during the Course
 </figure>
 </div>
 </div>
-<p>This site contains the materials for the <em>Coding tools for Biochemistry &amp; Molecular Biology</em> (in Spanish <em>Herramientas de Programación para Bioquímica y Biología Molecular</em>, a.k.a. <strong>HPBBM</strong>) course of fall 2024 in the Bachelor’s Degree in Biochemistry @<a href="www.uam.es">UAM</a> (Universidad Autónoma de Madrid, Spain). Source files are available at the <a href="https://github.com/r4biochemists/r4biochemists.github.io"><i class="bi-github " style="" role="img" aria-hidden="true"></i> repo</a>, containing the source files and the data used in the examples and exercises. The icon <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/r4biochemists/r4biochemists.github.io/tree/main/data"><i class="bi-cloud-download " style="" role="img" aria-hidden="true"></i></a> on the top-right corner in all the site pages will allow you to download the repo <strong>data</strong> folder (link generated with <a href="https://yehonal.github.io/DownGit/#/home">DownGit</a>). Note that this folder can be updated during the course. For reference, materials from <strong><a href="(https://mredrejo.github.io/HPBBM2023/)">2023</a> and <a href="https://mredrejo.github.io/HPBBM2022/">2022</a></strong> course editions are also available, although those are not updated or maintained anymore.</p>
+<p>This site contains the materials for the <em>Coding tools for Biochemistry &amp; Molecular Biology</em> (in Spanish <em>Herramientas de Programación para Bioquímica y Biología Molecular</em>, a.k.a. <strong>HPBBM</strong>) course of fall 2024 in the Bachelor’s Degree in Biochemistry @<a href="www.uam.es">UAM</a> (Universidad Autónoma de Madrid, Spain). Source files are available at the <a href="https://github.com/r4biochemists/r4biochemists.github.io"><i class="bi-github " style="" role="img" aria-hidden="true"></i> repo</a>, containing the source files and the data used in the examples and exercises. The icon <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/r4biochemists/r4biochemists.github.io/tree/main/data"><i class="bi-cloud-download " style="" role="img" aria-hidden="true"></i></a> on the top-right corner in all the site pages will allow you to download the repo <strong>data</strong> folder (link generated with <a href="https://yehonal.github.io/DownGit/#/home">DownGit</a>). Note that this folder can be updated during the course. For reference, materials from <a href="(https://mredrejo.github.io/HPBBM2023/)"><strong>2023</strong></a> <strong>and <a href="https://mredrejo.github.io/HPBBM2022/">2022</a></strong> course editions are also available, although those are not updated or maintained anymore.</p>
 <p>Course Syllabus can be checked at <a href="https://secretaria-virtual.uam.es/doa/consultaPublica/look%5Bconpub%5DMostrarPubGuiaDocAs">UAM site</a> and a PDF version is available <a href="2024_18245_es.pdf">here</a>. The course contains a first block of lessons on Python programming (Lessons 1-7) that is not included here. Detailed academic information about the course contents, dates, and assessment only can be found at the <a href="https://moodle.uam.es/">UAM Moodle site</a>. In this site, the lessons pages have been generated as <em>Quarto</em> to obtain source files (<em>.qmd</em>) that contain formatted text and chunks of R code that are executed upon rendering (see <a href="r7.html">lesson R7</a> for more info about Markdown and Quarto in RStudio).</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -282,10 +273,11 @@ Update R and RStudio
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>All the Lessons contain a final <em>R Session info</em> where you can see the used versions for R and all packages. Anyway, espacially if you installed R in your computer for the first time some years ago, I kindly request to <strong>update</strong> R and RStudio before going forward.</p>
+<p>All the Lessons contain a final <em>R Session info</em> where you can see the used versions for R and all packages. Anyway, specially if you installed R in your computer for the first time some years ago, I kindly request to <strong>update</strong> R and RStudio before going forward.</p>
+<p>Let’s go, go it now!</p>
 </div>
 </div>
-<p>The lessons also contain embedded interactive <span style="color:darkseagreen">Quick exercises</span> (created with packages <a href="https://github.com/coatless/quarto-webr/"><code>WebR</code></a> y/o <a href="https://psyteachr.github.io/webexercises/articles/webexercises.html"><code>webexercises</code></a>). Try them out before checking the proposed solution. We have also included a final section of <span style="color:darkgreen"><em>Review exercises</em></span>, that we will discuss in the classroom. The answers to the latter are not available online, but I am happy to provide them on request. Also, we often add additional exercises from third-party websites or blogs that you can work on to improve your skills and reinforce some key concepts.</p>
+<p>The lessons also contain embedded interactive <span style="color:darkseagreen">Quick exercises</span> (created with packages <a href="https://github.com/coatless/quarto-webr/"><code>WebR</code></a> or <a href="https://psyteachr.github.io/webexercises/articles/webexercises.html"><code>webexercises</code></a>). Try them out before checking the proposed solution. We have also included a final section of <span style="color:darkgreen"><em>Review exercises</em></span>, that we will discuss in the classroom. The answers to the latter are not available online, but I am happy to provide them on request. Also, we often add additional exercises from third-party websites or blogs that you can work on to improve your skills and reinforce some key concepts.</p>
 <p>All this material is open access and it is shared under <a href="https://creativecommons.org/licenses/by-nc/2.0/">CC BY-NC</a> license.</p>
 <p>This page is under construction and will be expanded and corrected in the coming weeks. Any feedback, help and suggestions are very welcome.</p>
 <p>Also, it is likely that you will find some typos or even major errors in these course materials. I and the future students would appreciate it if you let me know about anything that could be corrected or improved. You can reach us by <a href="mailto::modesto.redrejo@uam.es">email</a>.</p>
@@ -294,9 +286,9 @@ Update R and RStudio
 <h2 class="anchored" data-anchor-id="bibliography-and-resources"><span style="color:darkblue">Bibliography and Resources</span></h2>
 <p>Each lesson contains its own specific references, but we wanted to highlight here some curated general open access and open source resources to introduce yourself into R and R Studio.</p>
 <ul>
-<li><p>Grolemund, G. <a href="https://rstudio-education.github.io/"><em>Hands-on Programming in R</em></a><em>.</em></p></li>
+<li><p>Grolemund, G. <a href="https://rstudio-education.github.io/hopr/"><em>Hands-on Programming in R</em></a><em>.</em></p></li>
 <li><p>Peng, R. D. R <a href="https://bookdown.org/rdpeng/rprogdatascience/"><em>Programming for Data Science.</em></a></p></li>
-<li><p>Coulatti, R. I. <a href="https://github.com/ColauttiLab/RCrashCourse_Book"><em>R Crash Course for Biologist</em>.</a></p></li>
+<li><p>Coulatti, R. I. <a href="https://colauttilab.github.io/RCrashCourse/"><em>R Crash Course for Biologist</em>.</a></p></li>
 <li><p>Chang, W. R. <a href="https://r-graphics.org/">R Graphics Cookbook.</a></p></li>
 <li><p>Doyle, M., Chung, J. &amp; Perreau V. <a href="https://melbournebioinformatics.github.io/r-intro-biologists/intro_r_biologists.html">Introduction to R for Biologists.</a></p></li>
 <li><p><a href="https://www.learnbyexample.org/r/">Learn R by example</a></p></li>

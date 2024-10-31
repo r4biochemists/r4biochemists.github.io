@@ -27,7 +27,7 @@ link-external-newwindow: true
 ```{r wrap-hook, echo=FALSE}
 library(knitr)
 library(formatR)
-
+library(webexercises)
 hook_output <- knit_hooks$get("output")
 knit_hooks$set(output = function(x, options) {
   lines <- options$output.lines
@@ -303,7 +303,7 @@ table(vaccines$Region)
 ```
 
 ```{r output.lines=(1:30)}
-head(table(vaccines$Region, vaccines$NumberDosesReceived)) 
+table(vaccines$Region, vaccines$NumberDosesReceived)
 ```
 
 ```{r error=TRUE}

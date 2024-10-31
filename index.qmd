@@ -1,0 +1,121 @@
+---
+title: "HPBBM"
+author: 
+  - name: Modesto
+    affiliation: Department of Biochemistry, UAM
+    affiliation_url: https://www.uam.es/
+    email: modesto.redrejo@uam.es
+  - name: Luis
+    affiliation: Department of Biochemistry, UAM
+    affiliation_url: https://www.uam.es/
+    email: luis.peso@uam.es
+date: "August 16, 2024"
+date-modified: "`r format(Sys.time(), '%Y-%m-%d (%H:%M h)')`"
+categories: 
+  - R
+  - RStudio
+  - Data analysis
+  - R for Biochemists
+format: 
+  html:
+    page-layout: full
+toc: true
+toc-location: left
+toc-depth: 2
+number-sections: true
+number-depth: 1
+code-overflow: wrap
+link-external-icon: true
+link-external-newwindow: true 
+editor: visual
+---
+
+```{r}
+
+```
+
+> There are only two kinds of programming languages: the ones people complain about and the ones nobody uses. ---*Bjarne Stroustrup*
+
+## [Wellcome & Disclaimer]{style="color:darkblue"}
+
+::: callout-warning
+## Under construction, note that it can be updated during the Course
+:::
+
+::: {style="float: right; position: relative; top: 0px; padding: 3px;"}
+![Logo generated with hexSticker package.[^1]](r4biochemists.png){width="228"}
+:::
+
+[^1]: See the code in the script *r_sticker.R* in the repo.
+
+[^2]: See the code in the script *r_sticker.R* in the repo.
+
+This site contains the materials for the *Coding tools for Biochemistry & Molecular Biology* (in Spanish *Herramientas de Programación para Bioquímica y Biología Molecular*, a.k.a. **HPBBM**) course of fall 2024 in the Bachelor's Degree in Biochemistry \@[UAM](www.uam.es) (Universidad Autónoma de Madrid, Spain). Source files are available at the [{{< bi github >}} repo](https://github.com/r4biochemists/r4biochemists.github.io), containing the source files and the data used in the examples and exercises. The icon [{{< bi cloud-download >}}](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/r4biochemists/r4biochemists.github.io/tree/main/data) on the top-right corner in all the site pages will allow you to download the repo **data** folder (link generated with [DownGit](https://yehonal.github.io/DownGit/#/home)). Note that this folder can be updated during the course. For reference, materials from [**2023**]((https://mredrejo.github.io/HPBBM2023/)) **and [2022](https://mredrejo.github.io/HPBBM2022/)** course editions are also available, although those are not updated or maintained anymore.
+
+Course Syllabus can be checked at [UAM site](https://secretaria-virtual.uam.es/doa/consultaPublica/look%5Bconpub%5DMostrarPubGuiaDocAs) and a PDF version is available [here](2024_18245_es.pdf). The course contains a first block of lessons on Python programming (Lessons 1-7) that is not included here. Detailed academic information about the course contents, dates, and assessment only can be found at the [UAM Moodle site](https://moodle.uam.es/). In this site, the lessons pages have been generated as *Quarto* to obtain source files (*.qmd*) that contain formatted text and chunks of R code that are executed upon rendering (see [lesson R7](r7.html) for more info about Markdown and Quarto in RStudio).
+
+::: callout-tip
+# How to use this site
+
+These materials have been designed as an interactive and self-learning resource. As you go through the lessons, think about the code beforehand and then test it with your computer. Then try out the exercises for yourself.
+
+For further examples or additional help, you can consult the references and, of course, ask the lecturers in the meetings and lectures on site.
+:::
+
+::: callout-caution
+# Update R and RStudio
+
+All the Lessons contain a final *R Session info* where you can see the used versions for R and all packages. Anyway, specially if you installed R in your computer for the first time some years ago, I kindly request to **update** R and RStudio before going forward.
+
+Let's go, go it now!
+:::
+
+The lessons also contain embedded interactive [Quick exercises]{style="color:darkseagreen"} (created with packages [`WebR`](https://github.com/coatless/quarto-webr/) or [`webexercises`](https://psyteachr.github.io/webexercises/articles/webexercises.html)). Try them out before checking the proposed solution. We have also included a final section of [*Review exercises*]{style="color:darkgreen"}, that we will discuss in the classroom. The answers to the latter are not available online, but I am happy to provide them on request. Also, we often add additional exercises from third-party websites or blogs that you can work on to improve your skills and reinforce some key concepts.
+
+All this material is open access and it is shared under [CC BY-NC](https://creativecommons.org/licenses/by-nc/2.0/) license.
+
+This page is under construction and will be expanded and corrected in the coming weeks. Any feedback, help and suggestions are very welcome.
+
+Also, it is likely that you will find some typos or even major errors in these course materials. I and the future students would appreciate it if you let me know about anything that could be corrected or improved. You can reach us by [email](mailto::modesto.redrejo@uam.es).
+
+## [Bibliography and Resources]{style="color:darkblue"}
+
+Each lesson contains its own specific references, but we wanted to highlight here some curated general open access and open source resources to introduce yourself into R and R Studio.
+
+-   Grolemund, G. [*Hands-on Programming in R*](https://rstudio-education.github.io/hopr/)*.*
+
+-   Peng, R. D. R [*Programming for Data Science.*](https://bookdown.org/rdpeng/rprogdatascience/)
+
+-   Coulatti, R. I. [*R Crash Course for Biologist*.](https://colauttilab.github.io/RCrashCourse/)
+
+-   Chang, W. R. [R Graphics Cookbook.](https://r-graphics.org/)
+
+-   Doyle, M., Chung, J. & Perreau V. [Introduction to R for Biologists.](https://melbournebioinformatics.github.io/r-intro-biologists/intro_r_biologists.html)
+
+-   [Learn R by example](https://www.learnbyexample.org/r/)
+
+-   [R base cheatsheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
+
+-   [R programming 101 \@YouTube](https://www.youtube.com/@RProgramming101)
+
+-   Higgins, P. D. R. [Reproducible Medical Research with R.](https://bookdown.org/pdr_higgins/rmrwr/)
+
+## [Contents]{style="color:darkblue"}
+
+### [Lesson R1: Variables, Operators and data structures in R](r1.html)
+
+### [Lesson R2: Flow Control](r2.html)
+
+### [Lesson R3: Data input and output in R](r3.html)
+
+### [Lesson R4: Write your own functions](r4.html)
+
+### [Lesson R5: Plots](r5.html)
+
+### [Lesson R6: Data management](r6.html)
+
+### [Lesson R7: R-projects and R-markdown for reproducible data analysis](r7.html)
+
+### [Lesson R8: Advanced data plotting with `ggplot`](r8.html)
+
+### [Lesson R9: Applications for Molecular Biology](r9.html)
