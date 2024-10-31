@@ -27,7 +27,7 @@ link-external-newwindow: true
 ```{r wrap-hook, echo=FALSE}
 library(knitr)
 library(formatR)
-
+library(webexercises)
 hook_output <- knit_hooks$get("output")
 knit_hooks$set(output = function(x, options) {
   lines <- options$output.lines
@@ -287,9 +287,8 @@ As always, it's encouraged to run the code yourself to see and understand the fu
 
 ```{r error=TRUE, output.lines=(1:20)}
 #open directly from the ECDC
-#vaccines <- read.csv(file = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/csv/data.csv", header=TRUE)
-#we will use all the same dataset that I already downloaded
-vaccines <- read.csv(file = 'data/vaccines_EU_22oct2022.csv', header=TRUE)
+vaccines <- read.csv(file = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/csv/data.csv", header=TRUE)
+
 #explore the data
 str(vaccines)
 head(vaccines)
@@ -303,7 +302,7 @@ table(vaccines$Region)
 ```
 
 ```{r output.lines=(1:30)}
-head(table(vaccines$Region, vaccines$NumberDosesReceived)) 
+table(vaccines$Region, vaccines$NumberDosesReceived)
 ```
 
 ```{r error=TRUE}
