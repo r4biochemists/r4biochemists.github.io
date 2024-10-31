@@ -159,18 +159,9 @@ div.csl-indent {
     <a class="dropdown-item" href="./r1.html">
  <span class="dropdown-text">R1: Variables, Operators and data structures</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./r2.html">
- <span class="dropdown-text">R2: Flow Control</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./r3.html">
- <span class="dropdown-text">R3: Read and write data in R</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./r4.html">
- <span class="dropdown-text">R4: Functions in R</span></a>
-  </li>  
+        <li class="dropdown-header">r2.qmd</li>
+        <li class="dropdown-header">r3.qmd</li>
+        <li class="dropdown-header">r4.qmd</li>
         <li>
     <a class="dropdown-item" href="./r5.html">
  <span class="dropdown-text">R5: Base plots in R</span></a>
@@ -267,7 +258,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 19, 2024</p>
+      <p class="date-modified">October 31, 2024</p>
     </div>
   </div>
     
@@ -310,7 +301,7 @@ div.csl-indent {
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>A_Logical <span class="ot">&lt;-</span> true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'true' not found</code></pre>
+<pre><code>Error: object 'true' not found</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>A_NA <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>A_NA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -319,7 +310,7 @@ div.csl-indent {
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>A_NA <span class="ot">&lt;-</span> na</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'na' not found</code></pre>
+<pre><code>Error: object 'na' not found</code></pre>
 </div>
 </div>
 <p>To summarize, variables are used refer to specific data objects that are the containers or entities that hold data. The data types specify the kind of values that can be stored within data objects. Data types determine how the data is interpreted and how operations are performed on the data objects.</p>
@@ -833,7 +824,7 @@ Txt: D3
 </div>
 <div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(Matrix)  <span class="co">#number of rows and columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'Matrix' not found</code></pre>
+<pre><code>Error: object 'Matrix' not found</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># accessing individual elements:</span></span>
 <span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a>MyMatrix[<span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1129,7 +1120,7 @@ Levels: F M</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb195"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb195-1"><a href="#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.4.0 (2024-04-24)
+<pre><code>R version 4.4.1 (2024-06-14)
 Platform: x86_64-apple-darwin20
 Running under: macOS Sonoma 14.6.1
 
@@ -1150,10 +1141,10 @@ other attached packages:
 [1] webexercises_1.1.0 formatR_1.14       knitr_1.48        
 
 loaded via a namespace (and not attached):
- [1] htmlwidgets_1.6.4 compiler_4.4.0    fastmap_1.2.0     cli_3.6.3        
- [5] tools_4.4.0       htmltools_0.5.8.1 rstudioapi_0.16.0 yaml_2.3.10      
- [9] rmarkdown_2.28    jsonlite_1.8.8    xfun_0.47         digest_0.6.36    
-[13] rlang_1.1.4       evaluate_0.24.0  </code></pre>
+ [1] htmlwidgets_1.6.4 compiler_4.4.1    fastmap_1.2.0     cli_3.6.3        
+ [5] tools_4.4.1       htmltools_0.5.8.1 rstudioapi_0.17.1 yaml_2.3.10      
+ [9] rmarkdown_2.28    jsonlite_1.8.9    xfun_0.48         digest_0.6.37    
+[13] rlang_1.1.4       evaluate_1.0.1   </code></pre>
 </div>
 </div>
 
