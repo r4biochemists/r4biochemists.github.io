@@ -390,7 +390,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"message":"true","fig-cap":"","warning":"true","comment":"","label":"unnamed-chunk-1","results":"markup","context":"interactive","editor-font-scale":"1","dpi":72,"editor-max-height":"","read-only":"false","autorun":"false","classes":"","fig-width":7,"fig-height":5,"output":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","out-width":"700px","out-height":""},"code":"data(quakes)\n\n"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"data(quakes)\nquakes2 <- data.frame(____, ____, ____)\n____(quakes2[,3])","options":{"warning":"true","autorun":"false","fig-width":7,"fig-height":5,"results":"markup","editor-quick-suggestions":"false","read-only":"false","out-width":"700px","message":"true","exercise":"ex_1_r","label":"unnamed-chunk-1","editor-font-scale":"1","classes":"","editor-max-height":"","dpi":72,"comment":"","fig-cap":"","editor-word-wrap":"true","output":"true","out-height":"","context":"interactive"}},{"id":2,"code":"if (identical(.result, mean(quakes2[,3]))) {\n  list(correct = TRUE, message = \"Nice work!\")\n} else {\n  list(correct = FALSE, message = \"That's incorrect, sorry.\")\n} ","options":{"warning":"true","autorun":"false","fig-width":7,"fig-height":5,"results":"markup","editor-quick-suggestions":"false","read-only":"false","out-width":"700px","out-height":"","message":"true","exercise":"ex_1_r","label":"unnamed-chunk-2","editor-font-scale":"1","classes":"","editor-max-height":"","dpi":72,"comment":"","fig-cap":"","editor-word-wrap":"true","output":"true","check":"true","context":"interactive"}}];
 
 </script>
 <script type="module">
@@ -2020,7 +2020,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 20, 2024</p>
+      <p class="date-modified">November 3, 2024</p>
     </div>
   </div>
     
@@ -2063,14 +2063,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obviously the path must call an existing directory (no</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># typos allowed)</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/modsto/Documents/GitHub/HPBBM2023"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/modsto/Documents/GitHub/r4biochemists.github.io"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in setwd("/Users/modsto/Documents/GitHub/HPBBM2023"): cannot change working directory</code></pre>
+<pre><code>Error in setwd("/Users/modsto/Documents/GitHub/r4biochemists.github.io"): cannot change working directory</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/modesto/Documents/GitHub/HPBBM2023"</span>)</span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/modesto/Documents/GitHub/r4biochemists.github.io"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "/Users/modesto/Documents/GitHub/HPBBM2023"</code></pre>
+<pre><code>[1] "/Users/modesto/Documents/GitHub/r4biochemists.github.io"</code></pre>
 </div>
 </div>
 <p>In RStudio, the <em>default working directory</em> can be set from the “tools” and “global options” menu. Also, you can change the <em>wd</em> for your session in the menu <strong>Session &gt; Set Working Directory</strong> and change it to that of source file (for instant your R script), the project or the selected directory in the files panel.</p>
@@ -2081,8 +2081,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p><img src="images/tree.png" class="img-fluid" width="279"></p>
 <p>How would you change de <em>wd</em> to the folder <code>HPBBM2023/data</code>? You also can try with your own computer and your directory tree.</p>
 <strong>Select the right answer</strong>
-<div id="radio_ABTKGHKMZY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ABTKGHKMZY" value=""> <span>setwd(“HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_ABTKGHKMZY" value="answer"> <span>setwd(“/home/modesto/Documents/teaching/2023_2024/HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_ABTKGHKMZY" value=""> <span>setwd(“/Users/modesto/teaching/Documents/2023_2024/HPBBM2023/data”)</span></label>
+<div id="radio_MKJQLLLGEB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MKJQLLLGEB" value=""> <span>setwd(“HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_MKJQLLLGEB" value="answer"> <span>setwd(“/home/modesto/Documents/teaching/2023_2024/HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_MKJQLLLGEB" value=""> <span>setwd(“/Users/modesto/teaching/Documents/2023_2024/HPBBM2023/data”)</span></label>
 </div>
 <hr>
 <hr>
@@ -2156,7 +2156,7 @@ V3   19   80   13   16</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="r3_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="r3_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2226,8 +2226,8 @@ Caution
 <h2 data-number="3.1" class="anchored" data-anchor-id="quick-exercise-ii"><span class="header-section-number">3.1</span> <span style="color:darkseagreen">Quick exercise (II)</span></h2>
 <p>We are using the same directory tree. Your <em>wd</em> is <code>HPBBM2022/data</code> and you need to save a data.frame named <code>table1</code> as <code>table1.csv</code> in the folder <code>HPBBM2023/data</code> using <code>;</code> as separator. How would you do it <em>without changing</em> the working directory? Try it also with your own computer.</p>
 <strong>Select the right answer</strong>
-<div id="radio_UMFXGQDJDZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UMFXGQDJDZ" value="answer"> <span>write.table(table1, “../../../HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_UMFXGQDJDZ" value=""> <span>write.table(table1, “../../HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_UMFXGQDJDZ" value=""> <span>write.table(table1, “../../../HPBBM2023/data/table1.csv”)</span></label>
+<div id="radio_IPSJEESGEB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IPSJEESGEB" value="answer"> <span>write.table(table1, “../../../HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_IPSJEESGEB" value=""> <span>write.table(table1, “../../HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_IPSJEESGEB" value=""> <span>write.table(table1, “../../../HPBBM2023/data/table1.csv”)</span></label>
 </div>
 <hr>
 </section>
@@ -2247,7 +2247,7 @@ Caution
 </div>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(coli_genomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'coli_genomes' not found</code></pre>
+<pre><code>Error: object 'coli_genomes' not found</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>coli_genomes <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"data/coli_genomes.csv"</span>, <span class="at">sep =</span> <span class="st">";"</span>,</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">dec =</span> <span class="st">"."</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
@@ -2751,12 +2751,12 @@ Throw out the trash
 </section>
 <section id="quick-exercise-iii" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="quick-exercise-iii"><span class="header-section-number">4.4</span> <span style="color:darkseagreen">Quick exercise (III)</span></h2>
-<p>Now, we need to save the current version of <code>coli_genomes</code> in the data folder, using the <code>,</code> as field separator.</p>
+<p>Now, we need to save the current version of <a href="https://r4biochemists.github.io/data/coli_genomes.csv"><code>coli_genomes</code></a> in the data folder, using the <code>,</code> as field separator.</p>
 <p>Which of the following functions can you use to save the dataframe using <code>,</code> as field separator? <select class="webex-select"><option value="blank"></option><option value="">write.table</option><option value="">write.csv2</option><option value="answer">write.csv</option><option value="">save</option></select></p>
 <p>How would you do it?</p>
 <strong>Select the right answer</strong>
-<div id="radio_YIAQRQZIQA" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YIAQRQZIQA" value="answer"> <span>write.table(coli_genomes, “data/coli_genomes_renamed.csv”, sep=“,” )</span></label><label><input type="radio" autocomplete="off" name="radio_YIAQRQZIQA" value=""> <span>write.csv2(coli_genomes, “data/coli_genomes_renamed.csv” )</span></label><label><input type="radio" autocomplete="off" name="radio_YIAQRQZIQA" value=""> <span>write.csv(coli_genomes, “../coli_genomes_renamed.csv”) </span></label><label><input type="radio" autocomplete="off" name="radio_YIAQRQZIQA" value="answer"> <span>write.csv(coli_genomes, “data/coli_genomes_renamed.csv”)</span></label>
+<div id="radio_PCQLICEDBU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PCQLICEDBU" value="answer"> <span>write.table(coli_genomes, “data/coli_genomes_renamed.csv”, sep=“,” )</span></label><label><input type="radio" autocomplete="off" name="radio_PCQLICEDBU" value=""> <span>write.csv2(coli_genomes, “data/coli_genomes_renamed.csv” )</span></label><label><input type="radio" autocomplete="off" name="radio_PCQLICEDBU" value=""> <span>write.csv(coli_genomes, “../coli_genomes_renamed.csv”) </span></label><label><input type="radio" autocomplete="off" name="radio_PCQLICEDBU" value="answer"> <span>write.csv(coli_genomes, “data/coli_genomes_renamed.csv”)</span></label>
 </div>
 <div id="save">
 
@@ -2771,12 +2771,18 @@ Throw out the trash
 <p>R has some built-in datasets that can be used as examples for plots or analysis. You can check all of them using the function data(). We are going to use one of that datasets for the following exercise in which you have to write and test your code.</p>
 <p>Use the function <code>str()</code> to examine the structure of the <em>quakes</em> dataset. Which of the following best describes the variables represented in this data frame?</p>
 <strong>Select the right answer</strong>
-<div id="radio_XHHMZIXRIF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_XHHMZIXRIF" value="answer"> <span>Location and characteristics of Earthquakes off Fiji</span></label><label><input type="radio" autocomplete="off" name="radio_XHHMZIXRIF" value=""> <span>Glass vibration during Eurovision contest</span></label><label><input type="radio" autocomplete="off" name="radio_XHHMZIXRIF" value=""> <span>Fever and seizures due to mPox</span></label>
+<div id="radio_PZHMWGWOTC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PZHMWGWOTC" value="answer"> <span>Location and characteristics of Earthquakes off Fiji</span></label><label><input type="radio" autocomplete="off" name="radio_PZHMWGWOTC" value=""> <span>Glass vibration during Eurovision contest</span></label><label><input type="radio" autocomplete="off" name="radio_PZHMWGWOTC" value=""> <span>Fever and seizures due to mPox</span></label>
 </div>
-<p>Now you need to create a new dataframe <em>quakes2</em> with the three columns, <em>lat</em>, <em>long</em> and <em>new_var</em>, being the latter the product <em>lat</em> $$x <em>long</em>. What is the mean of the new variable?</p>
+<p>Now you need to create a new dataframe <em>quakes2</em> with the three columns, <em>lat</em>, <em>long</em> and <em>new_var</em>, being the latter the product <em>lat</em> $$x <em>long</em>. What is the mean of the new variable? Fill the gaps to finish your code in the R snippet below.</p>
+<div class="cell" data-exercise="ex_1_r">
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div class="cell" data-exercise="ex_1_r" data-check="true">
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 <hr>
 </section>
 </section>
@@ -2794,7 +2800,7 @@ Throw out the trash
 <section id="review-exercises" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> <span style="color:darkgreen">Review exercises</span></h1>
 <ol type="1">
-<li><p>Load the file <em>colis3.csv</em> as <em>colis</em> and explore the dataset structure.</p></li>
+<li><p>Load the file <a href="https://r4biochemists.github.io/data/colis3.csv"><em>colis3.csv</em></a> as <em>colis</em> and explore the dataset structure.</p></li>
 <li><p>Calculate the mean of numerical variables: isolation date (<em>Year</em>), antimicrobial resistance genes (<em>AMR</em>), virulence factors (<em>VF</em>), CRISPR cassesttes (<em>CRISPR</em>), integron cassettes (<em>Integron</em>) and sequencing date (<em>seqs</em>) in those strains? Note. For the <em>seqs</em> variable you will need to use the function <code>as.Date()</code>.</p></li>
 <li><p>Save the tables <em>coli_genomes_renamed</em> and <em>colis</em> in a single <em>Rdata</em> file.</p></li>
 <li><p>Add the values of the exercise 3 as a last row in the table. Note. For the <em>seqs</em> variable you will need to use the function <code>format.Date()</code> (or just <code>format()</code>)</p></li>
@@ -2809,7 +2815,7 @@ Throw out the trash
 <div class="cell">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.4.0 (2024-04-24)
+<pre><code>R version 4.4.1 (2024-06-14)
 Platform: x86_64-apple-darwin20
 Running under: macOS Sonoma 14.6.1
 
@@ -2830,10 +2836,10 @@ other attached packages:
 [1] webexercises_1.1.0 formatR_1.14       knitr_1.48        
 
 loaded via a namespace (and not attached):
- [1] htmlwidgets_1.6.4 compiler_4.4.0    fastmap_1.2.0     cli_3.6.3        
- [5] tools_4.4.0       htmltools_0.5.8.1 rstudioapi_0.16.0 yaml_2.3.10      
- [9] rmarkdown_2.28    jsonlite_1.8.8    xfun_0.47         digest_0.6.36    
-[13] rlang_1.1.4       evaluate_0.24.0  </code></pre>
+ [1] htmlwidgets_1.6.4 compiler_4.4.1    fastmap_1.2.0     cli_3.6.3        
+ [5] tools_4.4.1       htmltools_0.5.8.1 rstudioapi_0.17.1 yaml_2.3.10      
+ [9] rmarkdown_2.28    jsonlite_1.8.9    xfun_0.48         digest_0.6.37    
+[13] rlang_1.1.4       evaluate_1.0.1   </code></pre>
 </div>
 </div>
 
