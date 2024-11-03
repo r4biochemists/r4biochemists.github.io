@@ -10,7 +10,7 @@ categories:
   - Path
   - Working Directory
 engine: knitr
-format: live-html
+format: html
 page-layout: full
 filters:
   - webr
@@ -332,7 +332,7 @@ In fact, you can use `na.omit()` for any object, either an vector, data.frame or
 
 ## [Quick exercise (III)]{style="color:darkseagreen"}
 
-Now, we need to save the current version of `coli_genomes` in the data folder, using the `,` as field separator.
+Now, we need to save the current version of [`coli_genomes`](https://r4biochemists.github.io/data/coli_genomes.csv) in the data folder, using the `,` as field separator.
 
 ```{r  echo = FALSE, results = 'asis'}
 
@@ -421,7 +421,7 @@ if (identical(.result, mean(quakes2[,3]))) {
 
 # [Review exercises]{style="color:darkgreen"}
 
-1.  Load the file *colis3.csv* as *colis* and explore the dataset structure.
+1.  Load the file [*colis3.csv*](https://r4biochemists.github.io/data/colis3.csv) as *colis* and explore the dataset structure.
 
 2.  Calculate the mean of numerical variables: isolation date (*Year*), antimicrobial resistance genes (*AMR*), virulence factors (*VF*), CRISPR cassesttes (*CRISPR*), integron cassettes (*Integron*) and sequencing date (*seqs*) in those strains? Note. For the *seqs* variable you will need to use the function `as.Date()`.
 
