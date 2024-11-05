@@ -12,7 +12,7 @@ categories:
   - Warning
   - Error
 engine: knitr
-format: live-html
+format: html
 page-layout: full
 filters:
   - webr
@@ -24,6 +24,7 @@ code-overflow: wrap
 link-external-icon: true
 link-external-newwindow: true 
 ---
+
 {{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
 ```{r wrap-hook, echo=FALSE}
@@ -38,24 +39,6 @@ knitr::opts_knit$set(root.dir = "~/Documents/GitHub/r4biochemists.github.io")
 ```
 
 # [R packages]{style="color:darkblue"}
-
-## exercise R
-Calculate the average of all of the integers from 1 to 10.
-
-```{webr}
-#| exercise: ex_1_r
-______(1:10)
-```
-
-```{webr}
-#| exercise: ex_1_r
-#| check: true
-if (identical(.result, mean(1:10))) {
-  list(correct = TRUE, message = "Nice work!")
-} else {
-  list(correct = FALSE, message = "That's incorrect, sorry.")
-} 
-```
 
 As you already know, R is a '[GNU Software](https://en.wikipedia.org/wiki/GNU)' with a [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License) license. As a a freely available language it has a great community of users from diverse background and interests. This community has developed a myriad of applications for R, called ***R Packages***. The idea behind R packages is that the chances are that someone has already solved a problem that you're working on, and you can benefit from their work by downloading their package.
 
@@ -200,7 +183,7 @@ vignette(report)
 #no vignette for report! Check also the CRAN site for further documentation.
 ```
 
-2.  Another R built-in dataset is called *DNase* and it contains data of several experiments of DNase treatment. Explore data and use the `report` [package documentation](https://easystats.github.io/report/) and use it to test correlation between the DNase variables `conc` and `density`.
+2.  Another R built-in dataset is called *DNase* and it contains data of several experiments of DNase treatment. Explore data and use the `report` package [(documentation](https://easystats.github.io/report/)) to test correlation between the DNase variables `conc` and `density`.
 
 ```{r, echo = TRUE, error = TRUE, eval = TRUE, webex.hide = "See an answer"}
 report(DNase)
@@ -213,13 +196,15 @@ report(cor.test(DNase$conc, DNase$density))
 
 We have discussed throughout the previous lessons how R can help you saving time when you need to analyze and plot the data from your experiment. However, many times, particularly in Bioinformatics, you won't have the data from one single experiment but from many of them.
 
-Creating you own function will be very useful for automation of repetitive analyses or to encapsulate a sequence of expressions that need to be executed numerous times, perhaps under slightly different conditions. Functions are used in most programming languages as separated instructions for specific tasks.Breaking out our code into functions has several advantages:
+Creating you own function will be very useful for automation of repetitive analyses or to encapsulate a sequence of expressions that need to be executed numerous times, perhaps under slightly different conditions. Functions are used in most programming languages as separated instructions for specific tasks.
+
+Breaking out our code into independent functions has several advantages:
 
 -   When building or maintaining the function, we can focus just on that function: what information it needs, what steps it performs, and what result it provides.
 
 -   We can simplify the main set of instructions, making it easier to read and maintain over time.
 
--   It helps us separate work for a team, assigning each independent function to a member of the team.
+-   It helps us separate work for a team, assigning each independent function to a member of the team and then just interconnect the functions later on.
 
 -   And we can more easily reuse the function in multiple places in one script or copy it to reuse in other projects.
 
@@ -266,7 +251,7 @@ if(x %% 2 == 0){
 #test
 evenOdd(4)
 evenOdd(3)
-#  no need the curly braces!
+#  sometimes you can omit curly braces
 evenOdd2 <-  function(x){
 if(x %% 2 == 0)
 	return("even")
@@ -324,7 +309,7 @@ area  <-  function(length, width){
 area(2,3) # call the function
 ```
 
-Notice that the output also can be a vector or a list:
+Notice that the output also can be a different type of object, like vector or a list:
 
 ```{r}
 # Now we calculate area and perimeter of a rectangle

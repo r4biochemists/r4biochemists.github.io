@@ -286,12 +286,14 @@ names(coli_genomes)
 
 ```
 
-We are going to simplify our dataframe by dropping variables:
+We are going to simplify our dataframe by dropping one or more variables (columns):
 
 ```{r}
+coli_genomes[,-12]
+
+# this can be also used to remove rows (cases)
 coli_genomes<-coli_genomes[-c(9:11),]
-# this can be also used to remove rows
-coli_genomes[,-1]
+
 ```
 
 We know the 'Assembly length' and the number of 'Contigs', but we would like to represent the average contig length.
@@ -313,8 +315,11 @@ As you may have guessed, the `NA` output means that there are some NA values and
 ```{r}
 #check for NA values
 is.na(coli_genomes)
-#alternative to check only NA-containing rows (a FALSE output indicates an incomplete observation)
+#how many NAs
+table(is.na(coli_genomes))
+#alternative: check only NA-containing rows (a FALSE output indicates an incomplete observation)
 complete.cases(coli_genomes)
+
 #na.rm=TRUE will omit the NAs for this function
 mean(coli_genomes$Year, na.rm=TRUE)
 ```
@@ -384,7 +389,7 @@ opts_p <- c(
 cat("**Select the right answer**",longmcq(opts_p))
 ```
 
-Now you need to create a new dataframe *quakes2* with the three columns, *lat*, *long* and *new_var*, being the latter the product *lat* \$\$x *long*. What is the mean of the new variable? Fill the gaps to finish your code in the R snippet below.
+Now you need to create a new dataframe *quakes2* with the three columns, *lat*, *long* and *new_var*, being the latter the product *lat* $x$ *long*. What is the mean of the new variable? Fill the gaps to finish your code in the R snippet below.
 
 ```{webr}
 #| exercise: ex_1_r
@@ -393,15 +398,7 @@ quakes2 <- data.frame(____, ____, ____)
 ____(quakes2[,3])
 ```
 
-```{webr}
-#| exercise: ex_1_r
-#| check: true
-if (identical(.result, mean(quakes2[,3]))) {
-  list(correct = TRUE, message = "Nice work!")
-} else {
-  list(correct = FALSE, message = "That's incorrect, sorry.")
-} 
-```
+
 
 ------------------------------------------------------------------------
 
