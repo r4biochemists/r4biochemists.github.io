@@ -390,7 +390,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"data(quakes)\nquakes2 <- data.frame(____, ____, ____)\n____(quakes2[,3])","options":{"warning":"true","autorun":"false","fig-width":7,"fig-height":5,"results":"markup","editor-quick-suggestions":"false","read-only":"false","out-width":"700px","message":"true","exercise":"ex_1_r","label":"unnamed-chunk-1","editor-font-scale":"1","classes":"","editor-max-height":"","dpi":72,"comment":"","fig-cap":"","editor-word-wrap":"true","output":"true","out-height":"","context":"interactive"}},{"id":2,"code":"if (identical(.result, mean(quakes2[,3]))) {\n  list(correct = TRUE, message = \"Nice work!\")\n} else {\n  list(correct = FALSE, message = \"That's incorrect, sorry.\")\n} ","options":{"warning":"true","autorun":"false","fig-width":7,"fig-height":5,"results":"markup","editor-quick-suggestions":"false","read-only":"false","out-width":"700px","out-height":"","message":"true","exercise":"ex_1_r","label":"unnamed-chunk-2","editor-font-scale":"1","classes":"","editor-max-height":"","dpi":72,"comment":"","fig-cap":"","editor-word-wrap":"true","output":"true","check":"true","context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"data(quakes)\nquakes2 <- data.frame(____, ____, ____)\n____(quakes2[,3])","options":{"dpi":72,"message":"true","results":"markup","context":"interactive","output":"true","out-height":"","editor-quick-suggestions":"false","fig-cap":"","read-only":"false","editor-max-height":"","label":"unnamed-chunk-1","autorun":"false","editor-font-scale":"1","exercise":"ex_1_r","fig-width":7,"comment":"","classes":"","fig-height":5,"warning":"true","out-width":"700px","editor-word-wrap":"true"}}];
 
 </script>
 <script type="module">
@@ -1588,6 +1588,35 @@ globalThis.qwebrExecuteCode = async function (
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="include/webex.css">
@@ -2020,7 +2049,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 3, 2024</p>
+      <p class="date-modified">November 5, 2024</p>
     </div>
   </div>
     
@@ -2081,8 +2110,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p><img src="images/tree.png" class="img-fluid" width="279"></p>
 <p>How would you change de <em>wd</em> to the folder <code>HPBBM2023/data</code>? You also can try with your own computer and your directory tree.</p>
 <strong>Select the right answer</strong>
-<div id="radio_MKJQLLLGEB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MKJQLLLGEB" value=""> <span>setwd(“HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_MKJQLLLGEB" value="answer"> <span>setwd(“/home/modesto/Documents/teaching/2023_2024/HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_MKJQLLLGEB" value=""> <span>setwd(“/Users/modesto/teaching/Documents/2023_2024/HPBBM2023/data”)</span></label>
+<div id="radio_ZARYAZDGYI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZARYAZDGYI" value=""> <span>setwd(“HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_ZARYAZDGYI" value="answer"> <span>setwd(“/home/modesto/Documents/teaching/2023_2024/HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_ZARYAZDGYI" value=""> <span>setwd(“/Users/modesto/teaching/Documents/2023_2024/HPBBM2023/data”)</span></label>
 </div>
 <hr>
 <hr>
@@ -2226,8 +2255,8 @@ Caution
 <h2 data-number="3.1" class="anchored" data-anchor-id="quick-exercise-ii"><span class="header-section-number">3.1</span> <span style="color:darkseagreen">Quick exercise (II)</span></h2>
 <p>We are using the same directory tree. Your <em>wd</em> is <code>HPBBM2022/data</code> and you need to save a data.frame named <code>table1</code> as <code>table1.csv</code> in the folder <code>HPBBM2023/data</code> using <code>;</code> as separator. How would you do it <em>without changing</em> the working directory? Try it also with your own computer.</p>
 <strong>Select the right answer</strong>
-<div id="radio_IPSJEESGEB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IPSJEESGEB" value="answer"> <span>write.table(table1, “../../../HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_IPSJEESGEB" value=""> <span>write.table(table1, “../../HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_IPSJEESGEB" value=""> <span>write.table(table1, “../../../HPBBM2023/data/table1.csv”)</span></label>
+<div id="radio_KLZRCRIIBN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KLZRCRIIBN" value="answer"> <span>write.table(table1, “../../../HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_KLZRCRIIBN" value=""> <span>write.table(table1, “../../HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_KLZRCRIIBN" value=""> <span>write.table(table1, “../../../HPBBM2023/data/table1.csv”)</span></label>
 </div>
 <hr>
 </section>
@@ -2581,78 +2610,110 @@ Throw out the trash
 [16] "contigs1kb"         </code></pre>
 </div>
 </div>
-<p>We are going to simplify our dataframe by dropping variables:</p>
+<p>We are going to simplify our dataframe by dropping one or more variables (columns):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>coli_genomes <span class="ot">&lt;-</span> coli_genomes[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">9</span><span class="sc">:</span><span class="dv">11</span>), ]</span>
-<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this can be also used to remove rows</span></span>
-<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>coli_genomes[, <span class="sc">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>coli_genomes[, <span class="sc">-</span><span class="dv">12</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      Biosample Year  Source Phylogroup Serotype  Clonotype Sequence.Type VF
-1  SAMN14278613   NA   Human          D  ONT:H28   CH23-331         ST524 18
-2  SAMN14278614 2010   Human          C O153:H19     CH4-25          ST88 14
-3  SAMN14278615 2008   Human         B1  O76:H30    CH29-38         ST156 10
-4  SAMN14278616   NA   Human          A  O78:H11    CH11-41          ST48  5
-5  SAMN14278617 2011 Porcine          A  ONT:HNM     CH7-54         ST746  5
-6  SAMN14278618 2007 Porcine          A   O9:H37     CH7-31        ST3011  7
-7  SAMN14278619 2006 Porcine          A   O2:H32    CH11-23          ST10  4
-8  SAMN14278620 2006 Porcine          A  ONT:H45    C11-398       ST10888  2
-12 SAMN14278624 2013   Human          D O145:H28   CH23-331          ST32 22
-13 SAMN14278625 2013   Human          D O145:H28   CH23-331         ST137 22
-14 SAMN14278626 2013   Human          D O145:H28   CH23-331          ST32 20
-15 SAMN14278627 2013   Human          A  ONT:H37     C11-54          ST48  1
-16 SAMN14278628 2013   Avian          A  ONT:H19    CH94-23         ST347  2
-17 SAMN14278629 2011   Avian         B1 O142:H30     C41-35         ST359  9
-18 SAMN14278630 2005   Avian          C  O78:H19     CH4-27          ST88 11
-19 SAMN14278631 2012   Human          C   O8:H19     CH4-54          ST88 14
-20 SAMN14278632 2012   Human          C   O9:H19     CH4-27          ST88 14
-21 SAMN14278633 2012   Human          A    O9:H4     CH7-34          ST46  8
-22 SAMN14278634 2015   Human          C   O9:H19 CH4like-27       ST10890 13
-23 SAMN14278635 2012   Human          A  ONT:H33    CH11-54          ST10  2
-24 SAMN14278636 2016   Human          A  O98:H26    CH27-23        ST8233  2
-25 SAMN14278637 2012   Human         B1  O66:H10     CH4-32        ST1049  4
-   Plasmids kmer Contigs    N50 longest.contig..bp. Assembly_length contigs1kb
-1         3  117     223 272287              662555         5341632         74
-2         3  117     159 323172              760527         5415613         57
-3         2   89     114 270767              738861         4875343         47
-4         3  117     212 112160              285056         5167401        101
-5         9   89     320  45936              128053         4858138        212
-6         3   93     158 106897              369508         4638334         93
-7         7  115     277  89185              281444         5406295        155
-8         7  115     203  94368              280268         4796593        114
-12        1  115     376 200150              424527         5389075        131
-13        3  111     205 281589              617142         5340478         78
-14        1  113     206 182651              412836         5276782         95
-15        0  113     140 105396              272304         4507328         78
-16        0  117     134 110661              497785         4664768         77
-17        4  113     102 240847              460510         4992565         42
-18        4  113     108 405376             1190696         5196698         38
-19        2  113     108 281822             1140163         5252065         43
-20        4   91     224 140521              284241         5085107        110
-21        4   85     204  86565              300086         4915667        121
-22        3  113     171 326962              749412         5200701         77
-23        5  117     120 228491              576949         4881205         48
-24        4   89     114 187945              537848         4821342         53
-25        2  113      94 325747              822206         4839344         32</code></pre>
+<pre><code>    Strain    Biosample Year  Source Phylogroup Serotype  Clonotype
+1  LREC237 SAMN14278613   NA   Human          D  ONT:H28   CH23-331
+2  LREC239 SAMN14278614 2010   Human          C O153:H19     CH4-25
+3  LREC240 SAMN14278615 2008   Human         B1  O76:H30    CH29-38
+4  LREC241 SAMN14278616   NA   Human          A  O78:H11    CH11-41
+5  LREC242 SAMN14278617 2011 Porcine          A  ONT:HNM     CH7-54
+6  LREC243 SAMN14278618 2007 Porcine          A   O9:H37     CH7-31
+7  LREC244 SAMN14278619 2006 Porcine          A   O2:H32    CH11-23
+8  LREC245 SAMN14278620 2006 Porcine          A  ONT:H45    C11-398
+9  LREC246 SAMN14278621 2010 Porcine          C   O8:H19     CH4-54
+10 LREC247 SAMN14278622 2013   Human          D O145:H28   CH23-331
+11 LREC248 SAMN14278623 2013   Human          A O123:H16     C11-94
+12 LREC249 SAMN14278624 2013   Human          D O145:H28   CH23-331
+13 LREC250 SAMN14278625 2013   Human          D O145:H28   CH23-331
+14 LREC251 SAMN14278626 2013   Human          D O145:H28   CH23-331
+15 LREC252 SAMN14278627 2013   Human          A  ONT:H37     C11-54
+16 LREC253 SAMN14278628 2013   Avian          A  ONT:H19    CH94-23
+17 LREC254 SAMN14278629 2011   Avian         B1 O142:H30     C41-35
+18 LREC255 SAMN14278630 2005   Avian          C  O78:H19     CH4-27
+19 LREC256 SAMN14278631 2012   Human          C   O8:H19     CH4-54
+20 LREC257 SAMN14278632 2012   Human          C   O9:H19     CH4-27
+21 LREC258 SAMN14278633 2012   Human          A    O9:H4     CH7-34
+22 LREC259 SAMN14278634 2015   Human          C   O9:H19 CH4like-27
+23 LREC260 SAMN14278635 2012   Human          A  ONT:H33    CH11-54
+24 LREC261 SAMN14278636 2016   Human          A  O98:H26    CH27-23
+25 LREC262 SAMN14278637 2012   Human         B1  O66:H10     CH4-32
+   Sequence.Type VF Plasmids kmer    N50 longest.contig..bp. Assembly_length
+1          ST524 18        3  117 272287              662555         5341632
+2           ST88 14        3  117 323172              760527         5415613
+3          ST156 10        2   89 270767              738861         4875343
+4           ST48  5        3  117 112160              285056         5167401
+5          ST746  5        9   89  45936              128053         4858138
+6         ST3011  7        3   93 106897              369508         4638334
+7           ST10  4        7  115  89185              281444         5406295
+8        ST10888  2        7  115  94368              280268         4796593
+9        ST10889 10        1  113 326769              451887         5173794
+10         ST137 22        4  113 248158              504233         5364777
+11       ST10850 10        4  113 241249              809158         5293420
+12          ST32 22        1  115 200150              424527         5389075
+13         ST137 22        3  111 281589              617142         5340478
+14          ST32 20        1  113 182651              412836         5276782
+15          ST48  1        0  113 105396              272304         4507328
+16         ST347  2        0  117 110661              497785         4664768
+17         ST359  9        4  113 240847              460510         4992565
+18          ST88 11        4  113 405376             1190696         5196698
+19          ST88 14        2  113 281822             1140163         5252065
+20          ST88 14        4   91 140521              284241         5085107
+21          ST46  8        4   85  86565              300086         4915667
+22       ST10890 13        3  113 326962              749412         5200701
+23          ST10  2        5  117 228491              576949         4881205
+24        ST8233  2        4   89 187945              537848         4821342
+25        ST1049  4        2  113 325747              822206         4839344
+   contigs1kb
+1          74
+2          57
+3          47
+4         101
+5         212
+6          93
+7         155
+8         114
+9          56
+10         76
+11         55
+12        131
+13         78
+14         95
+15         78
+16         77
+17         42
+18         38
+19         43
+20        110
+21        121
+22         77
+23         48
+24         53
+25         32</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this can be also used to remove rows (cases)</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>coli_genomes <span class="ot">&lt;-</span> coli_genomes[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">9</span><span class="sc">:</span><span class="dv">11</span>), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We know the ‘Assembly length’ and the number of ‘Contigs’, but we would like to represent the average contig length.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>coli_genomes<span class="sc">$</span>average_contig <span class="ot">&lt;-</span> coli_genomes<span class="sc">$</span>Assembly_length<span class="sc">/</span>coli_genomes<span class="sc">$</span>Contigs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>coli_genomes<span class="sc">$</span>average_contig <span class="ot">&lt;-</span> coli_genomes<span class="sc">$</span>Assembly_length<span class="sc">/</span>coli_genomes<span class="sc">$</span>Contigs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="dealing-with-nas" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="dealing-with-nas"><span class="header-section-number">4.3</span> Dealing with <em>NAs</em></h2>
 <p>It is very easy to calculate statistics of one variable. Imagine we want to know the average year of sample isolation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(coli_genomes<span class="sc">$</span>Year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(coli_genomes<span class="sc">$</span>Year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
 </div>
 <p>As you may have guessed, the <code>NA</code> output means that there are some NA values and mean cannot be calculated. We can check that and omit the NAs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check for NA values</span></span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(coli_genomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check for NA values</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(coli_genomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Strain Biosample  Year Source Phylogroup Serotype Clonotype Sequence.Type
 1   FALSE     FALSE  TRUE  FALSE      FALSE    FALSE     FALSE         FALSE
@@ -2724,25 +2785,32 @@ Throw out the trash
 24      FALSE          FALSE
 25      FALSE          FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative to check only NA-containing rows (a FALSE</span></span>
-<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="co"># output indicates an incomplete observation)</span></span>
-<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="fu">complete.cases</span>(coli_genomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how many NAs</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(coli_genomes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+FALSE  TRUE 
+  372     2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative: check only NA-containing rows (a FALSE</span></span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="co"># output indicates an incomplete observation)</span></span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="fu">complete.cases</span>(coli_genomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] FALSE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
 [13]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># na.rm=TRUE will omit the NAs for this function</span></span>
-<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(coli_genomes<span class="sc">$</span>Year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># na.rm=TRUE will omit the NAs for this function</span></span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(coli_genomes<span class="sc">$</span>Year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2011</code></pre>
 </div>
 </div>
 <p>What if we want to remove observations with an NA from the whole table?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new data.frame without NAs</span></span>
-<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>coli_genomes2 <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(coli_genomes)</span>
-<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="co"># can we now compute the mean without na.rm=T?</span></span>
-<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(coli_genomes2<span class="sc">$</span>Year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new data.frame without NAs</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>coli_genomes2 <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(coli_genomes)</span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="co"># can we now compute the mean without na.rm=T?</span></span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(coli_genomes2<span class="sc">$</span>Year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2011</code></pre>
 </div>
@@ -2755,15 +2823,15 @@ Throw out the trash
 <p>Which of the following functions can you use to save the dataframe using <code>,</code> as field separator? <select class="webex-select"><option value="blank"></option><option value="">write.table</option><option value="">write.csv2</option><option value="answer">write.csv</option><option value="">save</option></select></p>
 <p>How would you do it?</p>
 <strong>Select the right answer</strong>
-<div id="radio_PCQLICEDBU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PCQLICEDBU" value="answer"> <span>write.table(coli_genomes, “data/coli_genomes_renamed.csv”, sep=“,” )</span></label><label><input type="radio" autocomplete="off" name="radio_PCQLICEDBU" value=""> <span>write.csv2(coli_genomes, “data/coli_genomes_renamed.csv” )</span></label><label><input type="radio" autocomplete="off" name="radio_PCQLICEDBU" value=""> <span>write.csv(coli_genomes, “../coli_genomes_renamed.csv”) </span></label><label><input type="radio" autocomplete="off" name="radio_PCQLICEDBU" value="answer"> <span>write.csv(coli_genomes, “data/coli_genomes_renamed.csv”)</span></label>
+<div id="radio_FZIUDLGSKH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FZIUDLGSKH" value="answer"> <span>write.table(coli_genomes, “data/coli_genomes_renamed.csv”, sep=“,” )</span></label><label><input type="radio" autocomplete="off" name="radio_FZIUDLGSKH" value=""> <span>write.csv2(coli_genomes, “data/coli_genomes_renamed.csv” )</span></label><label><input type="radio" autocomplete="off" name="radio_FZIUDLGSKH" value=""> <span>write.csv(coli_genomes, “../coli_genomes_renamed.csv”) </span></label><label><input type="radio" autocomplete="off" name="radio_FZIUDLGSKH" value="answer"> <span>write.csv(coli_genomes, “data/coli_genomes_renamed.csv”)</span></label>
 </div>
 <div id="save">
 
 </div>
 <p>Finally, do save the new dataset in your folder for future examples.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(coli_genomes, <span class="st">"data/coli_genomes_renamed.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(coli_genomes, <span class="st">"data/coli_genomes_renamed.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="quick-exercise-iv" class="level2" data-number="4.5">
@@ -2771,16 +2839,12 @@ Throw out the trash
 <p>R has some built-in datasets that can be used as examples for plots or analysis. You can check all of them using the function data(). We are going to use one of that datasets for the following exercise in which you have to write and test your code.</p>
 <p>Use the function <code>str()</code> to examine the structure of the <em>quakes</em> dataset. Which of the following best describes the variables represented in this data frame?</p>
 <strong>Select the right answer</strong>
-<div id="radio_PZHMWGWOTC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PZHMWGWOTC" value="answer"> <span>Location and characteristics of Earthquakes off Fiji</span></label><label><input type="radio" autocomplete="off" name="radio_PZHMWGWOTC" value=""> <span>Glass vibration during Eurovision contest</span></label><label><input type="radio" autocomplete="off" name="radio_PZHMWGWOTC" value=""> <span>Fever and seizures due to mPox</span></label>
+<div id="radio_PMYDKBFFQO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PMYDKBFFQO" value="answer"> <span>Location and characteristics of Earthquakes off Fiji</span></label><label><input type="radio" autocomplete="off" name="radio_PMYDKBFFQO" value=""> <span>Glass vibration during Eurovision contest</span></label><label><input type="radio" autocomplete="off" name="radio_PMYDKBFFQO" value=""> <span>Fever and seizures due to mPox</span></label>
 </div>
-<p>Now you need to create a new dataframe <em>quakes2</em> with the three columns, <em>lat</em>, <em>long</em> and <em>new_var</em>, being the latter the product <em>lat</em> $$x <em>long</em>. What is the mean of the new variable? Fill the gaps to finish your code in the R snippet below.</p>
+<p>Now you need to create a new dataframe <em>quakes2</em> with the three columns, <em>lat</em>, <em>long</em> and <em>new_var</em>, being the latter the product <em>lat</em> <span class="math inline">\(x\)</span> <em>long</em>. What is the mean of the new variable? Fill the gaps to finish your code in the R snippet below.</p>
 <div class="cell" data-exercise="ex_1_r">
 <div id="qwebr-insertion-location-1"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-<div class="cell" data-exercise="ex_1_r" data-check="true">
-<div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <hr>
@@ -2813,7 +2877,7 @@ Throw out the trash
 <section id="session-info" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> Session Info</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.4.1 (2024-06-14)
 Platform: x86_64-apple-darwin20

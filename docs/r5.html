@@ -391,7 +391,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"comment":"","out-width":"700px","editor-max-height":"","fig-height":5,"autorun":"false","out-height":"","editor-quick-suggestions":"false","context":"interactive","label":"unnamed-chunk-1","message":"true","dpi":72,"output":"true","warning":"true","read-only":"false","classes":"","fig-cap":"","results":"markup","editor-word-wrap":"true","editor-font-scale":"1","fig-width":7},"code":"#here is the data\nscores <- sample(0:100,45, replace=TRUE)\nheight <- rnorm(45,70,2)\nteams <- as.factor(rep(c(LETTERS[1:3]),times=15))\n#type your code for the plot below\n\n"}];
+globalThis.qwebrCellDetails = [{"options":{"dpi":72,"output":"true","out-height":"","context":"interactive","message":"true","fig-cap":"","autorun":"false","fig-width":7,"warning":"true","label":"unnamed-chunk-1","classes":"","editor-quick-suggestions":"false","editor-max-height":"","comment":"","editor-word-wrap":"true","fig-height":5,"results":"markup","editor-font-scale":"1","read-only":"false","out-width":"700px"},"id":1,"code":"#here is the data\nscores <- sample(0:100,45, replace=TRUE)\nheight <- rnorm(45,70,2)\nteams <- as.factor(rep(c(LETTERS[1:3]),times=15))\n#type your code for the plot below\n\n"}];
 
 </script>
 <script type="module">
@@ -2031,7 +2031,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 20, 2024</p>
+      <p class="date-modified">October 31, 2024</p>
     </div>
   </div>
     
@@ -2137,10 +2137,10 @@ Important
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#customized Example</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">pch =</span> <span class="dv">21</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="fu">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.5</span>),   <span class="co"># Fill color</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"red"</span>, <span class="co"># Border color</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="dv">3</span>,      <span class="co"># Symbol size</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd =</span> <span class="dv">3</span>)      <span class="co"># Border width</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">bg =</span> <span class="fu">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.5</span>), <span class="co"># Fill color</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"red"</span>, <span class="co"># Border color</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex =</span> <span class="dv">3</span>,      <span class="co"># Symbol size</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">lwd =</span> <span class="dv">3</span>)      <span class="co"># Border width</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2169,13 +2169,13 @@ Cross-lesson tip
 </div>
 </div>
 <strong>How would you load the vector?</strong>
-<div id="radio_PONRPPVUZE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PONRPPVUZE" value=""> <span>load(data/primes.RData)</span></label><label><input type="radio" autocomplete="off" name="radio_PONRPPVUZE" value="answer"> <span>load(“data/primes.RData”)</span></label><label><input type="radio" autocomplete="off" name="radio_PONRPPVUZE" value=""> <span>open(“data/primes.RData”)</span></label>
+<div id="radio_FYUEXQYCYO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FYUEXQYCYO" value=""> <span>load(data/primes.RData)</span></label><label><input type="radio" autocomplete="off" name="radio_FYUEXQYCYO" value="answer"> <span>load(“data/primes.RData”)</span></label><label><input type="radio" autocomplete="off" name="radio_FYUEXQYCYO" value=""> <span>open(“data/primes.RData”)</span></label>
 </div>
 <p>Now we want to plot the vector. You may try different plots, but think which plot help you to answer the following question</p>
 <strong>How would you check the distribution of the data? In other words, how would you check if are there many values below or above the median?</strong>
-<div id="radio_PDMOXKPGIM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PDMOXKPGIM" value=""> <span>plot(new_vec)</span></label><label><input type="radio" autocomplete="off" name="radio_PDMOXKPGIM" value=""> <span>hist(new_vec, breaks=c(0,25,50,75,100))</span></label><label><input type="radio" autocomplete="off" name="radio_PDMOXKPGIM" value="answer"> <span>boxplot(new_vec)</span></label><label><input type="radio" autocomplete="off" name="radio_PDMOXKPGIM" value=""> <span>hist(new_vec, breaks=c(0,100,200,300,400))</span></label>
+<div id="radio_XEQOCWWDNR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XEQOCWWDNR" value=""> <span>plot(new_vec)</span></label><label><input type="radio" autocomplete="off" name="radio_XEQOCWWDNR" value=""> <span>hist(new_vec, breaks=c(0,25,50,75,100))</span></label><label><input type="radio" autocomplete="off" name="radio_XEQOCWWDNR" value="answer"> <span>boxplot(new_vec)</span></label><label><input type="radio" autocomplete="off" name="radio_XEQOCWWDNR" value=""> <span>hist(new_vec, breaks=c(0,100,200,300,400))</span></label>
 </div>
 <p>Yes, a boxplot is the best choice here.</p>
 <div class="cell" data-webex.hide="See the right plot">
@@ -2514,8 +2514,8 @@ sample estimates:
 </div>
 </div>
 <strong>How would you construct barplots of the data from the six experimental conditions?</strong>
-<div id="radio_LDUEBQIMWW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_LDUEBQIMWW" value=""> <span>hist(ZFdata)</span></label><label><input type="radio" autocomplete="off" name="radio_LDUEBQIMWW" value=""> <span>barplot(ZFdata)</span></label><label><input type="radio" autocomplete="off" name="radio_LDUEBQIMWW" value="answer"> <span>barplot(ZFdata$pLoC), and the same for each construct</span></label><label><input type="radio" autocomplete="off" name="radio_LDUEBQIMWW" value=""> <span>hist(ZFdata$pLoC), and the same for each construct</span></label>
+<div id="radio_MFMGIENGFC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MFMGIENGFC" value=""> <span>hist(ZFdata)</span></label><label><input type="radio" autocomplete="off" name="radio_MFMGIENGFC" value=""> <span>barplot(ZFdata)</span></label><label><input type="radio" autocomplete="off" name="radio_MFMGIENGFC" value="answer"> <span>barplot(ZFdata$pLoC), and the same for each construct</span></label><label><input type="radio" autocomplete="off" name="radio_MFMGIENGFC" value=""> <span>hist(ZFdata$pLoC), and the same for each construct</span></label>
 </div>
 <p>Let’s see some examples:</p>
 <div class="cell">
@@ -2574,20 +2574,20 @@ sample estimates:
 </div>
 <p>Now try to answer some questions about your data and obtained plots:</p>
 <strong>1. Which construct has the strongest impact on the dissemination of metastatic cells?</strong>
-<div id="radio_NPXBZRTOVS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NPXBZRTOVS" value=""> <span>The empty plasmid pLoC</span></label><label><input type="radio" autocomplete="off" name="radio_NPXBZRTOVS" value=""> <span>WT EFNA3</span></label><label><input type="radio" autocomplete="off" name="radio_NPXBZRTOVS" value=""> <span>NC1</span></label><label><input type="radio" autocomplete="off" name="radio_NPXBZRTOVS" value=""> <span>NC1s</span></label><label><input type="radio" autocomplete="off" name="radio_NPXBZRTOVS" value=""> <span>NC2</span></label><label><input type="radio" autocomplete="off" name="radio_NPXBZRTOVS" value=""> <span>NC2s</span></label><label><input type="radio" autocomplete="off" name="radio_NPXBZRTOVS" value="answer"> <span>I cannot say</span></label>
+<div id="radio_DMQXKFTLBY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DMQXKFTLBY" value=""> <span>The empty plasmid pLoC</span></label><label><input type="radio" autocomplete="off" name="radio_DMQXKFTLBY" value=""> <span>WT EFNA3</span></label><label><input type="radio" autocomplete="off" name="radio_DMQXKFTLBY" value=""> <span>NC1</span></label><label><input type="radio" autocomplete="off" name="radio_DMQXKFTLBY" value=""> <span>NC1s</span></label><label><input type="radio" autocomplete="off" name="radio_DMQXKFTLBY" value=""> <span>NC2</span></label><label><input type="radio" autocomplete="off" name="radio_DMQXKFTLBY" value=""> <span>NC2s</span></label><label><input type="radio" autocomplete="off" name="radio_DMQXKFTLBY" value="answer"> <span>I cannot say</span></label>
 </div>
 <strong>2. Which plot represent best these data?</strong>
-<div id="radio_SLCKFLVCPD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_SLCKFLVCPD" value=""> <span>Histogram</span></label><label><input type="radio" autocomplete="off" name="radio_SLCKFLVCPD" value=""> <span>Barplot</span></label><label><input type="radio" autocomplete="off" name="radio_SLCKFLVCPD" value=""> <span>Boxplot</span></label><label><input type="radio" autocomplete="off" name="radio_SLCKFLVCPD" value=""> <span>Stripchart</span></label><label><input type="radio" autocomplete="off" name="radio_SLCKFLVCPD" value="answer"> <span>I am not sure</span></label>
+<div id="radio_NNXBYFZLIN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NNXBYFZLIN" value=""> <span>Histogram</span></label><label><input type="radio" autocomplete="off" name="radio_NNXBYFZLIN" value=""> <span>Barplot</span></label><label><input type="radio" autocomplete="off" name="radio_NNXBYFZLIN" value=""> <span>Boxplot</span></label><label><input type="radio" autocomplete="off" name="radio_NNXBYFZLIN" value=""> <span>Stripchart</span></label><label><input type="radio" autocomplete="off" name="radio_NNXBYFZLIN" value="answer"> <span>I am not sure</span></label>
 </div>
 <strong>3. Does a boxplot represent the same <em>information</em> than a histogram?</strong>
-<div id="radio_EADWQRXRRS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EADWQRXRRS" value=""> <span>No, not at all</span></label><label><input type="radio" autocomplete="off" name="radio_EADWQRXRRS" value=""> <span>Yes, they are the same</span></label><label><input type="radio" autocomplete="off" name="radio_EADWQRXRRS" value=""> <span>Yes, but a boxplot will show best the differences between my samples</span></label><label><input type="radio" autocomplete="off" name="radio_EADWQRXRRS" value="answer"> <span>Yes, but a histogram will show best the differences between my samples</span></label>
+<div id="radio_SUAAVCBUIY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SUAAVCBUIY" value=""> <span>No, not at all</span></label><label><input type="radio" autocomplete="off" name="radio_SUAAVCBUIY" value=""> <span>Yes, they are the same</span></label><label><input type="radio" autocomplete="off" name="radio_SUAAVCBUIY" value=""> <span>Yes, but a boxplot will show best the differences between my samples</span></label><label><input type="radio" autocomplete="off" name="radio_SUAAVCBUIY" value="answer"> <span>Yes, but a histogram will show best the differences between my samples</span></label>
 </div>
 <strong>4. Does a barplot represent the same information than a boxplot?</strong>
-<div id="radio_KMUFOXQJDL" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_KMUFOXQJDL" value=""> <span>No, a barplot represents data frequencies/distribution</span></label><label><input type="radio" autocomplete="off" name="radio_KMUFOXQJDL" value="answer"> <span>No, boxplots and histograms represent data frequencies/distribution</span></label><label><input type="radio" autocomplete="off" name="radio_KMUFOXQJDL" value=""> <span>Yes, they alike</span></label>
+<div id="radio_KLZQWJWNOH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KLZQWJWNOH" value=""> <span>No, a barplot represents data frequencies/distribution</span></label><label><input type="radio" autocomplete="off" name="radio_KLZQWJWNOH" value="answer"> <span>No, boxplots and histograms represent data frequencies/distribution</span></label><label><input type="radio" autocomplete="off" name="radio_KLZQWJWNOH" value=""> <span>Yes, they alike</span></label>
 </div>
 <p>Now, we are going to represent the same data again, introducing some more customization</p>
 <div class="cell">
@@ -2656,8 +2656,8 @@ Answer
 <p>We will still use the data from the zebrafish experiment here</p>
 <p>In the previous plots, in order to compare three conditions, we needed to make three independent plots. However, in the table, there are six conditions, and it is not very difficult to imagine experiments that might result in a table with even more conditions. How could you plot that? The key question is, different conditions means different variables? In other words:</p>
 <strong>How many variables are there in the Zebrafish dataset?</strong>
-<div id="radio_TNTLIWJHNW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TNTLIWJHNW" value=""> <span>3 variables, WT, empty plasmid and 4 mutants</span></label><label><input type="radio" autocomplete="off" name="radio_TNTLIWJHNW" value=""> <span>6, one for each expressed transcript</span></label><label><input type="radio" autocomplete="off" name="radio_TNTLIWJHNW" value="answer"> <span>2 variables, the (1) plasmid/expressed transcript and (2) the number of metastatic cells</span></label>
+<div id="radio_DNGTPZDSFL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DNGTPZDSFL" value=""> <span>3 variables, WT, empty plasmid and 4 mutants</span></label><label><input type="radio" autocomplete="off" name="radio_DNGTPZDSFL" value=""> <span>6, one for each expressed transcript</span></label><label><input type="radio" autocomplete="off" name="radio_DNGTPZDSFL" value="answer"> <span>2 variables, the (1) plasmid/expressed transcript and (2) the number of metastatic cells</span></label>
 </div>
 <p>In data analysis (check Lesson <a href="r6.html">R6</a>), particularly when you want to compare many variables in different groups, it is more handy to create a <em>stacked</em> table or <em>datamatrix</em>. Stacked table are also often referred to as <em>narrow</em> tables. In contrast, the tables with different conditions (of a same variable) in different columns are named <em>wide</em> table or <em>unstacked</em>. The code below shows how to <em>stack</em> and plot your data by groups using the function <code>stack()</code>.</p>
 <div class="cell">
@@ -2979,7 +2979,7 @@ Answer
 <div class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.4.0 (2024-04-24)
+<pre><code>R version 4.4.1 (2024-06-14)
 Platform: x86_64-apple-darwin20
 Running under: macOS Sonoma 14.6.1
 
@@ -3000,10 +3000,10 @@ other attached packages:
 [1] webexercises_1.1.0 formatR_1.14       knitr_1.48        
 
 loaded via a namespace (and not attached):
- [1] htmlwidgets_1.6.4 compiler_4.4.0    fastmap_1.2.0     cli_3.6.3        
- [5] tools_4.4.0       htmltools_0.5.8.1 rstudioapi_0.16.0 yaml_2.3.10      
- [9] rmarkdown_2.28    jsonlite_1.8.8    xfun_0.47         digest_0.6.36    
-[13] rlang_1.1.4       evaluate_0.24.0  </code></pre>
+ [1] htmlwidgets_1.6.4 compiler_4.4.1    fastmap_1.2.0     cli_3.6.3        
+ [5] tools_4.4.1       htmltools_0.5.8.1 rstudioapi_0.17.1 yaml_2.3.10      
+ [9] rmarkdown_2.28    jsonlite_1.8.9    xfun_0.48         digest_0.6.37    
+[13] rlang_1.1.4       evaluate_1.0.1   </code></pre>
 </div>
 </div>
 
