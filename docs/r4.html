@@ -391,7 +391,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"editor-max-height":"","context":"interactive","fig-width":7,"warning":"true","autorun":"false","message":"true","fig-height":5,"editor-font-scale":"1","classes":"","comment":"","read-only":"false","label":"unnamed-chunk-1","fig-cap":"","editor-quick-suggestions":"false","results":"markup","dpi":72,"out-height":"","editor-word-wrap":"true","output":"true","out-width":"700px"},"id":1,"code":"#Your function here\n\n\n\n\n#Try it\ndilution(250,10,10)"}];
+globalThis.qwebrCellDetails = [{"code":"#Your function here\n\n\n\n\n#Try it\ndilution(250,10,10)","id":1,"options":{"out-width":"700px","output":"true","results":"markup","context":"interactive","message":"true","editor-quick-suggestions":"false","autorun":"false","editor-word-wrap":"true","label":"unnamed-chunk-1","read-only":"false","dpi":72,"warning":"true","editor-max-height":"","classes":"","fig-cap":"","editor-font-scale":"1","comment":"","fig-width":7,"fig-height":5,"out-height":""}}];
 
 </script>
 <script type="module">
@@ -2057,7 +2057,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 5, 2024</p>
+      <p class="date-modified">November 6, 2024</p>
     </div>
   </div>
     
@@ -2187,7 +2187,7 @@ Cross-lesson tip
 </section>
 <section id="too-many-packages" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="too-many-packages"><span class="header-section-number">1.2</span> Too many packages</h2>
-<p>As there are a lot of packages sometimes it takes some time to test different packages for the same analysis. Also, some packages become obsolete with a new R or RStudio version. Thus, is also a good habit to uninstall packages, with the function <code>remove.package()</code>.</p>
+<p>As there are a lot of packages sometimes it takes some time to test different packages for the same analysis. Also, some packages become obsolete with a new R or RStudio version. Thus, is also a good habit to uninstall packages, with the function <code>remove.packages()</code>.</p>
 <p>Sometimes, you can come into two different namesake functions from independent packages. Also, to reduce the memory load you may want to use a function without loading the package. In those cases, as in the examples below, there is a trick to call a specific function, the prefix <code>package::</code>. However, it should be noted that in some packages the syntax is complex and you need to call more than one function to actually use a major function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># package getwiki</span></span>
@@ -2207,9 +2207,9 @@ Cross-lesson tip
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "A-DNA"                 "Circular DNA"          "DNA"                  
  [4] "DNA (disambiguation)"  "DNA Oyj"               "DNA extraction"       
- [7] "DNA gyrase"            "DNA ligase"            "DNA methylation"      
+ [7] "DNA ligase"            "DNA methylation"       "DNA methyltransferase"
 [10] "DNA polymerase"        "DNA profiling"         "DNA repair"           
-[13] "DNA replication"       "DNA sequencing"        "DNA vaccine"          
+[13] "DNA replication"       "DNA sequencing"        "DNA virus"            
 [16] "DNA²"                  "DNA–DNA hybridization" "DnaA"                 
 [19] "Mitochondrial DNA"     "Recombinant DNA"      </code></pre>
 </div>
@@ -2424,10 +2424,10 @@ is positive, statistically significant, and very large (r = 0.93, 95% CI [0.91,
 </section>
 <section id="quick-exercise-ii" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="quick-exercise-ii"><span class="header-section-number">2.3</span> <span style="color:darkseagreen">Quick exercise (II)</span></h2>
-<p>We want to write an inline function that transforms concentrations units: molar (M) into micromolar (µM). How would you do it?</p>
+<p>We want to write an inline function that transforms concentrations units: milimolar (mM) into micromolar (µM). How would you do it?</p>
 <strong>Select the right answer</strong>
-<div id="radio_ZMLOKDTLXF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZMLOKDTLXF" value=""> <span>f &lt;- function(x) 1000</span></label><label><input type="radio" autocomplete="off" name="radio_ZMLOKDTLXF" value="answer"> <span>f &lt;- function(x) x * 1000</span></label><label><input type="radio" autocomplete="off" name="radio_ZMLOKDTLXF" value=""> <span>f &lt;- function(x) x 1000</span></label>
+<div id="radio_MHGZTKDOVC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MHGZTKDOVC" value=""> <span>f &lt;- function(x) 1000</span></label><label><input type="radio" autocomplete="off" name="radio_MHGZTKDOVC" value="answer"> <span>f &lt;- function(x) x * 1000</span></label><label><input type="radio" autocomplete="off" name="radio_MHGZTKDOVC" value=""> <span>f &lt;- function(x) x 1000</span></label>
 </div>
 <hr>
 </section>
