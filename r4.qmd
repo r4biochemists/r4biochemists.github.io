@@ -133,7 +133,7 @@ Note that in some cases, as in the package *seqinr*, there is no official vignet
 
 ## Too many packages
 
-As there are a lot of packages sometimes it takes some time to test different packages for the same analysis. Also, some packages become obsolete with a new R or RStudio version. Thus, is also a good habit to uninstall packages, with the function `remove.package()`.
+As there are a lot of packages sometimes it takes some time to test different packages for the same analysis. Also, some packages become obsolete with a new R or RStudio version. Thus, is also a good habit to uninstall packages, with the function `remove.packages()`.
 
 Sometimes, you can come into two different namesake functions from independent packages. Also, to reduce the memory load you may want to use a function without loading the package. In those cases, as in the examples below, there is a trick to call a specific function, the prefix `package::`. However, it should be noted that in some packages the syntax is complex and you need to call more than one function to actually use a major function.
 
@@ -279,7 +279,7 @@ f(22)
 
 ## [Quick exercise (II)]{style="color:darkseagreen"}
 
-We want to write an inline function that transforms concentrations units: molar (M) into micromolar (µM). How would you do it?
+We want to write an inline function that transforms concentrations units: milimolar (mM) into micromolar (µM). How would you do it?
 
 ```{r wd2, echo = FALSE, results = 'asis'}
 opts_p <- c(

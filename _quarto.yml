@@ -35,8 +35,10 @@ website:
     right:
     - icon: badge-cc-fill
       href: https://creativecommons.org/licenses/by-nc/2.0/
-    - icon: twitter
+    - text: "{{< iconify fa6-brands x-twitter >}}"
       href: https://twitter.com/mredrejo
+    - text: "{{< iconify simple-icons bluesky >}}"
+      href: https://bsky.app/profile/mredrejo.bsky.social
   page-navigation: true
   back-to-top-navigation: true
 format:
