@@ -74,6 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/iconify-1.0.0-beta.2/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -391,7 +392,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"#Your function here\n\n\n\n\n#Try it\ndilution(250,10,10)","id":1,"options":{"out-width":"700px","output":"true","results":"markup","context":"interactive","message":"true","editor-quick-suggestions":"false","autorun":"false","editor-word-wrap":"true","label":"unnamed-chunk-1","read-only":"false","dpi":72,"warning":"true","editor-max-height":"","classes":"","fig-cap":"","editor-font-scale":"1","comment":"","fig-width":7,"fig-height":5,"out-height":""}}];
+globalThis.qwebrCellDetails = [{"code":"#Your function here\n\n\n\n\n#Try it\ndilution(250,10,10)","options":{"out-width":"700px","autorun":"false","out-height":"","warning":"true","fig-height":5,"read-only":"false","editor-font-scale":"1","editor-max-height":"","dpi":72,"fig-width":7,"message":"true","output":"true","label":"unnamed-chunk-1","results":"markup","context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","classes":"","comment":""},"id":1}];
 
 </script>
 <script type="module">
@@ -2057,7 +2058,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 6, 2024</p>
+      <p class="date-modified">November 12, 2024</p>
     </div>
   </div>
     
@@ -2207,11 +2208,11 @@ Cross-lesson tip
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "A-DNA"                 "Circular DNA"          "DNA"                  
  [4] "DNA (disambiguation)"  "DNA Oyj"               "DNA extraction"       
- [7] "DNA ligase"            "DNA methylation"       "DNA methyltransferase"
-[10] "DNA polymerase"        "DNA profiling"         "DNA repair"           
-[13] "DNA replication"       "DNA sequencing"        "DNA virus"            
-[16] "DNA²"                  "DNA–DNA hybridization" "DnaA"                 
-[19] "Mitochondrial DNA"     "Recombinant DNA"      </code></pre>
+ [7] "DNA ligase"            "DNA methylation"       "DNA polymerase"       
+[10] "DNA profiling"         "DNA repair"            "DNA replication"      
+[13] "DNA sequencing"        "DNA vaccine"           "DNA²"                 
+[16] "DNA–DNA hybridization" "DnaA"                  "Mitochondrial DNA"    
+[19] "Mutation"              "Recombinant DNA"      </code></pre>
 </div>
 </div>
 <div id="ggplot">
@@ -2426,8 +2427,8 @@ is positive, statistically significant, and very large (r = 0.93, 95% CI [0.91,
 <h2 data-number="2.3" class="anchored" data-anchor-id="quick-exercise-ii"><span class="header-section-number">2.3</span> <span style="color:darkseagreen">Quick exercise (II)</span></h2>
 <p>We want to write an inline function that transforms concentrations units: milimolar (mM) into micromolar (µM). How would you do it?</p>
 <strong>Select the right answer</strong>
-<div id="radio_MHGZTKDOVC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MHGZTKDOVC" value=""> <span>f &lt;- function(x) 1000</span></label><label><input type="radio" autocomplete="off" name="radio_MHGZTKDOVC" value="answer"> <span>f &lt;- function(x) x * 1000</span></label><label><input type="radio" autocomplete="off" name="radio_MHGZTKDOVC" value=""> <span>f &lt;- function(x) x 1000</span></label>
+<div id="radio_MJBPMKWWGY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MJBPMKWWGY" value=""> <span>f &lt;- function(x) 1000</span></label><label><input type="radio" autocomplete="off" name="radio_MJBPMKWWGY" value="answer"> <span>f &lt;- function(x) x * 1000</span></label><label><input type="radio" autocomplete="off" name="radio_MJBPMKWWGY" value=""> <span>f &lt;- function(x) x 1000</span></label>
 </div>
 <hr>
 </section>
@@ -2657,43 +2658,27 @@ Answer
 <span id="cb95-7"><a href="#cb95-7" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb95-8"><a href="#cb95-8" aria-hidden="true" tabindex="-1"></a><span class="co"># now let's try it</span></span>
 <span id="cb95-9"><a href="#cb95-9" aria-hidden="true" tabindex="-1"></a><span class="fu">codon2aa</span>(<span class="st">"ATG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in file(file, "rt"): cannot open file 'data/genetic_code.csv': No such
-file or directory</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "M"</code></pre>
 </div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in file(file, "rt"): cannot open the connection</code></pre>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">codon2aa</span>(<span class="st">"TAA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "*"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">codon2aa</span>(<span class="st">"TAA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in file(file, "rt"): cannot open file 'data/genetic_code.csv': No such
-file or directory</code></pre>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">codon2aa</span>(<span class="st">"CAT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "H"</code></pre>
 </div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in file(file, "rt"): cannot open the connection</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">codon2aa</span>(<span class="st">"CAT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in file(file, "rt"): cannot open file 'data/genetic_code.csv': No such
-file or directory</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in file(file, "rt"): cannot open the connection</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">codon2aa</span>(<span class="st">"AXG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in file(file, "rt"): cannot open file 'data/genetic_code.csv': No such
-file or directory</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in file(file, "rt"): cannot open the connection</code></pre>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">codon2aa</span>(<span class="st">"AXG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>character(0)</code></pre>
 </div>
 </div>
 </div>
 <p>Can you also check the value of the variable <code>aa</code> ?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co">#'aa'??</span></span>
-<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(aa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co">#'aa'??</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(aa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error: object 'aa' not found</code></pre>
 </div>
@@ -2710,44 +2695,32 @@ file or directory</code></pre>
 <button>
 See an answer
 </button>
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># version 2</span></span>
-<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>codon2aa_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(codons) {</span>
-<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>    aa <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>    code <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"data/genetic_code.csv"</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(codons)) {</span>
-<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># loop over all the elements of the vector 'codons'</span></span>
-<span id="cb109-8"><a href="#cb109-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stopifnot</span>(<span class="st">`</span><span class="at">Uno o más de los codones no es correcto. No se ha podido traducir ;)</span><span class="st">`</span> <span class="ot">=</span> codons[i] <span class="sc">%in%</span></span>
-<span id="cb109-9"><a href="#cb109-9" aria-hidden="true" tabindex="-1"></a>            code<span class="sc">$</span>Codon)  <span class="co">#check for correct values</span></span>
-<span id="cb109-10"><a href="#cb109-10" aria-hidden="true" tabindex="-1"></a>        aa[i] <span class="ot">&lt;-</span> code<span class="sc">$</span>AA[code<span class="sc">$</span>Codon <span class="sc">==</span> codons[i]]</span>
-<span id="cb109-11"><a href="#cb109-11" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb109-12"><a href="#cb109-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(aa)</span>
-<span id="cb109-13"><a href="#cb109-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb109-14"><a href="#cb109-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-15"><a href="#cb109-15" aria-hidden="true" tabindex="-1"></a><span class="co"># let's try it</span></span>
-<span id="cb109-16"><a href="#cb109-16" aria-hidden="true" tabindex="-1"></a><span class="fu">codon2aa_2</span>(<span class="fu">c</span>(<span class="st">"ATG"</span>, <span class="st">"TGA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in file(file, "rt"): cannot open file 'data/genetic_code.csv': No such
-file or directory</code></pre>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># version 2</span></span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>codon2aa_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(codons) {</span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a>    aa <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a>    code <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"data/genetic_code.csv"</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb105-6"><a href="#cb105-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(codons)) {</span>
+<span id="cb105-7"><a href="#cb105-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># loop over all the elements of the vector 'codons'</span></span>
+<span id="cb105-8"><a href="#cb105-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stopifnot</span>(<span class="st">`</span><span class="at">Uno o más de los codones no es correcto. No se ha podido traducir ;)</span><span class="st">`</span> <span class="ot">=</span> codons[i] <span class="sc">%in%</span></span>
+<span id="cb105-9"><a href="#cb105-9" aria-hidden="true" tabindex="-1"></a>            code<span class="sc">$</span>Codon)  <span class="co">#check for correct values</span></span>
+<span id="cb105-10"><a href="#cb105-10" aria-hidden="true" tabindex="-1"></a>        aa[i] <span class="ot">&lt;-</span> code<span class="sc">$</span>AA[code<span class="sc">$</span>Codon <span class="sc">==</span> codons[i]]</span>
+<span id="cb105-11"><a href="#cb105-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb105-12"><a href="#cb105-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(aa)</span>
+<span id="cb105-13"><a href="#cb105-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb105-14"><a href="#cb105-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-15"><a href="#cb105-15" aria-hidden="true" tabindex="-1"></a><span class="co"># let's try it</span></span>
+<span id="cb105-16"><a href="#cb105-16" aria-hidden="true" tabindex="-1"></a><span class="fu">codon2aa_2</span>(<span class="fu">c</span>(<span class="st">"ATG"</span>, <span class="st">"TGA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "M" "*"</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">codon2aa_2</span>(<span class="fu">c</span>(<span class="st">"ARG"</span>, <span class="st">"TGA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in file(file, "rt"): cannot open the connection</code></pre>
+<pre><code>Error in codon2aa_2(c("ARG", "TGA")): Uno o más de los codones no es correcto. No se ha podido traducir ;)</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">codon2aa_2</span>(<span class="fu">c</span>(<span class="st">"ARG"</span>, <span class="st">"TGA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in file(file, "rt"): cannot open file 'data/genetic_code.csv': No such
-file or directory</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in file(file, "rt"): cannot open the connection</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">codon2aa_2</span>(<span class="fu">c</span>(<span class="st">"ATG"</span>, <span class="st">"CAT"</span>, <span class="st">"CAT"</span>, <span class="st">"AAA"</span>, <span class="st">"TAA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in file(file, "rt"): cannot open file 'data/genetic_code.csv': No such
-file or directory</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in file(file, "rt"): cannot open the connection</code></pre>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">codon2aa_2</span>(<span class="fu">c</span>(<span class="st">"ATG"</span>, <span class="st">"CAT"</span>, <span class="st">"CAT"</span>, <span class="st">"AAA"</span>, <span class="st">"TAA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "M" "H" "H" "K" "*"</code></pre>
 </div>
 </div>
 </div>
@@ -2761,11 +2734,11 @@ file or directory</code></pre>
 <button>
 Hint
 </button>
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(as.Date)</span>
-<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(difftime)</span>
-<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="co"># See some examples:</span></span>
-<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="co"># https://www.geeksforgeeks.org/calculate-time-difference-between-dates-in-r-programming-difftime-function/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(as.Date)</span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(difftime)</span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="co"># See some examples:</span></span>
+<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="co"># https://www.geeksforgeeks.org/calculate-time-difference-between-dates-in-r-programming-difftime-function/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="cell" data-webex.hide="Answer 1">
@@ -2773,23 +2746,23 @@ Hint
 <button>
 Answer 1
 </button>
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quickest way I found</span></span>
-<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.Date</span>(<span class="fu">as.character</span>(x), <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>))) {</span>
-<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a>        age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">Sys.Date</span>() <span class="sc">-</span> <span class="fu">as.Date</span>(x, <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>))  <span class="co">#result in days</span></span>
-<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"You are about"</span>, <span class="fu">round</span>(age<span class="sc">/</span><span class="dv">30</span>, <span class="dv">1</span>), <span class="st">"months old"</span>))</span>
-<span id="cb119-6"><a href="#cb119-6" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb119-7"><a href="#cb119-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stop</span>(<span class="st">"The input date must be quoted and in format YYYY-MM-DD"</span>)</span>
-<span id="cb119-8"><a href="#cb119-8" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb119-9"><a href="#cb119-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb119-10"><a href="#cb119-10" aria-hidden="true" tabindex="-1"></a><span class="co"># test</span></span>
-<span id="cb119-11"><a href="#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="fu">age</span>(<span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quickest way I found</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.Date</span>(<span class="fu">as.character</span>(x), <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>))) {</span>
+<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>        age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">Sys.Date</span>() <span class="sc">-</span> <span class="fu">as.Date</span>(x, <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>))  <span class="co">#result in days</span></span>
+<span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"You are about"</span>, <span class="fu">round</span>(age<span class="sc">/</span><span class="dv">30</span>, <span class="dv">1</span>), <span class="st">"months old"</span>))</span>
+<span id="cb112-6"><a href="#cb112-6" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb112-7"><a href="#cb112-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stop</span>(<span class="st">"The input date must be quoted and in format YYYY-MM-DD"</span>)</span>
+<span id="cb112-8"><a href="#cb112-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb112-9"><a href="#cb112-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb112-10"><a href="#cb112-10" aria-hidden="true" tabindex="-1"></a><span class="co"># test</span></span>
+<span id="cb112-11"><a href="#cb112-11" aria-hidden="true" tabindex="-1"></a><span class="fu">age</span>(<span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in age(18): The input date must be quoted and in format YYYY-MM-DD</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">age</span>(<span class="st">"2004-11-17"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">age</span>(<span class="st">"2004-11-17"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "You are about 243.1 months old"</code></pre>
+<pre><code>[1] "You are about 243.3 months old"</code></pre>
 </div>
 </div>
 </div>
@@ -2798,30 +2771,30 @@ Answer 1
 <button>
 Answer 2
 </button>
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative using interactive input &amp; difftime()</span></span>
-<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">missing</span>(x)) {</span>
-<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># check for input date if missing, we can ask the</span></span>
-<span id="cb123-5"><a href="#cb123-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># user for input</span></span>
-<span id="cb123-6"><a href="#cb123-6" aria-hidden="true" tabindex="-1"></a>        x <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="at">prompt =</span> <span class="st">"Introduce your birthdate in the format YYYY-MM-DD: "</span>)</span>
-<span id="cb123-7"><a href="#cb123-7" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb123-8"><a href="#cb123-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.Date</span>(<span class="fu">as.character</span>(x), <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>))) {</span>
-<span id="cb123-9"><a href="#cb123-9" aria-hidden="true" tabindex="-1"></a>        df <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.Date</span>(), <span class="fu">as.Date</span>(x, <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>))</span>
-<span id="cb123-10"><a href="#cb123-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"If you were born on "</span>, x, <span class="st">", you are about "</span>,</span>
-<span id="cb123-11"><a href="#cb123-11" aria-hidden="true" tabindex="-1"></a>            <span class="fu">round</span>(<span class="fu">as.numeric</span>(df)<span class="sc">/</span><span class="dv">30</span>, <span class="dv">1</span>), <span class="st">" months old."</span>))</span>
-<span id="cb123-12"><a href="#cb123-12" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb123-13"><a href="#cb123-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stop</span>(<span class="st">"The input date must be in format YYYY-MM-DD"</span>)</span>
-<span id="cb123-14"><a href="#cb123-14" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb123-15"><a href="#cb123-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb123-16"><a href="#cb123-16" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span>(<span class="st">"2004-11-17"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative using interactive input &amp; difftime()</span></span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">missing</span>(x)) {</span>
+<span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># check for input date if missing, we can ask the</span></span>
+<span id="cb116-5"><a href="#cb116-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># user for input</span></span>
+<span id="cb116-6"><a href="#cb116-6" aria-hidden="true" tabindex="-1"></a>        x <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="at">prompt =</span> <span class="st">"Introduce your birthdate in the format YYYY-MM-DD: "</span>)</span>
+<span id="cb116-7"><a href="#cb116-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb116-8"><a href="#cb116-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.Date</span>(<span class="fu">as.character</span>(x), <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>))) {</span>
+<span id="cb116-9"><a href="#cb116-9" aria-hidden="true" tabindex="-1"></a>        df <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.Date</span>(), <span class="fu">as.Date</span>(x, <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>))</span>
+<span id="cb116-10"><a href="#cb116-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"If you were born on "</span>, x, <span class="st">", you are about "</span>,</span>
+<span id="cb116-11"><a href="#cb116-11" aria-hidden="true" tabindex="-1"></a>            <span class="fu">round</span>(<span class="fu">as.numeric</span>(df)<span class="sc">/</span><span class="dv">30</span>, <span class="dv">1</span>), <span class="st">" months old."</span>))</span>
+<span id="cb116-12"><a href="#cb116-12" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb116-13"><a href="#cb116-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stop</span>(<span class="st">"The input date must be in format YYYY-MM-DD"</span>)</span>
+<span id="cb116-14"><a href="#cb116-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb116-15"><a href="#cb116-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb116-16"><a href="#cb116-16" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span>(<span class="st">"2004-11-17"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "If you were born on 2004-11-17, you are about 243.1 months old."</code></pre>
+<pre><code>[1] "If you were born on 2004-11-17, you are about 243.3 months old."</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span>(<span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span>(<span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in df(18): The input date must be in format YYYY-MM-DD</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Introduce your birthdate in the format YYYY-MM-DD: </code></pre>
 </div>
@@ -2867,7 +2840,7 @@ Answer 2
 <section id="session-info" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Session Info</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.4.1 (2024-06-14)
 Platform: x86_64-apple-darwin20
@@ -3563,11 +3536,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </i> 
     </a>
   </li>  
-    <li class="nav-item compact">
+    <li class="nav-item">
     <a class="nav-link" href="https://twitter.com/mredrejo">
-      <i class="bi bi-twitter" role="img">
-</i> 
-    </a>
+<p><iconify-icon inline="" icon="fa6-brands:x-twitter"></iconify-icon></p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/mredrejo.bsky.social">
+<p><iconify-icon inline="" icon="simple-icons:bluesky"></iconify-icon></p>
+</a>
   </li>  
 </ul>
     </div>
