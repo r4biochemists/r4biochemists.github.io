@@ -53,9 +53,9 @@ knit_hooks$set(output = function(x, options) {
 
 # Transform dataframes
 
-When you want to explore, present, analyze, or transform your data, you often need to subdivide, aggregate, or sort a vector or data frame by one or more variables. Currently, the R universe is essentially built on two (seemingly contradictory) approaches: Base R and `tidyverse` libraries (`dplyr()` & `tidyr()`) Although these two approaches are often seen as two different philosophies, they are meant to work together (see ref. 8 [below](#sec-references)).
+When you need to explore, present, analyze, or transform your data, it often requires subdividing, aggregating, or sorting a vector or data frame by one or more variables. The R environment primarily relies on two approaches: Base R and `tidyverse` libraries (`dplyr()` & `tidyr()`). Although these two methods are often viewed as distinct philosophies, they are designed to complement each other(see ref. 8 [below](#sec-references)).
 
-We suggest some examples and tricks from Base R in this lesson because we believe that learning to work with Base R provides a broader range of capabilities for different types of data and work environments.
+This lesson provides examples and techniques from Base R because learning Base R offers a wider range of capabilities for different types of data and work environments in the future.
 
 ## Sorting and subsetting data
 
@@ -94,7 +94,7 @@ coli_genomes[sample(nrow(coli_genomes), replace = FALSE), ]
 coli_genomes[nrow(coli_genomes):1, ]
 ```
 
-Now imagine you have a large data set and want to subdivide only some cases (=rows). You already know some ways to do this, but in the following example we will test the function 'subset()', which is very handy when you want to extract the cases that satisfy multiple conditions.
+Now imagine you have a large data set and want to subdivide only some cases (=rows). You already know some ways to do this, but in the following example we will test the function `subset()`, which is very handy when you want to extract the cases that satisfy multiple conditions.
 
 Imagine that for a new project we want to select the strains with better genome design quality or from a subset. We will keep strains from Phylogroup A, with an assembly N50 \> 150,000 bp and less than 100 contigs \>= 1 kb.
 
@@ -156,7 +156,7 @@ str(merge7)
 
 As you noticed, the function `merge()` combines dataframes, however it is a generic function that can be also used with other objects (like vectors or matrices), but they will be coerced to `data.frame` class.
 
-By default, `merge()` will do a *natural join* or *inner join*, merging two dataframes in one that contains only once the common elements of both. The arguments `all=TRUE`, `all.x=TRUE` and `all.y=TRUE` will force an *outer* join in which all elements of both, the first or the second dataframes are selected. In these cases, if not all rows in the first data frame match all the rows in the second, the output is filled with `NA` values in those cases.
+By default, `merge()` will do a *natural join* or *inner join*, merging two dataframes in one that contains only once the common elements of both. The arguments `all = TRUE`, `all.x = TRUE` and `all.y = TRUE` will force an *outer* join in which all elements of both, the first or the second dataframes are selected. In these cases, if not all rows in the first data frame match all the rows in the second, the output is filled with `NA` values in those cases.
 
 Finally, the Cartesian product of both dataframes can be obtained in R setting as `NULL` the argument `by` of the `merge()` function.
 
@@ -331,7 +331,7 @@ system.time(vaccines3 <-fread('data/vaccines_EU_22oct2022.csv',colClasses = "cha
 
 ## Frequency tables: `table()` vs. `xtabs()`
 
-Tabulate frequencies is very common and quick way to obtain information from a dataset. A good alternative for complex tabulation and/or large datasets is the funcion `xtabs()`. The output of both `xtabs()` and `table()` is nearly the same, although `xtabs()` is more convenient for complex cross tabulations. Still some users prefer the use of derivative `table()` uses, like including it within the `with()` function. I believe that `xtabs()` provides a more straightforward alternative. Moreover, `xtabs()` has interesting advantages: 1) row and column labels are included automatically, set to the variable names and 2) there is a data= argument, which means you just have to reference the variable names. With `xtabs()`, you do not list out the variables of interest separated by commas. Instead you use formula notation, which is \~variable1+variable2+... where variable1 and variable2 are the names of the variables of interest.
+Tabulating frequencies is a common and efficient way to explore data. While the `table()` function is versatile and can be used with various data structures (vectors, dataframes, lists...), it might become less convenient for complex cross-tabulations, especially with large datasets. Alternatively, as shown below, the `xtabs()` function offers a more streamlined approach, particularly for multi-dimensional tables. It leverages a formula-based syntax, allowing for easy specification of variables and automatic generation of row and column labels. Additionally, the data= argument in `xtabs()` simplifies the process by directly referencing variable names within the dataframe.
 
 ```{r }
 #compare table() and xtabs()
@@ -342,13 +342,14 @@ str(xtabs(formula= ~ ReportingCountry  ,data=vaccines))
 #Note: library(stats) if xtabs() does not work
 ```
 
-So far the seem very similar in terms of coding and obtained output. However, what about if you want to use to variables?
+So far, they seem very similar in terms of coding and obtained output. However, what about if you want to use to several variables?
 
 ```{r output.lines=(1:25)}
 #with 2 or more variables?
 table(vaccines[,c(ReportingCountry,as.factor(Vaccine))]) #not really
+table(vaccines$ReportingCountry,vaccines$Vaccine) #yes!
 
-## you can use "with", but not so intuitive to me
+## you can also use "with", but not so intuitive to me
 with(vaccines, table(ReportingCountry, as.factor(Vaccine))) 
 
 
@@ -357,14 +358,14 @@ with(vaccines, table(ReportingCountry, as.factor(Vaccine)))
 
 ```
 
-As shown above, `xtabs()` can be used with more than two variables, although the resulting cross-tabulated table may be too long. Moreover, you can create a cross-tabulated table using a numeric variable instead of frequencies. To do so, you just need to use the left side of the formula.
+As mentioned above, `xtabs()` can be easily used with more than two variables. Moreover, you can create a cross-tabulated table using a numeric variable instead of frequencies. To do so, you just need to use the left side of the formula.
 
 ```{r output.lines=(1:50)}
 #also with several variables
 (vaccines_split2 <- xtabs(NumberDosesReceived ~ ReportingCountry  + as.factor(Vaccine) + as.factor(TargetGroup), vaccines))
 ```
 
-Then, if you want to show your tabulated data in a more useful format, you can covert the cross-tabulated data into a flat table with `ftable()`. See the examples below and try to understand how the `row.bars` statement works.
+That was a very long output to check! If you want to show your tabulated data in a more useful format, you can covert the cross-tabulated data into a flat table with `ftable()`. See the examples below and try to understand how the `row.bars` statement works.
 
 ```{r output.lines=(1:25)}
 ftable(vaccines_split, row.vars = 2)
@@ -633,7 +634,9 @@ cat("**How would you obtain log10 of the mean of all the numeric columns?**",lon
 
 8.  Efficient data management in R: <https://www.mzes.uni-mannheim.de/socialsciencedatalab/article/efficient-data-r/>
 
-# [Exercises]{style="color:green"}
+# [Review Exercises]{style="color:darkgreen"}[^1]
+
+[^1]: Check proposed answers in the repo: <https://github.com/r4biochemists/r4biochemists.github.io/tree/main/answers2exercises>
 
 We are using the Covid19 test data for exercises. You can download the updated *csv* file from <https://opendata.ecdc.europa.eu/covid19/testing/csv/data.csv> (see also <https://www.ecdc.europa.eu/en/publications-data/covid-19-testing>). Read and explore the data. I also suggest to save the table in your computer as *covid_tests.csv*.
 
