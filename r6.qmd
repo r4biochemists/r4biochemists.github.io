@@ -277,7 +277,7 @@ students2
 
 ## Fast loading of huge datasets and creation of contingency tables
 
-We are going to make some examples with a huge dataset of Covid19 Vaccination data in EU. The data is publicly available at <https://www.ecdc.europa.eu/en/publications-data/data-covid-19-vaccination-eu-eea>. While you can download and open a file from internet in R, in order to use the same dataset, we have a file [*vaccines_EU_22oct2022.csv*](../data/vaccines_EU_22oct2022.csv) in our data folder.
+We are going to make some examples with a huge dataset of Covid19 Vaccination data in EU. The data is publicly available at <https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/csv/data.csv>. That is a big file that cannot be hosted on GitHub, so we can download it and save in our data folder. For instance, I used the name `vaccines_EU_22oct2022.csv`.
 
 ::: callout-note
 From this point on, in some examples we will show only some lines of the output of the code chunks (you will notice that the output ends with ***--- Cropped output ---***). Otherwise, this document is very long and difficult to follow.
@@ -648,7 +648,7 @@ Hint. For the second table, use the function *ISOweek2date()* from the package "
 
 #### 3. Use apply() to obtain the min, max, median and mean of each column.
 
-#### 5. Use `tapply()` to obtain the mean, median and min of new_cases per country and construct a dataframe with the result.
+#### 4. Use `tapply()` to obtain the mean, median and min of new_cases per country and construct a dataframe with the result.
 
 Hint. Consider how to handle NA's.
 

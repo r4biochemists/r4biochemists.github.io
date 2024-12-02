@@ -27,7 +27,7 @@ link-external-newwindow: true
 ```{r wrap-hook, echo=FALSE}
 library(knitr)
 library(formatR)
-
+library(webexercises)
 hook_output <- knit_hooks$get("output")
 knit_hooks$set(output = function(x, options) {
   lines <- options$output.lines
@@ -59,7 +59,7 @@ Biological data, like protein or nucleic acid sequences can be stored and explor
 
 Moreover, for advanced manipulation of string object, I'd advice the package [Strings](https://stringr.tidyverse.org/).
 
-In the code below, we are going to use some simple regular expressions to explore and analyze the data in a multifasta file containing the whole proteome of the bacteria *Bacillus thuringiensis HER1410*, using `grep()`, `substr()`, `sub()`, and `regexpr()`.
+In the code below, we are going to use some simple regular expressions to explore and analyze the data in a multifasta file containing the whole proteome of the bacteria *Bacillus thuringiensis HER1410* ([HER1410.fasta](data/HER1410.fasta)) in our data folder, using `grep()`, `substr()`, `sub()`, and `regexpr()`.
 
 ```{r}
 #read the text file with readLines()
@@ -172,7 +172,7 @@ As you noticed in the code above, the function `read.fasta()` can read any (mult
 
 Once you read the fasta, you can extract the headline name with `getName()` or the sequence with `getSequence()`. Additionally, you can obtain and plot basic stats or compare sequences using `dotPlot()`. Moreover, if you extract a subset of sequences, you can use `write.fasta()` to save those sequences in a new fasta file.
 
-Finally, as in the example below, you can also play with a nucleotide sequence and obtain some useful data, like the `GC()` content, the encoded proteins or the reverse complementary sequence with `rev()` and `comp()`, respectively.
+Finally, as in the example below with HER1410 genome sequence ([HER1410nt.fasta](data/HER1410nt.fasta)), you can also play with a nucleotide sequence and obtain some useful data, like the `GC()` content, the encoded proteins or the reverse complementary sequence with `rev()` and `comp()`, respectively.
 
 ```{r }
 #now the nt sequence

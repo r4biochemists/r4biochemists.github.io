@@ -27,7 +27,7 @@ link-external-newwindow: true
 ```{r wrap-hook, echo=FALSE}
 library(knitr)
 library(formatR)
-
+library(webexercises)
 hook_output <- knit_hooks$get("output")
 knit_hooks$set(output = function(x, options) {
   lines <- options$output.lines
@@ -77,7 +77,7 @@ Let's see all those element through some examples.
 
 ## Example 1: Advanced plotting with ggplot in one line
 
-Let's start strong. We are going to generate a complex plot in one code line.
+Let's start strong. We are going to generate a complex plot in one code line using the EU Covid-19 vaccines table (already used in [R6 lesson](r6.html) and publicly available at <https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/csv/data.csv>).
 
 ```{r}
 #load the data
