@@ -275,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="1.1" class="anchored" data-anchor-id="regular-expressions-as-a-shortcut-to-explore-sequence"><span class="header-section-number">1.1</span> Regular expressions as a shortcut to explore sequence</h2>
 <p>Biological data, like protein or nucleic acid sequences can be stored and explored in different formats, each following its own structure. As you can imagine, that facilitates the use of <em>regular expressions</em> in any programming language to access that data. The use of regular expressions in R is similar to other languages, particularly, to the use you learnt in Python. Anyway, I suggest that you have a look to the <a href="#refs">References</a> below.</p>
 <p>Moreover, for advanced manipulation of string object, I’d advice the package <a href="https://stringr.tidyverse.org/">Strings</a>.</p>
-<p>In the code below, we are going to use some simple regular expressions to explore and analyze the data in a multifasta file containing the whole proteome of the bacteria <em>Bacillus thuringiensis HER1410</em> (<a href="data/HER1410.fasta>">HER1410.fasta</a>) in our data folder, using <code>grep()</code>, <code>substr()</code>, <code>sub()</code>, and <code>regexpr()</code>.</p>
+<p>In the code below, we are going to use some simple regular expressions to explore and analyze the data in a multifasta file containing the whole proteome of the bacteria <em>Bacillus thuringiensis HER1410</em> (<a href="data/HER1410.fasta">HER1410.fasta</a>) in our data folder, using <code>grep()</code>, <code>substr()</code>, <code>sub()</code>, and <code>regexpr()</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read the text file with readLines()</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>proteome <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="st">"data/HER1410.fasta"</span>)</span>
@@ -329,8 +329,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="quick-exercise-using-sub-and-substr." class="level3">
 <h3 class="anchored" data-anchor-id="quick-exercise-using-sub-and-substr."><span style="color:darkseagreen">Quick exercise: Using <code>sub()</code> and <code>substr()</code>.</span></h3>
 <strong>How would you extract the NCBI protein ID of the enzymes?</strong>
-<div id="radio_OEDOJXOWYZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_OEDOJXOWYZ" value=""> <span>sub(names_ase, 1,11)</span></label><label><input type="radio" autocomplete="off" name="radio_OEDOJXOWYZ" value=""> <span>sub(names_ase, 2,11))</span></label><label><input type="radio" autocomplete="off" name="radio_OEDOJXOWYZ" value=""> <span>substr(names_ase, 1,11)</span></label><label><input type="radio" autocomplete="off" name="radio_OEDOJXOWYZ" value="answer"> <span>substr(names_ase, 2,11)</span></label>
+<div id="radio_QQAELSEMDS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QQAELSEMDS" value=""> <span>sub(names_ase, 1,11)</span></label><label><input type="radio" autocomplete="off" name="radio_QQAELSEMDS" value=""> <span>sub(names_ase, 2,11))</span></label><label><input type="radio" autocomplete="off" name="radio_QQAELSEMDS" value=""> <span>substr(names_ase, 1,11)</span></label><label><input type="radio" autocomplete="off" name="radio_QQAELSEMDS" value="answer"> <span>substr(names_ase, 2,11)</span></label>
 </div>
 <div class="cell" data-output.lines="[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]">
 <div class="cell-output cell-output-stdout">
@@ -358,8 +358,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <strong>How would you remove the `&gt;’ from the fasta headers?</strong>
-<div id="radio_SNDPQZBCHI" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_SNDPQZBCHI" value=""> <span>sub(names_ase, 2,11)</span></label><label><input type="radio" autocomplete="off" name="radio_SNDPQZBCHI" value="answer"> <span>sub(“&gt;”,““,names_ase)</span></label><label><input type="radio" autocomplete="off" name="radio_SNDPQZBCHI" value=""> <span>substr(names_ase, 2,150)</span></label>
+<div id="radio_PNREJVCEXA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PNREJVCEXA" value=""> <span>sub(names_ase, 2,11)</span></label><label><input type="radio" autocomplete="off" name="radio_PNREJVCEXA" value="answer"> <span>sub(“&gt;”,““,names_ase)</span></label><label><input type="radio" autocomplete="off" name="radio_PNREJVCEXA" value=""> <span>substr(names_ase, 2,150)</span></label>
 </div>
 <div class="cell" data-output.lines="[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]">
 <div class="cell-output cell-output-stdout">
@@ -669,7 +669,7 @@ $Pi
 </div>
 <p>As you noticed in the code above, the function <code>read.fasta()</code> can read any (multi)fasta file containing a protein or nucleic acid sequence and create a list of lists. Thus, if you want to extract a sequence as a single element, you need to extract if from the list with <code>unlist()</code> or convert it to a vector with <code>as.vector()</code>.</p>
 <p>Once you read the fasta, you can extract the headline name with <code>getName()</code> or the sequence with <code>getSequence()</code>. Additionally, you can obtain and plot basic stats or compare sequences using <code>dotPlot()</code>. Moreover, if you extract a subset of sequences, you can use <code>write.fasta()</code> to save those sequences in a new fasta file.</p>
-<p>Finally, as in the example below with HER1410 genome sequence (<a href="data/HER1410nt.fasta>">HER1410nt.fasta</a>), you can also play with a nucleotide sequence and obtain some useful data, like the <code>GC()</code> content, the encoded proteins or the reverse complementary sequence with <code>rev()</code> and <code>comp()</code>, respectively.</p>
+<p>Finally, as in the example below with HER1410 genome sequence (<a href="data/HER1410nt.fasta">HER1410nt.fasta</a>), you can also play with a nucleotide sequence and obtain some useful data, like the <code>GC()</code> content, the encoded proteins or the reverse complementary sequence with <code>rev()</code> and <code>comp()</code>, respectively.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#now the nt sequence</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>plasmid_nt <span class="ot">&lt;-</span> <span class="fu">read.fasta</span>(<span class="st">"data/HER1410nt.fasta"</span>)</span>
