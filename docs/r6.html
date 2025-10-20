@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,10 +70,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-84ba805d2de27377543bb08684a0faa0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/iconify-1.0.0-beta.2/iconify-icon.min.js"></script>
 <link href="site_libs/quarto-contrib/bootstrap-icons-1.9.1/all.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -156,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="./r5.html">
- <span class="dropdown-text">R5: Base plots in R</span></a>
+ <span class="dropdown-text">R5: Plotting your data in R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./r6.html">
@@ -167,12 +167,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">R7: Project management for reproducible research in R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./r8.html">
- <span class="dropdown-text">R8: Plot your data in R - Episode II</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="./r9.html">
- <span class="dropdown-text">R9: R for Molecular Biology</span></a>
+ <span class="dropdown-text">R8: R for Molecular Biology</span></a>
   </li>  
     </ul>
   </li>
@@ -468,74 +464,74 @@ NA.19         NA             NA</code></pre>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>coli_genomes[<span class="fu">sample</span>(<span class="fu">nrow</span>(coli_genomes), <span class="at">replace =</span> <span class="cn">FALSE</span>), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Strain    Biosample Year  Source Phylogroup Serotype  Clonotype
-21 LREC261 SAMN14278636 2016   Human          A  O98:H26    CH27-23
-2  LREC239 SAMN14278614 2010   Human          C O153:H19     CH4-25
-22 LREC262 SAMN14278637 2012   Human         B1  O66:H10     CH4-32
-12 LREC252 SAMN14278627 2013   Human          A  ONT:H37     C11-54
-7  LREC244 SAMN14278619 2006 Porcine          A   O2:H32    CH11-23
-14 LREC254 SAMN14278629 2011   Avian         B1 O142:H30     C41-35
-15 LREC255 SAMN14278630 2005   Avian          C  O78:H19     CH4-27
-18 LREC258 SAMN14278633 2012   Human          A    O9:H4     CH7-34
-3  LREC240 SAMN14278615 2008   Human         B1  O76:H30    CH29-38
-20 LREC260 SAMN14278635 2012   Human          A  ONT:H33    CH11-54
-16 LREC256 SAMN14278631 2012   Human          C   O8:H19     CH4-54
-1  LREC237 SAMN14278613   NA   Human          D  ONT:H28   CH23-331
-11 LREC251 SAMN14278626 2013   Human          D O145:H28   CH23-331
 6  LREC243 SAMN14278618 2007 Porcine          A   O9:H37     CH7-31
+22 LREC262 SAMN14278637 2012   Human         B1  O66:H10     CH4-32
+10 LREC250 SAMN14278625 2013   Human          D O145:H28   CH23-331
+12 LREC252 SAMN14278627 2013   Human          A  ONT:H37     C11-54
 13 LREC253 SAMN14278628 2013   Avian          A  ONT:H19    CH94-23
-4  LREC241 SAMN14278616   NA   Human          A  O78:H11    CH11-41
+1  LREC237 SAMN14278613   NA   Human          D  ONT:H28   CH23-331
+7  LREC244 SAMN14278619 2006 Porcine          A   O2:H32    CH11-23
+2  LREC239 SAMN14278614 2010   Human          C O153:H19     CH4-25
 9  LREC249 SAMN14278624 2013   Human          D O145:H28   CH23-331
+21 LREC261 SAMN14278636 2016   Human          A  O98:H26    CH27-23
+14 LREC254 SAMN14278629 2011   Avian         B1 O142:H30     C41-35
+17 LREC257 SAMN14278632 2012   Human          C   O9:H19     CH4-27
+18 LREC258 SAMN14278633 2012   Human          A    O9:H4     CH7-34
+16 LREC256 SAMN14278631 2012   Human          C   O8:H19     CH4-54
+5  LREC242 SAMN14278617 2011 Porcine          A  ONT:HNM     CH7-54
+15 LREC255 SAMN14278630 2005   Avian          C  O78:H19     CH4-27
 8  LREC245 SAMN14278620 2006 Porcine          A  ONT:H45    C11-398
 19 LREC259 SAMN14278634 2015   Human          C   O9:H19 CH4like-27
-17 LREC257 SAMN14278632 2012   Human          C   O9:H19     CH4-27
-10 LREC250 SAMN14278625 2013   Human          D O145:H28   CH23-331
-5  LREC242 SAMN14278617 2011 Porcine          A  ONT:HNM     CH7-54
+4  LREC241 SAMN14278616   NA   Human          A  O78:H11    CH11-41
+3  LREC240 SAMN14278615 2008   Human         B1  O76:H30    CH29-38
+20 LREC260 SAMN14278635 2012   Human          A  ONT:H33    CH11-54
+11 LREC251 SAMN14278626 2013   Human          D O145:H28   CH23-331
    Sequence.Type VF Plasmids kmer Contigs    N50 longest.contig..bp.
-21        ST8233  2        4   89     114 187945              537848
-2           ST88 14        3  117     159 323172              760527
-22        ST1049  4        2  113      94 325747              822206
-12          ST48  1        0  113     140 105396              272304
-7           ST10  4        7  115     277  89185              281444
-14         ST359  9        4  113     102 240847              460510
-15          ST88 11        4  113     108 405376             1190696
-18          ST46  8        4   85     204  86565              300086
-3          ST156 10        2   89     114 270767              738861
-20          ST10  2        5  117     120 228491              576949
-16          ST88 14        2  113     108 281822             1140163
-1          ST524 18        3  117     223 272287              662555
-11          ST32 20        1  113     206 182651              412836
 6         ST3011  7        3   93     158 106897              369508
+22        ST1049  4        2  113      94 325747              822206
+10         ST137 22        3  111     205 281589              617142
+12          ST48  1        0  113     140 105396              272304
 13         ST347  2        0  117     134 110661              497785
-4           ST48  5        3  117     212 112160              285056
+1          ST524 18        3  117     223 272287              662555
+7           ST10  4        7  115     277  89185              281444
+2           ST88 14        3  117     159 323172              760527
 9           ST32 22        1  115     376 200150              424527
+21        ST8233  2        4   89     114 187945              537848
+14         ST359  9        4  113     102 240847              460510
+17          ST88 14        4   91     224 140521              284241
+18          ST46  8        4   85     204  86565              300086
+16          ST88 14        2  113     108 281822             1140163
+5          ST746  5        9   89     320  45936              128053
+15          ST88 11        4  113     108 405376             1190696
 8        ST10888  2        7  115     203  94368              280268
 19       ST10890 13        3  113     171 326962              749412
-17          ST88 14        4   91     224 140521              284241
-10         ST137 22        3  111     205 281589              617142
-5          ST746  5        9   89     320  45936              128053
+4           ST48  5        3  117     212 112160              285056
+3          ST156 10        2   89     114 270767              738861
+20          ST10  2        5  117     120 228491              576949
+11          ST32 20        1  113     206 182651              412836
    Assembly_length contigs1kb average_contig
-21         4821342         53       42292.47
-2          5415613         57       34060.46
-22         4839344         32       51482.38
-12         4507328         78       32195.20
-7          5406295        155       19517.31
-14         4992565         42       48946.72
-15         5196698         38       48117.57
-18         4915667        121       24096.41
-3          4875343         47       42766.17
-20         4881205         48       40676.71
-16         5252065         43       48630.23
-1          5341632         74       23953.51
-11         5276782         95       25615.45
 6          4638334         93       29356.54
+22         4839344         32       51482.38
+10         5340478         78       26051.11
+12         4507328         78       32195.20
 13         4664768         77       34811.70
-4          5167401        101       24374.53
+1          5341632         74       23953.51
+7          5406295        155       19517.31
+2          5415613         57       34060.46
 9          5389075        131       14332.65
+21         4821342         53       42292.47
+14         4992565         42       48946.72
+17         5085107        110       22701.37
+18         4915667        121       24096.41
+16         5252065         43       48630.23
+5          4858138        212       15181.68
+15         5196698         38       48117.57
 8          4796593        114       23628.54
 19         5200701         77       30413.46
-17         5085107        110       22701.37
-10         5340478         78       26051.11
-5          4858138        212       15181.68</code></pre>
+4          5167401        101       24374.53
+3          4875343         47       42766.17
+20         4881205         48       40676.71
+11         5276782         95       25615.45</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reverse order of rows</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>coli_genomes[<span class="fu">nrow</span>(coli_genomes)<span class="sc">:</span><span class="dv">1</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -909,12 +905,12 @@ NA.19         NA             NA</code></pre>
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(roger) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Course"</span>,<span class="st">"Roger"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <strong>How would you obtain a table containing the marks of both students only for their common courses?</strong>
-<div id="radio_UKZNWEOGFM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UKZNWEOGFM" value=""> <span>merge(rafa, roger, by = “Student”)</span></label><label><input type="radio" autocomplete="off" name="radio_UKZNWEOGFM" value="answer"> <span>merge(rafa, roger, by = “Course”)</span></label><label><input type="radio" autocomplete="off" name="radio_UKZNWEOGFM" value="answer"> <span>merge(rafa, roger)</span></label><label><input type="radio" autocomplete="off" name="radio_UKZNWEOGFM" value=""> <span>merge(rafa, roger, by = “Course”, all=TRUE)</span></label>
+<div id="radio_FCVCYIFGVZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FCVCYIFGVZ" value=""> <span>merge(rafa, roger, by = “Student”)</span></label><label><input type="radio" autocomplete="off" name="radio_FCVCYIFGVZ" value="answer"> <span>merge(rafa, roger, by = “Course”)</span></label><label><input type="radio" autocomplete="off" name="radio_FCVCYIFGVZ" value="answer"> <span>merge(rafa, roger)</span></label><label><input type="radio" autocomplete="off" name="radio_FCVCYIFGVZ" value=""> <span>merge(rafa, roger, by = “Course”, all=TRUE)</span></label>
 </div>
 <strong>How would you obtain a table containing the marks of both students only for Rafa’s courses?</strong>
-<div id="radio_GAVTAMZZBP" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GAVTAMZZBP" value=""> <span>merge(rafa, roger, by = “Student”)</span></label><label><input type="radio" autocomplete="off" name="radio_GAVTAMZZBP" value=""> <span>merge(rafa, roger, all.y=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_GAVTAMZZBP" value="answer"> <span>merge(rafa, roger, all.x=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_GAVTAMZZBP" value=""> <span>merge(rafa, roger, by = “Course”, all=TRUE)</span></label>
+<div id="radio_DKCSWSGQKP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DKCSWSGQKP" value=""> <span>merge(rafa, roger, by = “Student”)</span></label><label><input type="radio" autocomplete="off" name="radio_DKCSWSGQKP" value=""> <span>merge(rafa, roger, all.y=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_DKCSWSGQKP" value="answer"> <span>merge(rafa, roger, all.x=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_DKCSWSGQKP" value=""> <span>merge(rafa, roger, by = “Course”, all=TRUE)</span></label>
 </div>
 </section>
 </section>
@@ -1164,7 +1160,7 @@ See an answer
 <h1 data-number="2"><span class="header-section-number">2</span> Working efficiently with large datasets</h1>
 <section id="fast-loading-of-huge-datasets-and-creation-of-contingency-tables" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="fast-loading-of-huge-datasets-and-creation-of-contingency-tables"><span class="header-section-number">2.1</span> Fast loading of huge datasets and creation of contingency tables</h2>
-<p>We are going to make some examples with a huge dataset of Covid19 Vaccination data in EU. The data is publicly available at <a href="https://www.ecdc.europa.eu/en/publications-data/data-covid-19-vaccination-eu-eea" class="uri">https://www.ecdc.europa.eu/en/publications-data/data-covid-19-vaccination-eu-eea</a>. While you can download and open a file from internet in R, in order to use the same dataset, we have a file <a href="../data/vaccines_EU_22oct2022.csv"><em>vaccines_EU_22oct2022.csv</em></a> in our data folder.</p>
+<p>We are going to make some examples with a huge dataset of Covid19 Vaccination data in EU. The data is publicly available at <a href="https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/csv/data.csv" class="uri">https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/csv/data.csv</a>. That is a big file that cannot be hosted on GitHub, so we can download it and save in our data folder. For instance, I used the name <code>vaccines_EU_22oct2022.csv</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1328,23 +1324,23 @@ PTCSR05 PTCSR06 PTCSR07      RO      SE    SE11    SE12    SE21    SE22    SE23
 <span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(vaccines <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">'data/vaccines_EU_22oct2022.csv'</span>, <span class="at">header=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  2.587   0.092   2.682 </code></pre>
+  2.818   0.113   3.073 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(vaccines<span class="ot">&lt;-</span><span class="fu">fread</span>(<span class="st">'data/vaccines_EU_22oct2022.csv'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  1.507   0.061   0.215 </code></pre>
+  1.783   0.120   0.289 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co">#we can also prevent loading of some columns  to save time</span></span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(vaccines2 <span class="ot">&lt;-</span><span class="fu">fread</span>(<span class="st">'data/vaccines_EU_22oct2022.csv'</span>,<span class="at">drop=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">10</span>)))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  0.935   0.028   0.121 </code></pre>
+  1.328   0.122   0.222 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(vaccines3 <span class="ot">&lt;-</span><span class="fu">fread</span>(<span class="st">'data/vaccines_EU_22oct2022.csv'</span>,<span class="at">colClasses =</span> <span class="st">"character"</span>)) <span class="co">#we can also select the variables by type</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  3.683   0.089   0.474 </code></pre>
+  4.302   0.355   0.875 </code></pre>
 </div>
 </div>
 </section>
@@ -1662,8 +1658,8 @@ NA
 <h3 class="anchored" data-anchor-id="quick-exercise-iii"><span style="color:darkseagreen">Quick exercise (III)</span></h3>
 <p>Sometimes, it is better to use a shorter table as an example… Let’s go back to the <em>coli_genomes</em> data that you already know.</p>
 <strong>Could you obtain a table like the following, with the number of Contigs by isolation source (<em>Source</em>) and phylogenetic group (<em>Phylogroup</em>)?</strong>
-<div id="radio_MPNFHJRDAR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MPNFHJRDAR" value=""> <span>with(coli_genomes, table(Source, Phylogroup))</span></label><label><input type="radio" autocomplete="off" name="radio_MPNFHJRDAR" value="answer"> <span>xtabs(Contigs ~ Source + Phylogroup, coli_genomes)</span></label><label><input type="radio" autocomplete="off" name="radio_MPNFHJRDAR" value=""> <span>xtabs( ~ Contigs + Source + Phylogroup, coli_genomes)</span></label>
+<div id="radio_YGMZQCHNZN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YGMZQCHNZN" value=""> <span>with(coli_genomes, table(Source, Phylogroup))</span></label><label><input type="radio" autocomplete="off" name="radio_YGMZQCHNZN" value="answer"> <span>xtabs(Contigs ~ Source + Phylogroup, coli_genomes)</span></label><label><input type="radio" autocomplete="off" name="radio_YGMZQCHNZN" value=""> <span>xtabs( ~ Contigs + Source + Phylogroup, coli_genomes)</span></label>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -1732,8 +1728,8 @@ Source      A  B1   C   D
 </div>
 <p>This is quite a long cross-table that we have cropped on the output, maybe you could find more convenient transforming it to a flat contingency table with <code>ftable()</code>.</p>
 <strong>How would you generate a flat table using the previous cross-tabulated table?</strong>
-<div id="radio_YSOFJVTSCZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YSOFJVTSCZ" value=""> <span>ftable(coli_xgenomes)</span></label><label><input type="radio" autocomplete="off" name="radio_YSOFJVTSCZ" value=""> <span>ftable(coli_xgenomes, col.vars=1</span></label><label><input type="radio" autocomplete="off" name="radio_YSOFJVTSCZ" value="answer"> <span>ftable(coli_xgenomes, row.vars=3</span></label><label><input type="radio" autocomplete="off" name="radio_YSOFJVTSCZ" value="answer"> <span>ftable(coli_xgenomes, col.vars=c(1,2)</span></label>
+<div id="radio_NBENDSMDPM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NBENDSMDPM" value=""> <span>ftable(coli_xgenomes)</span></label><label><input type="radio" autocomplete="off" name="radio_NBENDSMDPM" value=""> <span>ftable(coli_xgenomes, col.vars=1</span></label><label><input type="radio" autocomplete="off" name="radio_NBENDSMDPM" value="answer"> <span>ftable(coli_xgenomes, row.vars=3</span></label><label><input type="radio" autocomplete="off" name="radio_NBENDSMDPM" value="answer"> <span>ftable(coli_xgenomes, col.vars=c(1,2)</span></label>
 </div>
 <p>If you test the different options, you will notice that the format of the table can be defined by the order of the variables and also using the arguments <code>row.vars</code> and <code>col.vars</code> to define which variables will be summarized as column or row.</p>
 <p>Again, rather than concepts from R or RStudio, cross-tabulation and flat contingency tables are general concepts in data analysis.</p>
@@ -1754,28 +1750,28 @@ Source      A  B1   C   D
 <span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(vaccines2<span class="sc">$</span>NumberDosesReceived, <span class="at">INDICES =</span> vaccines2<span class="sc">$</span>Region, <span class="at">FUN=</span>mean, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>vaccines2$Region: AT
-[1] 1820.799
+[1] 5042.911
 ------------------------------------------------------------ 
 vaccines2$Region: BE
-[1] 129075
+[1] 93195.94
 ------------------------------------------------------------ 
 vaccines2$Region: BG
-[1] 7526.923
+[1] 168870.4
 ------------------------------------------------------------ 
 vaccines2$Region: CY
-[1] 961.1449
+[1] 286.5394
 ------------------------------------------------------------ 
 vaccines2$Region: CZ
-[1] 42646.17
+[1] 74485.43
 ------------------------------------------------------------ 
 vaccines2$Region: DE
-[1] 1508313
+[1] 515965
 ------------------------------------------------------------ 
 vaccines2$Region: DK
-[1] 846.0469
+[1] 2226.307
 ------------------------------------------------------------ 
 vaccines2$Region: EE
-[1] 568.2353
+[1] 226.875
 ------------------------------------------------------------ 
 vaccines2$Region: EL
 --- Cropped output ---</code></pre>
@@ -1789,29 +1785,29 @@ vaccines2$Region: EL
 </div>
 <div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(vaccines2<span class="sc">$</span>NumberDosesReceived, <span class="at">INDICES =</span> <span class="fu">c</span>(vaccines2<span class="sc">$</span>Region,vaccines2<span class="sc">$</span>Vaccine), <span class="at">FUN=</span>mean, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in tapply(seq_len(50000L), list(`c(vaccines2$Region, vaccines2$Vaccine)` = c("FI1D3", : arguments must have same length</code></pre>
+<pre><code>Error in tapply(seq_len(50000L), list(`c(vaccines2$Region, vaccines2$Vaccine)` = c("PT", : arguments must have same length</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(vaccines2<span class="sc">$</span>NumberDosesReceived, <span class="at">INDICES =</span> <span class="fu">list</span>(vaccines2<span class="sc">$</span>Region,vaccines2<span class="sc">$</span>Vaccine), <span class="at">FUN=</span>mean, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>: AT
 : AZ
-[1] 0
+[1] 1864.368
 ------------------------------------------------------------ 
 : BE
 : AZ
-[1] 7200
+[1] 0
 ------------------------------------------------------------ 
 : BG
 : AZ
-[1] 15120
+[1] 475771.4
 ------------------------------------------------------------ 
 : CY
 : AZ
-[1] 1293.151
+[1] 756.1644
 ------------------------------------------------------------ 
 : CZ
 : AZ
-[1] 1000
+[1] 0
 ------------------------------------------------------------ 
 : DE
 : AZ
@@ -1827,39 +1823,39 @@ vaccines2$Region: EL
 <span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(vaccines2<span class="sc">$</span>NumberDosesReceived <span class="sc">~</span> vaccines2<span class="sc">$</span>Region, <span class="at">FUN=</span>mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   vaccines2$Region vaccines2$NumberDosesReceived
-1                AT                  1.820799e+03
-2                BE                  1.290750e+05
-3                BG                  7.526923e+03
-4                CY                  9.611449e+02
-5                CZ                  4.264617e+04
-6                DE                  1.508313e+06
-7                DK                  8.460469e+02
-8                EE                  5.682353e+02
-9                EL                  2.371864e+04
-10               ES                  3.382172e+05
-11               FI                  1.116314e+05
-12               FR                  1.957214e+05
-13               HR                  8.688250e+04
-14               HU                  6.722391e+04
+1                AT                    5042.91052
+2                BE                   93195.93750
+3                BG                  168870.37037
+4                CY                     286.53938
+5                CZ                   74485.43478
+6                DE                  515965.00000
+7                DK                    2226.30662
+8                EE                     226.87500
+9                EL                   34731.86441
+10               ES                  275788.43750
+11               FI                  107556.66667
+12               FR                  198857.40260
+13               HR                   79607.69231
+14               HU                   37061.70732
 --- Cropped output ---</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(NumberDosesReceived <span class="sc">~</span> Region<span class="sc">+</span>Vaccine, <span class="at">data=</span>vaccines2, <span class="at">FUN=</span>mean) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Region   Vaccine NumberDosesReceived
-1       AT        AZ        0.000000e+00
-2       BE        AZ        7.200000e+03
-3       BG        AZ        1.512000e+04
-4       CY        AZ        1.293151e+03
-5       CZ        AZ        1.000000e+03
-6       DK        AZ        1.824000e+03
-7       EE        AZ        0.000000e+00
-8       EL        AZ        3.296000e+04
-9       ES        AZ        4.043429e+05
+1       AT        AZ        1.864368e+03
+2       BE        AZ        0.000000e+00
+3       BG        AZ        4.757714e+05
+4       CY        AZ        7.561644e+02
+5       CZ        AZ        0.000000e+00
+6       DK        AZ        1.995000e+03
+7       EE        AZ        2.210526e+02
+8       EL        AZ        0.000000e+00
+9       ES        AZ        8.725000e+04
 10      FR        AZ        0.000000e+00
-11      HR        AZ        8.820000e+04
-12      HU        AZ        1.478125e+05
-13      IE        AZ        3.272727e+03
-14      IS        AZ        2.492857e+03
+11      HR        AZ        1.522333e+05
+12      HU        AZ        2.496000e+04
+13      IE        AZ        0.000000e+00
+14      IS        AZ        1.885306e+03
 --- Cropped output ---</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(FirstDoseRefused <span class="sc">~</span> TargetGroup, <span class="at">data=</span>vaccines2, <span class="at">FUN=</span>median) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1905,20 +1901,20 @@ NA
 <span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(NumberDosesReceived,FirstDose,SecondDose) <span class="sc">~</span> <span class="fu">as.factor</span>(TargetGroup), <span class="at">data=</span>vaccines2, <span class="at">FUN=</span>mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   as.factor(TargetGroup) NumberDosesReceived    FirstDose   SecondDose
-1                  Age&lt;18             0.00000   360.761905   207.704082
-2                  Age0_4            37.50000     4.709091     4.540909
-3                Age10_14            96.20419   226.910995    96.395288
-4                Age15_17           142.01474   209.975430   158.481572
-5                Age18_24           189.38614   216.421782    96.994059
-6                Age25_49            40.58594   771.611328   702.041016
-7                  Age5_9           269.50000    21.011765    13.173529
-8                Age50_59           148.78193   836.726916   518.021611
-9                Age60_69           117.41410   513.113924   252.345389
-10               Age70_79            66.21771   296.022140   477.173432
-11                 Age80+           141.37525   151.667976   189.634578
-12                 AgeUNK           577.50000     1.515625     1.351562
-13                    ALL         79578.49621 23380.368939 15199.045455
-14                    HCW           451.43590    32.707692   120.261538
+1                  Age&lt;18             0.00000   383.138047   244.205387
+2                  Age0_4           283.63636     3.100000     2.709091
+3                Age10_14           159.06849   146.383562   173.619178
+4                Age15_17           197.23457    65.330864    85.555556
+5                Age18_24            86.87016   864.850775   210.195736
+6                Age25_49            82.49042  1763.544061   806.940613
+7                  Age5_9           183.94521    73.476712    70.052055
+8                Age50_59           152.83525  1938.187739   271.197318
+9                Age60_69           170.84000   802.360000   702.520000
+10               Age70_79            82.00382  1474.864504   874.305344
+11                 Age80+           117.74757    82.277670    91.493204
+12                 AgeUNK           659.71963     3.308411     3.102804
+13                    ALL         62253.09969 12398.242331 10782.963957
+14                    HCW           212.15596   326.779817    80.688073
 --- Cropped output ---</code></pre>
 </div>
 </div>
@@ -1928,31 +1924,31 @@ NA
 <span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(FirstDose,SecondDose) <span class="sc">~</span> <span class="fu">as.factor</span>(TargetGroup), <span class="at">data=</span>vaccines2, <span class="at">FUN=</span><span class="cf">function</span>(x) <span class="fu">mean</span>(x)<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span><span class="fu">mean</span>(vaccines2<span class="sc">$</span>NumberDosesReceived, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   as.factor(TargetGroup)    FirstDose   SecondDose
-1                1_Age&lt;60 1.413636e+02 1.114906e+02
-2                1_Age60+ 2.662959e+01 7.600026e+01
-3                  Age&lt;18 4.873412e+00 3.680116e+00
-4                  Age0_4 3.089616e-03 3.031055e-03
-5                Age10_14 1.623797e+00 6.841251e-01
-6                Age15_17 5.816713e-01 4.111577e-01
-7                Age18_24 2.119778e+00 1.974510e+00
-8                Age25_49 1.093650e+01 9.386779e+00
-9                  Age5_9 1.315910e-01 1.318426e-01
-10               Age50_59 4.691836e+00 4.204253e+00
-11               Age60_69 3.992111e+00 3.348901e+00
-12               Age70_79 4.032144e+00 3.293795e+00
-13                 Age80+ 2.271214e+00 1.823335e+00
-14                 AgeUNK 8.045944e-02 1.872705e-02
-15                    ALL 4.650848e+01 3.291632e+01
-16                    HCW 1.761317e+00 1.155694e+00
-17                   LTCF 1.955176e+00 1.179603e+00</code></pre>
+1                1_Age&lt;60 1.024627e+02 1.882133e+02
+2                1_Age60+ 1.742417e+02 1.798990e+02
+3                  Age&lt;18 5.172745e+00 5.404718e+00
+4                  Age0_4 4.149496e-03 2.806559e-03
+5                Age10_14 1.502501e+00 8.818281e-01
+6                Age15_17 4.941240e-01 4.710018e-01
+7                Age18_24 3.307893e+00 2.202863e+00
+8                Age25_49 1.250552e+01 1.269647e+01
+9                  Age5_9 6.270444e-01 2.023115e-01
+10               Age50_59 8.787128e+00 5.135476e+00
+11               Age60_69 4.933183e+00 6.010393e+00
+12               Age70_79 6.206369e+00 5.124431e+00
+13                 Age80+ 2.093775e+00 2.055122e+00
+14                 AgeUNK 1.024420e-01 2.312353e-02
+15                    ALL 4.164913e+01 3.406106e+01
+16                    HCW 1.629766e+00 1.527747e+00
+17                   LTCF 1.271882e+00 1.582433e+00</code></pre>
 </div>
 </div>
 <section id="quick-exercise-iv" class="level3">
 <h3 class="anchored" data-anchor-id="quick-exercise-iv"><span style="color:darkseagreen">Quick exercise (IV)</span></h3>
 <p>We are using again the <em>coli_genomes</em> dataframe.</p>
 <strong>Can you obtain the following table displaying the mean (%) of virulece factors (VF) and plasmids per genome nucleotide (Assembly_length) grouped by Source</strong>
-<div id="radio_HQTBOBWQPW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HQTBOBWQPW" value=""> <span>aggregate(cbind(VF,Plasmids) ~ Source, data=coli_genomes, FUN=mean)</span></label><label><input type="radio" autocomplete="off" name="radio_HQTBOBWQPW" value=""> <span>aggregate(cbind(VF,Plasmids) ~ Source, data=coli_genomes, FUN=function(x) mean(x) * 100 / mean(Assembly_length))</span></label><label><input type="radio" autocomplete="off" name="radio_HQTBOBWQPW" value="answer"> <span>aggregate(cbind(VF,Plasmids) ~ Source, data=coli_genomes, FUN=function(x) mean(x) * 100 / mean(coli_genomes$Assembly_length))</span></label>
+<div id="radio_WKQKHLVEOE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WKQKHLVEOE" value=""> <span>aggregate(cbind(VF,Plasmids) ~ Source, data=coli_genomes, FUN=mean)</span></label><label><input type="radio" autocomplete="off" name="radio_WKQKHLVEOE" value=""> <span>aggregate(cbind(VF,Plasmids) ~ Source, data=coli_genomes, FUN=function(x) mean(x) * 100 / mean(Assembly_length))</span></label><label><input type="radio" autocomplete="off" name="radio_WKQKHLVEOE" value="answer"> <span>aggregate(cbind(VF,Plasmids) ~ Source, data=coli_genomes, FUN=function(x) mean(x) * 100 / mean(coli_genomes$Assembly_length))</span></label>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -2291,17 +2287,17 @@ $NumberDosesReceived
 <h3 class="anchored" data-anchor-id="quick-exercise-v"><span style="color:darkseagreen">Quick exercise (V)</span></h3>
 <p>Of course, based on the <em>coli_genomes</em> dataframe.</p>
 <strong>How would you obtain log10 of the mean of all the columns?</strong>
-<div id="radio_YDBQUAJFKP" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YDBQUAJFKP" value=""> <span>apply(coli_genomes,2,log10(mean), na.rm=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_YDBQUAJFKP" value=""> <span>apply(coli_genomes,1,log10(mean), na.rm=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_YDBQUAJFKP" value=""> <span>lapply(coli_genomes,log10(mean), na.rm=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_YDBQUAJFKP" value=""> <span>sapply(coli_genomes,log10(mean), na.rm=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_YDBQUAJFKP" value="answer"> <span>None of the previous</span></label>
+<div id="radio_CRWBUBQMRI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CRWBUBQMRI" value=""> <span>apply(coli_genomes,2,log10(mean), na.rm=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_CRWBUBQMRI" value=""> <span>apply(coli_genomes,1,log10(mean), na.rm=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_CRWBUBQMRI" value=""> <span>lapply(coli_genomes,log10(mean), na.rm=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_CRWBUBQMRI" value=""> <span>sapply(coli_genomes,log10(mean), na.rm=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_CRWBUBQMRI" value="answer"> <span>None of the previous</span></label>
 </div>
 <p>Yes, a function must be suitable for the selected data and the dataframe <em>coli_genomes</em> contains numeric and categorical variables, but the function <em>log10(mean)</em> only can work with numeric data. Let’s do it in two steps:</p>
 <strong>How would you select only numeric columns?</strong>
-<div id="radio_DZTTRDBGAF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DZTTRDBGAF" value=""> <span>apply(coli_genomes, 2, is.numeric) </span></label><label><input type="radio" autocomplete="off" name="radio_DZTTRDBGAF" value=""> <span>coli_genomes[lapply(coli_genomes, is.numeric)]</span></label><label><input type="radio" autocomplete="off" name="radio_DZTTRDBGAF" value="answer"> <span>coli_genomes[sapply(coli_genomes, is.numeric)]</span></label><label><input type="radio" autocomplete="off" name="radio_DZTTRDBGAF" value=""> <span>sapply(coli_genomes, is.numeric)</span></label><label><input type="radio" autocomplete="off" name="radio_DZTTRDBGAF" value=""> <span>lapply(coli_genomes, is.numeric)</span></label>
+<div id="radio_GQTKHVDFMD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GQTKHVDFMD" value=""> <span>apply(coli_genomes, 2, is.numeric) </span></label><label><input type="radio" autocomplete="off" name="radio_GQTKHVDFMD" value=""> <span>coli_genomes[lapply(coli_genomes, is.numeric)]</span></label><label><input type="radio" autocomplete="off" name="radio_GQTKHVDFMD" value="answer"> <span>coli_genomes[sapply(coli_genomes, is.numeric)]</span></label><label><input type="radio" autocomplete="off" name="radio_GQTKHVDFMD" value=""> <span>sapply(coli_genomes, is.numeric)</span></label><label><input type="radio" autocomplete="off" name="radio_GQTKHVDFMD" value=""> <span>lapply(coli_genomes, is.numeric)</span></label>
 </div>
 <strong>How would you obtain log10 of the mean of all the numeric columns?</strong>
-<div id="radio_NRHYTLCEYM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NRHYTLCEYM" value=""> <span>apply(coli_genomes[sapply(coli_genomes, is.numeric)],2,function(x)log(mean(x))) </span></label><label><input type="radio" autocomplete="off" name="radio_NRHYTLCEYM" value=""> <span>apply(coli_genomes[sapply(coli_genomes, is.numeric)],2,log(mean)) </span></label><label><input type="radio" autocomplete="off" name="radio_NRHYTLCEYM" value=""> <span>apply(coli_genomes[sapply(coli_genomes, is.numeric)],2,fun(x) log(mean), na.rm=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_NRHYTLCEYM" value="answer"> <span>apply(coli_genomes[sapply(coli_genomes, is.numeric)],2,function(x)log(mean(x, na.rm=TRUE)))</span></label>
+<div id="radio_HUHJKEKCZT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HUHJKEKCZT" value=""> <span>apply(coli_genomes[sapply(coli_genomes, is.numeric)],2,function(x)log(mean(x))) </span></label><label><input type="radio" autocomplete="off" name="radio_HUHJKEKCZT" value=""> <span>apply(coli_genomes[sapply(coli_genomes, is.numeric)],2,log(mean)) </span></label><label><input type="radio" autocomplete="off" name="radio_HUHJKEKCZT" value=""> <span>apply(coli_genomes[sapply(coli_genomes, is.numeric)],2,fun(x) log(mean), na.rm=TRUE)</span></label><label><input type="radio" autocomplete="off" name="radio_HUHJKEKCZT" value="answer"> <span>apply(coli_genomes[sapply(coli_genomes, is.numeric)],2,function(x)log(mean(x, na.rm=TRUE)))</span></label>
 </div>
 </section>
 </section>
@@ -2678,8 +2674,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -2797,7 +2791,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -3027,7 +3020,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Modesto Redrejo Rodríguez &amp; Luis del Peso, 2024</p>
+<p>Modesto Redrejo Rodríguez &amp; Luis del Peso, 2025</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

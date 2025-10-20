@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,10 +70,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-84ba805d2de27377543bb08684a0faa0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/iconify-1.0.0-beta.2/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -392,7 +392,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"#Your function here\n\n\n\n\n#Try it\ndilution(250,10,10)","options":{"out-width":"700px","autorun":"false","out-height":"","warning":"true","fig-height":5,"read-only":"false","editor-font-scale":"1","editor-max-height":"","dpi":72,"fig-width":7,"message":"true","output":"true","label":"unnamed-chunk-1","results":"markup","context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","classes":"","comment":""},"id":1}];
+globalThis.qwebrCellDetails = [{"code":"#Your function here\n\n\n\n\n#Try it\ndilution(250,10,10)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1671,7 +1671,7 @@ window.Quarto = {
   </li>  
         <li>
     <a class="dropdown-item" href="./r5.html">
- <span class="dropdown-text">R5: Base plots in R</span></a>
+ <span class="dropdown-text">R5: Plotting your data in R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./r6.html">
@@ -1682,12 +1682,8 @@ window.Quarto = {
  <span class="dropdown-text">R7: Project management for reproducible research in R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./r8.html">
- <span class="dropdown-text">R8: Plot your data in R - Episode II</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="./r9.html">
- <span class="dropdown-text">R9: R for Molecular Biology</span></a>
+ <span class="dropdown-text">R8: R for Molecular Biology</span></a>
   </li>  
     </ul>
   </li>
@@ -1726,7 +1722,7 @@ window.Quarto = {
   <li><a href="#quick-exercise-v" id="toc-quick-exercise-v" class="nav-link" data-scroll-target="#quick-exercise-v"><span class="header-section-number">2.8</span> <span style="color:darkseagreen">Quick exercise (V)</span></a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">3</span> References</a></li>
-  <li><a href="#review-exercises" id="toc-review-exercises" class="nav-link" data-scroll-target="#review-exercises"><span class="header-section-number">4</span> <span style="color:darkgreen">Review Exercises</span></a></li>
+  <li><a href="#review-exercises1" id="toc-review-exercises1" class="nav-link" data-scroll-target="#review-exercises1"><span class="header-section-number">4</span> <span style="color:darkgreen">Review Exercises</span></a></li>
   <li><a href="#extra-short-exercises" id="toc-extra-short-exercises" class="nav-link" data-scroll-target="#extra-short-exercises"><span class="header-section-number">5</span> <span style="color:darkseagreen">Extra (short) exercises</span></a></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info"><span class="header-section-number">6</span> Session Info</a></li>
   </ul>
@@ -2058,7 +2054,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 12, 2024</p>
+      <p class="date-modified">October 20, 2025</p>
     </div>
   </div>
     
@@ -2201,18 +2197,18 @@ Cross-lesson tip
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(DNA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   20 obs. of  2 variables:
- $ titles : chr  "A-DNA" "Circular DNA" "DNA" "DNA (disambiguation)" ...
- $ content: chr  "A-DNA is one of the possible double helical structures which DNA can adopt. A-DNA is thought to be one of three"| __truncated__ "Circular DNA is DNA that forms a closed loop and has no ends.  Examples include:Plasmids, mobile genetic elemen"| __truncated__ "Deoxyribonucleic acid ( ; DNA) is a polymer composed of two polynucleotide chains that coil around each other t"| __truncated__ "DNA (deoxyribonucleic acid) is a molecule encoding the genetic instructions for life.DNA may also refer to:" ...</code></pre>
+ $ titles : chr  "A-DNA" "Chromosome" "Circular DNA" "Corporate DNA" ...
+ $ content: chr  "A-DNA is one of the possible double helical structures which DNA can adopt. A-DNA is thought to be one of three"| __truncated__ "A chromosome is a package of DNA containing part or all of the genetic material of an organism. In most chromos"| __truncated__ "Circular DNA is DNA that forms a closed loop and has no ends.  Examples include:Plasmids, mobile genetic elemen"| __truncated__ "Corporate DNA refers, in business jargon, to organizational culture. It is a metaphor based on the biological t"| __truncated__ ...</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>DNA<span class="sc">$</span>titles</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "A-DNA"                 "Circular DNA"          "DNA"                  
- [4] "DNA (disambiguation)"  "DNA Oyj"               "DNA extraction"       
- [7] "DNA ligase"            "DNA methylation"       "DNA polymerase"       
+<pre><code> [1] "A-DNA"                 "Chromosome"            "Circular DNA"         
+ [4] "Corporate DNA"         "DNA"                   "DNA (2025 film)"      
+ [7] "DNA (disambiguation)"  "DNA database"          "DNA on DNA"           
 [10] "DNA profiling"         "DNA repair"            "DNA replication"      
-[13] "DNA sequencing"        "DNA vaccine"           "DNA²"                 
-[16] "DNA–DNA hybridization" "DnaA"                  "Mitochondrial DNA"    
-[19] "Mutation"              "Recombinant DNA"      </code></pre>
+[13] "DNA sequencing"        "DNA²"                  "DNA–DNA hybridization"
+[16] "Genetic testing"       "Mitochondrial DNA"     "Mutation"             
+[19] "Recombinant DNA"       "Rosalind Franklin"    </code></pre>
 </div>
 </div>
 <div id="ggplot">
@@ -2427,8 +2423,8 @@ is positive, statistically significant, and very large (r = 0.93, 95% CI [0.91,
 <h2 data-number="2.3" class="anchored" data-anchor-id="quick-exercise-ii"><span class="header-section-number">2.3</span> <span style="color:darkseagreen">Quick exercise (II)</span></h2>
 <p>We want to write an inline function that transforms concentrations units: milimolar (mM) into micromolar (µM). How would you do it?</p>
 <strong>Select the right answer</strong>
-<div id="radio_MJBPMKWWGY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MJBPMKWWGY" value=""> <span>f &lt;- function(x) 1000</span></label><label><input type="radio" autocomplete="off" name="radio_MJBPMKWWGY" value="answer"> <span>f &lt;- function(x) x * 1000</span></label><label><input type="radio" autocomplete="off" name="radio_MJBPMKWWGY" value=""> <span>f &lt;- function(x) x 1000</span></label>
+<div id="radio_HMTFXPYGDY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HMTFXPYGDY" value=""> <span>f &lt;- function(x) 1000</span></label><label><input type="radio" autocomplete="off" name="radio_HMTFXPYGDY" value="answer"> <span>f &lt;- function(x) x * 1000</span></label><label><input type="radio" autocomplete="off" name="radio_HMTFXPYGDY" value=""> <span>f &lt;- function(x) x 1000</span></label>
 </div>
 <hr>
 </section>
@@ -2762,7 +2758,7 @@ Answer 1
 </div>
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">age</span>(<span class="st">"2004-11-17"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "You are about 243.3 months old"</code></pre>
+<pre><code>[1] "You are about 254.7 months old"</code></pre>
 </div>
 </div>
 </div>
@@ -2788,7 +2784,7 @@ Answer 2
 <span id="cb116-15"><a href="#cb116-15" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb116-16"><a href="#cb116-16" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span>(<span class="st">"2004-11-17"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "If you were born on 2004-11-17, you are about 243.3 months old."</code></pre>
+<pre><code>[1] "If you were born on 2004-11-17, you are about 254.7 months old."</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span>(<span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
@@ -2817,8 +2813,8 @@ Answer 2
 </ul>
 <hr>
 </section>
-<section id="review-exercises" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> <span style="color:darkgreen">Review Exercises</span></h1>
+<section id="review-exercises1" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <span style="color:darkgreen">Review Exercises</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h1>
 <p><strong>Write a function that translate <em>any</em> nucleotide sequence into a protein sequence.</strong></p>
 <p>Hints:</p>
 <ol type="1">
@@ -2860,32 +2856,37 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] report_0.5.9       ggplot2_3.5.1      xlsx_0.6.5         webexercises_1.1.0
-[5] formatR_1.14       knitr_1.48        
+[1] report_0.6.1       ggplot2_3.5.1      xlsx_0.6.5         webexercises_1.1.0
+[5] formatR_1.14       knitr_1.50        
 
 loaded via a namespace (and not attached):
- [1] xlsxjars_0.6.1     sandwich_3.1-1     utf8_1.2.4         generics_0.1.3    
- [5] lattice_0.22-6     effectsize_0.8.9   digest_0.6.37      magrittr_2.0.3    
- [9] evaluate_1.0.1     grid_4.4.1         estimability_1.5.1 mvtnorm_1.3-1     
-[13] fastmap_1.2.0      Matrix_1.7-1       jsonlite_1.8.9     survival_3.7-0    
-[17] multcomp_1.4-26    fansi_1.0.6        scales_1.3.0       TH.data_1.1-2     
-[21] codetools_0.2-20   cli_3.6.3          rlang_1.1.4        splines_4.4.1     
-[25] munsell_0.5.1      withr_3.0.2        yaml_2.3.10        tools_4.4.1       
-[29] datawizard_0.13.0  dplyr_1.1.4        colorspace_2.1-1   bayestestR_0.15.0 
-[33] vctrs_0.6.5        R6_2.5.1           zoo_1.8-12         lifecycle_1.0.4   
-[37] emmeans_1.10.5     htmlwidgets_1.6.4  MASS_7.3-61        insight_0.20.5    
-[41] pkgconfig_2.0.3    rJava_1.0-11       pillar_1.9.0       gtable_0.3.6      
-[45] glue_1.8.0         xfun_0.48          tibble_3.2.1       tidyselect_1.2.1  
-[49] rstudioapi_0.17.1  parameters_0.23.0  xtable_1.8-4       farver_2.1.2      
-[53] htmltools_0.5.8.1  rmarkdown_2.28     getwiki_0.9.0      labeling_0.4.3    
-[57] compiler_4.4.1    </code></pre>
+ [1] xlsxjars_0.6.1     sandwich_3.1-1     generics_0.1.3     lattice_0.22-6    
+ [5] effectsize_1.0.0   digest_0.6.37      magrittr_2.0.3     evaluate_1.0.3    
+ [9] grid_4.4.1         estimability_1.5.1 mvtnorm_1.3-3      fastmap_1.2.0     
+[13] Matrix_1.7-3       jsonlite_2.0.0     survival_3.8-3     multcomp_1.4-28   
+[17] scales_1.3.0       TH.data_1.1-3      codetools_0.2-20   cli_3.6.4         
+[21] rlang_1.1.5        munsell_0.5.1      splines_4.4.1      withr_3.0.2       
+[25] yaml_2.3.10        tools_4.4.1        datawizard_1.0.2   coda_0.19-4.1     
+[29] dplyr_1.1.4        colorspace_2.1-1   bayestestR_0.15.2  vctrs_0.6.5       
+[33] R6_2.6.1           zoo_1.8-13         lifecycle_1.0.4    emmeans_1.11.0    
+[37] htmlwidgets_1.6.4  MASS_7.3-65        insight_1.1.0      pkgconfig_2.0.3   
+[41] rJava_1.0-11       pillar_1.10.1      gtable_0.3.6       glue_1.8.0        
+[45] xfun_0.51          tibble_3.2.1       tidyselect_1.2.1   rstudioapi_0.17.1 
+[49] parameters_0.24.2  xtable_1.8-4       farver_2.1.2       htmltools_0.5.8.1 
+[53] rmarkdown_2.29     getwiki_0.9.0      labeling_0.4.3     compiler_4.4.1    </code></pre>
 </div>
 </div>
 
 
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Check proposed answers in the repo: <a href="https://github.com/r4biochemists/r4biochemists.github.io/tree/main/answers2exercises" class="uri">https://github.com/r4biochemists/r4biochemists.github.io/tree/main/answers2exercises</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script>
 
 /* update total correct if #webex-total_correct exists */
@@ -3174,8 +3175,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -3293,7 +3292,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -3523,7 +3521,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Modesto Redrejo Rodríguez &amp; Luis del Peso, 2024</p>
+<p>Modesto Redrejo Rodríguez &amp; Luis del Peso, 2025</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

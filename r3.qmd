@@ -36,30 +36,11 @@ knitr::opts_knit$set(root.dir = "~/Documents/GitHub/r4biochemists.github.io")
 
 ```
 
-# [Data input & output in R]{style="color:darkblue"}
 
-As you already know, starting R starts an interactive session with keyboard input and screen output. You will almost always import your working data from a file. However, especially if you are working with very small datasets, it is also possible to add your data interactively directly in the console, as you did in some of the examples before. You can also define your objects and enter your data interactively using the `scan()` and `readline()` functions, as in the examples below. For output, you can simply call the object by its name or use the `print()` function, which displays the contents of the object on the screen. You can try the following code.[^1]
+# [Working directory in R]{style="color:darkblue"}
 
-[^1]: Since it is interactive we cannot run it when we render the source file into a static web page. This can be prevented in markdown/quarto with the option \`eval: false\` in the chunk.
 
-```{r}
-#| echo: true
-#| eval: false
-
-vector <- scan(n=4)
-vector2 <- scan()
-str <- readline()
-vector
-print(vector2)
-print(str)
-edit(str)
-```
-
-Although seldom used, you can also edit the contents of your objects using the function `edit()`. This function can be used to edit different objects, including vectors, strings, matrices or dataframes. MacOS users may need to install [XQuartz X11](https://www.xquartz.org/) tool.
-
-# [Working directory]{style="color:darkblue"}
-
-More often, you can process commands from a script file (a file containing R statements) and also import data from text files, databases (MySQL) or other proprietary formats, such as Excel or GraphPad Prism. We will focus on text files by the moment, as importing files in specific formats requires dedicated external packages. By default, R will read/write in the *working directory (wd)*. The *wd* is indicated in the Console panel, as you can see below in a screenshot of my Rstudio screen right now.
+In most cases, you will use R to process also import data from text files, databases (MySQL) or other proprietary formats, such as Excel or GraphPad Prism and you will execute commands from a script file (a file containing R statements). We will focus on text files by the moment, as importing files in specific formats requires dedicated external packages. By default, R will read/write in the *working directory (wd)*. The *wd* is indicated in the Console panel, as you can see below in a screenshot of my Rstudio screen right now.
 
 ![](images/console.png){width="545"}
 
@@ -77,9 +58,17 @@ setwd("/Users/modesto/Documents/GitHub/r4biochemists.github.io")
 getwd()
 ```
 
-In RStudio, the *default working directory* can be set from the "tools" and "global options" menu. Also, you can change the *wd* for your session in the menu **Session \> Set Working Directory** and change it to that of source file (for instant your R script), the project or the selected directory in the files panel.
 
-------------------------------------------------------------------------
+In RStudio, the *default working directory* can be set from the "tools" and "global options" menu. Also, you can change the *wd* for your session in the menu **Session \> Set Working Directory** and change it to that of source file (for instant your R script), or the selected directory in the files panel.
+
+::: {.callout-tip}
+## Wouldn't it be great if you didn’t have to manually set the working directory every time?
+
+If setting the working directory feels annoying or confusing, you can avoid it by using an [R Project](r7.html#rprojects) in RStudio, as explained in Lesson R7. R Projects automatically manage the working directory for you, making your workflow smoother and more reproducible.
+:::
+
+------------------------------------------------------------------
+
 
 ## [Quick exercise (I)]{style="color:darkseagreen"}
 
@@ -100,7 +89,6 @@ cat("**Select the right answer**",longmcq(opts_p))
 
 ------------------------------------------------------------------------
 
-------------------------------------------------------------------------
 
 # [Reading/writing data in R]{style="color:darkblue"}
 
@@ -129,7 +117,7 @@ heatmap(as.matrix(sm))
 ```
 
 ::: callout-tip
-Note that `read.table()` and its wrappers `read.csv()` or `read.csv2()` are mostly use for reading dataframes. If your want to read text files, like in the case of biological sequences, you can use other functions, like `readLines()`, described in the [Lesson 9](r9.html).
+Note that `read.table()` and its wrappers `read.csv()` or `read.csv2()` are mostly use for reading dataframes. If your want to read text files, like in the case of biological sequences, you can use other functions, like `readLines()`, described in the [Lesson R8](r9.html).
 :::
 
 You can write any data object(s) as binary data file or as text files. Compare the different files saved in the code below.
@@ -175,7 +163,9 @@ We are using the same directory tree. Your *wd* is `HPBBM2022/data` and you need
 
 ```{r  echo = FALSE, results = 'asis'}
 opts_p <- c(
-   answer = "write.table(table1, \"../../../HPBBM2023/data/table1.csv\", sep=\";\") ",
+
+   answer = "write.table(table1, \"../../../teaching/HPBBM2023/data/table1.csv\", sep=\";\") ",
+
    "write.table(table1, \"../../HPBBM2023/data/table1.csv\", sep=\";\") ",
    "write.table(table1, \"../../../HPBBM2023/data/table1.csv\")"
 )
@@ -185,6 +175,30 @@ cat("**Select the right answer**",longmcq(opts_p))
 ```
 
 ------------------------------------------------------------------------
+
+
+::: {.callout-note}
+# [Interactive data input & output in R]
+
+You will almost always import your working data from a file. However, especially if you are working with very small datasets, it is also possible to add your data interactively directly in the console, as you did in some of the examples before. You can also define your objects and enter your data interactively using the `scan()` and `readline()` functions, as in the examples below. For output, you can simply call the object by its name or use the `print()` function, which displays the contents of the object on the screen. You can try the following code.[^1]
+
+[^1]: Since it is interactive we cannot run it when we render the source file into a static web page. This can be prevented in markdown/quarto with the option \`eval: false\` in the chunk.
+
+```{r}
+#| echo: true
+#| eval: false
+
+vector <- scan(n=4)
+vector2 <- scan()
+str <- readline()
+vector
+print(vector2)
+print(str)
+edit(str)
+```
+
+Although seldom used, you can also edit the contents of your objects using the function `edit()`. This function can be used to edit different objects, including vectors, strings, matrices or dataframes. MacOS users may need to install [XQuartz X11](https://www.xquartz.org/) tool.
+:::
 
 # [Basic Data Management in R]{style="color:darkblue"}
 
@@ -302,6 +316,10 @@ We know the 'Assembly length' and the number of 'Contigs', but we would like to 
 coli_genomes$average_contig<-coli_genomes$Assembly_length / coli_genomes$Contigs
 ```
 
+::: {callout-note}
+If you need more tips on handling tables in R, such as sorting, subsetting, or quick data merging by common variable(s), see Lesson [R6](r6.html)
+:::
+
 ## Dealing with *NAs*
 
 It is very easy to calculate statistics of one variable. Imagine we want to know the average year of sample isolation.
@@ -375,9 +393,16 @@ write.csv(coli_genomes,"data/coli_genomes_renamed.csv", row.names=FALSE)
 
 ## [Quick exercise (IV)]{style="color:darkseagreen"}
 
-R has some built-in datasets that can be used as examples for plots or analysis. You can check all of them using the function data(). We are going to use one of that datasets for the following exercise in which you have to write and test your code.
 
-Use the function `str()` to examine the structure of the *quakes* dataset. Which of the following best describes the variables represented in this data frame?
+R has some built-in datasets that can be used as examples for plots or analysis. You can check all of them using the function `data()`. For the following exercise we are going to use one of that datasets, named *quakes*. You can import it as follows:
+
+```{r eval=FALSE}
+data(quakes)
+```
+
+
+Then, use the function `str()` to examine the structure of the *quakes* dataset. Which of the following best describes the variables represented in this data frame?
+
 
 ```{r  echo = FALSE, results = 'asis'}
 opts_p <- c(
@@ -398,8 +423,6 @@ quakes2 <- data.frame(____, ____, ____)
 ____(quakes2[,3])
 ```
 
-
-
 ------------------------------------------------------------------------
 
 # References
@@ -416,15 +439,19 @@ ____(quakes2[,3])
 
 -   R para análisis científicos reproducibles. Sofware Carpentry Foundation. <https://swcarpentry.github.io/r-novice-gapminder-es/>
 
-# [Review exercises]{style="color:darkgreen"}
+
+# [Review exercises]{style="color:darkgreen"}[^2] 
+
+[^2]: Check proposed answers in the repo: <https://github.com/r4biochemists/r4biochemists.github.io/tree/main/answers2exercises>
 
 1.  Load the file [*colis3.csv*](https://r4biochemists.github.io/data/colis3.csv) as *colis* and explore the dataset structure.
 
-2.  Calculate the mean of numerical variables: isolation date (*Year*), antimicrobial resistance genes (*AMR*), virulence factors (*VF*), CRISPR cassesttes (*CRISPR*), integron cassettes (*Integron*) and sequencing date (*seqs*) in those strains? Note. For the *seqs* variable you will need to use the function `as.Date()`.
+2.  Calculate the mean of numerical variables: isolation date (*Year*), antimicrobial resistance genes (*AMR*), virulence factors (*VF*), CRISPR cassesttes (*CRISPR*), integron cassettes (*Integron*) and sequencing date (*seqs*) in those strains? **Note.** For the *seqs* variable you will need to use the function `as.Date()`.
 
 3.  Save the tables *coli_genomes_renamed* and *colis* in a single *Rdata* file.
 
-4.  Add the values of the exercise 3 as a last row in the table. Note. For the *seqs* variable you will need to use the function `format.Date()` (or just `format()`)
+4.  Add the values of the exercise 2 as a last row in the table. Nowyou will need to use the function `format.Date()` (or just `format()`) for the *seqs* variable.
+
 
 # [Extra (short) exercises]{style="color:darkgreen"}
 

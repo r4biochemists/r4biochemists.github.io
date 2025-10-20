@@ -591,7 +591,11 @@ df()
 
 ------------------------------------------------------------------------
 
-# [Review Exercises]{style="color:darkgreen"}
+
+# [Review Exercises]{style="color:darkgreen"}[^1]
+
+[^1]: Check proposed answers in the repo: <https://github.com/r4biochemists/r4biochemists.github.io/tree/main/answers2exercises>
+
 
 **Write a function that translate *any* nucleotide sequence into a protein sequence.**
 
