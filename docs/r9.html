@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Modesto">
 <meta name="dcterms.date" content="2023-08-17">
 
-<title>HPBBM2023 - R9: R for Molecular Biology</title>
+<title>R8: R for Molecular Biology – R for Biochemists @UAM</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -70,17 +70,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-84ba805d2de27377543bb08684a0faa0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/iconify-1.0.0-beta.2/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -89,6 +95,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -105,82 +112,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./HPBBM2023.png" alt="" class="navbar-logo">
+    <img src="./r4biochemists.png" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">HPBBM2023</span>
+    <span class="navbar-title">R for Biochemists <span class="citation" data-cites="UAM">@UAM</span></span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-course-contents" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-course-contents" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Course Contents</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-course-contents">    
         <li>
-    <a class="dropdown-item" href="./r1.html" rel="" target="">
+    <a class="dropdown-item" href="./r1.html">
  <span class="dropdown-text">R1: Variables, Operators and data structures</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./r2.html" rel="" target="">
+    <a class="dropdown-item" href="./r2.html">
  <span class="dropdown-text">R2: Flow Control</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./r3.html" rel="" target="">
+    <a class="dropdown-item" href="./r3.html">
  <span class="dropdown-text">R3: Read and write data in R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./r4.html" rel="" target="">
+    <a class="dropdown-item" href="./r4.html">
  <span class="dropdown-text">R4: Functions in R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./r5.html" rel="" target="">
+    <a class="dropdown-item" href="./r5.html">
  <span class="dropdown-text">R5: Base plots in R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./r6.html" rel="" target="">
+    <a class="dropdown-item" href="./r6.html">
  <span class="dropdown-text">R6: Advanced data management</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./r7.html" rel="" target="">
+    <a class="dropdown-item" href="./r7.html">
  <span class="dropdown-text">R7: Project management for reproducible research in R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./r8.html" rel="" target="">
- <span class="dropdown-text">R8: Plot your data in R - Episode II</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./r9.html" rel="" target="">
+    <a class="dropdown-item" href="./r9.html">
  <span class="dropdown-text">R9: R for Molecular Biology</span></a>
   </li>  
     </ul>
   </li>
 </ul>
-            <div class="quarto-navbar-tools">
-    <a href="https://github.com/mredrejo/HPBBM2023" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-    <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/mredrejo/HPBBM2023/tree/main/data" title="Download Data" class="quarto-navigation-tool px-1" aria-label="Download Data"><i class="bi bi-cloud-download"></i></a>
-</div>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <a href="https://github.com/r4biochemists/r4biochemists.github.io" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/r4biochemists/r4biochemists.github.io/tree/main/data" title="Download Data" class="quarto-navigation-tool px-1" aria-label="Download Data"><i class="bi bi-cloud-download"></i></a>
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
@@ -210,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul>
 </nav>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
@@ -219,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">R9: R for Molecular Biology</h1>
+<h1 class="title">R8: R for Molecular Biology</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Advanced plots</div>
     <div class="quarto-category">GGplot</div>
@@ -232,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-right">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -251,14 +254,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 21, 2023</p>
+      <p class="date-modified">October 20, 2025</p>
     </div>
   </div>
     
   </div>
   
 
+
 </header>
+
 
 <section id="working-with-sequences" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Working with sequences</h1>
@@ -266,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="1.1" class="anchored" data-anchor-id="regular-expressions-as-a-shortcut-to-explore-sequence"><span class="header-section-number">1.1</span> Regular expressions as a shortcut to explore sequence</h2>
 <p>Biological data, like protein or nucleic acid sequences can be stored and explored in different formats, each following its own structure. As you can imagine, that facilitates the use of <em>regular expressions</em> in any programming language to access that data. The use of regular expressions in R is similar to other languages, particularly, to the use you learnt in Python. Anyway, I suggest that you have a look to the <a href="#refs">References</a> below.</p>
 <p>Moreover, for advanced manipulation of string object, I’d advice the package <a href="https://stringr.tidyverse.org/">Strings</a>.</p>
-<p>In the code below, we are going to use some simple regular expressions to explore and analyze the data in a multifasta file containing the whole proteome of the bacteria <em>Bacillus thuringiensis HER1410</em>, using <code>grep()</code>, <code>substr()</code>, <code>sub()</code>, and <code>regexpr()</code>.</p>
+<p>In the code below, we are going to use some simple regular expressions to explore and analyze the data in a multifasta file containing the whole proteome of the bacteria <em>Bacillus thuringiensis HER1410</em> (<a href="data/HER1410.fasta">HER1410.fasta</a>) in our data folder, using <code>grep()</code>, <code>substr()</code>, <code>sub()</code>, and <code>regexpr()</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read the text file with readLines()</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>proteome <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="st">"data/HER1410.fasta"</span>)</span>
@@ -320,8 +325,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="quick-exercise-using-sub-and-substr." class="level3">
 <h3 class="anchored" data-anchor-id="quick-exercise-using-sub-and-substr."><span style="color:darkseagreen">Quick exercise: Using <code>sub()</code> and <code>substr()</code>.</span></h3>
 <strong>How would you extract the NCBI protein ID of the enzymes?</strong>
-<div id="radio_GNHAZEPCQA" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GNHAZEPCQA" value=""> <span>sub(names_ase, 1,11)</span></label><label><input type="radio" autocomplete="off" name="radio_GNHAZEPCQA" value=""> <span>sub(names_ase, 2,11))</span></label><label><input type="radio" autocomplete="off" name="radio_GNHAZEPCQA" value=""> <span>substr(names_ase, 1,11)</span></label><label><input type="radio" autocomplete="off" name="radio_GNHAZEPCQA" value="answer"> <span>substr(names_ase, 2,11)</span></label>
+<div id="radio_LPRLZPHKAQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LPRLZPHKAQ" value=""> <span>sub(names_ase, 1,11)</span></label><label><input type="radio" autocomplete="off" name="radio_LPRLZPHKAQ" value=""> <span>sub(names_ase, 2,11))</span></label><label><input type="radio" autocomplete="off" name="radio_LPRLZPHKAQ" value=""> <span>substr(names_ase, 1,11)</span></label><label><input type="radio" autocomplete="off" name="radio_LPRLZPHKAQ" value="answer"> <span>substr(names_ase, 2,11)</span></label>
 </div>
 <div class="cell" data-output.lines="[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]">
 <div class="cell-output cell-output-stdout">
@@ -349,8 +354,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <strong>How would you remove the `&gt;’ from the fasta headers?</strong>
-<div id="radio_GQDAOHANVI" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GQDAOHANVI" value=""> <span>sub(names_ase, 2,11)</span></label><label><input type="radio" autocomplete="off" name="radio_GQDAOHANVI" value="answer"> <span>sub(“&gt;”,““,names_ase)</span></label><label><input type="radio" autocomplete="off" name="radio_GQDAOHANVI" value=""> <span>substr(names_ase, 2,150)</span></label>
+<div id="radio_FMQOXDEOGF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FMQOXDEOGF" value=""> <span>sub(names_ase, 2,11)</span></label><label><input type="radio" autocomplete="off" name="radio_FMQOXDEOGF" value="answer"> <span>sub(“&gt;”,““,names_ase)</span></label><label><input type="radio" autocomplete="off" name="radio_FMQOXDEOGF" value=""> <span>substr(names_ase, 2,150)</span></label>
 </div>
 <div class="cell" data-output.lines="[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]">
 <div class="cell-output cell-output-stdout">
@@ -560,7 +565,11 @@ attr(,"class")
 </div>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>(stats1 <span class="ot">&lt;-</span> <span class="fu">AAstat</span>(<span class="fu">toupper</span>(seq), <span class="at">plot =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r9_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="r9_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$Compo
@@ -602,14 +611,22 @@ $Pi
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(stats1<span class="sc">$</span>Compo, <span class="at">bty=</span><span class="st">"7"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r9_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="r9_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#cool color palette</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>coul <span class="ot">=</span> <span class="fu">colorRampPalette</span>(<span class="fu">brewer.pal</span>(<span class="dv">9</span>, <span class="st">"Set1"</span>))(<span class="dv">20</span>) <span class="co">#palette is expanded from 9 to 20 colors</span></span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(stats1<span class="sc">$</span>Compo, <span class="at">col=</span>coul, <span class="at">bty=</span><span class="st">"7"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r9_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="r9_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dotplot</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"recombinase"</span>,<span class="fu">getAnnot</span>(prots))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -618,16 +635,28 @@ $Pi
 </div>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dotPlot</span>(prots[[<span class="dv">5</span>]],prots[[<span class="dv">2483</span>]], <span class="at">wsize=</span><span class="dv">3</span>, <span class="at">nmatch=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r9_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="r9_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dotPlot</span>(prots[[<span class="dv">2177</span>]],prots[[<span class="dv">2432</span>]], <span class="at">wsize=</span><span class="dv">3</span>, <span class="at">nmatch=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r9_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="r9_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dotPlot</span>(prots[[<span class="dv">2177</span>]],prots[[<span class="dv">2432</span>]], <span class="at">col=</span><span class="fu">c</span>(<span class="st">"floralwhite"</span>,<span class="st">"dodgerblue"</span>), </span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">wsize=</span><span class="dv">6</span>, <span class="at">nmatch=</span><span class="dv">3</span>, <span class="at">xlab=</span><span class="fu">getName</span>(prots[[<span class="dv">2177</span>]]),<span class="at">ylab=</span><span class="fu">getName</span>(prots[[<span class="dv">2432</span>]]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r9_files/figure-html/unnamed-chunk-6-6.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="r9_files/figure-html/unnamed-chunk-6-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#extract the recombinases to a new file</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>recs <span class="ot">&lt;-</span> prots[<span class="fu">grep</span>(<span class="st">"recombinase"</span>,<span class="fu">getAnnot</span>(prots))]</span>
@@ -636,7 +665,7 @@ $Pi
 </div>
 <p>As you noticed in the code above, the function <code>read.fasta()</code> can read any (multi)fasta file containing a protein or nucleic acid sequence and create a list of lists. Thus, if you want to extract a sequence as a single element, you need to extract if from the list with <code>unlist()</code> or convert it to a vector with <code>as.vector()</code>.</p>
 <p>Once you read the fasta, you can extract the headline name with <code>getName()</code> or the sequence with <code>getSequence()</code>. Additionally, you can obtain and plot basic stats or compare sequences using <code>dotPlot()</code>. Moreover, if you extract a subset of sequences, you can use <code>write.fasta()</code> to save those sequences in a new fasta file.</p>
-<p>Finally, as in the example below, you can also play with a nucleotide sequence and obtain some useful data, like the <code>GC()</code> content, the encoded proteins or the reverse complementary sequence with <code>rev()</code> and <code>comp()</code>, respectively.</p>
+<p>Finally, as in the example below with HER1410 genome sequence (<a href="data/HER1410nt.fasta">HER1410nt.fasta</a>), you can also play with a nucleotide sequence and obtain some useful data, like the <code>GC()</code> content, the encoded proteins or the reverse complementary sequence with <code>rev()</code> and <code>comp()</code>, respectively.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#now the nt sequence</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>plasmid_nt <span class="ot">&lt;-</span> <span class="fu">read.fasta</span>(<span class="st">"data/HER1410nt.fasta"</span>)</span>
@@ -911,42 +940,51 @@ tta ttc ttg ttt
 <p>To obtain a full list of the ACNUC sub-databases that you can access using <em>seqinr</em>, you can use the <code>choosebank()</code> function from <em>seqinr</em>. Then, you just need to select the database and query your sequence. However, as you can see in the example below it does not work currently. I mentioned this here because I used this previously and found it very useful. In case you want to try it again in the future you can check the examples in the <a href="#r4">Reference 4</a> below.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">choosebank</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "genbank"         "embl"            "emblwgs"         "genbankseqinr"  
- [5] "swissprot"       "swissprotseqinr" "ensembl"         "hogenom7dna"    
- [9] "hogenom7"        "hogenom"         "hogenomdna"      "hovergendna"    
-[13] "hovergen"        "hogenom5"        "hogenom5dna"     "hogenom4"       
-[17] "hogenom4dna"     "homolens"        "homolensdna"     "hobacnucl"      
-[21] "hobacprot"       "phever2"         "phever2dna"      "refseq"         
-[25] "refseq16s"       "greviews"        "bacterial"       "archaeal"       
-[29] "protozoan"       "ensprotists"     "ensfungi"        "ensmetazoa"     
-[33] "ensplants"       "ensemblbacteria" "mito"            "polymorphix"    
-[37] "emglib"          "refseqViruses"   "ribodb"          "taxodb"         </code></pre>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in socketConnection(host = host, port = port, server = server, blocking
+= blocking, : pbil.univ-lyon1.fr:5558 cannot be opened</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co">#select genbank</span></span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">choosebank</span>(<span class="st">"swissprot"</span>)</span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">query</span>(<span class="st">"pol"</span>,<span class="st">"AC=P0DPS1"</span>,<span class="at">verbose=</span><span class="cn">TRUE</span>,<span class="at">invisible=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>I'm checking the arguments...
-... and everything is OK up to now.
-I'm checking the status of the socket connection...
-... and everything is OK up to now.
-I'm sending query to server...
-... answer from server is: code=0&amp;lrank=2&amp;count=1&amp;type=SQ&amp;locus=T 
-I'm trying to analyse answer from server...
-... and everything is OK up to now.
-... and the rank of the resulting list is: 2 .
-... and there are 1 elements in the list.
-... and the elements in the list are of type SQ .
-... and there are only parent sequences in the list.
-I'm trying to get the infos about the elements of the list...
-... and I have received 1 lines as expected.</code></pre>
+<pre><code>Error in socketConnection(host = host, port = port, server = server, blocking = blocking,  : 
+  cannot open the connection</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>polseq <span class="ot">&lt;-</span> <span class="fu">getSequence</span>(pol<span class="sc">$</span>req[[<span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'pol' not found</code></pre>
+<pre><code>Error in choosebank(): I wasn't able to open the socket connection:
+   o Check that your are connected to the internet.
+   o Check that port 5558 is not closed by a firewall.
+   o Try to increase timeout value (current is 5 seconds).</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">closebank</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co">#select genbank</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">choosebank</span>(<span class="st">"swissprot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in socketConnection(host = host, port = port, server = server, blocking
+= blocking, : pbil.univ-lyon1.fr:5558 cannot be opened</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Error in socketConnection(host = host, port = port, server = server, blocking = blocking,  : 
+  cannot open the connection</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in choosebank("swissprot"): I wasn't able to open the socket connection:
+   o Check that your are connected to the internet.
+   o Check that port 5558 is not closed by a firewall.
+   o Try to increase timeout value (current is 5 seconds).</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>pol <span class="ot">&lt;-</span> <span class="fu">query</span>(<span class="st">"pol"</span>,<span class="st">"AC=P0DPS1"</span>,<span class="at">verbose=</span><span class="cn">TRUE</span>,<span class="at">invisible=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>I'm checking the arguments...</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in autosocket(): banknameSocket not found, try choosebank() first</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>polseq <span class="ot">&lt;-</span> <span class="fu">getSequence</span>(pol<span class="sc">$</span>req[[<span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'pol' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">closebank</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in autosocket(): banknameSocket not found, try choosebank() first</code></pre>
+</div>
 </div>
 </section>
 <section id="the-package-rentrez" class="level2" data-number="1.4">
@@ -954,104 +992,108 @@ I'm trying to get the infos about the elements of the list...
 <p>Like <em>seqinr</em>, other R packages allow accessing to NCBI and other databases, including <a href="http://ape-package.ird.fr/"><em>APE</em></a> or <a href="https://bioconductor.org/packages/release/bioc/vignettes/genbankr/inst/doc/genbankr.html"><em>genbankr</em></a><em>.</em> The latter takes advantage of the packages <a href="https://mran.microsoft.com/snapshot/2014-12-12/web/packages/rentrez/vignettes/rentrez_tutorial.html"><em>rentrez</em></a>.</p>
 <p><code>rentrez</code> is an R package that helps users query the NCBI’s databases to download diverse type of data and metadata, including sequences or research papers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(rentrez)){</span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">install.packages</span>(<span class="st">"rentrez"</span>, <span class="at">repos =</span> <span class="st">"https://cran.rstudio.com/"</span>)</span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(rentrez)){</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">install.packages</span>(<span class="st">"rentrez"</span>, <span class="at">repos =</span> <span class="st">"https://cran.rstudio.com/"</span>)</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: rentrez</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rentrez)</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>(pols <span class="ot">&lt;-</span> <span class="fu">entrez_search</span>(<span class="at">db =</span> <span class="st">"pubmed"</span>, <span class="at">term =</span> <span class="st">"DNA polymerase"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rentrez)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>(pols <span class="ot">&lt;-</span> <span class="fu">entrez_search</span>(<span class="at">db =</span> <span class="st">"pubmed"</span>, <span class="at">term =</span> <span class="st">"DNA polymerase"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Entrez search result with 364294 hits (object contains 20 IDs and no web_history object)
+<pre><code>Entrez search result with 375500 hits (object contains 20 IDs and no web_history object)
  Search term (as translated):  "dna directed dna polymerase"[Supplementary Concep ... </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 5
- $ ids             : chr [1:20] "37599362" "37599280" "37597576" "37597496" ...
- $ count           : int 364294
+ $ ids             : chr [1:20] "41111437" "41110800" "41110138" "41109624" ...
+ $ count           : int 375500
  $ retmax          : int 20
  $ QueryTranslation: chr "\"dna directed dna polymerase\"[Supplementary Concept] OR \"dna directed dna polymerase\"[All Fields] OR \"dna "| __truncated__
  $ file            :Classes 'XMLInternalDocument', 'XMLAbstractDocument' &lt;externalptr&gt; 
  - attr(*, "class")= chr [1:2] "esearch" "list"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>(Gon <span class="ot">&lt;-</span> <span class="fu">entrez_search</span>(<span class="at">db =</span> <span class="st">"pubmed"</span>, <span class="at">term =</span> <span class="st">"Gonzalez"</span>, <span class="at">retmax=</span><span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>(Gon <span class="ot">&lt;-</span> <span class="fu">entrez_search</span>(<span class="at">db =</span> <span class="st">"pubmed"</span>, <span class="at">term =</span> <span class="st">"Gonzalez"</span>, <span class="at">retmax=</span><span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Entrez search result with 64603 hits (object contains 100 IDs and no web_history object)
+<pre><code>Entrez search result with 74019 hits (object contains 100 IDs and no web_history object)
  Search term (as translated):  "Gonzalez"[All Fields] </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>Gon<span class="sc">$</span>ids <span class="co">#now kept 100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>Gon<span class="sc">$</span>ids <span class="co">#now kept 100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] "37598725" "37598377" "37597262" "37597224" "37596773" "37596096"
-  [7] "37596012" "37595646" "37595238" "37595214" "37594961" "37594619"
- [13] "37594263" "37594034" "37592104" "37591719" "37590528" "37590234"
- [19] "37590151" "37589840" "37589443" "37589394" "37588310" "37587646"
- [25] "37587597" "37587184" "37586482" "37586219" "37585807" "37585626"
- [31] "37584519" "37584365" "37582385" "37582144" "37582138" "37581863"
- [37] "37581623" "37581460" "37580172" "37580164" "37580094" "37580092"
- [43] "37580015" "37579690" "37578844" "37578787" "37578489" "37578272"
- [49] "37578226" "37578201" "37577900" "37577596" "37577508" "37577250"
- [55] "37576200" "37575243" "37574085" "37573986" "37573941" "37573465"
- [61] "37573432" "37573351" "37573244" "37572848" "37572784" "37572721"
- [67] "37572657" "37572601" "37572582" "37572355" "37571279" "37571227"
- [73] "37570920" "37569535" "37569459" "37569250" "37569120" "37568825"
- [79] "37568698" "37568678" "37568674" "37568638" "37568562" "37568050"
- [85] "37567873" "37567824" "37567627" "37567298" "33760521" "30020634"
- [91] "29083833" "37566856" "37566854" "37566840" "37566833" "37566295"
- [97] "37566214" "37564724" "37564251" "37562984"</code></pre>
+<pre><code>  [1] "41110603" "41110469" "41110333" "41110099" "41109879" "41109838"
+  [7] "41109485" "41109308" "41109293" "41109199" "41109155" "41109124"
+ [13] "41108811" "41108609" "41107681" "41107246" "41107012" "41106893"
+ [19] "41106480" "41106359" "41106018" "41105967" "41105366" "41104995"
+ [25] "41104575" "41103307" "41103195" "41103128" "41102724" "41102370"
+ [31] "41101975" "41100679" "41100263" "41099981" "41099583" "41098242"
+ [37] "41097807" "41097731" "41097607" "41097213" "41097187" "41097118"
+ [43] "41095907" "41095500" "41095399" "41094612" "41094611" "41094326"
+ [49] "41094199" "41094148" "41093849" "41093714" "41093458" "41093242"
+ [55] "41093228" "41092662" "41092181" "41092166" "41092070" "41091464"
+ [61] "41090434" "41090222" "41089552" "41088445" "41087939" "41087568"
+ [67] "41086830" "41086627" "41086611" "41086401" "41086147" "41086098"
+ [73] "41084794" "41084692" "41084647" "41084378" "41083865" "41082703"
+ [79] "41082584" "41081543" "41081035" "41080098" "41079958" "41079930"
+ [85] "41079758" "41079309" "41079176" "41079069" "41078384" "41077724"
+ [91] "41077587" "41077420" "41077101" "41076442" "41076210" "41076014"
+ [97] "41075679" "41075101" "41074120" "41072755"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co">#we can also fetch data</span></span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>her1410 <span class="ot">&lt;-</span> <span class="fu">entrez_search</span>(<span class="at">db =</span> <span class="st">"nuccore"</span>, <span class="at">term =</span> <span class="st">"HER1410"</span>) </span>
-<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>her1410<span class="sc">$</span>ids</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co">#we can also fetch data</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>her1410 <span class="ot">&lt;-</span> <span class="fu">entrez_search</span>(<span class="at">db =</span> <span class="st">"nuccore"</span>, <span class="at">term =</span> <span class="st">"HER1410"</span>) </span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>her1410<span class="sc">$</span>ids</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1853362518" "1853362517" "1853362516" "1853362515" "1852678087"
 [6] "1852677931" "1852677628" "1852672161" "183211906" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>her1410_1 <span class="ot">&lt;-</span> <span class="fu">entrez_fetch</span>(<span class="at">db=</span><span class="st">"nuccore"</span>, <span class="at">id=</span>her1410<span class="sc">$</span>ids[<span class="dv">1</span>], <span class="at">rettype=</span><span class="st">"fasta"</span>)</span>
-<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(her1410_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>her1410_1 <span class="ot">&lt;-</span> <span class="fu">entrez_fetch</span>(<span class="at">db=</span><span class="st">"nuccore"</span>, <span class="at">id=</span>her1410<span class="sc">$</span>ids[<span class="dv">1</span>], <span class="at">rettype=</span><span class="st">"fasta"</span>)</span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(her1410_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "&gt;NZ_CP050186.1 Bacillus thuringiensis strain HER1410 plasmid pLUSID3, complete sequence\nGTTTGGTCAATTAAACACAACCTAACTACATCAAATGAATACAGTTAGGCTGCGATTATTTTATTTTGAA\nATCTGTAACCTTTATTACTGGTGCAATTGGATTCTTACCTACACGAGCAGGTTTTGTGACTTCGACTGTA\nATGGAAGATACAATTGCATTTACTGCTGCTTTCTTAGATTCGTTGTTTAAATTGTACCATTCATCTTTCA\nACTGATTTAAAAGTTCTTTTATTTCAAGTGAAGAGGCTGTATCAGTTATATTAGCCAGTTGTTTTTGAAT\nTATGTTCTCTTCTTGGGTTAGGGTTAACATATCCTTTTTATATTCGTTCTTAGGAATATCTCCTTCTATG\nAACAGATATTTTAAACGTGCTTTCTTATCTTGGATTCTGTTATATTGTTCTTGTAAATTACTTAACTCTA\nTTGGTTTCTCTTCAGTATCATCAAGATCAACGATGGCGTCTTCCAAGAGGTTTAGAAATTCTTTTTCAAT\nTACATCCTCTGGAACTTGAGGCATATCGCATGTTCCTTTATGATGTCTTGAGCTACACCTATAGCTCATT\nACAATTCTATTATGGCTTCTTACTTGTTTATTTCCCAAAAAATGCTTTCCGCATCTGGCGCACTTTAAAA\nCATTAGAGAATACGAAAAAATTATGCAATCTAACTTTGCCTCTCTTTCTACTATCTTGTACTTGTTGTAC\nAGTATACCAAGTATCTTTATCAATAAAAGTTTCGAAATCCTTTTGAGCAATGTCTGTTAGAATGTCGTCT\nCCCCAGCGGATTTTTCCAATGTAAATCGGATTATTTATAATATAGCGTACAGCATCATAATTGAATATTT\nTCCCTCTCTTAGTCTTAACGCCACGACTGTTTAAAGATTTTACGATGCTTATTATACCTTTTGTTTTAAA\nCATCTCGAATATGTATTTTACAATTTCAGCCTCAGTAGGATTGATATATAAGTTTCCTTTGTTTAGGTCA\nTATCCCATGGGTGATTTAGCTCCGTTTCTCAGACCTAATTCAGCCTTTTTGTGCATGGAATCTCTCACAC\nGTTCTGCTGTTGTCTCTCGTTCCCATTGCGCAAGTGTCGCAACTAAGGTAATAAACATTCTTCCGGTAGC\nGGTTGTTGTATCAAATATCTCTGTGCTACTTTTAAATTTAACATTATATTCATCCATTATTTTTAGAATG\nGAATGTAAGTCTGATACTGAACGAGTGAATCGATCTAATCTATAAACAAGAATAATATCAAATTGTTTTT\nTCTTCATATCTTTTATCATTTTTTGAAAAGCAGGTCGTTCTGTATTTTTCGCACTATATCCTTCATCACA\nGTAATCATTTACAACTACCCATCCTTGTGATTTAGCATATTGCTCCAGACGTAATTGCTGCATATCTAAT\nGAAATACCTTCTTCAACTTGCATATCAGTAGATACGCGTCTATAAATTACACACTTCATTTGCACATACT\nCCTTTCTTAACTAAATTTCTATATCATATGTTTTATCAAAGCAAATTAGACAAATGTATGGGTCAATCAT\nTTGATTGACTATTTGGCCCAGTGAGAAATTCTCACTGTTCATCCAACTGAATGAAATCATATAAATCTTC\nCATATTTACGTTAAGTTGAGAAGCGATATTCTTAGCGGTTTGATAAGACATGATTCTATCATTATTTGCA\nTAAGAATGAACTTGTTGTTTTTTCATATCTAACTTTAATGCTAAATCTACTTGTGTTAATTTCTTCTCTT\nTTAAAATTTCATTCAGTCGGCATTTGCCGACTACATACACTGTTTCACCGCCTAATTATTGAATGATCGG\nACTCACACTGTATAAAAATTTTCCTATAATTCTTATATCCTCGCAGTTATTTTGTGAGTATTGTTGGTCC\nTTAAAACTTTCGTCATGTGAACAAGGTTCTAAAATTATTAAATCTGTAAATTTATACACCTTTTTTAAAG\nTTGCGTAATGTCCATTTACAATTACAGCTGCTATTTCTCCGTTTTGTACATCACACTGTTTTTTCAGTAT\nGGCGTAATGTCCATTAGGAACAATTTTATTCATGGATTCACCGGTAACAACCAGTCCGAATAATTCATCA\nATACTGTGAGTTTTATATGGAGGTGCAATTCTATCAACTACATCTTCTATAGCTTCCAATGGAACACCAG\nCTGCTATTTTACCAATAATAGGAATTTCTTTTTTTAGTTCACACTCTATAGGTTTTTCTTGAACTAATTG\nAAGTTCCCCATCCACAATTTCAACTTTTGTATTCTTATAAGTTGTATCAATATCAGATTTTGTTACTCCA\nAATACAGCGGCCATTTTTTCTAAAACCCCTGAACTTGGTTTGGCTCTATAATTCATATAATCACTTAAGG\nTACTTCTTGCAATTCCTATTTGACTAGCTAAATCAGATTGAGTCATATTATTTTTTTTTAAAAAATTCTT\nTATGTTTCTTACTATGGTTTGTTTTTGTATATCAGTCATACCGTCACCTCCTATTCTGACTACGCTTTTT\nAATATAACATATTACGAATTATTCGTAAAGCGTTATATCCGTATGGTTTTTTCGTATTTTTGTATTGAAA\nTTACATAAATTTAGTAATACAATAAATCTCGAAGGAAGGGGGAAACGAAATGGATTATTTGAAAAGAACA\nTTGAATGAACTTAGGGAAAGCGCAGGGTTCAATCAAGCAGAGCTTGCGGATATATTAGAAGTATCCCCAA\nAAACGCTATGGTTATACGAACAAGATTCAACAAACATACCAGATGAATTAATTAAAAAGTATATGTATTT\nGTTCGATGTTCCGTATGAGGATATATTTTTTGGTTCTAAGTACGAAAAATTCGTACAAGTGAAGAAACGT\nGTACAAGAAAGAGCAAATAATTTAAAAAAAATTGTTTCGTAAAAATTTGCTTTAAATGGGTAGTCCTATT\nGTCCCACGAACATATAAATGCATTGAGGTGATTGAGGATGAGTGGGGGACAAATCATTCGTGATGAAAAT\nGGGTATGTGGTGAAAGTAATCCTTACAAAGGAACAGTGGAAGAAATTTCTAACACCGTTAATACCAGCTG\nCACGGGAGTTAATAATTCAAAGAAAAGTGGAACAACGAAAAAAAGCAAAATGAATAATTTTTTTAATATA\nTTTGCGAAATTTGACGATAAATATTGGTTCTACAAATTAAAGGAGAGTGAAAAGCATGAATGGAGTACTA\nCTAGCAACACGAATTATGAAAGGGCATGAAGTTGTTAAAAAATGCGCAGAAGCAAGAAATAACCCTTTAC\nTATTAGAAGCTATGGAATCAGAAGCAAAACGTAAGTTATACGAAATGAACTGTAAGGTTTCAAATCGAAG\nACCAACTATGAAAAGTCAAGGGGACATTTTCAAAAAATATTGCTAGAGGAGGTGAGTTAATTGAAGGAAG\nTAACGGTAATTTTTAAATCAGGTGCTAAAGCAAGTTTTACAGTAGAGGAATTTGCGACATTTAAAAATGG\nATTTGGAGCTTTAACAAAAATCGAGTATACAGGTGCTAATAAGAAAGTACCCTTCCACATTGGATTAAGT\nAATATCGATGCAATATTTGTGGAAGACATTGGTGGAAAGGAATCTACTAAAGAACCTGATCATCCAATTG\nAAGATTTCTATGGTTGTGAAATTAAGCAAGATGATAAGTATTTTATGTTCGGACAAAATGCCGTGCTTGA\nAGGGAATCTAACAAATTACTTAATTGCGGAACAAAATGTTGAATGCTTTCGAGCTGTATAAAAAGGAAAG\nGGCGGTAAGGAGTGTTGGCAAATGATTTGTTTGAAGAGAAACAACATCTAGTGTTTGCTGCAATTAAACA\nACAATTTGGAAGTATGACAAGGGCTGCGAAAATCGCAGAGTTAAACAATATGGAACTTGATGATTTAATT\nCAATTCGGTCGTATGTATTTATGGGAGCGTTGTTTAAAGCATGATCCAGAGAGAATAGAAACGTTTAGTG\nCATACGTAATGAGAGGTATGAAATGGGCCATGAGTGATGAACTTCACTTGAAAGGGAGCCTGTTTAAGAT\nTAGCAGACGGATTAGTCATGAAGAAAGGAATAAAATCAACATTCATTCGATTGACTATCATCAAGAGGAG\nGAAGAGGTACACGGATTTTATGCTGTGTCTCCTATCGATGTGGAAGAAGAGGTAACCAAACATATCGAAT\nTTGAAGAAGTAACGAGCGTTCTTGAAGAAAAAGAAAAGTCCATCATTATGCACGTTGGTGAAGGGTATAC\nCACAGAAGAGATTGCTGTGAAATTAGAAATGAAAAAATCAACAGTTCATACAACGAAAACACGTGCGTTT\nAAAAAGATGAACCCAGATTATAAGCCAATAAAACAAAAATCCTTTTTCTTGGGAAAGAGGATAATAAAGA\nGAAACCGCCAGTTGGGGCTGACGGTCTAATAAAAACACATGTTGAGGTCATTATAGCATGAATTGATTTT\nGTGTAAAGGAGAGGCTATGTCTTGAAGAACGGTAAAAAGCCAAACAAACGTGAAAAAATTCATATTCAAT\nCACACGATTTAAATCCACAGGATTGGTTGATTTATAAGAAAGTAAATAAGGAATTGCATTTGGTCCATCG\nGACTACTGGTGTAACTCGTATAATTCCAAATTTATAGATTAGGAGAAAGATATAAATGGCTAATGAAATC\nACGCCTAAATTAGTTGCTGATATAACAGATAAAAGTTTTGGCATACAGCTAATTGTTACTGGTCTTGCTC\nACTTAGTAGAGGAAGAGGGATATACACCACATGAAGCATTAAGTATCGCTCGTTACACAGGAAATAATTG\nTTTCCATGCGTTAGCAGAATTGAAGAAGGAGGCTAAAAAATGAACGACAAACCAATTGATGAATTAGTCG\nCGGAAAAGGTTATGGGATGGATAAAACCACCTGAAACATCAATCCTTAAATCAATGTGGGTTTCTAAGCC\nAATAGGTATGGTTCATCGTGAATTACCTAAATTTAGTATGAATATGAAAGATGCATGGTTAGTTGTTGAT\nAAATTACAAGAGTCATTTAAATCAGTGGAAATATTTATTGAAGACAGAATGACAAATGTGATTATAACTG\nAACATTTCCCAAGTGGACATCTAAAAGATAAATATCAGGGATATGAAAGATCGGCTCCTTTAGCTATTTG\nCAAAGCTGCATTAAAAGCTGTAGGGGAGGAATGGCAGTAATGGATATTAAATCAGTTGCTAAAGCTGTAC\nAAGTTATTCGAGAAGCACAAAATGAACATGGAATCATTAGGATTGATGGAAAGGAAGTACATCTAAAAAA\nTGAAGTATTGGAATCATTGTTAGATGAATCTCAGACTAAGCCTTTAATACTAAGACGTGAATCCAAGTAT\nTATCCTTATGAAGTTTCCTTTATTAATGATCATGTAACCTATTTCTCTCTTTACACTGAAGAAAGAATGA\nAAGAGAAAATTGGAGGGATACCAAATGCTCGAAAATTCAATGGTAATCGGGAACCGTCAGGACTCCCCAT\nTCAATAACGTGATGGATCATTGTCAAAGTTGTGGTAAAGAAATCTATTTTGATGAAGAGTACCGAGATAT\nTGATGGTGATTACATACACGATGAAACAGATTGTATCAAACAATATGTAGAGTCTCATTCCATAAAGAAA\nGTAGCTGGTGAGTAAAATGAACGCTGCTATTGAAGAATTAGAAAAGTCATTATATGTGGAGCAAGGGAGA\nTTAAAAGACTATCACGGCAAGCTAGAGAGGGTAATAGAAAGAAAACCAATCCTTGAAAAGAATATCCAAG\nATACTGAAAGCAAGATCCAGGACATTGAAGCTTCAATTTTTGTTCTGAAAAATATGGTGAAGGAGTGAAT\nTAATTGGAAATCACAAATGGTGCTGAAATTATCAAAAGTGAAAAAGCAAAAATTATCATTTATTCAAAAC\nCAGGTAACGGTAAAACAACGGTTGCTGGATTGTTACCAGGTAAAACATTGGTGTTTGATATCGATGGGAC\nAAGTCAGGTGTTATCGGGTTATAAAAATGTAGATGTAGCTAAAATTGATGGTGAAAATCCACATGATAGC\nATTTTACAATTCTTTGCACTTGCTAAAACAAACATTGGTAAGTATGACAACATCTTTATCGATAACTTAA\nCGCATTACCAAAAGTTATGGCTGCTTAATAAAGGTGAAAAAACAAAAAGCGGTATGCCTGAATTAAAGGA\nCTATGCTTTACTAGATAACCACCTTTTAAAGTTAGTAGAAACATTTAATTCATTAGATGCAAATGTTATT\nTTCACAGCTTGGGAGACAACAAGAAATATCACTCATGATGATGGTCAGCAATATACACAATTCATTCCGG\nATATTCGTGATAAAATCGTAAATCACATTATGGGAATCGTTCATGTTGTTGGTCAATTAGTGAAAAAGGC\nAGATGGTACAAGAGGTTTTGTTTTAGAAGGTAATCAAAGTATTTTTGCTAAGAATCATTTAGATCAGCGT\nAAAGGTTGCGTACAACAAGAATTATTAGTGTCATCCACAAACTAAAATACAGGGGGAAATAAACAATGAG\nTTTTAAATTTAAATTTGATGAAGAAAATGTATCACAAGGGTTTGGATTGGTAGAGGAAGGTAAGTATGAA\nGTTACAATTATTACTGCTGAAGCAAAAGAATGGCAAGGTCAATATTCTATTGGATTTGATGTGGAAATCC\nGTTCAGATATTGAACAAAAACATCAAGGAGCAAAAATCCTATATAACACTCTATATCTAACTACTAACAT\nTCAAGAATATGCAGAGGACACGGAAAGAAGACGTAACTCATTCTTAAAAGCTTGCGGATACACAGGTAAA\nCAGGATTTGGAATTAAATGTTGTTGTACGTGAGATTGTAGGTAAAACGGTTTTAGCTTATGTAAAACATG\nAAACAAATAAGGATGAAAAAACATTTGCTAAAGTTAAATTTGTGGCACCATCGAATGTAAAGCCGTCTGA\nACCAAGTGGACCACCGATTACTGTTGGCGATGATGATTTACCATTCTAAATAACTAAATAGAGAGGTCGG\nTTTTGTCGACTTCTCTTTTTTATACCCTAAAAAGTTAATTGGAGGGCGCAATGAAAGAAAATCCATACAA\nTTTTAATGAAATTCCTGCTGAATTAAAGGGCCTTCCCCAGTGGATCTTATGGAAGCTTGAAACCAGAAAT\nAATAAACAAACAAAAGTACCCTATCAAGTAGATGGAGAAATGGCCCAAGCAAATAATAGACGTACCTGGT\nCAACATTTGCAACGGCAGTCAAATTTTATTTAGAAGGTGACTATGATGGAATCGGGTTCGTGTTTAGCAG\nGCAGGACAATTACATCGGAATCGATATTGATAAGTGTGTTACGGACGGAAAAACAAATGCTTTTGCAACG\nGAAATTATCGATACATTAGATAGTTATACGGAGTTTTCACCTTCAGGAAAAGGTATCCACATCATTATCA\nAAGGGAACCTTCCACAATCTGTTTTAGGTACAGGACGAAAAAATACAAAGCACGGTTTAGAAATTTACTC\nATACGGACGTTTCTTTACCTTTACTGGAAATCGTGAGAATTCCAATGATGTATACGAGCGAACGGATGAA\nCTAGCTGAAGTATTTGAAAAATATTTTGATGATAGCGACATTCAAGGTCGTGTAAATTTAGCAGAGTTTG\nAAAAAGATGAAATCAAAATTTCGAACGATGCTCTATGGGAAAGGATGTTTAGAAGTAAGAATGGTGATGA\nAATTCGCTCGTTATACAATGGCAGCTTAATAAATGATGATCATTCAGCAAGTGACCTTTCTCTATGTAAT\nCATTTAGCATTTTGGACAGGGAAATCAGCAATTCGAATGGACTCCATGTTCCGTGAGTCAAGCCTTATAC\nGTGATAAATGGGACGTTATTCATTTTAGCGATACAAATGAAACATACGGTGAAAGAACGATAGCAACAGC\nCATTTCATCTACTTCCACAACTATTTTAGATAACAAACAGCAATTCGAAGAATTTTCTTTTGATTTCATG\nAATGAAGATGCGGTTGAAGTTGTGGAGGACAAACCGAAAAAGAAATTCCGTTTAACTGAATTAGGAAACG\nCTGAACGTATCGCATATGAATATGGCCATGTAATCAAATATGTTAGCGATATTGGCTGGTACATATGGGA\nCGGTAAACGCTGGAAGTTGGACACGAAAAAAGAGATTGAAAGAATTACAGCAAAAGTACTTAGAAGTCTT\nTATAAATCAGAAGATGAATTAGAAACAAAATGGGCTCGAATGTGTGAACGGAGAAATATTCGTATGAATA\nGCATTAAGGATCTTATGCCATTGGTTCCAGGTGAGCGTGAGGACTTTGATAAGTATAAATACTTGTTCAA\nTGTTGAAAATGGCATTGTTGATTTAAAAACAGGAAAGTTGCAGCAACATGATCGGGAACTTGGTTTAACT\nAAAATTACTAATATTTCATTTGATGAAAATGCAAAATGTCCAGAGTGGCTTAATTTCTTAGATCAAATTT\nTCCAAGGTGATAAGGAACTAACTGAATACATGCAGCGGTTAATTGGTTACTCACTAACAGGGGAAATCAC\nGGAGCAAATAATGGTCTTCTTAATTGGTGGAGGTTCCAACGGAAAATCGACCTTTATTAATACCATTAAG\nGACCTTTTGGGTGAATACGGTAAACAAGCAAAATCAGATACTTTCATCAAAAAGAAAGAAACTGGTGCCA\nATAATGATATTGCTAGATTAGTAGGGGCACGCTTTGTATCTGCAATCGAAAGTGAAGAGGGTGAACAACT\nCTCAGAAGCTTTTGTAAAACAAATAACAGGCGGTGAGCCAGTATTAGCACGTTTCCTTAGACAAGAGTAT\nTTTGAATTCATACCAGAGTTTAAAGTGTTCTTTACAACAAACCATAAACCAGTAATTAAAGGTGTAGATG\nAAGGTATTTGGAGACGTATCCGTTTAGTTCCATTTAACCTGCAGCTACCAAAAGAGAAACGTGATAAGAA\nATTACCAGAGAAAATTAGCTTAGAAATGCCAGGAATCCTGAATTGGGCAATTGAGGGTTGCTTGAAGTGG\nCGGAAGTCGGGACTAAACGATCCAGCAATTGTTATGAAAGCAACAGGTGATTATAAAGAGGAAATGGATA\nTTCTTGGTCCGTTCATGTTTGAATGTTGTTTTAAAAGAGAGGATGTCCAAATTGAAGCAAAAGAATTATA\nTGAAGTTTATGCGAATTGGTGTTTTAGAAATGGTGAACATCAATTAAAAAATAGAGCCTTTTACCGAATT\nTTAGAATCCCAAGGATTCAAAAGAGAACGTGGCAGCAAAAACAAGTATTACATCAAAGGTGTTACTCTAA\nCCGACCGAAAAAATACTTTTAAGCAGCAAAAGTTACTGAATTTCGATGAAAATAGCAAAAGTGTTACTAA\nAAGTAACCCATTTAAAATCACTTAAAACCCTTGATACATAAGGGCTCAAGATACTTTTTATATTCCTTTT\nGTTACTTTTGTTACTAAAAAATACTATAAACAAAAAATAAATATATATATAAGTATTCTATTAGGAGCTT\nCTTTGAACTTTTTAGGTAACCTTAGTAACCCGAAAGTAGCATGAGCCGTTGGGGCTGTAAGGCTCAAGGC\nGTGTTACTAAATGAAAAATAAGAGTAATTTATGGTGTTTTTTAAGTAAAAAACGGTTATTTAAGTAACAC\nACTTAGTAACGGAGGTTGTATTAAATTGGAAAAACATTATAAAGAACACGGGCTAGAAGATTTTTGGAAA\nTTTAAAATTATACGATCCAAGAAAAATGAAATTGGTTGTTCAGAAACCTATGAAAAATATAAAAAATGGT\nGCTATGAAAACAATACTATTCCGAATAAAAGAATTACATTTTTAAGATTCTTAGAAACAAAAGGGTTTGA\nAATTGTGAAGAGCAAAAAAGAACCATTGTATTTTAAAGGAATGAAGATTAAATGGTGAAAGTTTTATTAA\nTTTTAAGTGCGATTTGGAAATCAGGTGCAGATATCTATCTTGATAAAAAGGATAATCAAGTTGCGATAAA\nAAAACAAAATTTAATTCCAGCGGAAGTAATGAAAGCCGCTGAACAAAACTATCAAGCTATTTATGATTGG\nTTTCAATCTTGGAAAGATGAGAGTGCGGAGAAAATTACGTTAATGAAGATATTTCATCATTTTTGTGGGT\nGGAAACATAATCAAAAATTACACAATTGGTTAGTTGAAGAAGAAGATTCATTGCAACTGTTTTATGAGTG\nGACGATTGTCCTTGCTAATAATGGTTGGACAGATGTTTATGAGGATCATCGTCAGTTTGAAAATGATGAA\nTCAAATGCAATGGCAAGAAAGATATATGAACGTGCGGTTTTATATGCAAGGAAAGGGGCATGAAAATGAG\nAGAGATAAAATTCCGTGCTTGGGATGGAACGAGTTGGGTTTATAGCGAATGTATATCAAAAGATGGTATT\nAATTGGTGGATATTAAATAATGAAGATGATAATTGGTTGACGTGTTTAGATCCACAGCAATATACAGGTT\nTAAAAGACAAGAACGGTAAGGAGATTTATGAAGGAGATATTACAAAAGACAAGTTTGGTAATCTTGATGT\nTATTTGTTGGATTAATAGTTCAGGTGCATATGCGACTGTGTCGATTAATTTGTATTTAGACGGAGAGTAT\nGAACATACGGTTGTTGATGAATTTGGAACGGATTGTTTCTTTGAGAATAATGTTCCTGGTGATTTTTTAG\nAAGTAATCGGAAATATCTACGAAAACCCAGGGTTACTGGAGGATTCAAAATGATTCGTTTCCATTACACA\nGATAAAGAAATAGAAAAAATCCTTAAAACACTCACTATCGTTATCGATACTCGTGAAAATGTAAATGACC\nACATTCGTGATTACTTATATCAAAAGGGCATCCCAATTAAAAATCAAAAATTAGATACCGGTGATTATGG\nTTGCATGATTCCCAAAAATGAAGAGTTAGGAATACCACGTGATATTTATTTAGATCGTCGGATAGAAAGA\nAAAATGAGTATCGATGAAATTACAAGTAACCTACAAAAAGATACGCAAACAAGATTTGAAAATGAATTGA\nTTCGATCGAAGGATATTCCATTCACTTTAATTGTGGAAGATCAACGTGGTTACGAGAAAATACTTAAAGG\nTGATTATAAATCAAGATATAACCCATTGGCATTACTCGGTAGGCTTAATACTTTTAAAGCAAAATATGAT\nTTTGAAATAGTCTATCTAGATAAAAAGTTTGTTGGTAATTGGATATATTATGTCCTTTATTATCATGCAA\nAACATTATCTTAAAACAGGTGCATTTTAAGTTCAGAAACGTACAGAAATAACAGAAAAACTTTAGTTCTA\nATATCAATTTAATATAAAAGGAGTCGGAAGACATGACAAAGGTAAAATTGAACGTATTATTCAAGAAAAT\nGCAAAAGGATGATAAAAAGGAAGTTTTGATGTTCCACGTATTAAGTGATGAATTACCACATGCTGATGAG\nTTATTGAAGATGCCAGGTACTATTGTTTATCTAACTGTGGAAAAAAGCGATGTTGAAGCAATTGGTGCTG\nAATTTGTTTCTATTCAACGTGATAGTAAGAAAACCGTTCTTAAATTCAATGTAAAAGGCGATACGAAAGA\nTAAAATTAATAAACTTTATCCATTCGCTGGTGAAAATGTTTCTATTACTCTAGAGCCTTCGCAAATGTCG\nATTGATGAGTTTTACGAAGAACAACATGAAGGAGTGGAGTATAACGTTAATCCTGATGGAACAACTGATG\nTTGCTCCGGGGCAATTGAAGATTGTTGATGAAGAAACGATTGCTGAATAAAAATTTATCCTGGGCTTCGG\nCTCAGGATATTAATACATTTTGAATTTTGTTAAGAAATGAGGGTAACTTTTGAAAATTATAAAAGATGAT\nAAGAAGTGCCAAACATGTATTTTCTATGGTTTATGCACGAAAGCGCACTTACCACACTGCCTAGGAAATG\nATTACTTCAAAGACAGTGTCCAAAAAGAAAAATAAAACTAAAGCTAAAGCGTTACTTTAATCGGAAATGG\nCAGGTAATTGACCAAATCACCTGCCATTTGCCTAAACAGTCCGGAGGGGTAAAGCTCCGTTTTGAAAGAG\nTGTAGCCGACTCGTAGATAGTATGTGTAATGTAAAAAAGATTATTCGTATATCACACGGGATATGAAAAG\nGAGAATGAAAAATGTCTAACAAATTTGATAAGGACTTTGAAGCAATTACGAATAATGGTGAATTAACGAA\nAGAAGGAACAGAATTTATAGAAGCTGTAAAGCAATTCGTCGGTACGCAATATGATTCAGAGGATTTAGCG\nAAATTAATGGTATTAATTATGGCTGCTTTAGATGTGGATGACAATGCTTTTAATACAGCGATATCCGCTT\nTATATCAAACTGCAATAGAAGTGCAAACAGGTATCAATCTGAATGAATTACTGGATTTAGTGACAAAAGG\nTGAACCAGGCTTAACTCATTAGGAGAACCCAATGTATTCGACGAGTTTCGACATGAAAACGACCGTCAGA\nAACATAGTGATTTGAAGTTTTATTTCTTTCTGAATACAAATAGGTGCACAAGTGTTAAAACGTCTTAGAA\nAGGAAAATAAACGTGTTTTATGAGATGTATTGTTTTTTATAGAAAGTAGGTGAATCATCATTTGTTTGAC\nTGGCTAAAAGACTATCAGAAATTAGAAGAAGACATTGAGTACTTAGATTACAACTTAGATAAAACAAAAG\nCAGAATTAAAACGCTGGGTCAGTGGTGATTTGCGAGAGGTACGTTTAACTGCTGAATCGGAAGGTGCAAA\nGGTAGAAGAACGTATAGAAGCAATTGAATATGAGTTAGCGCACAAGATGAATGCAATGCAGGATGTATTG\nAAATTGATAAATAGGTTCAAAGGTTTAGAAAATAAAATGTTAAAAATGAAATATGTGGACGGAATGACAT\nTAGAAGAAATAGCTGAGAATATGAATTATAGTTCTAGTTATATCTATAAGAAACATGCTGAAATAATAAG\nGAGAATAAAGTTTGCTGAAGAACTTGCACTTTACTGACACCCAGTTTTATGAATGTTAACTCTTGAAGAT\nATCGATTATAGTAATAACATAAGAAATTGACGAAAGGGCAACTGGTGCACAGTTGCTCTTTTTAATTAAA\nCAAACCATATCCATATAATAATGATAACAGCAAAGATAATGATTAGTATTTGTGAGAATTTCATAACATG\nCTCCTTTTAAACTATAGTGTTTGCAAAGGATTGAAGAGGCATTCCTTATGGAGTGTTTTTTATTATGTAA\nAAATTATATAGGTGGTGTAGAGATGACTTTAACGTTGCATAATGGAGATTTGAATAAGTTAGCAAGAGAT\nACTTCACAGGACAGTATCATCTTGAGAGTTGGTGAACAAGAAATGGTATCTCTGAAAAGCAATGGAGATA\nTCTATGTTAAAGGTAAGCTTGTTGAAAACGATAAAGAAGTTGTAGATGGCATGAGAGAGTTATTGATGTT\nATCTAGGAAAAGGTAAGCGCAAACGTGTTGCATTTTATAAGGATGGTGAAAAGAAGATGTTCTCATATAA\nAAAACGTATTGAATCCTTAGATGAACTTCATAAAGTTATTGATGCATTAGAAACGTTAAAGAAGGAGTAT\nCAGATTATCAAAAAGATAGAATGGTCGGAACCTAAATCACCTCTTCCTAAATTACCAAAGAATGTTTGGT\nATGTTGAAGAAGTTGATACATCTAAAATCTTTTTTACTGATGCTGATGCAATAGTTAAATTAGTTTGTAA\nAAATTGTGGAATATCGTGTAGAGGGAAAAGAAATCTATTAGAAGGAATGAGTTGTATTTATTGCTTTAAT\nCACAATACAACAATAGTTTCTTTAGATAAGGAGTTTGAATGTAAATGAAAGTAATTATGGGTGAAGAACC\nTTTATTACCTAATGGAAAAAGAAATGGAGAAGCTGTTAGAAGTATGCTTGATAAAATTAGGTCGCAAGAA\nCAGAAAGATAAGGAGAGTGAATGCAAATGATTACTGAAATTAGAAAAACAATATCTGGTACAGAGTATTG\nGGATAACAAAGAAAAACGAAGTCTATTTGTTCCTACAGATGAAGAACCAGGATTCGAAGTAACTGTTAAT\nCCTGAGAGTATGATCTTAGGCATGGACATATCAAGTGAACCTGATAAGACAGTAGTTAATTTAAATGGTA\nTGACAGTGAAACAATTACATGAATATGCTGCATCGATTAATGTTGAGATTCCAGCCGATGTTAAAAAGAA\nAGAAGACATCATTGATTTACTATCATGAAGTACTGTGCTGAACAAGGCTGCAAGACATTAATCGATAAAG\nGACGATACTGTCTCAATCATAAACGTAAACAGAAGAAGACAGTTGTGTATTCAAAGAACAGATCATTCTA\nTCGTACAAAAGCCTGGCAAGATTTAAAGTCATTCTGTTATCAAAGAGACAAAGGATTGTGTCAACGATGT\nGGAAGGTTTGTGTTTGGTAAGCAAGCACATCATCATCATATTGTTCCAATTAAAATCAATCCTTCATTAA\nGATTAGATCCAGATAATATCGATACACTTTGTTCTAAGTGTCATCCGATTGTAGAAAGAGAAACAAATGA\nAAAATACCAGGAAAAGAAAAAGTTCGACTGGAAACTATAAGCCCCCCCTATCAAAAAAAGAAAAGCTGGC\nCTTATGGGGGGATAGGGAGTGGGGGTGCAAACGCGCACCTCAAAATGGTTTTTTGAAAAAAATTTGTTTT\nTTTTAGGTGGTGATTTAAGGAATGGCCAGAAAATCGAAGGTCGTAATTGAAGCTGAAAAGAAAAAAGAAT\nTAGAAGCGCAGCGTATTATGGATGTTTTGGTTGAAGCCGGAACTTATTCGCCAGCGCTCGATCCATTAAT\nTGAAGTTTATCTTGATGCAGTTGAGATATACAGCGTCAAATATGGATTGTGGAAGAATTCTAATTTTCCA\nACAGTCCAAAAAACAAAGAATGTAAATGGTGATGTGAAAGAATCAAAGCATCCATTAGCTCAACAAGTTG\nAAGTTTGGTCTAAGCAAAAAGCGAAATATTTGGGGCAATTAGGACTGGACGGAAAGAACAAAGATTTACT\nTAAAAAAAGTGGGGTTCTTCTCGAAAAAGGAAAAAATGAAAAAGAGCCCACGGAGTCTACTGATAACAAC\nAAATTATTGCAATTTAGGCAGAGGTTAAATAGATGATTGATTTTGAAACAAATTACGCTGATATATTCGT\nTTCGGAAGTAGATGCAGCCCCGCACTTATATCCTGATTCAATTAAATTAGCAATCAAACGATATAAGAAA\nTGGAAGAAACGAAAAGATATTTGGTTTGATGTTGAAAAAGCAAATGCTATGATTTATTTCACAGAAACAT\nTCTTAAAACATGCAAAAGGAAAATGGGCAGGACAGCCGTTAATTTTAGAATCCTGGCAAAAGTTCTACTT\nTGCTAACATTTATGGATGGCAAAAATATAATGAAGATGGTAAAGCGGTGCGAGTGATTCGTACGGCTTAT\nTTGCAGGTTCCAAAGAAAAACGGAAAAACAATCATGGGCGGTTCACCTGTTATTTATGCGATGTACGGTG\nAAGGTGTAAAAGGCGCAGATTGTTATATTTCCGCTAATACTTTTGAACAATGTCAAAATGCAGCTGGACC\nAATTGCATTAACTATTGAAAATAGTCCAGATTTACGGCCAGATACACGTATCTATAAAGGCAAAGAAGAC\nACGATTAAATCAATTAAATACACATTTGTGGAGGATGATATAAAATATGCAAATGTAATTAAGGTTTTAA\nCGAAAGATAACGCTGGTAATGAAGGTAAAAACCCGTATATTAATTATTTTGATGAAGTTCATGCTCAAAT\nGGACCGTGAACAATATGATAACTTACGTTCAGCACAAATTGCCCAAGAAGAACCACTCAACATCATCACT\nTCCACAGCAGGGAAGAATACCGGCTCGCTTGGAACTCAAATTTATACCTATGCAAAAGAAGTTTTGGATA\nAGGATAAAGATGATTCTTGGTTCATGATGATCTATGAGCCGAATAAAAAGTTTGATTGGGAAGACCGTGA\nTGTTTGGCGAATGGTTAACCCGAACATGGATGTATCAGTTAACATGGAGTTTCTTGAAAATGCATTTAAA\nGAAGCTCAAAACAACAGCTTTAATAAGGCGGAGTTCTTATCAAAGCATTTAGATGTATTTGTTAACTATG\nCTGAAACATATTTTGATAAAGACCAATTGGATAAAATGCTTGTTGATGATTTAGGAGATATTGAAGGTTT\nAACTTGTGTTATCGGTGTGGATTTATCAAGACGTACCGATTTAACTTGCGTATCGTTAAATATTCCAACA\nTACGATGAGGAAGGTCTTTCATTGTTAAAAGTAAAACAAATGTATTTTATTCCAGAGTTTGGAATTGAAG\nATAAAGAACAGCAAAGAAATGTTCCATATCGGGAATTAGCTGAAAAAGAATTTGTGACGATTTGTCCTGG\nTAAAACGGTTGACGAAGAAATGGTCAATCAGTACGTTGAATGGGTATTTGAGAACTTTGATTTACGTCAA\nATTAATTATGATCCAGCGCTTGCTGAAAAGCTTGTTGAGAAGTGGGAAATGCTCGGTATTCAATGTGTGG\nAAGTTCCACAGTATCCAACTCATATGAATGAACCATTTGATGATTTTGAAATCTTATTGCTTCAGGACCG\nAATTAAAACTGATAATCAATTATTAATTTATTGTGCAAGCAATGCAAAAGTAATAACTAATATTAATAAT\nTTAAAAACACCATCTAAACGAAAATCACCGGAGCATATCGATGGGTTTGTGGCCATGTTAATTGGTCATA\nAAGAAACGTTGAATATGATGGAAGATGCTGTTCCAGATGAAAATTATGATGAATATTTAGATGATATTTA\nTCGATAGAAAGGCGGTGAGGAATTGGGTTTAAAGGATAGATTTTCAAGTTTTTTACTTAAACAAGCTGAA\nAAGCGTGGTTTATTCGAAGACATTTTCAATAATGTTGTTCGCTATGGTGGTAGATATGCAGGCGATGATA\nATATCTTGGAATCTAGTGATGTTTATGAATTACTACAAGATATAAGTAATCAAATGATGTTGGCTGAGAT\nTGTTGTGGAAGAAAAAGACGGTAAGGAAATTAAAAATGATTCAGCTCTTAAGGTTTTAAAGAATCCAAAC\nAATTATCTTACACAGTCTGAATTCATTAAGTTAATGACTAATACCTATTTACTTCAAGGTGAAGTCTTTC\nCAGTGTTGGATGGTGACCAATTACATTTAGCATCTAATGTTTATACAGAATTGGATGATAGATTGATAGA\nACATTTCAAAGTGAATGGAGAAGAAATTTCATCATTTATGATTCGACATGTGAAGAATATTGGTGCCGAT\nCATCTAAAAGGTACAGGCATTCTTGATTTAGGTAAGGATACACTTGAAGGTGTTATGTCAGCTGAGAAAA\nCTTTAACTGATAAGTATAAAAAAGGTGGTTTATTAGCATTCTTACTTAAGCTAGATGCTCATATTAATCC\nACAAAATGGAGCGCAGTCCAAATTAATTAAAAAGATTTTAGATCAATTGGAATCCATCGATGATGCAAGG\nTCAGTTAAAATGATTCCACTCGGAAAAGGATATTCAATAGAGACGCTTAAAAGCCCGTTAGACGATGAAA\nAGACCCTGGCCTATCTAAACGTATACAAAAAGGATTTAGGTAAGTTTTTAGGCGTAAATGTGGACACATA\nTACGGCCTTGATTAAGGAAGACCTTGAGCAAGCAATGATGTATTTGCATAACAAGGCAGTTAGACCGATA\nATGAAAAACTTTGAAGACCATTTGAGTCTTCTTTTTTTCGGAAAAAATTCGGATAAACGTATTAAATTCA\nAGATAAATATCCTTGATTTTGTTACTTATAGCATGAAAACAAACATTGCTTACAACATTGTTCGAACTGG\nTATTACTTCACCAGATAATGTTGCGGATATGCTTGGATTCCCTATGCAAAATACACCTGAGTCACAAGCG\nATTTATATTTCAAACGACTTATCAAAAATTGGTGAGAAACAAGCTACAGATGATTCACTGAAGGGAGGTG\nATGGAAATGGCAAAGACAAAGGAAACACGGACATTTGACATCACCAAATTAAGTACCAGGGATGCTACGG\nAAGAACAACCTTCCAAGATAACGGGTTATGCAGCCGTATTTAATTCAAAGACAACTATTGGTGGCTGGTT\nTGATGAAGTTATTGAACCTGGTGCATTTGCTCGTTCTCTTTCTGAGAATGGTGATATTAGAGCGTTATTC\nAATCACAATTGGGATAATGTCCTAGGGAGAACAAAAAGCGGTACATTGAGACTAGAAGAGGATGAAAAAG\nGACTTAAATTCGAAATTGAATTACCAAATACATCTGTTGGTCGAGATTTAGCTGAAAGTATGTCCAGGGG\nAGATATTAACCAATGCTCATTTGGATTTTGGATAACAGAAGAGAATTGGGATTACAGTGTTGAACCAGCA\nTTAAGGACCATTAAAGAAGTAGAACTTTATGAAATATCGGTTGTTTCAATACCAGCTTATGACGATACGG\nAAGTATCTTTAGTTCGCAGTAAAGAGATTGGTAAAGAAATAGAACAACGAATGAAAATGATTAAACAAAT\nAAATCAAATCTTGGGGGAAAAGTAAAATGAACAAACAATTATTATTAGCATTACAAAAACGAAGCAATGA\nAAGATTAGTGGAATTACGTACACAGGTTGAGAATCCTGAATTACGTGCTGAAGACTTACCAGCAATTCAA\nGAAGAAATCGATGAAATTAACAAGCAATTGCAAGAAGTTGCGGATGCTTTAGCAAATCTTGAAGATGATG\nGTGGAGGTGAAGAAGGAAACGAAGATAATGAAGAAGGTGATGAGGGATCTGGTACTGAAGGTTCTGGAGA\nAGGCGGAGAAGGGCGTGCTAGCAATACTGAAGGTGGAGAAAATAGAAATGGATTAACGCCTGAACAAAGA\nAGTGCAGCAATGGCAGCTATTGCAACAGGTCTTTCTACTCGAGGCCATAAATCTACTAAAAAGAAAGAGA\nAAGAAATTCGTTCGGCATTTGCTAACTTTGTAGTTGGGAAAATTACAGAAGCTGAAGCGCGTTCTCTTGG\nTATTGAAGCTGGTAATGGTTCAGTAACTGTGCCAGAAGTTATTGCGAGCGAAATCATTACTTATGCTCAA\nGAAGAGAACTTACTACGTAAATATGGTTCAGTTCATAAAACAGCAGGTGATATGAAATATCCTGTTCTTG\nTTAAGAAAGCAGATGCAAATGTACGTAAGAAGGAACGTAAAGATAGTGATGAAATCGTAGCAACAGATAT\nTGAATTTGATGAAGTGTTACTTGATCCAGCTGAGTTTGATGCACTTGCTACTGTTACTAAAAAGTTATTA\nAAAATGACAGGTGCTCCAATTGAGCAAATCGTTGTGGACGAGCTGAAAAAGGCTTATGTTCGTAAAGAAA\nTTAACTACATGTTCAATGGCGATGATGTAGGTAATGAAAACCCAGGTGCGTTAGCAAAAAAAGCGGTAGC\nGTTTAAGCCTTCTAATCCAGTTGATTTAAAAGCAAAAGATGCAGGGCAATTAATGTATGATGCATTAGTT\nGAAATGAAAAATACACCTGTTACAGAAGTAATGAAAAAAGGACGTTGGATTATTAACCGTGCAGCATTAA\nCAGCAATTGAAAAAATGAAAACAACTGATGGATTCCCATTACTACGTCCAATGACACAAGTAGAAGGTGG\nTATTGGAAATACGCTTATTGGCTATCCTGTGGACTTTACTGATGCGGCAGACGTAAAAGGAAAACCAGAC\nGTTCCAGTTTTATATTTTGGTGATATTTCAGCGTTCCATATTCAAGATGTAATTGGCGCTATGGAATTAC\nAAAAATTGATTGAAAAATTTGCTGGTACAAACAAAGTTGGATTCCAAATTTACAACTTATTAGATGGTCA\nATTAGTTTATTCTCCATTTGAGCCAGCTGTGTATCGTTTTGAAGTGCAAGCTACAACTGAAGGTAAATAG\nGTTATGAATGATTTAATTGAGAAATTAAAATCTCATATTCATTGGGAAGAGGGTATGGATGAAACCATGC\nTCTCTTTTTATATCACTCAAGCAAGGACTTATGTAAAGAATGCGACAGGCAAACAGACCGAATATCTAAT\nTATTATGGTCGCCGGCATTTTCTATGATTACAGGGTCGCTGAAAAAGAATTAGAACAAGCTCTTGATGCC\nTTAACACCAATGTTTGTCCAGGAGGTTTATGCTGATGAAGAGAAAGACGAATAAACTCAAATGGATGGGT\nGAGCTACTTAAATTAGGAGAAACAATTGATCCGGAAAATGACCGAGTTGTTATGGGATATCCATTAGAAC\nGGAAAATTCGTTATAACAACATTGGAGTTACGGCTACTGATAAATTTACAACGAAAGATACGAATGAAAT\nTGTAAAGAAAATTGAAGTTCGTATTGATCGAGATATTGAAAACGATCAAAAGGATTATCGTGTAAAAGTT\nGGTGGCCGTATTTATAACATTGAGCGCATTTATGTGAAAGAAGAAGATCGATTGATGGAGGTGTCACTAT\nCGTATGCAAATTAGTTTTGAACAGTTGCGAAGCCTTATGAAGAAATCTGGTATTCCAGTTTCTCGTGATA\nGTGCTCCTACAGGGATTGATTACCCTTATATTGTGTATGAATTTGTGAATGAGCAACAGAAAAGAGCTTC\nTAATAAGGTTCTAAAAGATATGCCACTTTATCAAATTGCTGTTATTACAAATGGAACTGAAAAAGATTAT\nGAGCCGTTAAAGGCTGTTTTTAACGAAGCAGGCGTGTCTTATTCTCAATTTGATGGAATGGGTTATGACG\nAGAATGATGACACTATCACGCAGTTTATAACGTATGTGAGGTGTATCCAGTAATGGCTTCAAATAACAAT\nGGTTTTGCTGAAGCTTTAGAAGATATTAATACGCTATTACGATTGAATAAAAAGGTCGAACTGGATGTAT\nTGGACGAAGCAGCGAAGTATTTTGCGAGTAAATTAAAACCAAAAATTAAAGCATCCAGTAAAAACAAGCG\nGACACATTTAAGGGATAGCCTAAAGATTGTTGTGAAAGATGATCGTGTATCTGTGGAATTTAAAGATGAA\nGCTTGGTATTGGTACTTAGTTGAACATGGCCATAAAAAAGCAAATGGTAAGGGACGTGTGAAAGGAAAAC\nACTTTGTTCAAAATACCTTTGATGCAGAAGGTGACAAAATCGCTGATATTATGGCACAAAAAATAATTGA\nTAGAATGTGAGGATGATATACATGACAGTTGAAAATAAAGAAATTCAATATTCTGTAGGGATCGAAGATT\nTATATCTGTGCTTGATGAAGGGAAATGAAACTTCTAGTGCACTACCAACTTATGAGGATATCGTTTATAG\nACAAACGAATATTTCTGATTTAACGATTTCCACTACTTCTACTAATTTTACAAAGTGGGCATCTAACAAA\nAAAATTATTAACATTGTCAAAAATACAGCGTTTGGATTAGCTTTTAATCTTGCTGGTCTAAATCGTGAAG\nTAAAAGATAAAATCTTTGCTAAAACACGTAAAAAAGGTGTGTCTTTTGAAACAGCGAAGGCGAAGGCGTA\nTCCAAAGTTCGCAGTAGGGGTTGTATTCCCTTTAAATGATGGAACAAAAATATTACGTTGGTACCCAAAA\nTGTACAGTTGCTCCAGTAGAGGAATCTTGGAAAACACAAGGTGATGAAATGACTGTGGATGACATTGCTT\nACACAATTACAGCAGATCCATTGTTATTTAATGATGTAACACAAGCTGAATTGGATACTGGTGATCCAGA\nGGCAAAAGGAATTAAAGCTGAAGATTTCCTAAAACAAGTCATTTGTGATGAATCTCAACTAGCGCAGCTA\nGGTGGAACGACTCAAACAGGTAAATAAGGAGGGTGACTATGGCACGTTTAAGTGATTTAGTTAACGTTAA\nTATAACTAGGAATAGCATTAAGATACAGGGTGTCTCAATCCCTGTTATTTTCACTTTTGAATCTTTTCCT\nTATGTGGAAGAAGCATTTGGAACACCTTATCATGAATTTGAAAAAGAAATGAATGATATGTTAAGGAAAG\nGTCAATTTAGCCTGGGAGAAAATGAAGCGAAATTGATGCGTGCATTAATTTATGCGATGGTACGTAGTGG\nTGGTACGGAATGTACATTAGATGAATTGAAAGGTGCTATTCCTATGAATGAATTACCTGATATTTTCATC\nGTTGTATACGAAATTTTCAGTGGCCAAACTTTCCAGAATTCTGATATGGAGAAGTTGAAGCAAGAAAAAA\nAGTAAAAAACATACTGACTAAAAACGAGGAATCTCAGTCCGAATTGGACTGGGATTTTTATTTTTATGTT\nGGTAATACGTTGCTTGGTTTAAGTATGAATGACTTCTGGAAAATCACACCTGCACATTTTTTAAAGCAAT\nTCATCATGCATCTCAGATACAACAATCCGGATGCGTTACATGAGCAGAAAACGAAACAAATTTACACGCT\nAGATCAAACACCATTCCTATAAGAAATGAGGTGAGAAAATGCCTGGGAATAGTAAAGAAAGAAACGTTGT\nTCTTAATTTTAAAATGGATGGCCAAGTTCAGTATGCAAATACATTGAAACAAATCAATATGGTTATGAAT\nAATGCAGCGAAAGAATATAAAAATCATATTGCAGCAATGGGCCAAGATGCGACGATGACTGATAAACTTC\nTTGCTGAAAAGAAGAAGCTTGAAATTCAAATGGAAGCAGCTAAAAAGCGTACAGCTATGTTGCGTTCTGA\nATATCAAGCGATGTCCAAGGACACAAGTACAACCGCTGAACAACTCAATAAAATGTATGGAAAGTTACTT\nGATGCAGAACGTGCTGAAACTACTCTTAATAATGCAATGAAAAGAGTGAATGAAGGTCTTTCAGAGCAAG\nCCATTGAAGCACGAGAAGCACGTGGAGACATGGAGAAACTTGAAGCTAATACTAAACAACTAGAAGCTGA\nACAAAAGCGACTAACAAGCTCGTTTAAGCTTCAAAATGCCGAACTAGGAGCGAATGCTAGTGAAGCTGAT\nAAGTTGGAATTAGCGCAAAAACAATTACGTCAGCAAATGGAAATGACAGATAGAGTCGTCCACAATTTAG\nAACAACAGTTAAGTGCAGCAAAGCGTGTATATGGTGAGAATTCCACAGAAGTACAGCAACTTGAGACGAA\nGCTAAACCAAGCTAAAACCACGTTGAAGCAGTTTGAGAATTCATTACAGAGTGTTGGTCGAAGTGGAGAT\nCAAGCAGCAGATGGTATGGAGAAATTAGGAAAGAAGTTAGACTTGCACAATATGATGGAAGCTGTCCAAA\nTGCTACAAGGAGTATCACAACAGTTAATTGAACTTGGTAAAGCTACAGTGGGTATAGCGATAGATTTTGA\nTAGGTCACAAAGGAAAATACAATCCTCATTAGGGCTAACTCAAAAGGGTGCAGAGAATCTTGGCAAGATT\nTCAAAAGATGTGTGGAAAAAGGGATTTGGTGAAAGCCTTGAAGAGGTCGATAATTCACTGATTAAAGTCT\nATCAAAATATGCGTGATGTTCCACATGAAGAATTACAAGGGGCATCAGAGAATGTTTTAACATTAGCTAA\nAGTTTATGATGTGGACTTAAATGAAGCAACTCGTGGCGCAGGACAATTAATGTCTCAATTTGGTTTATCT\nACACAACAAACATTTGATTTATTGGCAGCAGGTGCTCAAGCTGGGTTGAACTATTCTGATGAACTCTTTG\nACAATCTTTCAGAGTATGCACCGTTATTCAAACAAGCGGGTTTTAGTGCGGATGAAATGTTTACCATTCT\nTGCGAATGGAACCGCAAATGGATCGTATAACTTGGATTACATTAATGACCTTGTAAAAGAGTTTGGTATC\nCGTGTACAAGATGGTTCTAAAGGTGTATCAGAAGGATTCGGTGATTTATCAGAAGAGACACAAAAAGTAT\nGGGAATCATTCAATGAAGGTAAGGGAACCGCGGCTGCTGTATTTAATGCTGTATTAGGTGACTTACGTAA\nAATGGATGACAAAGTAAAGGCAAACCAGATTGGTGTTGCTCTATTCGGTACCAAATGGGAAGACATGGGG\nGCAGACGCCGTACTAAGTTTAAATGATGTGAATGGTGGTCTGGGTGATGTAAATGGCCGTATGGACGAAA\nTGAAAAAACTGCAAGAAGAATCACTGGGCCAAAAATTCCAGAGCGCATTAAGGGAAACTCAAACAGCACT\nTGAGCCTTTAGGAAAACAACTTGCGGATCTTGCAGCAGATGTTCTCCCTAAAGCTGCAAAAGGACTATCA\nGACCTTGCTGAATGGTTTTCCAAGTTACCAGAACCTGTCCGAAACTTTGTTGCTATTTCTGCCGGATTAA\nCGATTGCTATTACTGCAATTGGCGTTGCTATTGGTGTTTTAACTTTTGCAGTTGGTGCTTTGAATATTGC\nATTAGGACCTGTAATATTAGCGATTTTGGGAATTTCCGCCGCAATAACTATTGCTATAGCGATAGTGAAA\nAATTGGGGTGCTATAACCGATTGGCTTTCCGAAAAGTGGACCCAATTTAAAGATTGGTTTGGTGAATTGT\nGGTCTGGAATAGTTCAGGCTTGTAGTGATGGGTGGTCTTCCACAGTTGAGTACTTTTCCGAAGCCTGGTC\nGTCATTTATTGAAATGATGCATGAATTTTTTGACCCTATAGGTCAGTTTTTTAGTGAATTGTGGTCTGGA\nATTGTCGAAACAGCGTCATCTTGGTGGTCGAATCTTGTCACAACTGCATCAGAATTGTGGAGTCAACTGA\nCTCAAGCCTGGCAAGAAACTTGGAATACGATACTTACCGTCTTAGATCCAATTATTTCGGCGATATCTGT\nCGTTTTAGAAGCAGGTTGGTTATTAATACAGGCAGGTACACAAATTGCCTGGGCCTTAATAAGTAAATAT\nATTATTGATCCGATTACTGAAGCGTACAACTGGTGTAAAAATCAGTTCGGTGAGTTAGTTTCTTGGTTAA\nATTCACAGTGGGAAACGGTAAAATCTTATACACTTGCAGCGTGGAATTTGGTAAAACAGTATGTTATTCA\nACCGGTTCAAGAATTGTGGAATACAACAAAGCAAAAACTTGGAGATTTAGCTAATTGGATACTATCAAAT\nTGGGAATCTATAAAATCCTATACGCTTACGGCGTGGAATTTGGTGAAGAAATATGTGATTGATCCAGTAA\nCTGAAGCCTATAATTCAGCTAAGCAAAAATTTACTGATTTATATAATTCAGCGAAAGAAAAATTCGATTC\nTGTGAAGAATGCTGCACAAGAAAAATTTGATGCTGCTAAACGTAACATCATTGATCCAATAAAAGAAGCA\nGTTGGGAAGGTAGAAGAGTTTGTGGGTAAAATCAAAGGTTTCTTTGATAATTTGAAGCTGAAAATCCCTA\nAACCTGAAATGCCAAAGCTTCCACATTTCAGTCTGCAGACTAGTTCTAAAACAATTGCAGGTAAAGAAAT\nCTCTTATCCATCTGGCATAAATGTGGATTGGCGTGCTAAAGGCGGTATTTTCACACGGCCAACTATTTTC\nGGAATGAATGCTGGAAACTTACAAGGCGCAGGAGAAGCTGGACCGGAGGGGGTTCTACCCTTAAATGAAA\nAGACACTAGGTGCCATTGGAAAAGGAATTGCATCTACGATGACACAACAAAGTAATGACCGTCCAATTAT\nCCTACAAGTGGATGGAAGAACGTTTGCTCAAATCACCGGTGATTATACAGATCATGAAGGTGGAGTGAGA\nATTAGAAAAATCGAAAGGGGGCTGGCATAGATGCTATATGGAATTAATTTTAATGGAAAACATTCATATG\nACGATATGGGATACACTATGCCAGCTGATGGCAGAGATATTGGCTTTCCAAGTAAAGAGAAAATTGTTGT\nAAAAGTTCCTTTTAGTAATGTTGAATACGATTTTAGTGAAATATACGGATCTCAAACATATACTTCAAGA\nACATTGAAATACCAATTTAACGTTTTAAGGCAAGGGAATTTTACACCGCATGCAATGCAAATCGAAAAAA\nCAAAGTTAATTAATTGGCTTATGAATACTGGCGGAAGAAAAAAGCTTTATGATGATACTATTCCTGGTTA\nTTACTTTTTAGCTGAGGTAGAAAGTGCGGCTGATTTCCAAGATGATTGGGAAACGGGAACAATGACGGTA\nACTTTCAGAGCATATCCTTTTATGATTGCTGAATTGTATGAAGGTAATGATATATGGGATAGTTTTAACT\nTTGATTTGGATGTTGCGCAAACTACTAATTTCACTGTGAATGGTATGTTACAAATGGTTTTACTAAATGT\nAGGGGCTTCTGGTGTAGTTCCAGAGATAACAACATCTAAGCAAATGAAGATTATTAAAGATGGAGTCACC\nTATACTGTGTCAACAGGTATTACAAGAGATAAGAATTTTGTACTTAAATCAGGAGAAAATCCCATAAAAG\nTTACTGGTAATGGTACCATCTCATTCCGTTTCTATAAGGAGTTGATTTAAGTGTATAAAGTAACGATTAT\nTAATGATGGTATTGAAACAATAATTCATAGCCCCTATGTAAATGACCTTAAATTACCGTTTGGTGTAATA\nAAAAAAAGTATAAATCTAATAGATGCATTTAATTTTAGTTTTTATATGAATAATCCTGGTTTCCATAAGA\nTAAAGCCGTTAAAAACACTTGTAAATGTGTTAAATACAAAGACAGGTAAGTATGAATTTGAAGGGCGTGT\nGTTAGGTCCAAGTAAGAATATGGACAATTCAGGACTTCATAGTACTTCATATGAGTGTGAAGGTGAACTT\nGGGTATCTACATGATTCAGTTCAACGGCATTTAGAATTCCGTGGAACGCCAAAGGAACTTTTTGCAAAAA\nTTATTGAGTATCATAACAACCAAGTAGAGGAATATAAAAGATTTAAAATTGGAAATGTAACAATTACCAA\nTACTACAAATAACCTTTATCTTTATTTATCAGCGGAAAAAGATACTTTTGAAACAATTAAAGAAAAACTA\nATAGATAAATTAGGTGGCGAACTCCAAATACGTAAAGTAAACGGAGTTCGTTTTTTAGATTATTTAGAAC\nGTGTTGGTGAAGAGAAAAAAACAGAAATTCGAATCGCTAAAAATTTACTCAGTATGTCTTGCGACATAGA\nTCCGACTGAAATTATTACTCGCTTGACTCCTTTAGGTACACGAATAGAGTCAAAAAATGAAGGAGCGACA\nGATGCATCAGAAGCGCGATTAACTATTGAATCAGTTAACAATGGAGTACCTTATATTGATCATCCAAGTG\nGAATAAAAGAGTTTGGTATACAAGGTAAATCTATAACTTGGGACGATGTAACAATAGCAAGTAACTTACT\nTGCAAAAGGAAAAGAGTGGTTTGCAAATCAAAAATCAATTGTAACTCAATATAAACTAAGTGCAGTTGAT\nTTGTATTTAATTGGTCTAGACATCGATTACTTTGAAGTAGGGAATTCTCATCTAGTCATAAATCCTGTTA\nTGGGGATAGATGAGCTTCTAAGGATTGTTGGGAAATCCTTAGATATTAATAATCCACAAGGAGCCAGTTT\nAACAATTGGAGGTGCATTAAAAACATTAAATCAATATCAAAGTGATTTGAAAAAATCAGCACAGCAAGTT\nGTGGATTTACAATATACAGTGCTGAGACAAAACGGGAAAATCAATTCGTTGTCAGCCAGTCTTGTTGAAG\nCAGAAAAATTATTACAGTCCTTAAATGAAGCTGTTGAAAATGCGGATTTACAAATGATTGTTCAGTCAGT\nTTCTGATTTAAAAAGTGCTTTAAAAAAAATTGAAGAGGAAATACAAACTTTACCCACATCCGAAGTGATT\nTTGCAGATGCAAAAAGATATACAAAATAATACAACTGAAATTGTAGATATCGATGAAAGAATGATTGAAT\nCTGAAGTAGTAATTGAAAATAATAGTAAAAGCATTGAAGTATTACAAATCGATTTAAAAGATGTAGTAGA\nTCGTCTAACTGCTTTAGAAAATGGAGGTTCATAATGTGGCAAATATAAGTGGTTTTTTAAATAGAATTCG\nAACCGCTATTTATGGTAAAGATGTTCGTGAGTCTATACATGATGGGATAGAAGCTATCAATAAAGAGACA\nGAGATAGCGACGAAACTTTCCAATAATATAAAGATTAAACAAGTTGCTTTAGAAAAGAAATATGATGACC\nAAATTTCTAACATGACAAATGAAAATCCATCTATTAGTGAATTGGTTGATTTTAGAACTAGTGGATTTAC\nAGGAATGTCATATGTTACAGCGGGAAAAAGAACTGATGCTATTGATGAAAGGATTACAGATATGTCTGTC\nAGCATAAAAGACTTCGGAGCAGACCTCACAGGAGAGACAGACAGTACGGTAGCTATTCAACAAACAATAG\nACTACGTATATGATCGTGGAGGTGGTGTAGTTTATATTCCGCCAGGGATTTTAAGATACACTTCTATAAT\nTGTTAAAATTGGTGTTCATATTCGTGGTTCATTAGTTTCAATTACAGATTGGAATGGGAGGTTAGGCTCT\nAATACGTCCGTAACTACTTTGATACCAACTGATCTTAATAGACCTTCTATCATCATGCATGGGAACTCAA\nCGATTAATGGCGTCTGTTGGTTTTACGAAGGGCAAAAGAAAGAACTGACGTCTGAAAGTGACACATTTAT\nTCAATACCCTCCAACTATTCAGTTGGGTGATGCGTCAAACAAGGCTATTGGAAATTATATTGGAAACTTT\nATAGTAATTGGAGCATATGACTTCATATCGCAATACTCATTTTCAAATAGCGTAGAAAAGTTATTTGTAG\nAAAAAGGATATGGTATGTTCTTAAATACATTTTGTACGCTTAAAAAATGTACTGATATTCCTAGATTCTC\nTAAGATTCATATGAATCTAAATTCAGCATTAGGATGGCTAACTGGAAATACAGTTCCTTATTACTCTAAA\nATCGCTCGTAATGGTGTAATGTTTAAGGTTGCGCGTGTCGATGACTGTGTGATAGAAGATTGTTTTGCAT\nATGGCGTTAAGCACTTTGCTCATCTCTATAAAGAGGTGGGTGAGGATGGGAACGGCGGTGGTATAACAGT\nAATTGGATCAAGCTGTGATGTTTGCCATCAAGCGTTTAGAAACGATCGTGGAAATCTATCGTTTGGCGTG\nAAAGTAATCGGGGGATTTTTCACACCAGTTGTTAACGTGGATGGCAGCGAAAAATGTTTAATTTACCTTA\nGTCAAAACGCTACATATACTAGAATGCAATTTTCGTCATTCAAATGTTATGGAGATGTTGTATCACAGGT\nAAGTAATACTTCAAAAACAGACCATATTGTTATTTTCGAAAACGGAAATGCGGGTAATAACGTCGTAAAT\nTTATTTGGCGATGTACAGTTTAATATTGGTATTTCGAAAAACGAGAACGTGTTGATCAATAATGTTGTAA\nATTTTATTGGTACAGATAGGGATTCCTCTTTATCAAAACTAGATAGAGTGACTATCCGTCATCTTGTAAT\nGACCGGTTCTCGAATTGATCTAACTCATGGTGTCGATGATATTGCATGGTTTAAAGTGAATAATGAATAC\nGCTTTTGGTGCAGTTAAGGATGCCTATGATCCGACATTTTTTACAAAAGCGTATTTCCGACCAGGTACAC\nTGACTTCATTACCAACCGCAAATGCAAATCATCGTGGAAAGATGATTCGTCTGGAAGGTGCAAATGGTGT\nTGAGGATAGGTTATTTATATGTAAAAAGAAAAGCGATGGAACATATCACTGGAAACAGCTAGACGCAGAA\nCAATAATGATGAAGGGGTGTTTTAAATGGGATTGCAAGTTAATATAACTTTATTTAATCAATTAGAAGTA\nAATTCATATGCAAGAGTCGGCAATATTGGAGGAACAAAAGAGGAACAGTTTTTTTCTATTGATTACTACG\nCTTCGCGAAATGCCTTTTTGAGGAAACTTGACCCTATCAAACAAGAAAACTATAAATTCACTCCATCTGT\nTATGGATGACTCATTGAATTTTGTGAAACAAGCTTATATTTATGTTAAAAGAAGAACGGAATTTGCGGGT\nGCTGTCGATGTATTAGAAGAAGGGCAAAAATCTTGAGTTTAATAAAATTCCTCAGTTTATCTAATATATA\nAGATTTTATATGTTATTATATGTAATGGCGTCTTAATATAAGACGCTAATACATATAATTTGGAGGAAAA\nAGATGAACATATCCAGTCACCAAGAGGGAATGTCAAAACTGAATATAATAATACTACTTTTTCTCTCGTA\nTATAATGAGTACTTATAAATACGGGGAATTTGTACATTATTTTGTGTTTATAGTCATGGCCGCTCTTATA\nCTTAGAATGCTTACTGTAGGCATCAAGGTAAGTAATGAAATATCAATAAATAAAGGCATATTGACGTTTT\nGCGTAATTTTATTAGGGTTATTGTTATTGAAATCGATTTTTAACTTAAATGAATTAAAGGCATTTATTAA\nGAATTATTCAGTTATCTATTTCGTTCTAATTTACGGCCTTCTAGAATATTATAAGAATGGTGCTAGGTAT\nGGAGAGCAAGTTTTTATACAGCTTACTAAAATACTAAATGTACTTTCTGTCTTAAACCTAATTCAGGTTG\nTTTTACACAGACCGTTATTATCTGGATTCTTCACAGAACAGATGGACAAGTATCAATATTGGGCGTATGG\nTACTGGTGACTTTAGACCAGTTTCCGTGTTTGGTCACCCTATTGTAAGTGCATTGTTTTTTTCTATATTA\nGTGATCTGTAATCTTTATATACTTAAAGGCAATTTAAAATATCCATTGCAGATTGTGGCACTTGTGAATG\nTCTATGCCTCGCAATCTAGGAGTGCTTGGATTGCATTAGCAATTATTGTATGCTTGTATTTTATTAAAAA\nTTACCGTATTAAAAAAATAAAAAGAAATGTTCGATTTACTTATAGTCAATTATTAAAAATTTATGTTTCA\nTTAGTAATAGTGATCTGTGGATTTGGCTTAGTTGCTTTAAGCTCGGATAGTATCATAAGTTCCATAATTG\nAAAGATTCGGAGATTCTTTAAGTGGGAATAGTAAAGATATTTCAAACTTACAACGGACGGGCACATTAAG\nTTTAATTAATACTTATATGTTTCAACAAGATATGTTTAGATTACTGTTTGGTTATGGATTAGGGACTGTA\nGGAGATTTTATGTCTGTTAATACCGTTGTTATTCGTAATTTCTTGACGACAGATAATATGTATTTGACTT\nTTTTCTTTGAATTAGGGCTCTTGTCATTGATTAGTTATGGATTATTCTTTATTATTGGAGTCATTCGTTT\nTTTCTTATCTAAAAATTACTGGTTAAGCGAATTAGGCGCTTTATGTTTTATCTTTTTATCAATCATAATA\nTTTTTCTTTGAAGGTATAGGGTGGGGTACTGTAGTAACTGTTTGGATGTTTTCTTTACTGACCATTCTAA\nTGAAATTTAAAAATCCAAACAGTTTAACAAAAAATAAAATAAAATAGTTACAGTAGTATTTATACTAGTT\nTTTGGGAGAGAAACATGAACAAAAAACAATTAAAAGAAACAATTAATTCAGACTTATACAGAGTATACGG\nAAGTCAAGGAACAAAAAAGAAAATTATTAATTTCTTAAGAAACCCTGGCTTTAAATATTTATATATACTA\nCGTAAATGTAGTTATTATAAAGAGAAAAACAAGTTAATGTATAGATTGTATTTTATATTATTGTTGCGTT\nATCAGTATAAGTATGGACTAGAAATAATGCCTGATACGAAGATTGGAAAAGGCTTTTACATTGGACATAT\nAGGAGCTATTACAATTAATCCTAAATCTATAATTGGTGAAAATGTAAATATATTAAAAGGGGCATTACTT\nGGCTATAATCCGCGAGGGAAATATAAAGGCTGTCCAACTATAGGAGATGGTGTTTGGATAGGTCCTAATG\nCTGTAATAGTTGGTAATATTACAGTTGGAAATAATGTAGTGGTAGCGCCAAATACGTTAGTCAATAGGGA\nTGTTCCAAGTAATTCAGTTGTGGTAGGTAATCCGTGTCAAATTATTTCACAGGATAATGCAACTGAAGCT\nTATGTCAATTATACAGTTTAACAAAATACAATTTTAGTTGAAAAGGAGACGAGTTATCGTCTTCTTTTTT\nTATTGTCAAAAGGAGATGAGAACAGTGGAAGATGCAATTTTCAATTCAGTCATTCAACAGGGCGCATTCG\nCAGCGTTATTTGTGTGGATGCTATTTACTACACAAAAAAAGAACGAGCAGCGTGAGGAAAAGTATCAACA\nAGTAATTGATAGAAACCAACAAGTAATTGAAGAACAGGCAAAAGCCTTTGGATCTATTTCTAAGGATGTA\nACAGAAATTAAACAAAAATTATTTGAAGGAGATGTTCAATAATGGGATATATCGTTGATATTTCAAAATG\nGAATGGCAATATTAATTGGGATGTAGCTGCAGCGCAATTAGATTTAGTAATTGCTAGGGTACAAGATGGT\nTCAAATGTTGTGGATCATATGTATCAAAGTTATGTGAGTGAAATGAAAAGGCGTGGTGTTCCTTTTGGTA\nATTATGCGTTTTGTCGTTTCGTTTCTGAAAATGATGCAAGAGTTGAAGCGAGGGACTTCTGGAACCGCGG\nTGATAAAGATGCATTATTCTGGGTTGCTGATGTGGAAGTAAAAACAATGGGGAATATGTTAGCCGGAACA\nTTAGCTTTTATCGATGAGTTACGTCGATTAGGTGCTAAAAAGGTTGGTTTATATGTTGGCCATCATACAT\nATAAAGAGTTCCAAGCTGATAAAGTAAACGCTGATTTTGTATGGATTCCTCGATATGGTGGGAATAGACC\nAGCTTATCCATGTGATATCTGGCAATACACAGAGACAGGAAATGTACCTGGTATCGGTAAATGCGATTTA\nAATGAGTTAATTGGTGATAAATCGTTATCTTGGTTTACCAATAATCACATGGGCTTAGTTGTTCCTGAGG\nTAGGAAAGCGAGTTGTTTCTAAAGTAGAGACTCTTAGATTTTATTCAAAACCTTCCTGGGCGGATGTGGA\nTGTTGCTGGAACAGTTTCTAATGGTTTGGGGTTCGCTATCATTGGAAGAGTCGATGTGAATGGTTCGCCA\nCAATATAAAGTACAAAATTCTCGTGGTAGTGTCTTTTATATTACGGCTAGTCCAAAATATGTAGAAGTAA\nAATAAAAATTGCCGGCTCTTAATTGATATGCTCCCCCTATAGTAGACAGAAAAAAGAAAGCTTTATATCC\nTGTCTACTATAAGGGGGATTTTTTTATGGGGAAAATTAGAAGAACATATGATGAAACATTTAAGAAAAAG\nGCTATAGATTTATATTTTAAAGAAGGCATGGGTTATACCCAAATAGGAAAAACACTAAGCATTGATGAAA\nAAAACGTACGTAGATGGGTAAAACGTTTCAAAGAAGAGGGTATCAAAGGCTTAGAAGAGAAACGTGGAAA\nGGCTACTGGAGGAACAAAGGGGCGACCTAAAAATTGTCCAAAGGAGCCTACAGAAAGAATCAAATATTTA\nGAAACAGAGAATGAAATGCTAAAAAAGCTATTGGGAATGTTAAAGGAGGGATGAAAGCTGCACCAGCATA\nCAAAAAATATGAAATCATACAAGAAATGTCCAAAGGTATGCGTTCAATACAGCTACTGTGTAAAATCGCG\nGAAGTATCTAGAAGCGGATATTACAAGTGGTTAAAAAGGCAAAGCAATCCTTCTCCGAAGGAGATAGAAG\nATGAAAAAATAAAGAATAAAATTTTGGAATGTTATAACCAAGTGAAGGGTATCTACGGATACCGAAGAAT\nAACTGTGTGGTTAAAGATGAAACATGGGATCGTCGTAAACCACAAGAGAGTTCAACGACTAATGAATAGG\nATGAAACTTAAAGCAATTATCAGAAAAAAACGACCTTATTTTGTATCAAAAGAAGCATATGTAGTCTCAA\nAGAATTACTTGAATCGAGATTTTAAAGCGGAACAACCAAATGAAAAATGGGTAACAGATATTACTTACCT\nTATTTTTAATGGGAAAAAGCTATATCTATCCGCCATAAAGGACCTTTATAACAATGAAATTGTAGCTTAT\nCATATTAGCCATCGTCATGATATACAACTAGTTATCGATACGCTAAACAAGGCGAAAAAACAACGAAACG\nTGCAAGGGATTCTTTTGCATAGTGATCAAGGTTTCCAATACACTTCACGCCAATATAATGATTTCCTAAA\nAAAACATAAGATGAAAGCTAGTATGTCTAGAAAGGCGAATTGTTGGGACAATGCTTGTATGGAGAATTTC\nTTTAGTCATTTCAAAGCGGAGTGTTTTAATCTGAGTTCATTTCGTTCAGTAGAAGAAGTTAAATTTGCCG\nTACATAAGTATATTCATTTTTATAACCACCATCGTTTTCAGAAAAAATTAAAGAACCTGAGTCCATACGA\nATATCGAACTCAGGCTTCTTAACTATGCGTTTTAATTACTGTCTACTTGACAGGGGTCAGTACATAATTG\nAGTCGGCTTTTTTATTGCAAATCAGATATCCTTCTAACTTGTTTTTCTTTCTTCTTGAAGTTCTTCTTGT\nACTGTTTAAATTCTTCTTTATCTACGTGGAACTTTTCTCCGGTGGCAACGTTTTTAACTAAGTATGTTTT\nGGTTGTAAGAGATTTAATTATGTAATAAATAGCAAATAGCATAAGAGAAATACAAAAGGTAGGAATAGAA\nAATACAATAGCAAGTGCAGCTAGTATATTATCTCTCTTATGATCTCTTTGTAACACTAAACGTTTCCCTG\nCTGCAGCTTGAGCTTGTTCTAATTGTTGCATACGTTGTAGCGATGCTACAGTATCATAACTCATGAAAAA\nACCTCCTTGAAATAATACCTAAATCATACCAATTTCATGTAACAACTGTAAATGTTAGTTTCTCATTTAT\nTGACAAAACAGAACAATTGTTCTACAATTCATTTACAAACAAATGTTCTTGAAAGGGGAAATTCATATGG\nCAGCAACTGAAAATACAACTAAAGGAAAAGAGAAAGCATTAGAAGAGGCTCTGAAGAAAATCGTAAAAGA\nATTTGGTACAGGGGCTATTATGAAACTGGGTGAGCGTCCTAATCAAAAAGTATCTGTCGTATCAAGTGGT\nTCTGTTGGATTAGATAATGCTTTAGGGGTTGGTGGATATCCAAAAGGACGCATTACTGAAATCTTTGGTC\nCTGAATCTTCAGGTAAGACAACTATAGCATTACATGCAATTGCAGAAGCGCAAAAAGAAGGTGGAACAGC\nGGCATTTATTGATGCAGAGCATGCACTTGACCCTATTTATGCACAGAAGTTAGGTGTTAATATTGATGAA\nCTGCTCATGTCACAACCAGATACAGGAGAGCAAGCACTAGAGATTGCAGAAGCTCTAGTTAGAAGTGGGG\nCTGTAGATATCATTGTGATAGATTCTGTAGCTGCTCTAGTCCCGAAAGCGGAAATTGATGGGGACATGGG\nAGATTCACATGTGGGATTGCAGGCTAGATTGATGGGGCAGGCAATGAGAAAAATATCAGGAGCAATATCC\nAAAAATGGAGTTGTAGCAATCTTTTTAAATCAAATCAGAGAAAAAGTTGGTGTTTCTTTTGGGAGTCCTG\nAGACAACACCGGGTGGTAGGGCGTTAAAATTCTATTCAACAATTCGACTAGATGTACGTCGAGGAGAACA\nGTTGAAAGGAAAAGAAAGTGACGTTTTAGGGAATAAAACAAAAGTGAAAGTAGTAAAAAATAAAGTTGCT\nCCACCATTTAAAAACATTGACTTTGACATCTTATACGGAGAAGGGATTTCCCTAGAGGGAGAGCTTATTG\nATATTGGGGTAGAGTTAGATATTGTTCAGAAAAGTGGTGCATGGTACTCGTATCAAGAAGAACGTCTTGG\nGCAGGGTAGAGATAATGCCAAGCAATTTCTGAAAGAGAATGAAAACATACGTAATTCTGTTCGAAATAAA\nATTTATGAATACTATTCTCCAAAAGAAGACTCTGTTGTTGTAAAAGCGGAGCTTATAAAAGAAAATGAGC\nCCATCACTTTAAAAGAATCTGAATAAGGTTATATAAAGAGAATCTTAAAATAAAATTCATGCTATGTATA\nTTTTAAAAACTGGAACACCTAGTTATTAGAACTGGGTGTTTTTATATACTCATAAACTCACGATCAAAAT\nAAAGCTTATCCATTAAGTTTTTTGTATATTATTTTGCAAGTAAGTTCCGTACATATTTACCCAACTGTTC\nATCTGTTAAACCTGACTTAATTGCACCTTTAATAGCATCAATTGTATTAATTGTATGAGGTTCATTCTCT\nTCTTTCTTTTTACTATGTATCCATTTCTTATATAGTTCATCCTCTTTCTTTGCCAAACTCAAAGCGTTCT\nCAACAGTAGTAACTTTCTTCCTCACCCAATGACCAGCTATTTTTTTGACATACTCAGGATTCAATATCAT\nGTCTGATCTCAGCATCACATAATAAATCAAAACATTTATAACAGGGTTAGGCAACCTATAATTATCACGC\nATATCAGTAACTATATGCAAATCCCCTTTTGGAACAGTAGCACCGCCTGATAACTCGCTTAAAAGTTGTT\nCAGGTGTAACAGAATTTAATTGCTGTATCAATTTTTGTTGTTTTTCCATGAATTTATCCTCCTAATACTT\nTGTATAATATAAATTTTATCTAGTAATCTTCCGCATTTAATATAACCCCATTTCATCAGATTCTTCTTTA\nGATAGTTTGTAATATATACTTGGTGCAAGAGGGTTATCTATTGTATTTGTGGAGGGGGTTTTTGAGTCAT\nTATCTTCTAACCAATTATAATATACACTACTAGTATCTGTGTTAGTTTTACGTTTAGAAATATTGTGGAT\nGTCTCTAAATCTATCGATGTAGTCATATACCATACTTTTAAATGTATTAGTAAAGTATCCAATTGGATTT\nTTCATAAGCTCTCCATTGTGTTCAACTTCATGAGTTTTAGAGAATAAAGTAACAGATGCATTCGCAAGGA\nTATTGTTAAATACATCCTTGTCAGATAGTAAACTAAACTTCTTAGCAGCCTTTTTAGCGATATTTACAGC\nATTGTGGAAGGATTCGTTAATAACTTTTGAACCAAATGCAGTTGCTAATTTCATACGCATAGATTGTGGA\nACACGATAGTCGATAAAATCATTATCATTGACTGTAGATTGAAACTCATTTCTATTACGTATATTTATAT\nTTTTTATATTTTGTTTTAAGGTTTTAGTAGTTGTTTTATTGGTGTGACATTTTTCTTCATTTTTAATAGG\nTGCTTGTGTGACAACCTGTTCCTCCACAATAATTGGTTGAATAACAATCGCATTGCATGTTTGCCTCATA\nTCGCTTTTACGCTTCATTTCTAGTTGTTTAATAATACCTAAAGACTCTAAGTGTAGGCATACTCTAATAA\nCCGTTCTACGGCTAATATTGAGGTCTTCAGCGATGTGTTTTTTTGTTCTGAATGATACACCAAAGAACTT\nAGAAGAATAGTTGTGTAATTTATTTAATACAGCCAATTGAGTTTTATTTAACTGATCTACGAATTTTTCT\nTTGTATGCACGAACAGTCTTGTTTAATTCATCGACTGTTTTAAATGTTGCTAGGTTTTCATATGTTTCAT\nTACCTGCAATAATTGTAATTCCTTGTTTCTTTTCCATAACGGTTTGTCTCCTTTTTGGAAACAAAAAAGC\nAACAGAATGCCAAGTGTAAGCAAACTGTTGCTAAGGAGCCCTTACGTACTGTAAAATAGTTCGTAAGAGT\nACAGCAAGTGTTTGCCTAGTGTGATTAGGCGGACGGTATATAGAGTGTTGACGCACTTTATATACACGCT\n\n"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(her1410_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(her1410_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(her1410_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(her1410_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(her1410_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(her1410_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write</span>(her1410_1,<span class="at">file=</span><span class="st">"her1410_1.fasta"</span>)</span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>seq1 <span class="ot">&lt;-</span> <span class="fu">read.fasta</span>(<span class="st">"her1410_1.fasta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write</span>(her1410_1,<span class="at">file=</span><span class="st">"her1410_1.fasta"</span>)</span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>seq1 <span class="ot">&lt;-</span> <span class="fu">read.fasta</span>(<span class="st">"her1410_1.fasta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As you can see, you can very easily download the data from any NCBI database. Regarding sequences, the main drawback of the function <code>entrez_fecth()</code> is that the downloaded sequences are character objects and transform it into sequences that you can handle with <em>seqinr</em> or other packages is not straightforward and it requires some polishing (see <a href="#r7">ref. 7</a>). Alternatively, you can save the data as a new fasta file in your computer before importing with <em>seqinr,</em> as in the following example.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co">#compare two files</span></span>
-<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>her1410_2 <span class="ot">&lt;-</span> <span class="fu">entrez_fetch</span>(<span class="at">db=</span><span class="st">"nuccore"</span>, <span class="at">id=</span>her1410<span class="sc">$</span>ids[<span class="dv">2</span>], <span class="at">rettype=</span><span class="st">"fasta"</span>)</span>
-<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write</span>(her1410_2,<span class="at">file=</span><span class="st">"her1410_2.fasta"</span>)</span>
-<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>seq2 <span class="ot">&lt;-</span> <span class="fu">read.fasta</span>(<span class="st">"her1410_2.fasta"</span>)</span>
-<span id="cb94-5"><a href="#cb94-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-6"><a href="#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="co">#codon frequencies</span></span>
-<span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a>freq1 <span class="ot">&lt;-</span> <span class="fu">count</span>(<span class="fu">unlist</span>(seq1),<span class="dv">3</span>, <span class="at">freq=</span><span class="cn">TRUE</span>)</span>
-<span id="cb94-8"><a href="#cb94-8" aria-hidden="true" tabindex="-1"></a>freq2 <span class="ot">&lt;-</span> <span class="fu">count</span>(<span class="fu">unlist</span>(seq2),<span class="dv">3</span>, <span class="at">freq=</span><span class="cn">TRUE</span>)</span>
-<span id="cb94-9"><a href="#cb94-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-10"><a href="#cb94-10" aria-hidden="true" tabindex="-1"></a>stop1 <span class="ot">&lt;-</span> freq1[<span class="fu">which</span>(<span class="fu">names</span>(freq1)<span class="sc">==</span><span class="st">"tga"</span><span class="sc">|</span> <span class="fu">names</span>(freq1)<span class="sc">==</span> <span class="st">"tag"</span> <span class="sc">|</span> <span class="fu">names</span>(freq1)<span class="sc">==</span> <span class="st">"taa"</span>)]</span>
-<span id="cb94-11"><a href="#cb94-11" aria-hidden="true" tabindex="-1"></a>stop2 <span class="ot">&lt;-</span> freq2[<span class="fu">which</span>(<span class="fu">names</span>(freq2)<span class="sc">==</span><span class="st">"tga"</span><span class="sc">|</span> <span class="fu">names</span>(freq2)<span class="sc">==</span> <span class="st">"tag"</span> <span class="sc">|</span> <span class="fu">names</span>(freq2)<span class="sc">==</span> <span class="st">"taa"</span>)]</span>
-<span id="cb94-12"><a href="#cb94-12" aria-hidden="true" tabindex="-1"></a>stops <span class="ot">&lt;-</span> <span class="fu">rbind</span>(stop1,stop2)</span>
-<span id="cb94-13"><a href="#cb94-13" aria-hidden="true" tabindex="-1"></a>stops <span class="ot">&lt;-</span>  <span class="fu">as.data.frame</span>(stops)</span>
-<span id="cb94-14"><a href="#cb94-14" aria-hidden="true" tabindex="-1"></a>stops<span class="sc">$</span>sequences <span class="ot">&lt;-</span> <span class="fu">c</span>(her1410<span class="sc">$</span>ids[<span class="dv">1</span>],her1410<span class="sc">$</span>ids[<span class="dv">2</span>])</span>
-<span id="cb94-15"><a href="#cb94-15" aria-hidden="true" tabindex="-1"></a>stops <span class="ot">&lt;-</span> <span class="fu">cbind</span>(stops<span class="sc">$</span>sequences,<span class="fu">stack</span>(stops[,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]))</span>
-<span id="cb94-16"><a href="#cb94-16" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(stops) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"sequences"</span>,<span class="st">"freqs"</span>,<span class="st">"stop_codon"</span>)</span>
-<span id="cb94-17"><a href="#cb94-17" aria-hidden="true" tabindex="-1"></a><span class="co">#plot</span></span>
-<span id="cb94-18"><a href="#cb94-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb94-19"><a href="#cb94-19" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>stops) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">toupper</span>(stop_codon),<span class="at">y=</span>freqs,<span class="at">col=</span>sequences,<span class="at">fill=</span>sequences),<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">position=</span><span class="st">"dodge"</span>,<span class="at">alpha=</span><span class="fl">0.8</span>) </span>
-<span id="cb94-20"><a href="#cb94-20" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span> <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span> <span class="fu">theme_linedraw</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Codon frequency"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Stop codon"</span>) <span class="sc">+</span>  <span class="fu">guides</span>(<span class="at">color=</span><span class="st">"none"</span>, <span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"HER1410 sequences"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co">#compare two files</span></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>her1410_2 <span class="ot">&lt;-</span> <span class="fu">entrez_fetch</span>(<span class="at">db=</span><span class="st">"nuccore"</span>, <span class="at">id=</span>her1410<span class="sc">$</span>ids[<span class="dv">2</span>], <span class="at">rettype=</span><span class="st">"fasta"</span>)</span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write</span>(her1410_2,<span class="at">file=</span><span class="st">"her1410_2.fasta"</span>)</span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>seq2 <span class="ot">&lt;-</span> <span class="fu">read.fasta</span>(<span class="st">"her1410_2.fasta"</span>)</span>
+<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="co">#codon frequencies</span></span>
+<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a>freq1 <span class="ot">&lt;-</span> <span class="fu">count</span>(<span class="fu">unlist</span>(seq1),<span class="dv">3</span>, <span class="at">freq=</span><span class="cn">TRUE</span>)</span>
+<span id="cb102-8"><a href="#cb102-8" aria-hidden="true" tabindex="-1"></a>freq2 <span class="ot">&lt;-</span> <span class="fu">count</span>(<span class="fu">unlist</span>(seq2),<span class="dv">3</span>, <span class="at">freq=</span><span class="cn">TRUE</span>)</span>
+<span id="cb102-9"><a href="#cb102-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-10"><a href="#cb102-10" aria-hidden="true" tabindex="-1"></a>stop1 <span class="ot">&lt;-</span> freq1[<span class="fu">which</span>(<span class="fu">names</span>(freq1)<span class="sc">==</span><span class="st">"tga"</span><span class="sc">|</span> <span class="fu">names</span>(freq1)<span class="sc">==</span> <span class="st">"tag"</span> <span class="sc">|</span> <span class="fu">names</span>(freq1)<span class="sc">==</span> <span class="st">"taa"</span>)]</span>
+<span id="cb102-11"><a href="#cb102-11" aria-hidden="true" tabindex="-1"></a>stop2 <span class="ot">&lt;-</span> freq2[<span class="fu">which</span>(<span class="fu">names</span>(freq2)<span class="sc">==</span><span class="st">"tga"</span><span class="sc">|</span> <span class="fu">names</span>(freq2)<span class="sc">==</span> <span class="st">"tag"</span> <span class="sc">|</span> <span class="fu">names</span>(freq2)<span class="sc">==</span> <span class="st">"taa"</span>)]</span>
+<span id="cb102-12"><a href="#cb102-12" aria-hidden="true" tabindex="-1"></a>stops <span class="ot">&lt;-</span> <span class="fu">rbind</span>(stop1,stop2)</span>
+<span id="cb102-13"><a href="#cb102-13" aria-hidden="true" tabindex="-1"></a>stops <span class="ot">&lt;-</span>  <span class="fu">as.data.frame</span>(stops)</span>
+<span id="cb102-14"><a href="#cb102-14" aria-hidden="true" tabindex="-1"></a>stops<span class="sc">$</span>sequences <span class="ot">&lt;-</span> <span class="fu">c</span>(her1410<span class="sc">$</span>ids[<span class="dv">1</span>],her1410<span class="sc">$</span>ids[<span class="dv">2</span>])</span>
+<span id="cb102-15"><a href="#cb102-15" aria-hidden="true" tabindex="-1"></a>stops <span class="ot">&lt;-</span> <span class="fu">cbind</span>(stops<span class="sc">$</span>sequences,<span class="fu">stack</span>(stops[,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]))</span>
+<span id="cb102-16"><a href="#cb102-16" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(stops) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"sequences"</span>,<span class="st">"freqs"</span>,<span class="st">"stop_codon"</span>)</span>
+<span id="cb102-17"><a href="#cb102-17" aria-hidden="true" tabindex="-1"></a><span class="co">#plot</span></span>
+<span id="cb102-18"><a href="#cb102-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb102-19"><a href="#cb102-19" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>stops) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">toupper</span>(stop_codon),<span class="at">y=</span>freqs,<span class="at">col=</span>sequences,<span class="at">fill=</span>sequences),<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">position=</span><span class="st">"dodge"</span>,<span class="at">alpha=</span><span class="fl">0.8</span>) </span>
+<span id="cb102-20"><a href="#cb102-20" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span> <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>) <span class="sc">+</span> <span class="fu">theme_linedraw</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Codon frequency"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Stop codon"</span>) <span class="sc">+</span>  <span class="fu">guides</span>(<span class="at">color=</span><span class="st">"none"</span>, <span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"HER1410 sequences"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r9_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="r9_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1062,31 +1104,35 @@ I'm trying to get the infos about the elements of the list...
 <h2 data-number="1.6" class="anchored" data-anchor-id="example-1-sequence-logos-with-ggseqlogo"><span class="header-section-number">1.6</span> Example 1: Sequence logos with <code>ggseqlogo</code></h2>
 <p>R is very useful for many applications in Biochemistry and Molecular Biology, and <em>ggplot</em> is a very good example of that.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co">#script by Luis del Peso</span></span>
-<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>Counts<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">38</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">21</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">9</span>,<span class="dv">23</span>,<span class="dv">4</span>,<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">46</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">32</span>,<span class="dv">17</span>,</span>
-<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>                 <span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">11</span>,<span class="dv">18</span>,<span class="dv">9</span>,<span class="dv">16</span>,<span class="dv">23</span>,<span class="dv">11</span>,<span class="dv">20</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">0</span>,<span class="dv">46</span>,<span class="dv">0</span>,<span class="dv">46</span>,<span class="dv">2</span>,<span class="dv">17</span>,<span class="dv">21</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>,</span>
-<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>                 <span class="dv">27</span>,<span class="dv">8</span>,<span class="dv">13</span>,<span class="dv">8</span>,<span class="dv">16</span>,<span class="dv">22</span>,<span class="dv">24</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">46</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">11</span>,<span class="dv">11</span>,<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">11</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">1</span>),</span>
-<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow=</span><span class="dv">4</span>,<span class="at">byrow =</span> T,</span>
-<span id="cb95-6"><a href="#cb95-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">dimnames=</span><span class="fu">list</span>(<span class="at">Nucleotide=</span><span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"C"</span>,<span class="st">"G"</span>,<span class="st">"T"</span>),<span class="at">Pos=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">18</span>))</span>
-<span id="cb95-7"><a href="#cb95-7" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Counts)</span>
-<span id="cb95-8"><a href="#cb95-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(counts) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">18</span></span>
-<span id="cb95-9"><a href="#cb95-9" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">stack</span>(counts),<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"C"</span>,<span class="st">"G"</span>,<span class="st">"T"</span>))</span>
-<span id="cb95-10"><a href="#cb95-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(counts) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"values"</span>,<span class="st">"pos"</span>,<span class="st">"nucleotide"</span>)</span>
-<span id="cb95-11"><a href="#cb95-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(counts, <span class="fu">aes</span>(<span class="at">x=</span>pos, <span class="at">y=</span>values, <span class="at">fill=</span>nucleotide)) <span class="sc">+</span> </span>
-<span id="cb95-12"><a href="#cb95-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">"stack"</span>, <span class="at">stat=</span><span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co">#script by Luis del Peso</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>Counts<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">38</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">21</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">9</span>,<span class="dv">23</span>,<span class="dv">4</span>,<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">46</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">32</span>,<span class="dv">17</span>,</span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>                 <span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">11</span>,<span class="dv">18</span>,<span class="dv">9</span>,<span class="dv">16</span>,<span class="dv">23</span>,<span class="dv">11</span>,<span class="dv">20</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">0</span>,<span class="dv">46</span>,<span class="dv">0</span>,<span class="dv">46</span>,<span class="dv">2</span>,<span class="dv">17</span>,<span class="dv">21</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>,</span>
+<span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a>                 <span class="dv">27</span>,<span class="dv">8</span>,<span class="dv">13</span>,<span class="dv">8</span>,<span class="dv">16</span>,<span class="dv">22</span>,<span class="dv">24</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">46</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">11</span>,<span class="dv">11</span>,<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">11</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">1</span>),</span>
+<span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow=</span><span class="dv">4</span>,<span class="at">byrow =</span> T,</span>
+<span id="cb103-6"><a href="#cb103-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">dimnames=</span><span class="fu">list</span>(<span class="at">Nucleotide=</span><span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"C"</span>,<span class="st">"G"</span>,<span class="st">"T"</span>),<span class="at">Pos=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">18</span>))</span>
+<span id="cb103-7"><a href="#cb103-7" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Counts)</span>
+<span id="cb103-8"><a href="#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(counts) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">18</span></span>
+<span id="cb103-9"><a href="#cb103-9" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">stack</span>(counts),<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"C"</span>,<span class="st">"G"</span>,<span class="st">"T"</span>))</span>
+<span id="cb103-10"><a href="#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(counts) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"values"</span>,<span class="st">"pos"</span>,<span class="st">"nucleotide"</span>)</span>
+<span id="cb103-11"><a href="#cb103-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(counts, <span class="fu">aes</span>(<span class="at">x=</span>pos, <span class="at">y=</span>values, <span class="at">fill=</span>nucleotide)) <span class="sc">+</span> </span>
+<span id="cb103-12"><a href="#cb103-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">"stack"</span>, <span class="at">stat=</span><span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r9_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="r9_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This is not a very interesting plot. Now, in order to plot the PSSM as a sequence logo, we are going to use the package <code>ggseqlogo</code>. Also, to arrange plot, we will use the package <code>gridExtra</code>, which is very handy and commonly used to generate complex figures.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(ggseqlogo)) <span class="fu">install.packages</span>(<span class="st">"ggseqlogo"</span>, <span class="at">repos =</span> <span class="st">"https://cran.rstudio.com/"</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(ggseqlogo)) <span class="fu">install.packages</span>(<span class="st">"ggseqlogo"</span>, <span class="at">repos =</span> <span class="st">"https://cran.rstudio.com/"</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: ggseqlogo</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggseqlogo)</span>
-<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggseqlogo</span>(Counts) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggseqlogo)</span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggseqlogo</span>(Counts) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use "none" instead as
 of ggplot2 3.3.4.
@@ -1094,20 +1140,28 @@ of ggplot2 3.3.4.
   Please report the issue at &lt;https://github.com/omarwagih/ggseqlogo/issues&gt;.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="r9_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="r9_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("gridExtra")</span></span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggseqlogo</span>(Counts, <span class="at">method=</span><span class="st">"prob"</span>)</span>
-<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggseqlogo</span>(Counts, <span class="at">method=</span><span class="st">"bits"</span>)</span>
-<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("gridExtra")</span></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggseqlogo</span>(Counts, <span class="at">method=</span><span class="st">"prob"</span>)</span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggseqlogo</span>(Counts, <span class="at">method=</span><span class="st">"bits"</span>)</span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r9_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="r9_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Let’s plot some protein logo from the example sequences in the package. Remember that we are working with an add-ons to <em>ggplot</em>. That means that all <code>ggplot</code> elements can be used.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ggseqlogo_sample)</span>
-<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(seqs_aa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ggseqlogo_sample)</span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(seqs_aa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 4
  $ AKT1   : chr [1:172] "VVGARRSSWRVVSSI" "GPRSRSRSRDRRRKE" "LLCLRRSSLKAYGNG" "TERPRPNTFIIRCLQ" ...
@@ -1117,7 +1171,7 @@ of ggplot2 3.3.4.
 </div>
 </div>
 <div class="cell" data-output.lines="[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(seqs_aa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(seqs_aa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$AKT1
   [1] "VVGARRSSWRVVSSI" "GPRSRSRSRDRRRKE" "LLCLRRSSLKAYGNG" "TERPRPNTFIIRCLQ"
@@ -1141,13 +1195,21 @@ of ggplot2 3.3.4.
  [73] "RVRVRLLSGDTYEAV" "GGRSRSGSIVELIAG" "EMRERLGTGGFGNVC" "VPSGRKGSGDYMPMS"
 --- Cropped output ---</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggseqlogo</span>(seqs_aa, <span class="at">ncol=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggseqlogo</span>(seqs_aa, <span class="at">ncol=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r9_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="r9_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggseqlogo</span>(seqs_aa, <span class="at">ncol=</span><span class="dv">2</span>) <span class="sc">+</span>   <span class="fu">theme_light</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggseqlogo</span>(seqs_aa, <span class="at">ncol=</span><span class="dv">2</span>) <span class="sc">+</span>   <span class="fu">theme_light</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r9_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="r9_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1171,7 +1233,7 @@ of ggplot2 3.3.4.
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/paste-8062F001.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Illustrative description elaborating the different file types at various stages in a typical analysis, with the package names (in pink boxes) that one will use for each stage. From: <a href="https://www.bioconductor.org/packages/release/workflows/vignettes/sequencing/inst/doc/sequencing.html" class="uri">https://www.bioconductor.org/packages/release/workflows/vignettes/sequencing/inst/doc/sequencing.html</a></figcaption>
+<figcaption>Illustrative description elaborating the different file types at various stages in a typical analysis, with the package names (in pink boxes) that one will use for each stage. From: <a href="https://www.bioconductor.org/packages/release/workflows/vignettes/sequencing/inst/doc/sequencing.html" class="uri">https://www.bioconductor.org/packages/release/workflows/vignettes/sequencing/inst/doc/sequencing.html</a></figcaption>
 </figure>
 </div>
 <p>Some of the most common Bioconductor packages and functions are:</p>
@@ -1208,15 +1270,15 @@ of ggplot2 3.3.4.
 <section id="session-info" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Session Info</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.0 (2023-04-21)
-Platform: x86_64-apple-darwin20 (64-bit)
-Running under: macOS Ventura 13.4.1
+<pre><code>R version 4.4.1 (2024-06-14)
+Platform: x86_64-apple-darwin20
+Running under: macOS Sonoma 14.6.1
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -1228,28 +1290,27 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] ggseqlogo_0.1      ggplot2_3.4.2      rentrez_1.2.3      RColorBrewer_1.1-3
-[5] seqinr_4.2-30      formatR_1.14       knitr_1.43         webexercises_1.1.0
+[1] ggseqlogo_0.2      ggplot2_3.5.1      rentrez_1.2.3      RColorBrewer_1.1-3
+[5] seqinr_4.2-36      webexercises_1.1.0 formatR_1.14       knitr_1.50        
 
 loaded via a namespace (and not attached):
- [1] ade4_1.7-22       gtable_0.3.3      jsonlite_1.8.4    dplyr_1.1.2      
- [5] compiler_4.3.0    tidyselect_1.2.0  Rcpp_1.0.10       gridExtra_2.3    
- [9] scales_1.2.1      yaml_2.3.7        fastmap_1.1.1     R6_2.5.1         
-[13] labeling_0.4.2    generics_0.1.3    curl_5.0.0        htmlwidgets_1.6.2
-[17] MASS_7.3-58.4     XML_3.99-0.14     tibble_3.2.1      munsell_0.5.0    
-[21] pillar_1.9.0      rlang_1.1.1       utf8_1.2.3        xfun_0.39        
-[25] cli_3.6.1         withr_2.5.0       magrittr_2.0.3    digest_0.6.31    
-[29] grid_4.3.0        rstudioapi_0.14   lifecycle_1.0.3   vctrs_0.6.2      
-[33] evaluate_0.21     glue_1.6.2        farver_2.1.1      fansi_1.0.4      
-[37] colorspace_2.1-0  rmarkdown_2.21    httr_1.4.6        tools_4.3.0      
-[41] pkgconfig_2.0.3   htmltools_0.5.5  </code></pre>
+ [1] ade4_1.7-23       gtable_0.3.6      jsonlite_2.0.0    dplyr_1.1.4      
+ [5] compiler_4.4.1    tidyselect_1.2.1  Rcpp_1.0.14       gridExtra_2.3    
+ [9] scales_1.3.0      yaml_2.3.10       fastmap_1.2.0     R6_2.6.1         
+[13] labeling_0.4.3    generics_0.1.3    curl_6.2.2        htmlwidgets_1.6.4
+[17] MASS_7.3-65       XML_3.99-0.18     tibble_3.2.1      munsell_0.5.1    
+[21] pillar_1.10.1     rlang_1.1.5       xfun_0.51         cli_3.6.4        
+[25] withr_3.0.2       magrittr_2.0.3    digest_0.6.37     grid_4.4.1       
+[29] rstudioapi_0.17.1 lifecycle_1.0.4   vctrs_0.6.5       evaluate_1.0.3   
+[33] glue_1.8.0        farver_2.1.2      colorspace_2.1-1  rmarkdown_2.29   
+[37] httr_1.4.7        tools_4.4.1       pkgconfig_2.0.3   htmltools_0.5.8.1</code></pre>
 </div>
 </div>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><section id="refs" class="level1" data-number="3">
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><section id="refs" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> References</h1>
 <ol type="1">
 <li><p><em>R in action.</em> Robert I. Kabacoff. March 2022 ISBN 9781617296055</p></li>
@@ -1510,18 +1571,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1553,11 +1603,55 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1567,8 +1661,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1580,7 +1683,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1624,6 +1849,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1649,6 +1875,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1706,28 +1958,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          // default icon
-          link.classList.add("external");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Modesto Redrejo Rodríguez &amp; Luis del Peso, 2023</div>   
+    <div class="nav-footer-left">
+<p>Modesto Redrejo Rodríguez &amp; Luis del Peso, 2025</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1739,16 +1977,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </i> 
     </a>
   </li>  
-    <li class="nav-item compact">
+    <li class="nav-item">
     <a class="nav-link" href="https://twitter.com/mredrejo">
-      <i class="bi bi-twitter" role="img">
-</i> 
-    </a>
+<p><iconify-icon inline="" icon="fa6-brands:x-twitter"></iconify-icon></p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/mredrejo.bsky.social">
+<p><iconify-icon inline="" icon="simple-icons:bluesky"></iconify-icon></p>
+</a>
   </li>  
 </ul>
     </div>
   </div>
 </footer>
+
 
 
 

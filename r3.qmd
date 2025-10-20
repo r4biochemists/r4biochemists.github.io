@@ -1,0 +1,453 @@
+---
+title: "R3: Read and write data in R"
+date: "August 16, 2024"
+date-modified: "`r format(Sys.time(), '%Y-%m-%d (%H:%M h)')`"
+categories: 
+  - Input
+  - Output
+  - Read
+  - Write
+  - Path
+  - Working Directory
+engine: knitr
+format: html
+page-layout: full
+filters:
+  - webr
+toc: true
+toc-location: left
+toc-depth: 2
+number-sections: true
+code-overflow: wrap
+link-external-icon: true
+link-external-newwindow: true 
+---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r wrap-hook, echo=FALSE}
+library(knitr)
+library(formatR)
+library(webexercises)
+opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
+#in RMD files, the default wd for R code chunks is the directory that contains the Rmd document. 
+#We change it here to share the working directory with all the Rmd files of the course
+knitr::opts_knit$set(root.dir = "~/Documents/GitHub/r4biochemists.github.io")
+
+```
+
+
+
+# [Working directory in R]{style="color:darkblue"}
+
+More often, you can process commands from a script file (a file containing R statements) and also import data from text files, databases (MySQL) or other proprietary formats, such as Excel or GraphPad Prism. We will focus on text files by the moment, as importing files in specific formats requires dedicated external packages. By default, R will read/write in the *working directory (wd)*. The *wd* is indicated in the Console panel, as you can see below in a screenshot of my Rstudio screen right now.
+
+![](images/console.png){width="545"}
+
+Note that the abbreviation '\~' stands for your home directory (for me `/Users/modesto` or `/home/modesto` on MacOS or Linux, respectively).
+
+The functions `getwd()` and `setwd()` allow you to check and change the *wd*. Try the examples below and pay attention to the output. Remember that you can write `?getwd()` or `?setwd()` for help.
+
+```{r, error=TRUE}
+getwd()
+setwd("/Users/modesto")
+getwd()
+#Obviously the path must call an existing directory (no typos allowed)
+setwd("/Users/modsto/Documents/GitHub/r4biochemists.github.io") 
+setwd("/Users/modesto/Documents/GitHub/r4biochemists.github.io")
+getwd()
+```
+
+In RStudio, the *default working directory* can be set from the "tools" and "global options" menu. Also, you can change the *wd* for your session in the menu **Session \> Set Working Directory** and change it to that of source file (for instant your R script), or the selected directory in the files panel.
+
+::: {.callout-tip}
+## Wouldn't it be great if you didn’t have to manually set the working directory every time?
+
+If setting the working directory feels annoying or confusing, you can avoid it by using an [R Project](r7.html#rprojects) in RStudio, as explained in Lesson R7. R Projects automatically manage the working directory for you, making your workflow smoother and more reproducible.
+:::
+
+------------------------------------------------------------------
+
+## [Quick exercise (I)]{style="color:darkseagreen"}
+
+Let's see if you understood. Consider the following tree of directories.
+
+![](images/tree.png){width="279"}
+
+How would you change de *wd* to the folder `HPBBM2023/data`? You also can try with your own computer and your directory tree.
+
+```{r wd, echo = FALSE, results = 'asis'}
+opts_p <- c(
+   "setwd(\"HPBBM2023/data\")",
+   answer = "setwd(\"/home/modesto/Documents/teaching/2023_2024/HPBBM2023/data\")",
+   "setwd(\"/Users/modesto/teaching/Documents/2023_2024/HPBBM2023/data\")")
+
+cat("**Select the right answer**",longmcq(opts_p))
+```
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+# [Reading/writing data in R]{style="color:darkblue"}
+
+The most common way to read your data in R is importing it as a table, using the function `read.table()`. Note that the resultant object will become a *Dataframe*, even when all the entries got to be numeric. A followup call towards `as.matrix()` will turn it into in a matrix.
+
+In the following example lines we read a file called [*small_matrix.csv*](data/small_matrix.csv), located in the `data` folder. If we attempt to make some matrix calculations, R will force the dataframe to a matrix when possible, but it will return an Error for many matrix-specific operations or functions unless, we transform the dataframe into a matrix.
+
+```{r error=TRUE}
+sm <- read.table("small_matrix.csv", sep=",") #what happens here?
+#check the path
+getwd()
+#now we use the right path
+sm <- read.table("data/small_matrix.csv", sep=",") 
+sm
+#is this an object type matrix?
+is.matrix(sm)
+#can we operate with it as a matrix?
+t(sm)
+#we can force an object to operate as a matrix
+sm * 3
+diag(sm)
+#some operations cannot coerce a matrix but we can explicit it
+diag(as.matrix(sm))
+heatmap(sm)
+heatmap(as.matrix(sm))
+```
+
+::: callout-tip
+Note that `read.table()` and its wrappers `read.csv()` or `read.csv2()` are mostly use for reading dataframes. If your want to read text files, like in the case of biological sequences, you can use other functions, like `readLines()`, described in the [Lesson 9](r9.html).
+:::
+
+You can write any data object(s) as binary data file or as text files. Compare the different files saved in the code below.
+
+::: {#save1}
+:::
+
+```{r}
+vector <- c(1:5)
+vector2 <- c(3, 5:13)
+write(vector2,file="data/vector2.txt")
+write.table(sm,"data/sm.csv")
+write.table(sm,"data/sm2.csv", row.names = FALSE, col.names=FALSE, sep=",")
+
+save(vector, vector2,file="data/vector2.Rdata")
+save.image(file='data/myEnvironment.RData')
+```
+
+::: {#load}
+:::
+
+Data files in RData format can be open from the *Environment* tab or with the `load()` function. To check that it was correctly loaded, we can remove it before loading with the `rm()` function.
+
+```{r}
+#remove from the Global Environment in our RStudio session
+rm(vector)
+rm(vector2)
+#load again
+load("data/vector2.Rdata")
+vector
+vector2
+```
+
+::: callout-caution
+Note that if you save your data with `save()`, it cannot be restored under a different name. The original object names are automatically used. If you want to save the object and restore it with a different name you need to use the functions `saveRDS()` and `readRDS()`
+:::
+
+------------------------------------------------------------------------
+
+## [Quick exercise (II)]{style="color:darkseagreen"}
+
+We are using the same directory tree. Your *wd* is `HPBBM2022/data` and you need to save a data.frame named `table1` as `table1.csv` in the folder `HPBBM2023/data` using `;` as separator. How would you do it *without changing* the working directory? Try it also with your own computer.
+
+```{r  echo = FALSE, results = 'asis'}
+opts_p <- c(
+   answer = "write.table(table1, \"../../../teaching/HPBBM2023/data/table1.csv\", sep=\";\") ",
+   "write.table(table1, \"../../HPBBM2023/data/table1.csv\", sep=\";\") ",
+   "write.table(table1, \"../../../HPBBM2023/data/table1.csv\")"
+)
+
+
+cat("**Select the right answer**",longmcq(opts_p))
+```
+
+------------------------------------------------------------------------
+
+::: {.callout-note}
+# [Interactive data input & output in R]
+
+You will almost always import your working data from a file. However, especially if you are working with very small datasets, it is also possible to add your data interactively directly in the console, as you did in some of the examples before. You can also define your objects and enter your data interactively using the `scan()` and `readline()` functions, as in the examples below. For output, you can simply call the object by its name or use the `print()` function, which displays the contents of the object on the screen. You can try the following code.[^1]
+
+[^1]: Since it is interactive we cannot run it when we render the source file into a static web page. This can be prevented in markdown/quarto with the option \`eval: false\` in the chunk.
+
+```{r}
+#| echo: true
+#| eval: false
+
+vector <- scan(n=4)
+vector2 <- scan()
+str <- readline()
+vector
+print(vector2)
+print(str)
+edit(str)
+```
+
+Although seldom used, you can also edit the contents of your objects using the function `edit()`. This function can be used to edit different objects, including vectors, strings, matrices or dataframes. MacOS users may need to install [XQuartz X11](https://www.xquartz.org/) tool.
+:::
+
+# [Basic Data Management in R]{style="color:darkblue"}
+
+Now we are going to import and explore an example dataset, containing metadata from an Illumina sequencing project of pathogenic *E. coli* strains (Flament-Simon et al. 2020, <https://doi.org/10.1038/s41598-020-69356-6>). However, for didactic purposes, the original data have been simplified and manipulated and the attached datasets do not fully correspond to the actual data.
+
+## Open and explore a dataframe
+
+As you can see in the R help, the function `read.table()` has several default options as FALSE, like `header=FALSE`. When you have a spreadsheet export file, i.e. having a table where the fields are divided by commas in place of spaces, you can use `read.csv()` in place of `read.table()`. For Spaniards, there is also `read.csv2()`, which uses a comma for the decimal point and a semicolon for the separator. The latter functions are wrappers of `read.table()` with custom default options. Likewise, there are `write.csv()` and `write.csv2()`, which are wrappers of `write.table()`. Look carefully at the following examples of different ways to open a table (with some common mistakes) and explore them quickly.
+
+```{r error=TRUE}
+#Note differences between read.table(), read.csv() and read.csv2()
+coli_genomes <- read.table(file = "data/coli_genomes.csv")
+head(coli_genomes)
+coli_genomes <- read.table(file = "data/coli_genomes.csv", sep=";", dec=".", header=TRUE)
+head(coli_genomes) 
+coli_genomes <- read.csv(file = "data/coli_genomes.csv")
+head(coli_genomes)
+coli_genomes <- read.csv(file = "data/coli_genomes.csv", sep=";")
+head(coli_genomes)  
+coli_genomes <- read.csv2(file = "data/coli_genomes.csv")
+head(coli_genomes)
+
+#read some data
+head(coli_genomes)
+tail(coli_genomes, n=2)
+coli_genomes[1,]
+coli_genomes[,1]
+coli_genomes[1:6,2:4]
+
+#explore the dataframe structure
+dim(coli_genomes)
+length(coli_genomes)
+ncol(coli_genomes)
+nrow(coli_genomes)
+#dataframe estructure in one line
+str(coli_genomes) 
+#type of data in each variable
+typeof(coli_genomes$Strain) 
+typeof(coli_genomes[,2])
+typeof(coli_genomes[,9])
+
+#col and row names
+names(coli_genomes)
+colnames(coli_genomes)
+rownames(coli_genomes)
+names(coli_genomes[3])<-'Year'
+names(coli_genomes)[3]<-'Year'
+colnames(coli_genomes[3])<-'Year'
+
+```
+
+Some of the columns include 'chr' data that may be actually a categorical variable, so we can code them as **factor**. Using the expression *as.factor()* you can check whether the data would correspond to a text or a categorical variable.
+
+```{r}
+coli_genomes$Source<-as.factor(coli_genomes$Source)
+coli_genomes$Phylogroup<-as.factor(coli_genomes$Phylogroup)
+
+str(coli_genomes) #dataframe estructure updated
+```
+
+How many levels are there in *Source*?? It is not uncommon to see some mistake in our data, usually made when the data were recorded, for example a space may have been inserted before a data value. By default this white space will be kept in the R environment, such that 'Human' will be recognized as a different value than 'Human'. In order to avoid this type of error, we can use the **`strip.white`** argument.
+
+```{r}
+unique(coli_genomes$Source)
+table(coli_genomes$Source)
+coli_genomes <- read.csv2(file = "data/coli_genomes.csv",  strip.white = TRUE)
+coli_genomes$Source<-as.factor(coli_genomes$Source)
+coli_genomes$Phylogroup<-as.factor(coli_genomes$Phylogroup)
+
+unique(coli_genomes$Source)
+```
+
+At this point, you may consider that writing the name of the dataframe every time that you want to work with it can be repetitive. In fact, we don't need to do it.
+
+```{r}
+attach(coli_genomes) #attach
+table(Source)
+detach(coli_genomes)
+```
+
+Note that attach can be used for any R object, including dataframes, lists, vectors, packages... Once attached, R will consider those objects as databases, located in new, temporal environments.
+
+::: {.callout-tip title="Throw out the trash"}
+If you want to remove some data to free up your computer's memory, you can use the `rm()` function (aka `remove()`) to remove a specific object from your working environment. If you are running a script with large datasets, you can also use `gc()` to free memory after a large object has been removed. This is also done automatically without the user having to intervene, but it can be useful to call gc after a large object has been removed, as this can prompt R to return memory to the operating system.
+:::
+
+## Renaming, changing and adding variables
+
+We can also rename some variables to use more easy names.
+
+```{r}
+names(coli_genomes) #see all variable names
+#rename variables
+names(coli_genomes)[3]<-'Year'
+names(coli_genomes)[10]<-'Plasmids'
+names(coli_genomes)[c(15,16)]<-c('Assembly_length','contigs1kb')
+#check
+names(coli_genomes)
+
+```
+
+We are going to simplify our dataframe by dropping one or more variables (columns):
+
+```{r}
+coli_genomes[,-12]
+
+# this can be also used to remove rows (cases)
+coli_genomes<-coli_genomes[-c(9:11),]
+
+```
+
+We know the 'Assembly length' and the number of 'Contigs', but we would like to represent the average contig length.
+
+```{r}
+coli_genomes$average_contig<-coli_genomes$Assembly_length / coli_genomes$Contigs
+```
+
+## Dealing with *NAs*
+
+It is very easy to calculate statistics of one variable. Imagine we want to know the average year of sample isolation.
+
+```{r}
+mean(coli_genomes$Year) 
+```
+
+As you may have guessed, the `NA` output means that there are some NA values and mean cannot be calculated. We can check that and omit the NAs.
+
+```{r}
+#check for NA values
+is.na(coli_genomes)
+#how many NAs
+table(is.na(coli_genomes))
+#alternative: check only NA-containing rows (a FALSE output indicates an incomplete observation)
+complete.cases(coli_genomes)
+
+#na.rm=TRUE will omit the NAs for this function
+mean(coli_genomes$Year, na.rm=TRUE)
+```
+
+What if we want to remove observations with an NA from the whole table?
+
+```{r}
+#create a new data.frame without NAs
+coli_genomes2<-na.omit(coli_genomes)
+#can we now compute the mean without na.rm=T?
+mean(coli_genomes2$Year)
+```
+
+In fact, you can use `na.omit()` for any object, either an vector, data.frame or a list.
+
+## [Quick exercise (III)]{style="color:darkseagreen"}
+
+Now, we need to save the current version of [`coli_genomes`](https://r4biochemists.github.io/data/coli_genomes.csv) in the data folder, using the `,` as field separator.
+
+```{r  echo = FALSE, results = 'asis'}
+
+opts <- c("write.table", 
+            "write.csv2", 
+            answer = "write.csv", 
+            "save")
+
+q1 <- mcq(opts)
+
+cat("Which of the following functions can you use to save the dataframe using `,` as field separator?", q1)
+```
+
+How would you do it?
+
+```{r  echo = FALSE, results = 'asis'}
+opts_p <- c(
+   answer = "write.table(coli_genomes, \"data/coli_genomes_renamed.csv\", sep=\",\" )",
+   "write.csv2(coli_genomes, \"data/coli_genomes_renamed.csv\" )",
+   "write.csv(coli_genomes, \"../coli_genomes_renamed.csv\") ",
+    answer = "write.csv(coli_genomes, \"data/coli_genomes_renamed.csv\")")
+
+
+cat("**Select the right answer**",longmcq(opts_p))
+```
+
+::: {#save}
+:::
+
+Finally, do save the new dataset in your folder for future examples.
+
+```{r}
+write.csv(coli_genomes,"data/coli_genomes_renamed.csv", row.names=FALSE)
+```
+
+## [Quick exercise (IV)]{style="color:darkseagreen"}
+
+R has some built-in datasets that can be used as examples for plots or analysis. You can check all of them using the function `data()`. For the following exercise we are going to use one of that datasets, named *quakes*. You can import it as follows:
+
+```{r eval=FALSE}
+data(quakes)
+```
+
+
+Then, use the function `str()` to examine the structure of the *quakes* dataset. Which of the following best describes the variables represented in this data frame?
+
+```{r  echo = FALSE, results = 'asis'}
+opts_p <- c(
+   answer = "Location and characteristics of Earthquakes off Fiji",
+   "Glass vibration during Eurovision contest",
+   "Fever and seizures due to mPox")
+
+
+cat("**Select the right answer**",longmcq(opts_p))
+```
+
+Now you need to create a new dataframe *quakes2* with the three columns, *lat*, *long* and *new_var*, being the latter the product *lat* $x$ *long*. What is the mean of the new variable? Fill the gaps to finish your code in the R snippet below.
+
+```{webr}
+#| exercise: ex_1_r
+data(quakes)
+quakes2 <- data.frame(____, ____, ____)
+____(quakes2[,3])
+```
+
+------------------------------------------------------------------------
+
+# References
+
+-   *An introduction to R*, <https://intro2r.com/work-d.html>
+
+-   *R programming for data science,* <https://bookdown.org/rdpeng/rprogdatascience/>
+
+-   Using RStudio projects, <https://support.rstudio.com/hc/en-us/articles/200526207>
+
+-   Importar y exportar datos en R, <https://rsanchezs.gitbooks.io/rprogramming/content/chapter3/index.html>
+
+-   *R in action.* Robert I. Kabacoff. March 2022 ISBN 9781617296055
+
+-   R para análisis científicos reproducibles. Sofware Carpentry Foundation. <https://swcarpentry.github.io/r-novice-gapminder-es/>
+
+# [Review exercises]{style="color:darkgreen"}[^2] 
+
+[^2]: Check proposed answers in the repo: <https://github.com/r4biochemists/r4biochemists.github.io/tree/main/answers2exercises>
+
+1.  Load the file [*colis3.csv*](https://r4biochemists.github.io/data/colis3.csv) as *colis* and explore the dataset structure.
+
+2.  Calculate the mean of numerical variables: isolation date (*Year*), antimicrobial resistance genes (*AMR*), virulence factors (*VF*), CRISPR cassesttes (*CRISPR*), integron cassettes (*Integron*) and sequencing date (*seqs*) in those strains? **Note.** For the *seqs* variable you will need to use the function `as.Date()`.
+
+3.  Save the tables *coli_genomes_renamed* and *colis* in a single *Rdata* file.
+
+4.  Add the values of the exercise 2 as a last row in the table. Nowyou will need to use the function `format.Date()` (or just `format()`) for the *seqs* variable.
+
+# [Extra (short) exercises]{style="color:darkgreen"}
+
+**Want more?** Try the input/output examples from *Techvidvan* website <https://techvidvan.com/tutorials/r-input-and-output-functions/>
+
+# Session Info
+
+```{r}
+sessionInfo()
+
+```

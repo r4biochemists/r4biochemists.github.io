@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,10 +70,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-84ba805d2de27377543bb08684a0faa0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/iconify-1.0.0-beta.2/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -140,12 +141,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./r1.html">
  <span class="dropdown-text">R1: Variables, Operators and data structures</span></a>
   </li>  
-        <li class="dropdown-header">r2.qmd</li>
-        <li class="dropdown-header">r3.qmd</li>
-        <li class="dropdown-header">r4.qmd</li>
+        <li>
+    <a class="dropdown-item" href="./r2.html">
+ <span class="dropdown-text">R2: Flow Control</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./r3.html">
+ <span class="dropdown-text">R3: Read and write data in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./r4.html">
+ <span class="dropdown-text">R4: Functions in R</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="./r5.html">
- <span class="dropdown-text">R5: Base plots in R</span></a>
+ <span class="dropdown-text">R5: Plotting your data in R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./r6.html">
@@ -154,10 +164,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="./r7.html">
  <span class="dropdown-text">R7: Project management for reproducible research in R</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./r8.html">
- <span class="dropdown-text">R8: Plot your data in R - Episode II</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./r9.html">
@@ -182,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#rstudio-projects" id="toc-rstudio-projects" class="nav-link active" data-scroll-target="#rstudio-projects"><span class="header-section-number">1</span> RStudio Projects</a></li>
+  <li><a href="#rprojects" id="toc-rprojects" class="nav-link active" data-scroll-target="#rprojects"><span class="header-section-number">1</span> RStudio Projects</a></li>
   <li><a href="#r-markdown-and-notebooks" id="toc-r-markdown-and-notebooks" class="nav-link" data-scroll-target="#r-markdown-and-notebooks"><span class="header-section-number">2</span> R Markdown and Notebooks</a>
   <ul class="collapse">
   <li><a href="#markdown-and-rmarkdown" id="toc-markdown-and-rmarkdown" class="nav-link" data-scroll-target="#markdown-and-rmarkdown"><span class="header-section-number">2.1</span> Markdown and RMarkdown</a>
@@ -215,6 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-category">Git</div>
     <div class="quarto-category">Version control</div>
     <div class="quarto-category">Quarto</div>
+    <div class="quarto-category">Positron</div>
   </div>
   </div>
 
@@ -239,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 31, 2024</p>
+      <p class="date-modified">October 20, 2025</p>
     </div>
   </div>
     
@@ -250,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="rstudio-projects" class="level1" data-number="1">
+<section id="rprojects" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> RStudio Projects</h1>
 <p>Working with relative paths can get a little bit confusing, especially if run large projects with different folders and subfolders for data and results. A good way to avoid confusion is to make an R project in R Studio.</p>
 <p><img src="images/proj.jpg" class="img-fluid"></p>
@@ -310,28 +317,32 @@ Knitting PDFs
 </div>
 <div class="callout-body-container callout-body">
 <p>Note that knitting into <em>pdf</em> may require the installation of a LaTeX distribution or R package. There are several alternatives, like <code>tinytex</code>, <code>MacTeX</code> or <code>MikTeX</code>, among others (see <a href="#r10">references 10 and 11</a>).</p>
-<p>If you struggle to adjust the chunks text width to in the PDF document, you may install the package <code>formatR</code>, as explained in the following StackOverflow answer: <a href="https://stackoverflow.com/questions/33481271/how-to-wrap-code-and-the-output-in-markdown-rmd">https://stackoverflow.com/questions/33481271/how-to-wrap-code-and-the-output-in-markdown-rmd</a></p>
+<p>If you struggle to adjust the chunks text width to in the PDF document, you may install the package <code>formatR</code>, as explained in the following StackOverflow answer: <a href="https://stackoverflow.com/questions/33481271/how-to-wrap-code-and-the-output-in-markdown-rmd" class="uri">https://stackoverflow.com/questions/33481271/how-to-wrap-code-and-the-output-in-markdown-rmd</a></p>
 </div>
 </div>
 </section>
 </section>
 <section id="r-notebooks" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="r-notebooks"><span class="header-section-number">2.2</span> R Notebooks</h2>
-<p>Technically, <strong>R Markdown is a file format, whereas R Notebook is just a way to work with R Markdown files</strong>. R Notebooks do not have their own file format, they all use <em>Rmd</em>. All R Notebooks can be ‘knitted’ to R Markdown outputs, and all R Markdown documents can be interfaced as a Notebook. The R nb document is launched directly and no wizard (as in the case of .RMD) appears. Along with the notebook file, an additional html file that extension <em>*.nb.html</em> is generated. The notebook has the option for Preview. If any code is altered or edited, the new output is not shown. The output is shown in the code editor itself. Whatever the old output was it is only rendered. No new output is generated from the code change. In order to show the code output, we need to execute the chunk and then it will appear in the output. The YAML header has output as: output: <strong>html_notebook</strong></p>
-<p>Writing an R Notebook document is no different than writing an R Markdown document. The text and code chunk syntax does not differ from what you learned in the R Markdown tutorial. The primary difference is in the interativeness of an R Notebook. Primarily that when executing chunks in an R Markdown document, <strong>all the code is sent to the console at once</strong>, but in an R Notebook, <strong>only one line at a time is sent</strong>. This allows execution to stop if a line raises an error.</p>
+<p>Technically, <strong>R Markdown</strong> is a file format, while <strong>R Notebook</strong> is a way of working with R Markdown files. R Notebooks do not have a separate file format—they all use .Rmd files. Any R Markdown document can be opened as a Notebook, and any Notebook can be rendered (<em>knitted</em>) into standard R Markdown output. When launching an R Notebook, no setup wizard appears (as may happen with some .Rmd files). Alongside the main file, an additional HTML file with the extension .nb.html is generated, which allows for previewing the notebook. If code is modified, the output does not update automatically; instead, the previous output remains visible until the code chunk is re-executed. To view updated results, you must manually run the chunk. The YAML header for an R Notebook typically includes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_notebook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Writing an R Notebook is essentially the same as writing an R Markdown document. The syntax for text and code chunks is identical. The key difference lies in interactivity: in R Markdown, all code is sent to the console at once during knitting, whereas in R Notebooks, code is executed line by line. This allows execution to stop immediately if an error occurs, making debugging easier.</p>
 </section>
 </section>
 <section id="quarto" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Quarto</h1>
 <p>In 2022, RStudio launched Quarto, a novel markdown flavor, based in <a href="https://en.wikipedia.org/wiki/Pandoc">Pandoc</a>, a free-software document converter, that expanded the possibilities of RMarkdown with new format options and enriched templates. See some examples <a href="https://quarto.org/docs/gallery/">here</a>.</p>
-<p>Working with quarto is almost identical as writing a markdown document, but it is particularly designed to generate complex documents, like a whole website or books. With Quarto it is easier to handle complex projects, include references or work collaboratively. Each document is generated in a <em>.qmd</em> file and the site/book options are defined in a companion YAML document that includes the site/book structure, metadata and other configuration. You can check the <a href="https://quarto.org/docs/projects/quarto-projects.html#project-metadata">Quarto Reference</a> to learn how to configure your yml file. As an example, have a look to the quarto documents of and the <a href="https://github.com/mredrejo/HPBBM2023/blob/main/_quarto.yml">_quarto.yml</a> file for this site in the <a href="https://github.com/mredrejo/HPBBM2023">github repository</a>.</p>
+<p>Working with quarto is almost identical as writing a markdown document, but it is particularly designed to generate <strong>complex documents</strong>, like a whole website or books. With Quarto it is easier to handle complex projects, include references or work collaboratively. Each document is generated in a <em>.qmd</em> file and the site/book options are defined in a companion YAML document that includes the site/book structure, metadata and other configuration. You can check the <a href="https://quarto.org/docs/projects/quarto-projects.html#project-metadata">Quarto Reference</a> to learn how to configure your yml file. As an example, have a look to the quarto documents of and the <a href="https://github.com/mredrejo/HPBBM2023/blob/main/_quarto.yml">_quarto.yml</a> file for this site in the <a href="https://github.com/r4biochemists/r4biochemists.github.io">github repository</a>.</p>
 <p>Besides the references below, I suggest you to check these <a href="https://quarto.org/docs/gallery/">examples</a> and the this <a href="https://youtu.be/y5VcxMOnj3M">video about the use of Quarto</a> to create amazing websites, books and interactive sites.</p>
+<p>More recently, in 2024, Posit launched <a href="https://positron.posit.co/">Positron</a>, a new integrated development environment (IDE) designed for seamless use with both Python and R. In Positron, you can work either with R Markdown, Quarto, or Jupyter Notebooks to create reproducible analyses and data presentations. Although we have only tested it preliminary (you can ask Eduardo), Positron appears to be a promising tool that is likely to gain popularity and evolve significantly in the coming years.</p>
 </section>
 
 <section id="session-info" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Session Info</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.4.1 (2024-06-14)
 Platform: x86_64-apple-darwin20
@@ -351,13 +362,13 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] formatR_1.14 knitr_1.48  
+[1] formatR_1.14 knitr_1.50  
 
 loaded via a namespace (and not attached):
- [1] htmlwidgets_1.6.4 compiler_4.4.1    fastmap_1.2.0     cli_3.6.3        
+ [1] htmlwidgets_1.6.4 compiler_4.4.1    fastmap_1.2.0     cli_3.6.4        
  [5] tools_4.4.1       htmltools_0.5.8.1 rstudioapi_0.17.1 yaml_2.3.10      
- [9] rmarkdown_2.28    jsonlite_1.8.9    xfun_0.48         digest_0.6.37    
-[13] rlang_1.1.4       evaluate_1.0.1   </code></pre>
+ [9] rmarkdown_2.29    jsonlite_2.0.0    xfun_0.51         digest_0.6.37    
+[13] rlang_1.1.5       evaluate_1.0.3   </code></pre>
 </div>
 </div>
 
@@ -386,6 +397,7 @@ loaded via a namespace (and not attached):
 <li><p>R Markdown chunk options: <a href="https://rpubs.com/Lingling912/870659" class="uri">https://rpubs.com/Lingling912/870659</a></p></li>
 <li><p>Quarto Reference Guide: <a href="https://quarto.org/docs/guide/" class="uri">https://quarto.org/docs/guide/</a></p></li>
 <li><p>How to interactive websites with Quarto: <a href="https://www.r-bloggers.com/2022/07/r-quarto-tutorial-how-to-create-interactive-markdown-documents/" class="uri">https://www.r-bloggers.com/2022/07/r-quarto-tutorial-how-to-create-interactive-markdown-documents/</a></p></li>
+<li><p>From RStudio to Positron: <a href="https://kphahn57.medium.com/from-rstudio-to-positron-707d3f6d2776" class="uri">https://kphahn57.medium.com/from-rstudio-to-positron-707d3f6d2776</a></p></li>
 </ol>
 </section></section></div></main> <!-- /main -->
 <script>
@@ -676,8 +688,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -795,7 +805,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1025,7 +1034,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Modesto Redrejo Rodríguez &amp; Luis del Peso, 2024</p>
+<p>Modesto Redrejo Rodríguez &amp; Luis del Peso, 2025</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
@@ -1038,11 +1047,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </i> 
     </a>
   </li>  
-    <li class="nav-item compact">
+    <li class="nav-item">
     <a class="nav-link" href="https://twitter.com/mredrejo">
-      <i class="bi bi-twitter" role="img">
-</i> 
-    </a>
+<p><iconify-icon inline="" icon="fa6-brands:x-twitter"></iconify-icon></p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/mredrejo.bsky.social">
+<p><iconify-icon inline="" icon="simple-icons:bluesky"></iconify-icon></p>
+</a>
   </li>  
 </ul>
     </div>

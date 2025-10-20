@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,10 +69,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-84ba805d2de27377543bb08684a0faa0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/iconify-1.0.0-beta.2/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -390,7 +391,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"message":"true","fig-cap":"","warning":"true","comment":"","label":"unnamed-chunk-1","results":"markup","context":"interactive","editor-font-scale":"1","dpi":72,"editor-max-height":"","read-only":"false","autorun":"false","classes":"","fig-width":7,"fig-height":5,"output":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","out-width":"700px","out-height":""},"code":"data(quakes)\n\n"}];
+globalThis.qwebrCellDetails = [{"code":"data(quakes)\nquakes2 <- data.frame(____, ____, ____)\n____(quakes2[,3])","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","exercise":"ex_1_r","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1588,6 +1589,35 @@ globalThis.qwebrExecuteCode = async function (
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="include/webex.css">
@@ -1640,7 +1670,7 @@ globalThis.qwebrExecuteCode = async function (
   </li>  
         <li>
     <a class="dropdown-item" href="./r5.html">
- <span class="dropdown-text">R5: Base plots in R</span></a>
+ <span class="dropdown-text">R5: Plotting your data in R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./r6.html">
@@ -1649,10 +1679,6 @@ globalThis.qwebrExecuteCode = async function (
         <li>
     <a class="dropdown-item" href="./r7.html">
  <span class="dropdown-text">R7: Project management for reproducible research in R</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./r8.html">
- <span class="dropdown-text">R8: Plot your data in R - Episode II</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./r9.html">
@@ -1677,27 +1703,26 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#data-input-output-in-r" id="toc-data-input-output-in-r" class="nav-link active" data-scroll-target="#data-input-output-in-r"><span class="header-section-number">1</span> <span style="color:darkblue">Data input &amp; output in R</span></a></li>
-  <li><a href="#working-directory" id="toc-working-directory" class="nav-link" data-scroll-target="#working-directory"><span class="header-section-number">2</span> <span style="color:darkblue">Working directory</span></a>
+  <li><a href="#working-directory-in-r" id="toc-working-directory-in-r" class="nav-link active" data-scroll-target="#working-directory-in-r"><span class="header-section-number">1</span> <span style="color:darkblue">Working directory in R</span></a>
   <ul class="collapse">
-  <li><a href="#quick-exercise-i" id="toc-quick-exercise-i" class="nav-link" data-scroll-target="#quick-exercise-i"><span class="header-section-number">2.1</span> <span style="color:darkseagreen">Quick exercise (I)</span></a></li>
+  <li><a href="#quick-exercise-i" id="toc-quick-exercise-i" class="nav-link" data-scroll-target="#quick-exercise-i"><span class="header-section-number">1.1</span> <span style="color:darkseagreen">Quick exercise (I)</span></a></li>
   </ul></li>
-  <li><a href="#readingwriting-data-in-r" id="toc-readingwriting-data-in-r" class="nav-link" data-scroll-target="#readingwriting-data-in-r"><span class="header-section-number">3</span> <span style="color:darkblue">Reading/writing data in R</span></a>
+  <li><a href="#readingwriting-data-in-r" id="toc-readingwriting-data-in-r" class="nav-link" data-scroll-target="#readingwriting-data-in-r"><span class="header-section-number">2</span> <span style="color:darkblue">Reading/writing data in R</span></a>
   <ul class="collapse">
-  <li><a href="#quick-exercise-ii" id="toc-quick-exercise-ii" class="nav-link" data-scroll-target="#quick-exercise-ii"><span class="header-section-number">3.1</span> <span style="color:darkseagreen">Quick exercise (II)</span></a></li>
+  <li><a href="#quick-exercise-ii" id="toc-quick-exercise-ii" class="nav-link" data-scroll-target="#quick-exercise-ii"><span class="header-section-number">2.1</span> <span style="color:darkseagreen">Quick exercise (II)</span></a></li>
   </ul></li>
-  <li><a href="#basic-data-management-in-r" id="toc-basic-data-management-in-r" class="nav-link" data-scroll-target="#basic-data-management-in-r"><span class="header-section-number">4</span> <span style="color:darkblue">Basic Data Management in R</span></a>
+  <li><a href="#basic-data-management-in-r" id="toc-basic-data-management-in-r" class="nav-link" data-scroll-target="#basic-data-management-in-r"><span class="header-section-number">3</span> <span style="color:darkblue">Basic Data Management in R</span></a>
   <ul class="collapse">
-  <li><a href="#open-and-explore-a-dataframe" id="toc-open-and-explore-a-dataframe" class="nav-link" data-scroll-target="#open-and-explore-a-dataframe"><span class="header-section-number">4.1</span> Open and explore a dataframe</a></li>
-  <li><a href="#renaming-changing-and-adding-variables" id="toc-renaming-changing-and-adding-variables" class="nav-link" data-scroll-target="#renaming-changing-and-adding-variables"><span class="header-section-number">4.2</span> Renaming, changing and adding variables</a></li>
-  <li><a href="#dealing-with-nas" id="toc-dealing-with-nas" class="nav-link" data-scroll-target="#dealing-with-nas"><span class="header-section-number">4.3</span> Dealing with <em>NAs</em></a></li>
-  <li><a href="#quick-exercise-iii" id="toc-quick-exercise-iii" class="nav-link" data-scroll-target="#quick-exercise-iii"><span class="header-section-number">4.4</span> <span style="color:darkseagreen">Quick exercise (III)</span></a></li>
-  <li><a href="#quick-exercise-iv" id="toc-quick-exercise-iv" class="nav-link" data-scroll-target="#quick-exercise-iv"><span class="header-section-number">4.5</span> <span style="color:darkseagreen">Quick exercise (IV)</span></a></li>
+  <li><a href="#open-and-explore-a-dataframe" id="toc-open-and-explore-a-dataframe" class="nav-link" data-scroll-target="#open-and-explore-a-dataframe"><span class="header-section-number">3.1</span> Open and explore a dataframe</a></li>
+  <li><a href="#renaming-changing-and-adding-variables" id="toc-renaming-changing-and-adding-variables" class="nav-link" data-scroll-target="#renaming-changing-and-adding-variables"><span class="header-section-number">3.2</span> Renaming, changing and adding variables</a></li>
+  <li><a href="#dealing-with-nas" id="toc-dealing-with-nas" class="nav-link" data-scroll-target="#dealing-with-nas"><span class="header-section-number">3.3</span> Dealing with <em>NAs</em></a></li>
+  <li><a href="#quick-exercise-iii" id="toc-quick-exercise-iii" class="nav-link" data-scroll-target="#quick-exercise-iii"><span class="header-section-number">3.4</span> <span style="color:darkseagreen">Quick exercise (III)</span></a></li>
+  <li><a href="#quick-exercise-iv" id="toc-quick-exercise-iv" class="nav-link" data-scroll-target="#quick-exercise-iv"><span class="header-section-number">3.5</span> <span style="color:darkseagreen">Quick exercise (IV)</span></a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">5</span> References</a></li>
-  <li><a href="#review-exercises" id="toc-review-exercises" class="nav-link" data-scroll-target="#review-exercises"><span class="header-section-number">6</span> <span style="color:darkgreen">Review exercises</span></a></li>
-  <li><a href="#extra-short-exercises" id="toc-extra-short-exercises" class="nav-link" data-scroll-target="#extra-short-exercises"><span class="header-section-number">7</span> <span style="color:darkgreen">Extra (short) exercises</span></a></li>
-  <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info"><span class="header-section-number">8</span> Session Info</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4</span> References</a></li>
+  <li><a href="#review-exercises2" id="toc-review-exercises2" class="nav-link" data-scroll-target="#review-exercises2"><span class="header-section-number">5</span> <span style="color:darkgreen">Review exercises</span></a></li>
+  <li><a href="#extra-short-exercises" id="toc-extra-short-exercises" class="nav-link" data-scroll-target="#extra-short-exercises"><span class="header-section-number">6</span> <span style="color:darkgreen">Extra (short) exercises</span></a></li>
+  <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info"><span class="header-section-number">7</span> Session Info</a></li>
   </ul>
 </nav>
 </nav>
@@ -2020,7 +2045,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 20, 2024</p>
+      <p class="date-modified">October 20, 2025</p>
     </div>
   </div>
     
@@ -2031,69 +2056,68 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<section id="data-input-output-in-r" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> <span style="color:darkblue">Data input &amp; output in R</span></h1>
-<p>As you already know, starting R starts an interactive session with keyboard input and screen output. You will almost always import your working data from a file. However, especially if you are working with very small datasets, it is also possible to add your data interactively directly in the console, as you did in some of the examples before. You can also define your objects and enter your data interactively using the <code>scan()</code> and <code>readline()</code> functions, as in the examples below. For output, you can simply call the object by its name or use the <code>print()</code> function, which displays the contents of the object on the screen. You can try the following code.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="at">n =</span> <span class="dv">4</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">scan</span>()</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>str <span class="ot">&lt;-</span> <span class="fu">readline</span>()</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>vector</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vector2)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(str)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">edit</span>(str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Although seldom used, you can also edit the contents of your objects using the function <code>edit()</code>. This function can be used to edit different objects, including vectors, strings, matrices or dataframes. MacOS users may need to install <a href="https://www.xquartz.org/">XQuartz X11</a> tool.</p>
-</section>
-<section id="working-directory" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> <span style="color:darkblue">Working directory</span></h1>
+<section id="working-directory-in-r" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> <span style="color:darkblue">Working directory in R</span></h1>
 <p>More often, you can process commands from a script file (a file containing R statements) and also import data from text files, databases (MySQL) or other proprietary formats, such as Excel or GraphPad Prism. We will focus on text files by the moment, as importing files in specific formats requires dedicated external packages. By default, R will read/write in the <em>working directory (wd)</em>. The <em>wd</em> is indicated in the Console panel, as you can see below in a screenshot of my Rstudio screen right now.</p>
 <p><img src="images/console.png" class="img-fluid" width="545"></p>
 <p>Note that the abbreviation ‘~’ stands for your home directory (for me <code>/Users/modesto</code> or <code>/home/modesto</code> on MacOS or Linux, respectively).</p>
 <p>The functions <code>getwd()</code> and <code>setwd()</code> allow you to check and change the <em>wd</em>. Try the examples below and pay attention to the output. Remember that you can write <code>?getwd()</code> or <code>?setwd()</code> for help.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/modesto/Documents/GitHub/r4biochemists.github.io"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/modesto"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/modesto"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/modesto"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obviously the path must call an existing directory (no</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># typos allowed)</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/modsto/Documents/GitHub/HPBBM2023"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obviously the path must call an existing directory (no</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># typos allowed)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/modsto/Documents/GitHub/r4biochemists.github.io"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in setwd("/Users/modsto/Documents/GitHub/HPBBM2023"): cannot change working directory</code></pre>
+<pre><code>Error in setwd("/Users/modsto/Documents/GitHub/r4biochemists.github.io"): cannot change working directory</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/modesto/Documents/GitHub/HPBBM2023"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/modesto/Documents/GitHub/r4biochemists.github.io"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "/Users/modesto/Documents/GitHub/HPBBM2023"</code></pre>
+<pre><code>[1] "/Users/modesto/Documents/GitHub/r4biochemists.github.io"</code></pre>
 </div>
 </div>
-<p>In RStudio, the <em>default working directory</em> can be set from the “tools” and “global options” menu. Also, you can change the <em>wd</em> for your session in the menu <strong>Session &gt; Set Working Directory</strong> and change it to that of source file (for instant your R script), the project or the selected directory in the files panel.</p>
+<p>In RStudio, the <em>default working directory</em> can be set from the “tools” and “global options” menu. Also, you can change the <em>wd</em> for your session in the menu <strong>Session &gt; Set Working Directory</strong> and change it to that of source file (for instant your R script), or the selected directory in the files panel.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Wouldn’t it be great if you didn’t have to manually set the working directory every time?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If setting the working directory feels annoying or confusing, you can avoid it by using an <a href="r7.html#rprojects">R Project</a> in RStudio, as explained in Lesson R7. R Projects automatically manage the working directory for you, making your workflow smoother and more reproducible.</p>
+</div>
+</div>
 <hr>
-<section id="quick-exercise-i" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="quick-exercise-i"><span class="header-section-number">2.1</span> <span style="color:darkseagreen">Quick exercise (I)</span></h2>
+<section id="quick-exercise-i" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="quick-exercise-i"><span class="header-section-number">1.1</span> <span style="color:darkseagreen">Quick exercise (I)</span></h2>
 <p>Let’s see if you understood. Consider the following tree of directories.</p>
 <p><img src="images/tree.png" class="img-fluid" width="279"></p>
 <p>How would you change de <em>wd</em> to the folder <code>HPBBM2023/data</code>? You also can try with your own computer and your directory tree.</p>
 <strong>Select the right answer</strong>
-<div id="radio_ABTKGHKMZY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ABTKGHKMZY" value=""> <span>setwd(“HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_ABTKGHKMZY" value="answer"> <span>setwd(“/home/modesto/Documents/teaching/2023_2024/HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_ABTKGHKMZY" value=""> <span>setwd(“/Users/modesto/teaching/Documents/2023_2024/HPBBM2023/data”)</span></label>
+<div id="radio_KJYQXHMOXC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KJYQXHMOXC" value=""> <span>setwd(“HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_KJYQXHMOXC" value="answer"> <span>setwd(“/home/modesto/Documents/teaching/2023_2024/HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_KJYQXHMOXC" value=""> <span>setwd(“/Users/modesto/teaching/Documents/2023_2024/HPBBM2023/data”)</span></label>
 </div>
 <hr>
 <hr>
 </section>
 </section>
-<section id="readingwriting-data-in-r" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> <span style="color:darkblue">Reading/writing data in R</span></h1>
+<section id="readingwriting-data-in-r" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <span style="color:darkblue">Reading/writing data in R</span></h1>
 <p>The most common way to read your data in R is importing it as a table, using the function <code>read.table()</code>. Note that the resultant object will become a <em>Dataframe</em>, even when all the entries got to be numeric. A followup call towards <code>as.matrix()</code> will turn it into in a matrix.</p>
 <p>In the following example lines we read a file called <a href="data/small_matrix.csv"><em>small_matrix.csv</em></a>, located in the <code>data</code> folder. If we attempt to make some matrix calculations, R will force the dataframe to a matrix when possible, but it will return an Error for many matrix-specific operations or functions unless, we transform the dataframe into a matrix.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sm <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"small_matrix.csv"</span>, <span class="at">sep =</span> <span class="st">","</span>)  <span class="co">#what happens here?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sm <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"small_matrix.csv"</span>, <span class="at">sep =</span> <span class="st">","</span>)  <span class="co">#what happens here?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in file(file, "rt"): cannot open file 'small_matrix.csv': No such file
 or directory</code></pre>
@@ -2101,14 +2125,14 @@ or directory</code></pre>
 <div class="cell-output cell-output-error">
 <pre><code>Error in file(file, "rt"): cannot open the connection</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the path</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the path</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/modesto/Documents/GitHub/r4biochemists.github.io"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now we use the right path</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sm <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/small_matrix.csv"</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now we use the right path</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>sm <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/small_matrix.csv"</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  V1 V2 V3
 1  2  7 19
@@ -2116,21 +2140,21 @@ or directory</code></pre>
 3 18  3 13
 4 25  6 16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is this an object type matrix?</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.matrix</span>(sm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is this an object type matrix?</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.matrix</span>(sm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can we operate with it as a matrix?</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(sm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can we operate with it as a matrix?</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(sm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   [,1] [,2] [,3] [,4]
 V1    2   22   18   25
 V2    7   10    3    6
 V3   19   80   13   16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can force an object to operate as a matrix</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sm <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can force an object to operate as a matrix</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sm <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  V1 V2  V3
 1  6 21  57
@@ -2138,21 +2162,21 @@ V3   19   80   13   16</code></pre>
 3 54  9  39
 4 75 18  48</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(sm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(sm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in diag(sm): 'list' object cannot be coerced to type 'double'</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># some operations cannot coerce a matrix but we can</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># explicit it</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="fu">as.matrix</span>(sm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># some operations cannot coerce a matrix but we can</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># explicit it</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="fu">as.matrix</span>(sm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  2 10 13</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">heatmap</span>(sm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">heatmap</span>(sm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in heatmap(sm): 'x' must be a numeric matrix</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">heatmap</span>(<span class="fu">as.matrix</span>(sm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">heatmap</span>(<span class="fu">as.matrix</span>(sm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2179,31 +2203,31 @@ Tip
 
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span><span class="sc">:</span><span class="dv">13</span>)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write</span>(vector2, <span class="at">file =</span> <span class="st">"data/vector2.txt"</span>)</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(sm, <span class="st">"data/sm.csv"</span>)</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(sm, <span class="st">"data/sm2.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">col.names =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(vector, vector2, <span class="at">file =</span> <span class="st">"data/vector2.Rdata"</span>)</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>(<span class="at">file =</span> <span class="st">"data/myEnvironment.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span><span class="sc">:</span><span class="dv">13</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write</span>(vector2, <span class="at">file =</span> <span class="st">"data/vector2.txt"</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(sm, <span class="st">"data/sm.csv"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(sm, <span class="st">"data/sm2.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">col.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">","</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(vector, vector2, <span class="at">file =</span> <span class="st">"data/vector2.Rdata"</span>)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>(<span class="at">file =</span> <span class="st">"data/myEnvironment.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="load">
 
 </div>
 <p>Data files in RData format can be open from the <em>Environment</em> tab or with the <code>load()</code> function. To check that it was correctly loaded, we can remove it before loading with the <code>rm()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove from the Global Environment in our RStudio session</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(vector)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(vector2)</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load again</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/vector2.Rdata"</span>)</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove from the Global Environment in our RStudio session</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(vector)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(vector2)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load again</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/vector2.Rdata"</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4 5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>vector2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>vector2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  3  5  6  7  8  9 10 11 12 13</code></pre>
 </div>
@@ -2222,21 +2246,44 @@ Caution
 </div>
 </div>
 <hr>
-<section id="quick-exercise-ii" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="quick-exercise-ii"><span class="header-section-number">3.1</span> <span style="color:darkseagreen">Quick exercise (II)</span></h2>
+<section id="quick-exercise-ii" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="quick-exercise-ii"><span class="header-section-number">2.1</span> <span style="color:darkseagreen">Quick exercise (II)</span></h2>
 <p>We are using the same directory tree. Your <em>wd</em> is <code>HPBBM2022/data</code> and you need to save a data.frame named <code>table1</code> as <code>table1.csv</code> in the folder <code>HPBBM2023/data</code> using <code>;</code> as separator. How would you do it <em>without changing</em> the working directory? Try it also with your own computer.</p>
 <strong>Select the right answer</strong>
-<div id="radio_UMFXGQDJDZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UMFXGQDJDZ" value="answer"> <span>write.table(table1, “../../../HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_UMFXGQDJDZ" value=""> <span>write.table(table1, “../../HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_UMFXGQDJDZ" value=""> <span>write.table(table1, “../../../HPBBM2023/data/table1.csv”)</span></label>
+<div id="radio_DZBPEZNZRQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DZBPEZNZRQ" value="answer"> <span>write.table(table1, “../../../teaching/HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_DZBPEZNZRQ" value=""> <span>write.table(table1, “../../HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_DZBPEZNZRQ" value=""> <span>write.table(table1, “../../../HPBBM2023/data/table1.csv”)</span></label>
 </div>
 <hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+[Interactive data input &amp; output in R]
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You will almost always import your working data from a file. However, especially if you are working with very small datasets, it is also possible to add your data interactively directly in the console, as you did in some of the examples before. You can also define your objects and enter your data interactively using the <code>scan()</code> and <code>readline()</code> functions, as in the examples below. For output, you can simply call the object by its name or use the <code>print()</code> function, which displays the contents of the object on the screen. You can try the following code.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="at">n =</span> <span class="dv">4</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">scan</span>()</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>str <span class="ot">&lt;-</span> <span class="fu">readline</span>()</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>vector</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vector2)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(str)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="fu">edit</span>(str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Although seldom used, you can also edit the contents of your objects using the function <code>edit()</code>. This function can be used to edit different objects, including vectors, strings, matrices or dataframes. MacOS users may need to install <a href="https://www.xquartz.org/">XQuartz X11</a> tool.</p>
+</div>
+</div>
 </section>
 </section>
-<section id="basic-data-management-in-r" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> <span style="color:darkblue">Basic Data Management in R</span></h1>
+<section id="basic-data-management-in-r" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <span style="color:darkblue">Basic Data Management in R</span></h1>
 <p>Now we are going to import and explore an example dataset, containing metadata from an Illumina sequencing project of pathogenic <em>E. coli</em> strains (Flament-Simon et al.&nbsp;2020, <a href="https://doi.org/10.1038/s41598-020-69356-6" class="uri">https://doi.org/10.1038/s41598-020-69356-6</a>). However, for didactic purposes, the original data have been simplified and manipulated and the attached datasets do not fully correspond to the actual data.</p>
-<section id="open-and-explore-a-dataframe" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="open-and-explore-a-dataframe"><span class="header-section-number">4.1</span> Open and explore a dataframe</h2>
+<section id="open-and-explore-a-dataframe" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="open-and-explore-a-dataframe"><span class="header-section-number">3.1</span> Open and explore a dataframe</h2>
 <p>As you can see in the R help, the function <code>read.table()</code> has several default options as FALSE, like <code>header=FALSE</code>. When you have a spreadsheet export file, i.e.&nbsp;having a table where the fields are divided by commas in place of spaces, you can use <code>read.csv()</code> in place of <code>read.table()</code>. For Spaniards, there is also <code>read.csv2()</code>, which uses a comma for the decimal point and a semicolon for the separator. The latter functions are wrappers of <code>read.table()</code> with custom default options. Likewise, there are <code>write.csv()</code> and <code>write.csv2()</code>, which are wrappers of <code>write.table()</code>. Look carefully at the following examples of different ways to open a table (with some common mistakes) and explore them quickly.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note differences between read.table(), read.csv() and</span></span>
@@ -2247,7 +2294,7 @@ Caution
 </div>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(coli_genomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'coli_genomes' not found</code></pre>
+<pre><code>Error: object 'coli_genomes' not found</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>coli_genomes <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"data/coli_genomes.csv"</span>, <span class="at">sep =</span> <span class="st">";"</span>,</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">dec =</span> <span class="st">"."</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
@@ -2553,8 +2600,8 @@ Throw out the trash
 </div>
 </div>
 </section>
-<section id="renaming-changing-and-adding-variables" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="renaming-changing-and-adding-variables"><span class="header-section-number">4.2</span> Renaming, changing and adding variables</h2>
+<section id="renaming-changing-and-adding-variables" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="renaming-changing-and-adding-variables"><span class="header-section-number">3.2</span> Renaming, changing and adding variables</h2>
 <p>We can also rename some variables to use more easy names.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(coli_genomes)  <span class="co">#see all variable names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2581,78 +2628,110 @@ Throw out the trash
 [16] "contigs1kb"         </code></pre>
 </div>
 </div>
-<p>We are going to simplify our dataframe by dropping variables:</p>
+<p>We are going to simplify our dataframe by dropping one or more variables (columns):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>coli_genomes <span class="ot">&lt;-</span> coli_genomes[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">9</span><span class="sc">:</span><span class="dv">11</span>), ]</span>
-<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this can be also used to remove rows</span></span>
-<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>coli_genomes[, <span class="sc">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>coli_genomes[, <span class="sc">-</span><span class="dv">12</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      Biosample Year  Source Phylogroup Serotype  Clonotype Sequence.Type VF
-1  SAMN14278613   NA   Human          D  ONT:H28   CH23-331         ST524 18
-2  SAMN14278614 2010   Human          C O153:H19     CH4-25          ST88 14
-3  SAMN14278615 2008   Human         B1  O76:H30    CH29-38         ST156 10
-4  SAMN14278616   NA   Human          A  O78:H11    CH11-41          ST48  5
-5  SAMN14278617 2011 Porcine          A  ONT:HNM     CH7-54         ST746  5
-6  SAMN14278618 2007 Porcine          A   O9:H37     CH7-31        ST3011  7
-7  SAMN14278619 2006 Porcine          A   O2:H32    CH11-23          ST10  4
-8  SAMN14278620 2006 Porcine          A  ONT:H45    C11-398       ST10888  2
-12 SAMN14278624 2013   Human          D O145:H28   CH23-331          ST32 22
-13 SAMN14278625 2013   Human          D O145:H28   CH23-331         ST137 22
-14 SAMN14278626 2013   Human          D O145:H28   CH23-331          ST32 20
-15 SAMN14278627 2013   Human          A  ONT:H37     C11-54          ST48  1
-16 SAMN14278628 2013   Avian          A  ONT:H19    CH94-23         ST347  2
-17 SAMN14278629 2011   Avian         B1 O142:H30     C41-35         ST359  9
-18 SAMN14278630 2005   Avian          C  O78:H19     CH4-27          ST88 11
-19 SAMN14278631 2012   Human          C   O8:H19     CH4-54          ST88 14
-20 SAMN14278632 2012   Human          C   O9:H19     CH4-27          ST88 14
-21 SAMN14278633 2012   Human          A    O9:H4     CH7-34          ST46  8
-22 SAMN14278634 2015   Human          C   O9:H19 CH4like-27       ST10890 13
-23 SAMN14278635 2012   Human          A  ONT:H33    CH11-54          ST10  2
-24 SAMN14278636 2016   Human          A  O98:H26    CH27-23        ST8233  2
-25 SAMN14278637 2012   Human         B1  O66:H10     CH4-32        ST1049  4
-   Plasmids kmer Contigs    N50 longest.contig..bp. Assembly_length contigs1kb
-1         3  117     223 272287              662555         5341632         74
-2         3  117     159 323172              760527         5415613         57
-3         2   89     114 270767              738861         4875343         47
-4         3  117     212 112160              285056         5167401        101
-5         9   89     320  45936              128053         4858138        212
-6         3   93     158 106897              369508         4638334         93
-7         7  115     277  89185              281444         5406295        155
-8         7  115     203  94368              280268         4796593        114
-12        1  115     376 200150              424527         5389075        131
-13        3  111     205 281589              617142         5340478         78
-14        1  113     206 182651              412836         5276782         95
-15        0  113     140 105396              272304         4507328         78
-16        0  117     134 110661              497785         4664768         77
-17        4  113     102 240847              460510         4992565         42
-18        4  113     108 405376             1190696         5196698         38
-19        2  113     108 281822             1140163         5252065         43
-20        4   91     224 140521              284241         5085107        110
-21        4   85     204  86565              300086         4915667        121
-22        3  113     171 326962              749412         5200701         77
-23        5  117     120 228491              576949         4881205         48
-24        4   89     114 187945              537848         4821342         53
-25        2  113      94 325747              822206         4839344         32</code></pre>
+<pre><code>    Strain    Biosample Year  Source Phylogroup Serotype  Clonotype
+1  LREC237 SAMN14278613   NA   Human          D  ONT:H28   CH23-331
+2  LREC239 SAMN14278614 2010   Human          C O153:H19     CH4-25
+3  LREC240 SAMN14278615 2008   Human         B1  O76:H30    CH29-38
+4  LREC241 SAMN14278616   NA   Human          A  O78:H11    CH11-41
+5  LREC242 SAMN14278617 2011 Porcine          A  ONT:HNM     CH7-54
+6  LREC243 SAMN14278618 2007 Porcine          A   O9:H37     CH7-31
+7  LREC244 SAMN14278619 2006 Porcine          A   O2:H32    CH11-23
+8  LREC245 SAMN14278620 2006 Porcine          A  ONT:H45    C11-398
+9  LREC246 SAMN14278621 2010 Porcine          C   O8:H19     CH4-54
+10 LREC247 SAMN14278622 2013   Human          D O145:H28   CH23-331
+11 LREC248 SAMN14278623 2013   Human          A O123:H16     C11-94
+12 LREC249 SAMN14278624 2013   Human          D O145:H28   CH23-331
+13 LREC250 SAMN14278625 2013   Human          D O145:H28   CH23-331
+14 LREC251 SAMN14278626 2013   Human          D O145:H28   CH23-331
+15 LREC252 SAMN14278627 2013   Human          A  ONT:H37     C11-54
+16 LREC253 SAMN14278628 2013   Avian          A  ONT:H19    CH94-23
+17 LREC254 SAMN14278629 2011   Avian         B1 O142:H30     C41-35
+18 LREC255 SAMN14278630 2005   Avian          C  O78:H19     CH4-27
+19 LREC256 SAMN14278631 2012   Human          C   O8:H19     CH4-54
+20 LREC257 SAMN14278632 2012   Human          C   O9:H19     CH4-27
+21 LREC258 SAMN14278633 2012   Human          A    O9:H4     CH7-34
+22 LREC259 SAMN14278634 2015   Human          C   O9:H19 CH4like-27
+23 LREC260 SAMN14278635 2012   Human          A  ONT:H33    CH11-54
+24 LREC261 SAMN14278636 2016   Human          A  O98:H26    CH27-23
+25 LREC262 SAMN14278637 2012   Human         B1  O66:H10     CH4-32
+   Sequence.Type VF Plasmids kmer    N50 longest.contig..bp. Assembly_length
+1          ST524 18        3  117 272287              662555         5341632
+2           ST88 14        3  117 323172              760527         5415613
+3          ST156 10        2   89 270767              738861         4875343
+4           ST48  5        3  117 112160              285056         5167401
+5          ST746  5        9   89  45936              128053         4858138
+6         ST3011  7        3   93 106897              369508         4638334
+7           ST10  4        7  115  89185              281444         5406295
+8        ST10888  2        7  115  94368              280268         4796593
+9        ST10889 10        1  113 326769              451887         5173794
+10         ST137 22        4  113 248158              504233         5364777
+11       ST10850 10        4  113 241249              809158         5293420
+12          ST32 22        1  115 200150              424527         5389075
+13         ST137 22        3  111 281589              617142         5340478
+14          ST32 20        1  113 182651              412836         5276782
+15          ST48  1        0  113 105396              272304         4507328
+16         ST347  2        0  117 110661              497785         4664768
+17         ST359  9        4  113 240847              460510         4992565
+18          ST88 11        4  113 405376             1190696         5196698
+19          ST88 14        2  113 281822             1140163         5252065
+20          ST88 14        4   91 140521              284241         5085107
+21          ST46  8        4   85  86565              300086         4915667
+22       ST10890 13        3  113 326962              749412         5200701
+23          ST10  2        5  117 228491              576949         4881205
+24        ST8233  2        4   89 187945              537848         4821342
+25        ST1049  4        2  113 325747              822206         4839344
+   contigs1kb
+1          74
+2          57
+3          47
+4         101
+5         212
+6          93
+7         155
+8         114
+9          56
+10         76
+11         55
+12        131
+13         78
+14         95
+15         78
+16         77
+17         42
+18         38
+19         43
+20        110
+21        121
+22         77
+23         48
+24         53
+25         32</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this can be also used to remove rows (cases)</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>coli_genomes <span class="ot">&lt;-</span> coli_genomes[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">9</span><span class="sc">:</span><span class="dv">11</span>), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We know the ‘Assembly length’ and the number of ‘Contigs’, but we would like to represent the average contig length.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>coli_genomes<span class="sc">$</span>average_contig <span class="ot">&lt;-</span> coli_genomes<span class="sc">$</span>Assembly_length<span class="sc">/</span>coli_genomes<span class="sc">$</span>Contigs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>coli_genomes<span class="sc">$</span>average_contig <span class="ot">&lt;-</span> coli_genomes<span class="sc">$</span>Assembly_length<span class="sc">/</span>coli_genomes<span class="sc">$</span>Contigs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="dealing-with-nas" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="dealing-with-nas"><span class="header-section-number">4.3</span> Dealing with <em>NAs</em></h2>
+<section id="dealing-with-nas" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="dealing-with-nas"><span class="header-section-number">3.3</span> Dealing with <em>NAs</em></h2>
 <p>It is very easy to calculate statistics of one variable. Imagine we want to know the average year of sample isolation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(coli_genomes<span class="sc">$</span>Year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(coli_genomes<span class="sc">$</span>Year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
 </div>
 <p>As you may have guessed, the <code>NA</code> output means that there are some NA values and mean cannot be calculated. We can check that and omit the NAs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check for NA values</span></span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(coli_genomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check for NA values</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(coli_genomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Strain Biosample  Year Source Phylogroup Serotype Clonotype Sequence.Type
 1   FALSE     FALSE  TRUE  FALSE      FALSE    FALSE     FALSE         FALSE
@@ -2724,64 +2803,76 @@ Throw out the trash
 24      FALSE          FALSE
 25      FALSE          FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative to check only NA-containing rows (a FALSE</span></span>
-<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="co"># output indicates an incomplete observation)</span></span>
-<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="fu">complete.cases</span>(coli_genomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how many NAs</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(coli_genomes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+FALSE  TRUE 
+  372     2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative: check only NA-containing rows (a FALSE</span></span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="co"># output indicates an incomplete observation)</span></span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="fu">complete.cases</span>(coli_genomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] FALSE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
 [13]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># na.rm=TRUE will omit the NAs for this function</span></span>
-<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(coli_genomes<span class="sc">$</span>Year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># na.rm=TRUE will omit the NAs for this function</span></span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(coli_genomes<span class="sc">$</span>Year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2011</code></pre>
 </div>
 </div>
 <p>What if we want to remove observations with an NA from the whole table?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new data.frame without NAs</span></span>
-<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>coli_genomes2 <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(coli_genomes)</span>
-<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="co"># can we now compute the mean without na.rm=T?</span></span>
-<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(coli_genomes2<span class="sc">$</span>Year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new data.frame without NAs</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>coli_genomes2 <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(coli_genomes)</span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="co"># can we now compute the mean without na.rm=T?</span></span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(coli_genomes2<span class="sc">$</span>Year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2011</code></pre>
 </div>
 </div>
 <p>In fact, you can use <code>na.omit()</code> for any object, either an vector, data.frame or a list.</p>
 </section>
-<section id="quick-exercise-iii" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="quick-exercise-iii"><span class="header-section-number">4.4</span> <span style="color:darkseagreen">Quick exercise (III)</span></h2>
-<p>Now, we need to save the current version of <code>coli_genomes</code> in the data folder, using the <code>,</code> as field separator.</p>
+<section id="quick-exercise-iii" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="quick-exercise-iii"><span class="header-section-number">3.4</span> <span style="color:darkseagreen">Quick exercise (III)</span></h2>
+<p>Now, we need to save the current version of <a href="https://r4biochemists.github.io/data/coli_genomes.csv"><code>coli_genomes</code></a> in the data folder, using the <code>,</code> as field separator.</p>
 <p>Which of the following functions can you use to save the dataframe using <code>,</code> as field separator? <select class="webex-select"><option value="blank"></option><option value="">write.table</option><option value="">write.csv2</option><option value="answer">write.csv</option><option value="">save</option></select></p>
 <p>How would you do it?</p>
 <strong>Select the right answer</strong>
-<div id="radio_YIAQRQZIQA" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YIAQRQZIQA" value="answer"> <span>write.table(coli_genomes, “data/coli_genomes_renamed.csv”, sep=“,” )</span></label><label><input type="radio" autocomplete="off" name="radio_YIAQRQZIQA" value=""> <span>write.csv2(coli_genomes, “data/coli_genomes_renamed.csv” )</span></label><label><input type="radio" autocomplete="off" name="radio_YIAQRQZIQA" value=""> <span>write.csv(coli_genomes, “../coli_genomes_renamed.csv”) </span></label><label><input type="radio" autocomplete="off" name="radio_YIAQRQZIQA" value="answer"> <span>write.csv(coli_genomes, “data/coli_genomes_renamed.csv”)</span></label>
+<div id="radio_LXSINYESUY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LXSINYESUY" value="answer"> <span>write.table(coli_genomes, “data/coli_genomes_renamed.csv”, sep=“,” )</span></label><label><input type="radio" autocomplete="off" name="radio_LXSINYESUY" value=""> <span>write.csv2(coli_genomes, “data/coli_genomes_renamed.csv” )</span></label><label><input type="radio" autocomplete="off" name="radio_LXSINYESUY" value=""> <span>write.csv(coli_genomes, “../coli_genomes_renamed.csv”) </span></label><label><input type="radio" autocomplete="off" name="radio_LXSINYESUY" value="answer"> <span>write.csv(coli_genomes, “data/coli_genomes_renamed.csv”)</span></label>
 </div>
 <div id="save">
 
 </div>
 <p>Finally, do save the new dataset in your folder for future examples.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(coli_genomes, <span class="st">"data/coli_genomes_renamed.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(coli_genomes, <span class="st">"data/coli_genomes_renamed.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="quick-exercise-iv" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="quick-exercise-iv"><span class="header-section-number">4.5</span> <span style="color:darkseagreen">Quick exercise (IV)</span></h2>
-<p>R has some built-in datasets that can be used as examples for plots or analysis. You can check all of them using the function data(). We are going to use one of that datasets for the following exercise in which you have to write and test your code.</p>
-<p>Use the function <code>str()</code> to examine the structure of the <em>quakes</em> dataset. Which of the following best describes the variables represented in this data frame?</p>
-<strong>Select the right answer</strong>
-<div id="radio_XHHMZIXRIF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_XHHMZIXRIF" value="answer"> <span>Location and characteristics of Earthquakes off Fiji</span></label><label><input type="radio" autocomplete="off" name="radio_XHHMZIXRIF" value=""> <span>Glass vibration during Eurovision contest</span></label><label><input type="radio" autocomplete="off" name="radio_XHHMZIXRIF" value=""> <span>Fever and seizures due to mPox</span></label>
+<section id="quick-exercise-iv" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="quick-exercise-iv"><span class="header-section-number">3.5</span> <span style="color:darkseagreen">Quick exercise (IV)</span></h2>
+<p>R has some built-in datasets that can be used as examples for plots or analysis. You can check all of them using the function <code>data()</code>. For the following exercise we are going to use one of that datasets, named <em>quakes</em>. You can import it as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(quakes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now you need to create a new dataframe <em>quakes2</em> with the three columns, <em>lat</em>, <em>long</em> and <em>new_var</em>, being the latter the product <em>lat</em> $$x <em>long</em>. What is the mean of the new variable?</p>
+<p>Then, use the function <code>str()</code> to examine the structure of the <em>quakes</em> dataset. Which of the following best describes the variables represented in this data frame?</p>
+<strong>Select the right answer</strong>
+<div id="radio_UUNBPOSXMJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UUNBPOSXMJ" value="answer"> <span>Location and characteristics of Earthquakes off Fiji</span></label><label><input type="radio" autocomplete="off" name="radio_UUNBPOSXMJ" value=""> <span>Glass vibration during Eurovision contest</span></label><label><input type="radio" autocomplete="off" name="radio_UUNBPOSXMJ" value=""> <span>Fever and seizures due to mPox</span></label>
+</div>
+<p>Now you need to create a new dataframe <em>quakes2</em> with the three columns, <em>lat</em>, <em>long</em> and <em>new_var</em>, being the latter the product <em>lat</em> <span class="math inline">\(x\)</span> <em>long</em>. What is the mean of the new variable? Fill the gaps to finish your code in the R snippet below.</p>
+<div class="cell" data-exercise="ex_1_r">
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 <hr>
 </section>
 </section>
-<section id="references" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> References</h1>
+<section id="references" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> References</h1>
 <ul>
 <li><p><em>An introduction to R</em>, <a href="https://intro2r.com/work-d.html" class="uri">https://intro2r.com/work-d.html</a></p></li>
 <li><p><em>R programming for data science,</em> <a href="https://bookdown.org/rdpeng/rprogdatascience/" class="uri">https://bookdown.org/rdpeng/rprogdatascience/</a></p></li>
@@ -2791,25 +2882,25 @@ Throw out the trash
 <li><p>R para análisis científicos reproducibles. Sofware Carpentry Foundation. <a href="https://swcarpentry.github.io/r-novice-gapminder-es/" class="uri">https://swcarpentry.github.io/r-novice-gapminder-es/</a></p></li>
 </ul>
 </section>
-<section id="review-exercises" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> <span style="color:darkgreen">Review exercises</span></h1>
+<section id="review-exercises2" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> <span style="color:darkgreen">Review exercises</span><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h1>
 <ol type="1">
-<li><p>Load the file <em>colis3.csv</em> as <em>colis</em> and explore the dataset structure.</p></li>
-<li><p>Calculate the mean of numerical variables: isolation date (<em>Year</em>), antimicrobial resistance genes (<em>AMR</em>), virulence factors (<em>VF</em>), CRISPR cassesttes (<em>CRISPR</em>), integron cassettes (<em>Integron</em>) and sequencing date (<em>seqs</em>) in those strains? Note. For the <em>seqs</em> variable you will need to use the function <code>as.Date()</code>.</p></li>
+<li><p>Load the file <a href="https://r4biochemists.github.io/data/colis3.csv"><em>colis3.csv</em></a> as <em>colis</em> and explore the dataset structure.</p></li>
+<li><p>Calculate the mean of numerical variables: isolation date (<em>Year</em>), antimicrobial resistance genes (<em>AMR</em>), virulence factors (<em>VF</em>), CRISPR cassesttes (<em>CRISPR</em>), integron cassettes (<em>Integron</em>) and sequencing date (<em>seqs</em>) in those strains? <strong>Note.</strong> For the <em>seqs</em> variable you will need to use the function <code>as.Date()</code>.</p></li>
 <li><p>Save the tables <em>coli_genomes_renamed</em> and <em>colis</em> in a single <em>Rdata</em> file.</p></li>
-<li><p>Add the values of the exercise 3 as a last row in the table. Note. For the <em>seqs</em> variable you will need to use the function <code>format.Date()</code> (or just <code>format()</code>)</p></li>
+<li><p>Add the values of the exercise 2 as a last row in the table. Nowyou will need to use the function <code>format.Date()</code> (or just <code>format()</code>) for the <em>seqs</em> variable.</p></li>
 </ol>
 </section>
-<section id="extra-short-exercises" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> <span style="color:darkgreen">Extra (short) exercises</span></h1>
+<section id="extra-short-exercises" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> <span style="color:darkgreen">Extra (short) exercises</span></h1>
 <p><strong>Want more?</strong> Try the input/output examples from <em>Techvidvan</em> website <a href="https://techvidvan.com/tutorials/r-input-and-output-functions/" class="uri">https://techvidvan.com/tutorials/r-input-and-output-functions/</a></p>
 </section>
-<section id="session-info" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Session Info</h1>
+<section id="session-info" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Session Info</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.4.0 (2024-04-24)
+<pre><code>R version 4.4.1 (2024-06-14)
 Platform: x86_64-apple-darwin20
 Running under: macOS Sonoma 14.6.1
 
@@ -2827,13 +2918,13 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] webexercises_1.1.0 formatR_1.14       knitr_1.48        
+[1] webexercises_1.1.0 formatR_1.14       knitr_1.50        
 
 loaded via a namespace (and not attached):
- [1] htmlwidgets_1.6.4 compiler_4.4.0    fastmap_1.2.0     cli_3.6.3        
- [5] tools_4.4.0       htmltools_0.5.8.1 rstudioapi_0.16.0 yaml_2.3.10      
- [9] rmarkdown_2.28    jsonlite_1.8.8    xfun_0.47         digest_0.6.36    
-[13] rlang_1.1.4       evaluate_0.24.0  </code></pre>
+ [1] htmlwidgets_1.6.4 compiler_4.4.1    fastmap_1.2.0     cli_3.6.4        
+ [5] tools_4.4.1       htmltools_0.5.8.1 rstudioapi_0.17.1 yaml_2.3.10      
+ [9] rmarkdown_2.29    jsonlite_2.0.0    xfun_0.51         digest_0.6.37    
+[13] rlang_1.1.5       evaluate_1.0.3   </code></pre>
 </div>
 </div>
 
@@ -2845,6 +2936,7 @@ loaded via a namespace (and not attached):
 
 <ol>
 <li id="fn1"><p>Since it is interactive we cannot run it when we render the source file into a static web page. This can be prevented in markdown/quarto with the option `eval: false` in the chunk.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Check proposed answers in the repo: <a href="https://github.com/r4biochemists/r4biochemists.github.io/tree/main/answers2exercises" class="uri">https://github.com/r4biochemists/r4biochemists.github.io/tree/main/answers2exercises</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script>
@@ -3135,8 +3227,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -3254,7 +3344,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -3484,7 +3573,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Modesto Redrejo Rodríguez &amp; Luis del Peso, 2024</p>
+<p>Modesto Redrejo Rodríguez &amp; Luis del Peso, 2025</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
@@ -3497,11 +3586,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </i> 
     </a>
   </li>  
-    <li class="nav-item compact">
+    <li class="nav-item">
     <a class="nav-link" href="https://twitter.com/mredrejo">
-      <i class="bi bi-twitter" role="img">
-</i> 
-    </a>
+<p><iconify-icon inline="" icon="fa6-brands:x-twitter"></iconify-icon></p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/mredrejo.bsky.social">
+<p><iconify-icon inline="" icon="simple-icons:bluesky"></iconify-icon></p>
+</a>
   </li>  
 </ul>
     </div>

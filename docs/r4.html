@@ -74,6 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/iconify-1.0.0-beta.2/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -391,7 +392,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"#Your function here\n\n\n\n\n#Try it\ndilution(250,10,10)","id":1,"options":{"label":"unnamed-chunk-1","classes":"","results":"markup","fig-height":5,"context":"interactive","warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","dpi":72,"editor-word-wrap":"true","fig-cap":"","message":"true","out-width":"700px","output":"true","autorun":"false","editor-font-scale":"1","out-height":"","comment":"","read-only":"false"}}];
+globalThis.qwebrCellDetails = [{"code":"#Your function here\n\n\n\n\n#Try it\ndilution(250,10,10)","id":1,"options":{"out-width":"700px","context":"interactive","warning":"true","label":"unnamed-chunk-1","fig-width":7,"editor-word-wrap":"true","fig-cap":"","editor-font-scale":"1","results":"markup","dpi":72,"classes":"","editor-quick-suggestions":"false","fig-height":5,"message":"true","autorun":"false","comment":"","editor-max-height":"","read-only":"false","out-height":"","output":"true"}}];
 
 </script>
 <script type="module">
@@ -1725,7 +1726,7 @@ window.Quarto = {
   <li><a href="#quick-exercise-v" id="toc-quick-exercise-v" class="nav-link" data-scroll-target="#quick-exercise-v"><span class="header-section-number">2.8</span> <span style="color:darkseagreen">Quick exercise (V)</span></a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">3</span> References</a></li>
-  <li><a href="#review-exercises" id="toc-review-exercises" class="nav-link" data-scroll-target="#review-exercises"><span class="header-section-number">4</span> <span style="color:darkgreen">Review Exercises</span></a></li>
+  <li><a href="#review-exercises2" id="toc-review-exercises2" class="nav-link" data-scroll-target="#review-exercises2"><span class="header-section-number">4</span> <span style="color:darkgreen">Review Exercises</span></a></li>
   <li><a href="#extra-short-exercises" id="toc-extra-short-exercises" class="nav-link" data-scroll-target="#extra-short-exercises"><span class="header-section-number">5</span> <span style="color:darkseagreen">Extra (short) exercises</span></a></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info"><span class="header-section-number">6</span> Session Info</a></li>
   </ul>
@@ -2057,7 +2058,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 20, 2024</p>
+      <p class="date-modified">November 15, 2024</p>
     </div>
   </div>
     
@@ -2187,7 +2188,7 @@ Cross-lesson tip
 </section>
 <section id="too-many-packages" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="too-many-packages"><span class="header-section-number">1.2</span> Too many packages</h2>
-<p>As there are a lot of packages sometimes it takes some time to test different packages for the same analysis. Also, some packages become obsolete with a new R or RStudio version. Thus, is also a good habit to uninstall packages, with the function <code>remove.package()</code>.</p>
+<p>As there are a lot of packages sometimes it takes some time to test different packages for the same analysis. Also, some packages become obsolete with a new R or RStudio version. Thus, is also a good habit to uninstall packages, with the function <code>remove.packages()</code>.</p>
 <p>Sometimes, you can come into two different namesake functions from independent packages. Also, to reduce the memory load you may want to use a function without loading the package. In those cases, as in the examples below, there is a trick to call a specific function, the prefix <code>package::</code>. However, it should be noted that in some packages the syntax is complex and you need to call more than one function to actually use a major function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># package getwiki</span></span>
@@ -2206,12 +2207,12 @@ Cross-lesson tip
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>DNA<span class="sc">$</span>titles</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "A-DNA"                 "Circular DNA"          "DNA"                  
- [4] "DNA (disambiguation)"  "DNA (duo)"             "DNA Lover"            
- [7] "DNA Oyj"               "DNA extraction"        "DNA methylation"      
+ [4] "DNA (disambiguation)"  "DNA Oyj"               "DNA extraction"       
+ [7] "DNA ligase"            "DNA methylation"       "DNA polymerase"       
 [10] "DNA profiling"         "DNA repair"            "DNA replication"      
-[13] "DNA sequencing"        "DNA vaccine"           "DNA virus"            
-[16] "DNA²"                  "DNA–DNA hybridization" "DnaA"                 
-[19] "Mitochondrial DNA"     "Recombinant DNA"      </code></pre>
+[13] "DNA sequencing"        "DNA virus"             "DNA²"                 
+[16] "DNA–DNA hybridization" "DnaA"                  "Mitochondrial DNA"    
+[19] "Mutation"              "Recombinant DNA"      </code></pre>
 </div>
 </div>
 <div id="ggplot">
@@ -2238,7 +2239,7 @@ Cross-lesson tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="r4_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="r4_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2249,7 +2250,7 @@ Cross-lesson tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="r4_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="r4_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2282,7 +2283,7 @@ See an answer
 </div>
 </div>
 <ol start="2" type="1">
-<li>Another R built-in dataset is called <em>DNase</em> and it contains data of several experiments of DNase treatment. Explore data and use the <code>report</code> <a href="https://easystats.github.io/report/">package documentation</a> and use it to test correlation between the DNase variables <code>conc</code> and <code>density</code>.</li>
+<li>Another R built-in dataset is called <em>DNase</em> and it contains data of several experiments of DNase treatment. Explore data and use the <code>report</code> package <a href="https://easystats.github.io/report/">(documentation</a>) to test correlation between the DNase variables <code>conc</code> and <code>density</code>.</li>
 </ol>
 <div class="cell" data-webex.hide="See an answer">
 <div class="webex-solution">
@@ -2319,11 +2320,12 @@ is positive, statistically significant, and very large (r = 0.93, 95% CI [0.91,
 <section id="why-how" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="why-how"><span class="header-section-number">2.1</span> Why? How?</h2>
 <p>We have discussed throughout the previous lessons how R can help you saving time when you need to analyze and plot the data from your experiment. However, many times, particularly in Bioinformatics, you won’t have the data from one single experiment but from many of them.</p>
-<p>Creating you own function will be very useful for automation of repetitive analyses or to encapsulate a sequence of expressions that need to be executed numerous times, perhaps under slightly different conditions. Functions are used in most programming languages as separated instructions for specific tasks.Breaking out our code into functions has several advantages:</p>
+<p>Creating you own function will be very useful for automation of repetitive analyses or to encapsulate a sequence of expressions that need to be executed numerous times, perhaps under slightly different conditions. Functions are used in most programming languages as separated instructions for specific tasks.</p>
+<p>Breaking out our code into independent functions has several advantages:</p>
 <ul>
 <li><p>When building or maintaining the function, we can focus just on that function: what information it needs, what steps it performs, and what result it provides.</p></li>
 <li><p>We can simplify the main set of instructions, making it easier to read and maintain over time.</p></li>
-<li><p>It helps us separate work for a team, assigning each independent function to a member of the team.</p></li>
+<li><p>It helps us separate work for a team, assigning each independent function to a member of the team and then just interconnect the functions later on.</p></li>
 <li><p>And we can more easily reuse the function in multiple places in one script or copy it to reuse in other projects.</p></li>
 </ul>
 <p><strong>In R, functions are also considered as objects</strong>. That means that (1) they can be nested, so you can define a function inside another function and (2) you can use functions as arguments to other functions. We will see very useful examples of this latter feature in <a href="r6.html">Lesson R6</a>, using custom functions as arguments for <code>aggregate()</code>, <code>xtabs()</code>, <code>lapply()</code> or <code>sapply()</code>.</p>
@@ -2379,7 +2381,7 @@ is positive, statistically significant, and very large (r = 0.93, 95% CI [0.91,
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "odd"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># no need the curly braces!</span></span>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sometimes you can omit curly braces</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>evenOdd2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (x<span class="sc">%%</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>)</span>
 <span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(<span class="st">"even"</span>) <span class="cf">else</span> <span class="fu">return</span>(<span class="st">"odd"</span>)</span>
@@ -2423,10 +2425,10 @@ is positive, statistically significant, and very large (r = 0.93, 95% CI [0.91,
 </section>
 <section id="quick-exercise-ii" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="quick-exercise-ii"><span class="header-section-number">2.3</span> <span style="color:darkseagreen">Quick exercise (II)</span></h2>
-<p>We want to write an inline function that transforms concentrations units: molar (M) into micromolar (µM). How would you do it?</p>
+<p>We want to write an inline function that transforms concentrations units: milimolar (mM) into micromolar (µM). How would you do it?</p>
 <strong>Select the right answer</strong>
-<div id="radio_WSFPBBSSYC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_WSFPBBSSYC" value=""> <span>f &lt;- function(x) 1000</span></label><label><input type="radio" autocomplete="off" name="radio_WSFPBBSSYC" value="answer"> <span>f &lt;- function(x) x * 1000</span></label><label><input type="radio" autocomplete="off" name="radio_WSFPBBSSYC" value=""> <span>f &lt;- function(x) x 1000</span></label>
+<div id="radio_SUPKWRBBJU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SUPKWRBBJU" value=""> <span>f &lt;- function(x) 1000</span></label><label><input type="radio" autocomplete="off" name="radio_SUPKWRBBJU" value="answer"> <span>f &lt;- function(x) x * 1000</span></label><label><input type="radio" autocomplete="off" name="radio_SUPKWRBBJU" value=""> <span>f &lt;- function(x) x 1000</span></label>
 </div>
 <hr>
 </section>
@@ -2449,7 +2451,7 @@ is positive, statistically significant, and very large (r = 0.93, 95% CI [0.91,
 <pre><code>[1] "The area of the rectangle is 2 x 3 = 6 cm²"</code></pre>
 </div>
 </div>
-<p>Notice that the output also can be a vector or a list:</p>
+<p>Notice that the output also can be a different type of object, like vector or a list:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we calculate area and perimeter of a rectangle</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -2641,7 +2643,7 @@ Use of Which and Switch
 <p>When creating functions, you can include any R functionality, including reading and parsing external data files. Let’s do a short exercise, within the context of molecular biology.</p>
 <p><strong>Can you write a function that convert R into a molecular biology dogma interpreter?</strong></p>
 <p>You can use the table <a href="data/genetic_code.csv"><em>genetic_code.csv</em></a>, located in the <code>data</code> folder that contains the conversion between all the nucleic acid sequence codons and its encoded amino acid in IUPAC one letter code.</p>
-<p>Try it with some examples, including right and wrong codons, like “ATG”, “TAA”, “CAT”, or “AXG”.</p>
+<p>Try it out with some examples, including right and wrong codons, like “ATG”, “TAA”, “CAT”, or “AXG”.</p>
 <div class="cell" data-webex.hide="Answer">
 <div class="webex-solution">
 <button>
@@ -2678,7 +2680,7 @@ Answer
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co">#'aa'??</span></span>
 <span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(aa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'aa' not found</code></pre>
+<pre><code>Error: object 'aa' not found</code></pre>
 </div>
 </div>
 <p>What just happened? There are a few things worth to comment here:</p>
@@ -2760,7 +2762,7 @@ Answer 1
 </div>
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">age</span>(<span class="st">"2004-11-17"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "You are about 240.5 months old"</code></pre>
+<pre><code>[1] "You are about 243.4 months old"</code></pre>
 </div>
 </div>
 </div>
@@ -2786,7 +2788,7 @@ Answer 2
 <span id="cb116-15"><a href="#cb116-15" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb116-16"><a href="#cb116-16" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span>(<span class="st">"2004-11-17"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "If you were born on 2004-11-17, you are about 240.5 months old."</code></pre>
+<pre><code>[1] "If you were born on 2004-11-17, you are about 243.4 months old."</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span>(<span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
@@ -2815,8 +2817,8 @@ Answer 2
 </ul>
 <hr>
 </section>
-<section id="review-exercises" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> <span style="color:darkgreen">Review Exercises</span></h1>
+<section id="review-exercises2" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <span style="color:darkgreen">Review Exercises</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h1>
 <p><strong>Write a function that translate <em>any</em> nucleotide sequence into a protein sequence.</strong></p>
 <p>Hints:</p>
 <ol type="1">
@@ -2840,7 +2842,7 @@ Answer 2
 <div class="cell">
 <div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.4.0 (2024-04-24)
+<pre><code>R version 4.4.1 (2024-06-14)
 Platform: x86_64-apple-darwin20
 Running under: macOS Sonoma 14.6.1
 
@@ -2862,28 +2864,34 @@ other attached packages:
 [5] formatR_1.14       knitr_1.48        
 
 loaded via a namespace (and not attached):
- [1] xlsxjars_0.6.1     sandwich_3.1-0     utf8_1.2.4         generics_0.1.3    
- [5] lattice_0.22-6     effectsize_0.8.9   digest_0.6.36      magrittr_2.0.3    
- [9] evaluate_0.24.0    grid_4.4.0         estimability_1.5.1 mvtnorm_1.2-6     
-[13] fastmap_1.2.0      Matrix_1.7-0       jsonlite_1.8.8     survival_3.7-0    
+ [1] xlsxjars_0.6.1     sandwich_3.1-1     utf8_1.2.4         generics_0.1.3    
+ [5] lattice_0.22-6     effectsize_0.8.9   digest_0.6.37      magrittr_2.0.3    
+ [9] evaluate_1.0.1     grid_4.4.1         estimability_1.5.1 mvtnorm_1.3-1     
+[13] fastmap_1.2.0      Matrix_1.7-1       jsonlite_1.8.9     survival_3.7-0    
 [17] multcomp_1.4-26    fansi_1.0.6        scales_1.3.0       TH.data_1.1-2     
-[21] codetools_0.2-20   cli_3.6.3          rlang_1.1.4        splines_4.4.0     
-[25] munsell_0.5.1      withr_3.0.1        yaml_2.3.10        tools_4.4.0       
-[29] datawizard_0.12.2  dplyr_1.1.4        colorspace_2.1-1   bayestestR_0.14.0 
+[21] codetools_0.2-20   cli_3.6.3          rlang_1.1.4        splines_4.4.1     
+[25] munsell_0.5.1      withr_3.0.2        yaml_2.3.10        tools_4.4.1       
+[29] datawizard_0.13.0  dplyr_1.1.4        colorspace_2.1-1   bayestestR_0.15.0 
 [33] vctrs_0.6.5        R6_2.5.1           zoo_1.8-12         lifecycle_1.0.4   
-[37] emmeans_1.10.3     htmlwidgets_1.6.4  MASS_7.3-61        insight_0.20.3    
-[41] pkgconfig_2.0.3    rJava_1.0-11       pillar_1.9.0       gtable_0.3.5      
-[45] glue_1.7.0         xfun_0.47          tibble_3.2.1       tidyselect_1.2.1  
-[49] rstudioapi_0.16.0  parameters_0.22.1  xtable_1.8-4       farver_2.1.2      
+[37] emmeans_1.10.5     htmlwidgets_1.6.4  MASS_7.3-61        insight_0.20.5    
+[41] pkgconfig_2.0.3    rJava_1.0-11       pillar_1.9.0       gtable_0.3.6      
+[45] glue_1.8.0         xfun_0.48          tibble_3.2.1       tidyselect_1.2.1  
+[49] rstudioapi_0.17.1  parameters_0.23.0  xtable_1.8-4       farver_2.1.2      
 [53] htmltools_0.5.8.1  rmarkdown_2.28     getwiki_0.9.0      labeling_0.4.3    
-[57] compiler_4.4.0    </code></pre>
+[57] compiler_4.4.1    </code></pre>
 </div>
 </div>
 
 
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Check proposed answers in the repo: <a href="https://github.com/r4biochemists/r4biochemists.github.io/tree/main/answers2exercises" class="uri">https://github.com/r4biochemists/r4biochemists.github.io/tree/main/answers2exercises</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script>
 
 /* update total correct if #webex-total_correct exists */
@@ -3534,11 +3542,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </i> 
     </a>
   </li>  
-    <li class="nav-item compact">
+    <li class="nav-item">
     <a class="nav-link" href="https://twitter.com/mredrejo">
-      <i class="bi bi-twitter" role="img">
-</i> 
-    </a>
+<p><iconify-icon inline="" icon="fa6-brands:x-twitter"></iconify-icon></p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/mredrejo.bsky.social">
+<p><iconify-icon inline="" icon="simple-icons:bluesky"></iconify-icon></p>
+</a>
   </li>  
 </ul>
     </div>

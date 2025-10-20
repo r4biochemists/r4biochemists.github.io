@@ -11,6 +11,7 @@ categories:
   - Git
   - Version control
   - Quarto
+  - Positron
 format: 
   html:
     page-layout: full
@@ -52,7 +53,7 @@ knit_hooks$set(output = function(x, options) {
 })
 ```
 
-# RStudio Projects
+# RStudio Projects {#rprojects}
 
 Working with relative paths can get a little bit confusing, especially if run large projects with different folders and subfolders for data and results. A good way to avoid confusion is to make an R project in R Studio.
 
@@ -136,22 +137,29 @@ As with any other language, it is much easier to learn the syntax if you do some
 
 Note that knitting into *pdf* may require the installation of a LaTeX distribution or R package. There are several alternatives, like `tinytex`, `MacTeX` or `MikTeX`, among others (see [references 10 and 11](#r10)).
 
-If you struggle to adjust the chunks text width to in the PDF document, you may install the package `formatR`, as explained in the following StackOverflow answer: [https://stackoverflow.com/questions/33481271/how-to-wrap-code-and-the-output-in-markdown-rmd](https://stackoverflow.com/questions/33481271/how-to-wrap-code-and-the-output-in-markdown-rmd)
+If you struggle to adjust the chunks text width to in the PDF document, you may install the package `formatR`, as explained in the following StackOverflow answer: <https://stackoverflow.com/questions/33481271/how-to-wrap-code-and-the-output-in-markdown-rmd>
 :::
 
 ## R Notebooks
 
-Technically, **R Markdown is a file format, whereas R Notebook is just a way to work with R Markdown files**. R Notebooks do not have their own file format, they all use *Rmd*. All R Notebooks can be 'knitted' to R Markdown outputs, and all R Markdown documents can be interfaced as a Notebook. The R nb document is launched directly and no wizard (as in the case of .RMD) appears. Along with the notebook file, an additional html file that extension *\*.nb.html* is generated. The notebook has the option for Preview. If any code is altered or edited, the new output is not shown. The output is shown in the code editor itself. Whatever the old output was it is only rendered. No new output is generated from the code change. In order to show the code output, we need to execute the chunk and then it will appear in the output. The YAML header has output as: output: **html_notebook**
+Technically, **R Markdown** is a file format, while **R Notebook** is a way of working with R Markdown files. R Notebooks do not have a separate file format—they all use .Rmd files. Any R Markdown document can be opened as a Notebook, and any Notebook can be rendered (*knitted*) into standard R Markdown output. When launching an R Notebook, no setup wizard appears (as may happen with some .Rmd files). Alongside the main file, an additional HTML file with the extension .nb.html is generated, which allows for previewing the notebook. If code is modified, the output does not update automatically; instead, the previous output remains visible until the code chunk is re-executed. To view updated results, you must manually run the chunk. The YAML header for an R Notebook typically includes: 
+```{r eval=FALSE}
+output: html_notebook
 
-Writing an R Notebook document is no different than writing an R Markdown document. The text and code chunk syntax does not differ from what you learned in the R Markdown tutorial. The primary difference is in the interativeness of an R Notebook. Primarily that when executing chunks in an R Markdown document, **all the code is sent to the console at once**, but in an R Notebook, **only one line at a time is sent**. This allows execution to stop if a line raises an error.
+``` 
+ 
+
+Writing an R Notebook is essentially the same as writing an R Markdown document. The syntax for text and code chunks is identical. The key difference lies in interactivity: in R Markdown, all code is sent to the console at once during knitting, whereas in R Notebooks, code is executed line by line. This allows execution to stop immediately if an error occurs, making debugging easier.
 
 # Quarto
 
 In 2022, RStudio launched Quarto, a novel markdown flavor, based in [Pandoc](https://en.wikipedia.org/wiki/Pandoc), a free-software document converter, that expanded the possibilities of RMarkdown with new format options and enriched templates. See some examples [here](https://quarto.org/docs/gallery/).
 
-Working with quarto is almost identical as writing a markdown document, but it is particularly designed to generate complex documents, like a whole website or books. With Quarto it is easier to handle complex projects, include references or work collaboratively. Each document is generated in a *.qmd* file and the site/book options are defined in a companion YAML document that includes the site/book structure, metadata and other configuration. You can check the [Quarto Reference](https://quarto.org/docs/projects/quarto-projects.html#project-metadata) to learn how to configure your yml file. As an example, have a look to the quarto documents of and the [\_quarto.yml](https://github.com/mredrejo/HPBBM2023/blob/main/_quarto.yml) file for this site in the [github repository](https://github.com/mredrejo/HPBBM2023).
+Working with quarto is almost identical as writing a markdown document, but it is particularly designed to generate **complex documents**, like a whole website or books. With Quarto it is easier to handle complex projects, include references or work collaboratively. Each document is generated in a *.qmd* file and the site/book options are defined in a companion YAML document that includes the site/book structure, metadata and other configuration. You can check the [Quarto Reference](https://quarto.org/docs/projects/quarto-projects.html#project-metadata) to learn how to configure your yml file. As an example, have a look to the quarto documents of and the [\_quarto.yml](https://github.com/mredrejo/HPBBM2023/blob/main/_quarto.yml) file for this site in the [github repository](https://github.com/r4biochemists/r4biochemists.github.io).
 
 Besides the references below, I suggest you to check these [examples](https://quarto.org/docs/gallery/) and the this [video about the use of Quarto](https://youtu.be/y5VcxMOnj3M) to create amazing websites, books and interactive sites.
+
+More recently, in 2024, Posit launched [Positron](https://positron.posit.co/), a new integrated development environment (IDE) designed for seamless use with both Python and R. In Positron, you can work either with R Markdown, Quarto, or Jupyter Notebooks to create reproducible analyses and data presentations. Although we have only tested it preliminary (you can ask Eduardo), Positron appears to be a promising tool that is likely to gain popularity and evolve significantly in the coming years.
 
 # References {#refs}
 
@@ -186,6 +194,8 @@ Besides the references below, I suggest you to check these [examples](https://qu
 12. Quarto Reference Guide: <https://quarto.org/docs/guide/>
 
 13. How to interactive websites with Quarto: <https://www.r-bloggers.com/2022/07/r-quarto-tutorial-how-to-create-interactive-markdown-documents/>
+
+14. From RStudio to Positron: <https://kphahn57.medium.com/from-rstudio-to-positron-707d3f6d2776>
 
 # Session Info
 
