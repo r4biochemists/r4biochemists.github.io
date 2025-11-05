@@ -2045,7 +2045,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 20, 2025</p>
+      <p class="date-modified">November 5, 2025</p>
     </div>
   </div>
     
@@ -2105,8 +2105,8 @@ Wouldn’t it be great if you didn’t have to manually set the working director
 <p><img src="images/tree.png" class="img-fluid" width="279"></p>
 <p>How would you change de <em>wd</em> to the folder <code>HPBBM2023/data</code>? You also can try with your own computer and your directory tree.</p>
 <strong>Select the right answer</strong>
-<div id="radio_VYGNPEKZPC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_VYGNPEKZPC" value=""> <span>setwd(“HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_VYGNPEKZPC" value="answer"> <span>setwd(“/home/modesto/Documents/teaching/2023_2024/HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_VYGNPEKZPC" value=""> <span>setwd(“/Users/modesto/teaching/Documents/2023_2024/HPBBM2023/data”)</span></label>
+<div id="radio_XYKATYEIGI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XYKATYEIGI" value=""> <span>setwd(“HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_XYKATYEIGI" value="answer"> <span>setwd(“/home/modesto/Documents/teaching/2023_2024/HPBBM2023/data”)</span></label><label><input type="radio" autocomplete="off" name="radio_XYKATYEIGI" value=""> <span>setwd(“/Users/modesto/teaching/Documents/2023_2024/HPBBM2023/data”)</span></label>
 </div>
 <hr>
 </section>
@@ -2249,8 +2249,8 @@ Caution
 <h2 data-number="2.1" class="anchored" data-anchor-id="quick-exercise-ii"><span class="header-section-number">2.1</span> <span style="color:darkseagreen">Quick exercise (II)</span></h2>
 <p>We are using the same directory tree. Your <em>wd</em> is <code>HPBBM2022/data</code> and you need to save a data.frame named <code>table1</code> as <code>table1.csv</code> in the folder <code>HPBBM2023/data</code> using <code>;</code> as separator. How would you do it <em>without changing</em> the working directory? Try it also with your own computer.</p>
 <strong>Select the right answer</strong>
-<div id="radio_WYUEQETUAM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_WYUEQETUAM" value="answer"> <span>write.table(table1, “../../../teaching/HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_WYUEQETUAM" value=""> <span>write.table(table1, “../../HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_WYUEQETUAM" value=""> <span>write.table(table1, “../../../HPBBM2023/data/table1.csv”)</span></label>
+<div id="radio_JKIUTFKFAO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JKIUTFKFAO" value="answer"> <span>write.table(table1, “../../../teaching/HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_JKIUTFKFAO" value=""> <span>write.table(table1, “../../HPBBM2023/data/table1.csv”, sep=“;”) </span></label><label><input type="radio" autocomplete="off" name="radio_JKIUTFKFAO" value=""> <span>write.table(table1, “../../../HPBBM2023/data/table1.csv”)</span></label>
 </div>
 <hr>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -2280,10 +2280,10 @@ Caution
 </section>
 <section id="basic-data-management-in-r" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> <span style="color:darkblue">Basic Data Management in R</span></h1>
-<p>Now we are going to import and explore an example dataset, containing metadata from an Illumina sequencing project of pathogenic <em>E. coli</em> strains (Flament-Simon et al.&nbsp;2020, <a href="https://doi.org/10.1038/s41598-020-69356-6" class="uri">https://doi.org/10.1038/s41598-020-69356-6</a>). However, for didactic purposes, the original data have been simplified and manipulated and the attached datasets do not fully correspond to the actual data.</p>
+<p>Now we are going to import and explore an example dataset, containing metadata from an Illumina sequencing project of pathogenic <em>E. coli</em> strains (Flament-Simon et al.&nbsp;2020, <a href="https://doi.org/10.1038/s41598-020-69356-6" class="uri">https://doi.org/10.1038/s41598-020-69356-6</a>). However, for didactic purposes, the original data have been simplified and manipulated and the attached datasets do not fully correspond to the actual data. You can find the table in the data folder or download it in the following link: <a href="data/coli_genomes.csv">coli_genomes.csv</a>.</p>
 <section id="open-and-explore-a-dataframe" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="open-and-explore-a-dataframe"><span class="header-section-number">3.1</span> Open and explore a dataframe</h2>
-<p>As you can see in the R help, the function <code>read.table()</code> has several default options as FALSE, like <code>header=FALSE</code>. When you have a spreadsheet export file, i.e.&nbsp;having a table where the fields are divided by commas in place of spaces, you can use <code>read.csv()</code> in place of <code>read.table()</code>. For Spaniards, there is also <code>read.csv2()</code>, which uses a comma for the decimal point and a semicolon for the separator. The latter functions are wrappers of <code>read.table()</code> with custom default options. Likewise, there are <code>write.csv()</code> and <code>write.csv2()</code>, which are wrappers of <code>write.table()</code>. Look carefully at the following examples of different ways to open a table (with some common mistakes) and explore them quickly.</p>
+<p>As you can see in the R help, the function <code>read.table()</code> has several default options as FALSE, like <code>header=FALSE</code>. When you have a spreadsheet export file, i.e.&nbsp;having a table where the fields are divided by commas in place of spaces, you can use <code>read.csv()</code> in place of <code>read.table()</code>. For Spaniards, there is also <code>read.csv2()</code>, which uses a comma for the decimal point and a semicolon for the separator. The latter functions are wrappers of <code>read.table()</code> with custom default options. Likewise, there are <code>write.csv()</code> and <code>write.csv2()</code>, which are wrappers of <code>write.table()</code>. Take a close look at the following examples that illustrate several ways to open a table — including some common mistakes — and how to explore it quickly.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note differences between read.table(), read.csv() and</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv2()</span></span>
@@ -2843,8 +2843,8 @@ FALSE  TRUE
 <p>Which of the following functions can you use to save the dataframe using <code>,</code> as field separator? <select class="webex-select"><option value="blank"></option><option value="">write.table</option><option value="">write.csv2</option><option value="answer">write.csv</option><option value="">save</option></select></p>
 <p>How would you do it?</p>
 <strong>Select the right answer</strong>
-<div id="radio_ZIFSSCKSEM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZIFSSCKSEM" value="answer"> <span>write.table(coli_genomes, “data/coli_genomes_renamed.csv”, sep=“,” )</span></label><label><input type="radio" autocomplete="off" name="radio_ZIFSSCKSEM" value=""> <span>write.csv2(coli_genomes, “data/coli_genomes_renamed.csv” )</span></label><label><input type="radio" autocomplete="off" name="radio_ZIFSSCKSEM" value=""> <span>write.csv(coli_genomes, “../coli_genomes_renamed.csv”) </span></label><label><input type="radio" autocomplete="off" name="radio_ZIFSSCKSEM" value="answer"> <span>write.csv(coli_genomes, “data/coli_genomes_renamed.csv”)</span></label>
+<div id="radio_CKDLFDBOGK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CKDLFDBOGK" value="answer"> <span>write.table(coli_genomes, “data/coli_genomes_renamed.csv”, sep=“,” )</span></label><label><input type="radio" autocomplete="off" name="radio_CKDLFDBOGK" value=""> <span>write.csv2(coli_genomes, “data/coli_genomes_renamed.csv” )</span></label><label><input type="radio" autocomplete="off" name="radio_CKDLFDBOGK" value=""> <span>write.csv(coli_genomes, “../coli_genomes_renamed.csv”) </span></label><label><input type="radio" autocomplete="off" name="radio_CKDLFDBOGK" value="answer"> <span>write.csv(coli_genomes, “data/coli_genomes_renamed.csv”)</span></label>
 </div>
 <div id="save">
 
@@ -2862,8 +2862,8 @@ FALSE  TRUE
 </div>
 <p>Then, use the function <code>str()</code> to examine the structure of the <em>quakes</em> dataset. Which of the following best describes the variables represented in this data frame?</p>
 <strong>Select the right answer</strong>
-<div id="radio_ZJRUMKSAUR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZJRUMKSAUR" value="answer"> <span>Location and characteristics of Earthquakes off Fiji</span></label><label><input type="radio" autocomplete="off" name="radio_ZJRUMKSAUR" value=""> <span>Glass vibration during Eurovision contest</span></label><label><input type="radio" autocomplete="off" name="radio_ZJRUMKSAUR" value=""> <span>Fever and seizures due to mPox</span></label>
+<div id="radio_HVWQXRPIEN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HVWQXRPIEN" value="answer"> <span>Location and characteristics of Earthquakes off Fiji</span></label><label><input type="radio" autocomplete="off" name="radio_HVWQXRPIEN" value=""> <span>Glass vibration during Eurovision contest</span></label><label><input type="radio" autocomplete="off" name="radio_HVWQXRPIEN" value=""> <span>Fever and seizures due to mPox</span></label>
 </div>
 <p>Now you need to create a new dataframe <em>quakes2</em> with the three columns, <em>lat</em>, <em>long</em> and <em>new_var</em>, being the latter the product <em>lat</em> <span class="math inline">\(x\)</span> <em>long</em>. What is the mean of the new variable? Fill the gaps to finish your code in the R snippet below.</p>
 <div class="cell" data-exercise="ex_1_r">

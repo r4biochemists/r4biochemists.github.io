@@ -202,11 +202,11 @@ Although seldom used, you can also edit the contents of your objects using the f
 
 # [Basic Data Management in R]{style="color:darkblue"}
 
-Now we are going to import and explore an example dataset, containing metadata from an Illumina sequencing project of pathogenic *E. coli* strains (Flament-Simon et al. 2020, <https://doi.org/10.1038/s41598-020-69356-6>). However, for didactic purposes, the original data have been simplified and manipulated and the attached datasets do not fully correspond to the actual data.
+Now we are going to import and explore an example dataset, containing metadata from an Illumina sequencing project of pathogenic *E. coli* strains (Flament-Simon et al. 2020, <https://doi.org/10.1038/s41598-020-69356-6>). However, for didactic purposes, the original data have been simplified and manipulated and the attached datasets do not fully correspond to the actual data. You can find the table in the data folder or download it in the following link: [coli_genomes.csv](data/coli_genomes.csv).
 
 ## Open and explore a dataframe
 
-As you can see in the R help, the function `read.table()` has several default options as FALSE, like `header=FALSE`. When you have a spreadsheet export file, i.e. having a table where the fields are divided by commas in place of spaces, you can use `read.csv()` in place of `read.table()`. For Spaniards, there is also `read.csv2()`, which uses a comma for the decimal point and a semicolon for the separator. The latter functions are wrappers of `read.table()` with custom default options. Likewise, there are `write.csv()` and `write.csv2()`, which are wrappers of `write.table()`. Look carefully at the following examples of different ways to open a table (with some common mistakes) and explore them quickly.
+As you can see in the R help, the function `read.table()` has several default options as FALSE, like `header=FALSE`. When you have a spreadsheet export file, i.e. having a table where the fields are divided by commas in place of spaces, you can use `read.csv()` in place of `read.table()`. For Spaniards, there is also `read.csv2()`, which uses a comma for the decimal point and a semicolon for the separator. The latter functions are wrappers of `read.table()` with custom default options. Likewise, there are `write.csv()` and `write.csv2()`, which are wrappers of `write.table()`. Take a close look at the following examples that illustrate several ways to open a table — including some common mistakes — and how to explore it quickly.
 
 ```{r error=TRUE}
 #Note differences between read.table(), read.csv() and read.csv2()

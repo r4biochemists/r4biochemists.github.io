@@ -50,7 +50,7 @@ With RStudio you can create your own packages to automate very frequent analyses
 
 Packages can be installed from one of the public R repositories. In this course we will mainly use two R repos, [**CRAN**](https://cran.r-project.org/) and [**Bioconductor**](https://www.bioconductor.org/). CRAN stands for "the Comprehensive R Archive Network", and contains a large selection of packages that can be used free of charge. You can find a complete list of CRAN packages [here](https://cran.r-project.org/web/packages/available_packages_by_name.html) and a list sorted by topic [here](https://cran.r-project.org/web/views/).
 
-As we will see in more detail later in the [Lesson R9](r9.html), Bioconductor is a repository of software for bioinformatics or computational biology applications. As of August 2024, the CRAN package repository contains 21,127 packages, while Bioconductor version 3.19 contains 2,300 packages.
+As we will see in more detail later in the [Lesson R8](r9.html), Bioconductor is a repository of software for bioinformatics or computational biology applications. As of August 2024, the CRAN package repository contains 21,127 packages, while Bioconductor version 3.19 contains 2,300 packages.
 
 R packages in CRAN and Bioconductor are reviewed, although they may stop working after R updates. Also, you can often find new (unverified) packages on GitHub, GitLab, Bitbucket or in other repositories. You can install these non-guaranteed packages with the [`devtools`](https://devtools.r-lib.org/) package (on your own responsability).
 
