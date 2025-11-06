@@ -707,8 +707,16 @@ Let's see all those element through some examples.
 
 Let's start strong. We are going to generate a complex plot in one code line using the EU Covid-19 vaccines table (already used in [R6 lesson](r6.html) and publicly available at <https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/csv/data.csv>).
 
+::: callout-note
+This is a quite large dataframe, if your plotting is too slow or crash your R session, you can randomly select some rows using the function `sample()`
+
+Example:
+`vaccines_short <- vaccines[sample(1:nrow(vaccines),100000),]`
+:::
+
 ```{r}
 #load the data
+
 library(data.table)
 vaccines<-fread('data/vaccines_EU_22oct2022.csv')
 #install & load ggplot2
@@ -748,7 +756,7 @@ What happened? Where are my points? We added the data and it allows to plot the 
 Finally, we would like to group our data:
 
 ```{r}
-ggplot(vaccines, aes(x = YearWeekISO, y = log10(FirstDose), col=TargetGroup), stat=mean) +
+ggplot(vaccines, aes(x = YearWeekISO, y = log10(FirstDose), col=TargetGroup)) +
     geom_point() + facet_wrap(~ ReportingCountry)
 ```
 

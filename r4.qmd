@@ -472,7 +472,7 @@ When creating functions, you can include any R functionality, including reading 
 
 **Can you write a function that convert R into a molecular biology dogma interpreter?**
 
-You can use the table [*genetic_code.csv*](data/genetic_code.csv), located in the `data` folder that contains the conversion between all the nucleic acid sequence codons and its encoded amino acid in IUPAC one letter code.
+You can use the table [*genetic_code.csv*](data/genetic_code.csv), located in the [`data`](https://github.com/r4biochemists/r4biochemists.github.io/tree/main/data) folder that contains the conversion between all the nucleic acid sequence codons and its encoded amino acid in IUPAC one letter code.
 
 Try it out with some examples, including right and wrong codons, like "ATG", "TAA", "CAT", or "AXG".
 

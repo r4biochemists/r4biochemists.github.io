@@ -94,7 +94,7 @@ cat("**Select the right answer**",longmcq(opts_p))
 
 The most common way to read your data in R is importing it as a table, using the function `read.table()`. Note that the resultant object will become a *Dataframe*, even when all the entries got to be numeric. A followup call towards `as.matrix()` will turn it into in a matrix.
 
-In the following example lines we read a file called [*small_matrix.csv*](data/small_matrix.csv), located in the `data` folder. If we attempt to make some matrix calculations, R will force the dataframe to a matrix when possible, but it will return an Error for many matrix-specific operations or functions unless, we transform the dataframe into a matrix.
+In the following example lines we read a file called [*small_matrix.csv*](data/small_matrix.csv), located in the [`data`](https://github.com/r4biochemists/r4biochemists.github.io/tree/main/data) folder. If we attempt to make some matrix calculations, R will force the dataframe to a matrix when possible, but it will return an Error for many matrix-specific operations or functions unless, we transform the dataframe into a matrix.
 
 ```{r error=TRUE}
 sm <- read.table("small_matrix.csv", sep=",") #what happens here?
@@ -202,7 +202,7 @@ Although seldom used, you can also edit the contents of your objects using the f
 
 # [Basic Data Management in R]{style="color:darkblue"}
 
-Now we are going to import and explore an example dataset, containing metadata from an Illumina sequencing project of pathogenic *E. coli* strains (Flament-Simon et al. 2020, <https://doi.org/10.1038/s41598-020-69356-6>). However, for didactic purposes, the original data have been simplified and manipulated and the attached datasets do not fully correspond to the actual data. You can find the table in the data folder or download it in the following link: [coli_genomes.csv](data/coli_genomes.csv).
+Now we are going to import and explore an example dataset, containing metadata from an Illumina sequencing project of pathogenic *E. coli* strains (Flament-Simon et al. 2020, <https://doi.org/10.1038/s41598-020-69356-6>). However, for didactic purposes, the original data have been simplified and manipulated and the attached datasets do not fully correspond to the actual data. You can find the table in the [`data`](https://github.com/r4biochemists/r4biochemists.github.io/tree/main/data) folder or download it in the following link: [coli_genomes.csv](data/coli_genomes.csv).
 
 ## Open and explore a dataframe
 
