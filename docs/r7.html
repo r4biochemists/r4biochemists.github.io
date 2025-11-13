@@ -188,18 +188,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#rprojects" id="toc-rprojects" class="nav-link active" data-scroll-target="#rprojects"><span class="header-section-number">1</span> RStudio Projects</a></li>
-  <li><a href="#r-markdown-and-notebooks" id="toc-r-markdown-and-notebooks" class="nav-link" data-scroll-target="#r-markdown-and-notebooks"><span class="header-section-number">2</span> R Markdown and Notebooks</a>
+  <li><a href="#reproducibiliy-in-computational-analysis" id="toc-reproducibiliy-in-computational-analysis" class="nav-link active" data-scroll-target="#reproducibiliy-in-computational-analysis"><span class="header-section-number">1</span> Reproducibiliy in computational analysis</a></li>
+  <li><a href="#rprojects" id="toc-rprojects" class="nav-link" data-scroll-target="#rprojects"><span class="header-section-number">2</span> RStudio Projects</a></li>
+  <li><a href="#r-markdown-and-notebooks" id="toc-r-markdown-and-notebooks" class="nav-link" data-scroll-target="#r-markdown-and-notebooks"><span class="header-section-number">3</span> R Markdown and Notebooks</a>
   <ul class="collapse">
-  <li><a href="#markdown-and-rmarkdown" id="toc-markdown-and-rmarkdown" class="nav-link" data-scroll-target="#markdown-and-rmarkdown"><span class="header-section-number">2.1</span> Markdown and RMarkdown</a>
+  <li><a href="#markdown-and-rmarkdown" id="toc-markdown-and-rmarkdown" class="nav-link" data-scroll-target="#markdown-and-rmarkdown"><span class="header-section-number">3.1</span> Markdown and RMarkdown</a>
   <ul class="collapse">
   <li><a href="#quick-exercise-create-your-first-r-markdown-document" id="toc-quick-exercise-create-your-first-r-markdown-document" class="nav-link" data-scroll-target="#quick-exercise-create-your-first-r-markdown-document"><span style="color:green">Quick exercise: Create your first R Markdown document</span></a></li>
   </ul></li>
-  <li><a href="#r-notebooks" id="toc-r-notebooks" class="nav-link" data-scroll-target="#r-notebooks"><span class="header-section-number">2.2</span> R Notebooks</a></li>
+  <li><a href="#r-notebooks" id="toc-r-notebooks" class="nav-link" data-scroll-target="#r-notebooks"><span class="header-section-number">3.2</span> R Notebooks</a></li>
   </ul></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">3</span> Quarto</a></li>
-  <li><a href="#refs" id="toc-refs" class="nav-link" data-scroll-target="#refs"><span class="header-section-number">4</span> References</a></li>
-  <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info"><span class="header-section-number">5</span> Session Info</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">4</span> Quarto</a></li>
+  <li><a href="#refs" id="toc-refs" class="nav-link" data-scroll-target="#refs"><span class="header-section-number">5</span> References</a></li>
+  <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info"><span class="header-section-number">6</span> Session Info</a></li>
   </ul>
 </nav>
 </nav>
@@ -246,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 20, 2025</p>
+      <p class="date-modified">November 13, 2025</p>
     </div>
   </div>
     
@@ -257,8 +258,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="rprojects" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> RStudio Projects</h1>
+<section id="reproducibiliy-in-computational-analysis" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Reproducibiliy in computational analysis</h1>
+<p>As you know, the rapid expansion of research data and the growing emphasis on data-driven science have pushed the research community to develop solutions for managing and automating complex computational processes. These efforts aim to ensure efficiency, reproducibility, scalability, collaboration, and transparent, quality-assured practices. In this context, recent developments in computational and data sciences highlight the increasing recognition and adoption of computational workflows as essential tools for productivity and reproducibility. Workflows not only streamline processes but also democratize access to platforms and technical expertise. When treated as digital objects that can be shared, discovered, and reused, computational workflows align closely with the <strong>FAIR</strong> principles—Findable, Accessible, Interoperable, and Reusable (see <a href="#refs">Ref. 15</a>).</p>
+<p>This lesson introduces practical tools to help you apply FAIR principles in your bioinformatics workflows and data analysis using R.</p>
+</section>
+<section id="rprojects" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> RStudio Projects</h1>
 <p>Working with relative paths can get a little bit confusing, especially if run large projects with different folders and subfolders for data and results. A good way to avoid confusion is to make an R project in R Studio.</p>
 <p><img src="images/proj.jpg" class="img-fluid"></p>
 <p>As you can see in the screenshot above you can easily start a new project in RStudio using the <em>File</em> menu. Then, just select a name and save it on your computer (it will be have the extension <em>Rproj</em>).</p>
@@ -266,12 +272,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Working with projects come along with other extra features. For instance, every time you open the project, the <em>.Rdata</em> and the <em>.Rhistory</em> are loaded; thus previously edited source documents and RStudio settings (e.g.&nbsp;active tabs, splitter positions, etc.) are restored. This will make a difference if you manage different projects at the same time.</p>
 <p>There are more reasons to do this, which become more obvious as you progress as a coder and start working on collaborative projects. You can also create your project using a version control (Git or Subversion) repository. Version control helps software teams manage changes to source code over time. Version control software keeps track of every modification to the code in a special kind of database. If a mistake is made, developers can turn back the clock and compare earlier versions of the code to help fix the mistake while minimizing disruption to all team members. Version control systems have been around for a long time but continue to increase in popularity with data science workflows.</p>
 </section>
-<section id="r-markdown-and-notebooks" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> R Markdown and Notebooks</h1>
-<section id="markdown-and-rmarkdown" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="markdown-and-rmarkdown"><span class="header-section-number">2.1</span> Markdown and RMarkdown</h2>
+<section id="r-markdown-and-notebooks" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> R Markdown and Notebooks</h1>
+<section id="markdown-and-rmarkdown" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="markdown-and-rmarkdown"><span class="header-section-number">3.1</span> Markdown and RMarkdown</h2>
 <p><a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> is an easy-to-write language for formatting text. It was created in 2004 as a new markup language and since then it has widely used for blogging, instant messaging, online forums and software documentations, among other tools. For instance, websites like Github or Reddit use variants of markdown to facilitate discussions. The typical read me intro file that you see in Github repositories is written in markdown. Several programming languages also implemented markdown as an standard for documentation pages or reports generation.</p>
-<p>RMarkdown is an R packages for the implementation of markdown for R and more commonly RStudio. It combines the core simple syntax of markdown with embedded code chunks that are run so their output can be included in the final document. The key about R Markdown documents is that they are fully <em>reproducible</em> (they can be automatically regenerated whenever underlying R code or data changes).</p>
+<p><code>RMarkdown</code> is an R package for the implementation of markdown for R and more commonly RStudio. It combines the core simple syntax of markdown with embedded code chunks that are run so their output can be included in the final document. The key about R Markdown documents is that they are fully <em>reproducible</em> (they can be automatically regenerated whenever underlying R code or data changes).</p>
 <p>Currently, RMarkdown documents can include chunks in different languages (see the screenshot below), so you can combine in the same document <em>bash</em> or <em>Python</em> scripts along with the R data analysis. Moreover, despite simplicity of its syntax it can include diverse formatting options, spanning enriched text to HTML or Latex contents as well.</p>
 <p><img src="images/paste-848AADDA.png" class="img-fluid"></p>
 <p>Also, they can be written using a <em>Visual</em> mode (above) that looks like any other word processor, but you can switch to <em>Source</em> anytime.</p>
@@ -322,8 +328,8 @@ Knitting PDFs
 </div>
 </section>
 </section>
-<section id="r-notebooks" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="r-notebooks"><span class="header-section-number">2.2</span> R Notebooks</h2>
+<section id="r-notebooks" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="r-notebooks"><span class="header-section-number">3.2</span> R Notebooks</h2>
 <p>Technically, <strong>R Markdown</strong> is a file format, while <strong>R Notebook</strong> is a way of working with R Markdown files. R Notebooks do not have a separate file format—they all use .Rmd files. Any R Markdown document can be opened as a Notebook, and any Notebook can be rendered (<em>knitted</em>) into standard R Markdown output. When launching an R Notebook, no setup wizard appears (as may happen with some .Rmd files). Alongside the main file, an additional HTML file with the extension .nb.html is generated, which allows for previewing the notebook. If code is modified, the output does not update automatically; instead, the previous output remains visible until the code chunk is re-executed. To view updated results, you must manually run the chunk. The YAML header for an R Notebook typically includes:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_notebook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -331,16 +337,16 @@ Knitting PDFs
 <p>Writing an R Notebook is essentially the same as writing an R Markdown document. The syntax for text and code chunks is identical. The key difference lies in interactivity: in R Markdown, all code is sent to the console at once during knitting, whereas in R Notebooks, code is executed line by line. This allows execution to stop immediately if an error occurs, making debugging easier.</p>
 </section>
 </section>
-<section id="quarto" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Quarto</h1>
+<section id="quarto" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Quarto</h1>
 <p>In 2022, RStudio launched Quarto, a novel markdown flavor, based in <a href="https://en.wikipedia.org/wiki/Pandoc">Pandoc</a>, a free-software document converter, that expanded the possibilities of RMarkdown with new format options and enriched templates. See some examples <a href="https://quarto.org/docs/gallery/">here</a>.</p>
 <p>Working with quarto is almost identical as writing a markdown document, but it is particularly designed to generate <strong>complex documents</strong>, like a whole website or books. With Quarto it is easier to handle complex projects, include references or work collaboratively. Each document is generated in a <em>.qmd</em> file and the site/book options are defined in a companion YAML document that includes the site/book structure, metadata and other configuration. You can check the <a href="https://quarto.org/docs/projects/quarto-projects.html#project-metadata">Quarto Reference</a> to learn how to configure your yml file. As an example, have a look to the quarto documents of and the <a href="https://github.com/mredrejo/HPBBM2023/blob/main/_quarto.yml">_quarto.yml</a> file for this site in the <a href="https://github.com/r4biochemists/r4biochemists.github.io">github repository</a>.</p>
 <p>Besides the references below, I suggest you to check these <a href="https://quarto.org/docs/gallery/">examples</a> and the this <a href="https://youtu.be/y5VcxMOnj3M">video about the use of Quarto</a> to create amazing websites, books and interactive sites.</p>
 <p>More recently, in 2024, Posit launched <a href="https://positron.posit.co/">Positron</a>, a new integrated development environment (IDE) designed for seamless use with both Python and R. In Positron, you can work either with R Markdown, Quarto, or Jupyter Notebooks to create reproducible analyses and data presentations. Although we have only tested it preliminary (you can ask Eduardo), Positron appears to be a promising tool that is likely to gain popularity and evolve significantly in the coming years.</p>
 </section>
 
-<section id="session-info" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Session Info</h1>
+<section id="session-info" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Session Info</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -375,8 +381,8 @@ loaded via a namespace (and not attached):
 
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><section id="refs" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> References</h1>
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><section id="refs" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> References</h1>
 <ol type="1">
 <li><p><em>R Crash Course for Biologist.</em> Robert I. Coulatti. November 2022 (GitHub repository <a href="https://github.com/ColauttiLab/RCrashCourse_Book" class="uri">https://github.com/ColauttiLab/RCrashCourse_Book</a>).</p></li>
 <li><p>RStudio Projects: <a href="https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects" class="uri">https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects</a></p></li>
@@ -398,6 +404,7 @@ loaded via a namespace (and not attached):
 <li><p>Quarto Reference Guide: <a href="https://quarto.org/docs/guide/" class="uri">https://quarto.org/docs/guide/</a></p></li>
 <li><p>How to interactive websites with Quarto: <a href="https://www.r-bloggers.com/2022/07/r-quarto-tutorial-how-to-create-interactive-markdown-documents/" class="uri">https://www.r-bloggers.com/2022/07/r-quarto-tutorial-how-to-create-interactive-markdown-documents/</a></p></li>
 <li><p>From RStudio to Positron: <a href="https://kphahn57.medium.com/from-rstudio-to-positron-707d3f6d2776" class="uri">https://kphahn57.medium.com/from-rstudio-to-positron-707d3f6d2776</a></p></li>
+<li><p>Applying the FAIR Principles to computational workflows: <a href="https://www.nature.com/articles/s41597-025-04451-9" class="uri">https://www.nature.com/articles/s41597-025-04451-9</a></p></li>
 </ol>
 </section></section></div></main> <!-- /main -->
 <script>
