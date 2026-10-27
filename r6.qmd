@@ -6,80 +6,139 @@ date-modified: "`r format(Sys.time(), '%Y-%m-%d (%H:%M h)')`"
 categories: 
   - Data management
   - Data transformation
-  - tabulation
-  - aggregation
+  - Tabulation
+  - Aggregation
   - Large datasets
-  - apply
+  - Apply family
 format: 
   html:
     page-layout: full
-
+    code-overflow: wrap
+    code-copy: true
+filters:
+  - webr
 toc: true
 toc-location: left
 toc-depth: 3
 number-sections: true
 number-depth: 2
-code-overflow: wrap
 link-external-icon: true
 link-external-newwindow: true 
 ---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
 ```{r wrap-hook, echo=FALSE}
 library(knitr)
 library(formatR)
 library(webexercises)
+
+# Keep code chunks as written in the .qmd file.
+# This avoids early wrapping caused by formatR::tidy_source().
+# It is especially useful in teaching materials, where comments are part
+# of the explanation.
+opts_chunk$set(tidy = FALSE)
+
+# Crop very long outputs when a chunk defines output.lines.
+# This keeps the rendered document readable while preserving the full code.
 hook_output <- knit_hooks$get("output")
 knit_hooks$set(output = function(x, options) {
   lines <- options$output.lines
   if (is.null(lines)) {
-    return(hook_output(x, options))  # pass to default hook
+    return(hook_output(x, options))
   }
-  x <- unlist(strsplit(x, "\n"))
+
+  x <- unlist(strsplit(x, "
+"))
   more <- "--- Cropped output ---"
-  if (length(lines)==1) {        # first n lines
+
+  if (length(lines) == 1) {
     if (length(x) > lines) {
-      # truncate the output, but add ....
       x <- c(head(x, lines), more)
     }
   } else {
-  #  x <- c(more, x[lines], more)
-      x <- c(x[lines], more)
+    x <- c(x[lines], more)
   }
-  # paste these lines together
-  x <- paste(c(x, ""), collapse = "\n")
+
+  x <- paste(c(x, ""), collapse = "
+")
   hook_output(x, options)
 })
+
+# In RMD/QMD files, the default wd for R code chunks is usually the directory
+# that contains the source document. In a Quarto/RStudio Project, try to avoid
+# absolute paths tied to one local computer.
+# If needed, uncomment and adapt the following line:
+# knitr::opts_knit$set(root.dir = normalizePath(".", winslash = "/", mustWork = TRUE))
 ```
 
-# Transform dataframes
+# [Transform dataframes]{style="color:darkblue"}
 
-When you need to explore, present, analyze, or transform your data, it often requires subdividing, aggregating, or sorting a vector or data frame by one or more variables. The R environment primarily relies on two approaches: Base R and `tidyverse` libraries (`dplyr()` & `tidyr()`). Although these two methods are often viewed as distinct philosophies, they are designed to complement each other(see ref. 8 [below](#sec-references)).
+Real datasets usually need some preparation before they can be analysed or plotted. We often need to sort rows, select subsets, combine tables, reshape columns, create contingency tables, or calculate summaries by group.
 
-This lesson provides examples and techniques from Base R because learning Base R offers a wider range of capabilities for different types of data and work environments in the future.
+R offers several ways to do these tasks. In this lesson we focus on **Base R**, because it helps you understand the underlying logic of data manipulation. Later, the same ideas will make packages such as `dplyr` and `tidyr` easier to learn.
+
+::: callout-note
+## The main idea of R6
+
+R6 is about changing the **shape**, **order** or **level of summary** of a dataset:
+
+- **sort** rows or vectors,
+- **subset** selected observations,
+- **combine** related tables,
+- **reshape** wide tables into long tables,
+- **tabulate** frequencies or totals,
+- **aggregate** values by group,
+- **apply** the same function repeatedly.
+
+Most errors in data analysis happen before the statistical test. This lesson is about making that preparation explicit and reproducible.
+:::
 
 ## Sorting and subsetting data
 
-How come? Numeric? Alphabetic? increasing or decreasing order?
+Before analysing a dataset, we often need to sort rows or select only the observations that match specific conditions. Sorting can be numerical or alphabetical, increasing or decreasing.
 
 There are two main functions in R to order your data, `sort()` and `order()`. Let's see an example using the file [*coli_genomes_renamed.csv*](data/coli_genomes_renamed.csv), that we used in the lesson [R3](r3.html#save).
 
 ```{r}
-#load the dataset
-coli_genomes <- read.csv(file = "data/coli_genomes_renamed.csv", strip.white = TRUE)
+# Load the dataset used in previous lessons.
+coli_genomes <- read.csv(file = "data/coli_genomes_renamed.csv",
+                         strip.white = TRUE)
 
-#test sort() & order() in a vector
-order(coli_genomes$Year)
+# sort() returns the sorted values.
 sort(coli_genomes$Year)
-sort(coli_genomes$Year, decreasing=TRUE)
-order(coli_genomes$Phylogroup)
+sort(coli_genomes$Year, decreasing = TRUE)
+
+# order() returns the positions that would sort the vector.
+# This is useful when we want to reorder rows in a data frame.
+order(coli_genomes$Year)
+
+# Both sort() and order() can also be used with character or factor-like data.
 sort(coli_genomes$Phylogroup)
+order(coli_genomes$Phylogroup)
 ```
 
 As you noticed, the R function `order()` returns a permutation of the order of the elements of a vector. The output is an index vector, not the vector itself. Also note that if the vector contains any NA values, they will be at the end of the index vector by default.
 
-On the other hand, the function `sort()` returns returns the vector you pass as input sorted in ascending order by default.
+On the other hand, the function `sort()` returns the vector you pass as input sorted in ascending order by default.
 
-Both functions order the data increasingly, and can be used for numeric or string variables. If you set the `decreasing` argument to `TRUE` in a `sort()` or `order()`, you will geet the vector of indices in descending order.
+Both functions order the data increasingly, and can be used for numeric or string variables. If you set the `decreasing` argument to `TRUE` in a `sort()` or `order()`, you will get the vector of indices in descending order.
+
+::: callout-tip
+## `sort()` versus `order()`
+
+Use `sort()` when you want the **values** in order.
+
+``` r
+sort(coli_genomes$Year)
+```
+
+Use `order()` when you want the **row positions** that would sort the values. This is the usual function for sorting a complete data frame:
+
+``` r
+coli_genomes[order(coli_genomes$Year), ]
+```
+:::
 
 You can also use these functions to order a data frame according to a vector. Alternatively, you can also arrange or *shuffle* a data frame in reverse order.
 
@@ -92,6 +151,20 @@ coli_genomes[sort(coli_genomes$Year),] #what happened?
 coli_genomes[sample(nrow(coli_genomes), replace = FALSE), ]
 # Reverse order of rows
 coli_genomes[nrow(coli_genomes):1, ]
+```
+
+## [Quick exercise (0): `sort()` or `order()`?]{style="color:darkseagreen"}
+
+You want to sort the **rows** of `coli_genomes` by the column `Year`. Which command is appropriate?
+
+```{r q-sort-order, echo = FALSE, results = 'asis'}
+opts <- c(
+  "coli_genomes[sort(coli_genomes$Year), ]",
+  answer = "coli_genomes[order(coli_genomes$Year), ]",
+  "sort(coli_genomes)",
+  "order(coli_genomes)"
+)
+cat("**Select the right answer**", mcq(opts))
 ```
 
 Now imagine you have a large data set and want to subdivide only some cases (=rows). You already know some ways to do this, but in the following example we will test the function `subset()`, which is very handy when you want to extract the cases that satisfy multiple conditions.
@@ -116,6 +189,12 @@ detach(coli_genomes) #detach dataframe
 selection3<-subset(coli_genomes, subset= contigs1kb<100 & N50>150000 & Phylogroup=='A')
 
 ```
+
+::: callout-warning
+## Avoid `attach()` in analysis scripts
+
+`attach()` can save typing in short examples, but it can also make code harder to debug because variable names may come from different objects. In this lesson, we prefer explicit code such as `coli_genomes$N50` or readable helpers such as `subset()`.
+:::
 
 If you want to make sure that the three methods give the same output, you can check the data frame, or check the dimensions or structure with `dim()` or `str()`, but this is difficult with large data sets with hundreds or thousands of cases (see below). The function `all.equal()` does this task for you.
 
@@ -158,7 +237,19 @@ As you noticed, the function `merge()` combines dataframes, however it is a gene
 
 By default, `merge()` will do a *natural join* or *inner join*, merging two dataframes in one that contains only once the common elements of both. The arguments `all = TRUE`, `all.x = TRUE` and `all.y = TRUE` will force an *outer* join in which all elements of both, the first or the second dataframes are selected. In these cases, if not all rows in the first data frame match all the rows in the second, the output is filled with `NA` values in those cases.
 
-Finally, the Cartesian product of both dataframes can be obtained in R setting as `NULL` the argument `by` of the `merge()` function.
+Finally, the Cartesian product of both dataframes can be obtained in R by setting the argument `by = NULL` in the `merge()` function.
+
+::: callout-note
+## Join types with `merge()`
+
+| Goal                           | Base R code                            |
+|--------------------------------|----------------------------------------|
+| Keep only matching rows        | `merge(x, y, by = "id")`               |
+| Keep all rows from both tables | `merge(x, y, by = "id", all = TRUE)`   |
+| Keep all rows from `x`         | `merge(x, y, by = "id", all.x = TRUE)` |
+| Keep all rows from `y`         | `merge(x, y, by = "id", all.y = TRUE)` |
+| Cartesian product              | `merge(x, y, by = NULL)`               |
+:::
 
 ### [Quick exercise (I)]{style="color:darkseagreen"}
 
@@ -199,7 +290,10 @@ A column per experimental condition or a column per variable? Is the same?
 In the table [*Zebrafish_data.csv*](data/Zebrafish_data.csv) from the Lesson R5 we have the results of an experiment in which a collaborator scored the number of metastatic cancer cells upon the expression of different transcripts of the EFNA3 gene. Each transcript is cloned into a pLoC plasmid, and we have negative (empty plasmid) and positive controls (wt transcript). Let's import and check the data.
 
 ```{r}
+# Read the zebrafish table from R5.
 ZFdata <- read.csv("data/Zebrafish_data.csv")
+
+# In the current table, each experimental condition is a different column.
 str(ZFdata)
 head(ZFdata)
 ```
@@ -208,18 +302,23 @@ How many columns has the table? How many variables are there?
 
 Here we have one column per experimental condition. Thus, this table format does not agree with the standard way to introduce the data in a table, the data-matrix: Rows for cases and columns for variables.
 
-Having the data, we transform it in a datamatrix (aka *long* table) using the function `stack()`. You can also do it the other way around with the function `unstack().`
+Having the data in a long format is especially useful for grouped plots, aggregated summaries and many modelling functions. We transform the table into a data matrix, or **long table**, using the function `stack()`. You can also do it the other way around with the function `unstack().`
 
 ```{r}
+# stack() converts several columns into two columns:
+# - values: the measurements
+# - ind: the original column name, used as group label
 ZF_stacked <- stack(ZFdata)
 str(ZF_stacked)
 head(ZF_stacked)
+
+# unstack() can reverse the transformation in simple cases.
 ZF_old <- unstack(ZF_stacked)
 str(ZF_old)
 head(ZF_old)
 ```
 
-However, some times the dataset is more complex and there are other variables that change the table structure, as in the table [*Zebrafish_full.csv*](data/Zebrafish_full.csv)*.* In this case, remember that stack is designed to transform tables of only two variables. Thus, you must stack only the desired two variables and then final construct the table by adding the rest of the information, for instance with `cbind()`, as in the example below.
+However, sometimes the dataset is more complex and there are other variables that change the table structure, as in the table [*Zebrafish_full.csv*](data/Zebrafish_full.csv)*.* In this case, remember that stack is designed to transform tables of only two variables. Thus, you must stack only the desired two variables and then construct the table by adding the rest of the information, for instance with `cbind()`, as in the example below.
 
 ```{r}
 ZF_full <- read.csv("data/Zebrafish_full.csv", row.names=1)
@@ -232,7 +331,7 @@ head(ZF_full_some_stack,15)
 ZF_full_stack <- cbind(ZF_full_some_stack,ZF_full[,7])
 colnames(ZF_full_stack) <- c("Cells","Sample","Assay")
 head(ZF_full_stack,15)
-#option2: shorcut
+#option2: shortcut
 ZF_full_stack2 <- cbind(stack(ZF_full[,1:6]),ZF_full[,7])
 colnames(ZF_full_stack2) <- c("Cells","Sample","Assay")
 head(ZF_full_stack2,15)
@@ -273,7 +372,7 @@ names(students2) <- c("Course","Mark","Student")
 students2
 ```
 
-# Working efficiently with large datasets
+# [Working efficiently with large datasets]{style="color:darkblue"}
 
 ## Fast loading of huge datasets and creation of contingency tables
 
@@ -285,9 +384,10 @@ From this point on, in some examples we will show only some lines of the output 
 As always, it's encouraged to run the code yourself to see and understand the full returned output.
 :::
 
-```{r error=TRUE, output.lines=(1:20)}
-#open directly from the ECDC
-vaccines <- read.csv(file = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/csv/data.csv", header=TRUE)
+```{r error=TRUE, output.lines=(1:20), eval=FALSE}
+# Open directly from the ECDC website.
+# This is not evaluated when rendering the lesson to avoid depending on an internet connection.
+vaccines <- read.csv(file = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/csv/data.csv", header = TRUE)
 
 #explore the data
 str(vaccines)
@@ -296,6 +396,11 @@ head(vaccines)
 ```
 
 Even with large datasets, we can use `table()` or `summary()` functions, to overview data. But, sometimes we just doesn't.
+
+```{r eval=TRUE,echo=FALSE}
+vaccines <- data.table::fread(file = "https://opendata.ecdc.europa.eu/covid19/vaccine_tracker/csv/data.csv", header = TRUE)
+```
+
 
 ```{r error=TRUE}
 table(vaccines$Region)
@@ -346,14 +451,15 @@ So far, they seem very similar in terms of coding and obtained output. However, 
 
 ```{r output.lines=(1:25)}
 #with 2 or more variables?
-table(vaccines[,c(ReportingCountry,as.factor(Vaccine))]) #not really
+# This would not work as written because ReportingCountry and Vaccine are column names.
+# table(vaccines[, c("ReportingCountry", "Vaccine")])
 table(vaccines$ReportingCountry,vaccines$Vaccine) #yes!
 
 ## you can also use "with", but not so intuitive to me
 with(vaccines, table(ReportingCountry, as.factor(Vaccine))) 
 
 
-#more strightforward alternative with xtabs
+#more straightforward alternative with xtabs
 (vaccines_split <- xtabs(formula= ~ ReportingCountry  + as.factor(Vaccine), data = vaccines))
 
 ```
@@ -365,7 +471,7 @@ As mentioned above, `xtabs()` can be easily used with more than two variables. M
 (vaccines_split2 <- xtabs(NumberDosesReceived ~ ReportingCountry  + as.factor(Vaccine) + as.factor(TargetGroup), vaccines))
 ```
 
-That was a very long output to check! If you want to show your tabulated data in a more useful format, you can covert the cross-tabulated data into a flat table with `ftable()`. See the examples below and try to understand how the `row.bars` statement works.
+That was a very long output to check! If you want to show your tabulated data in a more useful format, you can convert the cross-tabulated data into a flat table with `ftable()`. See the examples below and try to understand how the `row.bars` statement works.
 
 ```{r output.lines=(1:25)}
 ftable(vaccines_split, row.vars = 2)
@@ -411,15 +517,15 @@ If you test the different options, you will notice that the format of the table 
 
 Again, rather than concepts from R or RStudio, cross-tabulation and flat contingency tables are general concepts in data analysis.
 
-# Data aggregation and transformation
+# [Data aggregation and transformation]{style="color:darkblue"}
 
 ## By() & aggregate()
 
-While frequency tables can be very quickly generated with `table()` and `xtable()`, sometimes you may want other calculations than frequency, like basic statistics per group or other, even custom, calculations.
+While frequency tables can be very quickly generated with `table()` and `xtabs()`, sometimes you may want other calculations than frequency, like basic statistics per group or other, even custom, calculations.
 
 You have already tried the function `by()` as a very useful trick to make group-calculations. However, this function has some limitations when we have large datasets and when we try to use multiple factors that can be solved with `aggregate()`. In both cases, the function can be any function that suits your data, either from R packages or a custom function.
 
-In the following example, we are using a smaller dataset named *vacines2* that we can obtain by *sampling* (randomly extraction of a portion of data) with the R function `sample()`.
+In the following example, we are using a smaller dataset named *vaccines2* that we can obtain by *sampling* (random extraction of a portion of data) with the R function `sample()`.
 
 ```{r error=TRUE, output.lines=(1:25)}
 vaccines2 <- vaccines[sample(x = 1:nrow(vaccines),size = 50000, replace=FALSE),]
@@ -436,7 +542,7 @@ by(vaccines2$NumberDosesReceived, INDICES = c(vaccines2$Region,vaccines2$Vaccine
 by(vaccines2$NumberDosesReceived, INDICES = list(vaccines2$Region,vaccines2$Vaccine), FUN=mean, na.rm=TRUE)
 ```
 
-When you find difficult using `by()`, `aggregate()` is usually the best quick alternative
+When `by()` becomes difficult to read, `aggregate()` is usually the best quick alternative
 
 ```{r,  output.lines=(1:15)}
 #aggregate is more convenient sometimes
@@ -479,9 +585,21 @@ aggregate(cbind(VF,Plasmids) ~ Source, data=coli_genomes, FUN=function(x) mean(x
 [![Apply family of functions](images/apply_family-01.jpg){width="428"}](https://www.r-bloggers.com/2016/03/apply-lapply-rapply-sapply-functions-in-r-2/)
 :::
 
-The functions of the **Apply** family are designed to apply a function to each element of a data structure. It includes various functions, designed for matrices, dataframes or lists. What is special about these functions is that their arguments are not only data but also functions. Using an **apply** function can sometimes seem complicated, but once you get used to it, it's actually very handy and faster than other alternatives, such as loops. In this section, we look at the `apply()` function and its variants, including `lapply()`, `sapply()`, `tapply()`, `rapply()` & `mapply()`. In general, **Apply** is a very efficient tool to perform repetitive calculations.
+The **apply** family of functions applies the same function repeatedly to elements of a data structure. It includes various functions, designed for matrices, dataframes or lists. What is special about these functions is that their arguments are not only data but also functions. Using an **apply** function can seem complicated at first, but it is very useful for avoiding repetitive code. In this section, we look at the `apply()` function and its variants, including `lapply()`, `sapply()`, `tapply()`, `rapply()` & `mapply()`. In general, **Apply** is a very efficient tool to perform repetitive calculations.
 
 Rather than describing in detail all the functions, in the following examples we test some of the possibilities of some *applies*. Try yourself and check the code comments.
+
+::: callout-note
+## Which apply function should I try first?
+
+- `apply()` is useful for rows or columns of a matrix-like object.
+- `lapply()` applies a function and returns a list.
+- `sapply()` is similar to `lapply()`, but tries to simplify the result.
+- `tapply()` applies a function to a vector split by groups.
+- `vapply()` is like `sapply()`, but requires the expected output type.
+- `mapply()` is useful when the function needs several input vectors.
+- `rapply()` is useful for recursive operations on nested lists.
+:::
 
 ```{r, output.lines=(1:6)}
 #apply()
@@ -592,7 +710,7 @@ opts_p <- c("apply(coli_genomes,2,log10(mean), na.rm=TRUE)",
             "sapply(coli_genomes,log10(mean), na.rm=TRUE)",
    answer = "None of the previous" )
 
-cat("**How would you obtain log10 of the mean of all the columns?**",longmcq(opts_p))
+cat("**How would you obtain the logarithm of the mean of all the columns?**",longmcq(opts_p))
 ```
 
 Yes, a function must be suitable for the selected data and the dataframe *coli_genomes* contains numeric and categorical variables, but the function *log10(mean)* only can work with numeric data. Let's do it in two steps:
@@ -613,8 +731,21 @@ opts_p <- c("apply(coli_genomes[sapply(coli_genomes, is.numeric)],2,function(x)l
             "apply(coli_genomes[sapply(coli_genomes, is.numeric)],2,fun(x) log(mean), na.rm=TRUE)",
             answer= "apply(coli_genomes[sapply(coli_genomes, is.numeric)],2,function(x)log(mean(x, na.rm=TRUE)))" )
 
-cat("**How would you obtain log10 of the mean of all the numeric columns?**",longmcq(opts_p))
+cat("**How would you obtain the logarithm of the mean of all the numeric columns?**",longmcq(opts_p))
 ```
+
+::: callout-tip
+## General workflow for data management
+
+A useful workflow for R6 tasks is:
+
+1.  Inspect the table with `str()`, `head()` and `dim()`.
+2.  Decide whether you need to sort, subset, merge, reshape, tabulate or aggregate.
+3.  Perform one transformation at a time.
+4.  Store intermediate objects with clear names.
+5.  Check results with `dim()`, `str()` and `all.equal()` when appropriate.
+6.  Only then move to plotting or statistical testing.
+:::
 
 # References {#sec-references}
 
@@ -638,7 +769,7 @@ cat("**How would you obtain log10 of the mean of all the numeric columns?**",lon
 
 [^1]: Check proposed answers in the repo: <https://github.com/r4biochemists/r4biochemists.github.io/tree/main/answers2exercises>
 
-We are using the Covid19 test data for exercises. You can download the updated *csv* file from <https://opendata.ecdc.europa.eu/covid19/testing/csv/data.csv> (see also <https://www.ecdc.europa.eu/en/publications-data/covid-19-testing>). Read and explore the data. I also suggest to save the table in your computer as *covid_tests.csv*.
+We are using the COVID-19 testing data for these exercises. You can download the updated *csv* file from <https://opendata.ecdc.europa.eu/covid19/testing/csv/data.csv> (see also <https://www.ecdc.europa.eu/en/publications-data/covid-19-testing>). Read and explore the data. I also suggest to save the table in your computer as *covid_tests.csv*.
 
 #### 1. Generate two contingency tables showing the number of tests done (1) by country per week and (2) by country per month.
 
@@ -656,13 +787,13 @@ Hint. Consider how to handle NA's.
 
 The topics in this lesson can be dense and bewildering the first time. I selected some sheets of exercises from great websites that can give you an extra practice.
 
--   <https://www.r-exercises.com/2016/04/14/merging-dataframes-exercises/>
+- <https://www.r-exercises.com/2016/04/14/merging-dataframes-exercises/>
 
--   <https://www.r-bloggers.com/2016/05/cross-tabulation-with-xtabs-exercises/>
+- <https://www.r-bloggers.com/2016/05/cross-tabulation-with-xtabs-exercises/>
 
--   <https://www.r-exercises.com/2016/09/08/efficient-processing-with-apply-exercises/>
+- <https://www.r-exercises.com/2016/09/08/efficient-processing-with-apply-exercises/>
 
--   <https://www.r-exercises.com/2016/06/16/summary-statistics-with-aggregate/>
+- <https://www.r-exercises.com/2016/06/16/summary-statistics-with-aggregate/>
 
 # Session Info
 

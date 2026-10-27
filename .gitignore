@@ -1,6 +1,9 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
+/answers2exercises
 
 /.quarto/
+**/*.quarto_ipynb
+r5.txt
+r6.txt
+r7.txt
+r9.txt
+r4.txt

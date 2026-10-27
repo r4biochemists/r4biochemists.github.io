@@ -4,12 +4,13 @@ author: "Modesto"
 date: "August 17, 2023"
 date-modified: "`r format(Sys.time(), '%Y-%m-%d (%H:%M h)')`"
 categories: 
-  - Advanced plots
-  - GGplot
-  - Plot layout
-  - Color palettes
-  - Interactive plots
-  - GGplot addons
+  - Molecular biology
+  - FASTA
+  - Regular expressions
+  - Sequence analysis
+  - seqinr
+  - rentrez
+  - Bioconductor
 format: 
   html:
     page-layout: full
@@ -24,42 +25,78 @@ link-external-icon: true
 link-external-newwindow: true 
 ---
 
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
 ```{r wrap-hook, echo=FALSE}
 library(knitr)
 library(formatR)
 library(webexercises)
+
+# Keep code chunks as written in the .qmd file.
+# This is useful in teaching materials where comments are part of the explanation.
+opts_chunk$set(tidy = FALSE)
+
+# Crop very long outputs when a chunk defines output.lines.
 hook_output <- knit_hooks$get("output")
 knit_hooks$set(output = function(x, options) {
   lines <- options$output.lines
   if (is.null(lines)) {
-    return(hook_output(x, options))  # pass to default hook
+    return(hook_output(x, options))
   }
-  x <- unlist(strsplit(x, "\n"))
+
+  x <- unlist(strsplit(x, "
+"))
   more <- "--- Cropped output ---"
-  if (length(lines)==1) {        # first n lines
+
+  if (length(lines) == 1) {
     if (length(x) > lines) {
-      # truncate the output, but add ....
       x <- c(head(x, lines), more)
     }
   } else {
-  #  x <- c(more, x[lines], more)
-      x <- c(x[lines], more)
+    x <- c(x[lines], more)
   }
-  # paste these lines together
-  x <- paste(c(x, ""), collapse = "\n")
+
+  x <- paste(c(x, ""), collapse = "
+")
   hook_output(x, options)
 })
 ```
 
-# Working with sequences
+# [Working with sequences]{style="color:darkblue"}
 
-## Regular expressions as a shortcut to explore sequence
+This lesson brings together several ideas from previous topics: importing files, working with character strings, subsetting objects, plotting results and writing functions. The biological context makes the examples more interesting, but also more demanding: we need to be clear about what is a **header**, what is a **sequence**, what is a **match**, and what kind of object each package returns.
+
+::: callout-note
+## The main idea of R8
+
+R8 is about using R to explore molecular biology data. We will start with simple plain-text operations on FASTA files and then move to sequence-aware tools such as `seqinr`, database queries with `rentrez`, sequence visualisation and Bioconductor.
+
+The key distinction is:
+
+- text tools such as `grep()` or `sub()` are useful for **finding patterns in strings**;
+- sequence packages such as `seqinr` or Bioconductor packages are useful for **biological operations on sequence objects**.
+:::
+
+## Regular expressions as a shortcut to explore sequences
 
 Biological data, like protein or nucleic acid sequences can be stored and explored in different formats, each following its own structure. As you can imagine, that facilitates the use of *regular expressions* in any programming language to access that data. The use of regular expressions in R is similar to other languages, particularly, to the use you learnt in Python. Anyway, I suggest that you have a look to the [References](#refs) below.
 
 Moreover, for advanced manipulation of string object, I'd advice the package [Strings](https://stringr.tidyverse.org/).
 
-In the code below, we are going to use some simple regular expressions to explore and analyze the data in a multifasta file containing the whole proteome of the bacteria *Bacillus thuringiensis HER1410* ([HER1410.fasta](data/HER1410.fasta)) in our data folder, using `grep()`, `substr()`, `sub()`, and `regexpr()`.
+In the code below, we are going to use some simple regular expressions to explore and analyse the data in a multifasta file containing the whole proteome of the bacterium *Bacillus thuringiensis HER1410* ([HER1410.fasta](data/HER1410.fasta)) in our data folder, using `grep()`, `substr()`, `sub()`, and `regexpr()`.
+
+::: callout-tip
+## Remember the FASTA structure
+
+A FASTA file is a plain-text file. Each sequence usually starts with a header line beginning with `>`, followed by one or more lines containing the sequence.
+
+``` text
+>protein_id description
+MKKLIA...
+```
+
+This is why a simple pattern such as `">"` can be used to count or extract sequence headers.
+:::
 
 ```{r}
 #read the text file with readLines()
@@ -78,6 +115,16 @@ names_ase <- fastanames[grep(fastanames, pattern="ase")]
 
 
 ```
+
+::: callout-note
+## Three useful string functions
+
+- `grep(pattern, x)` finds elements of `x` that match a pattern.
+- `substr(x, start, stop)` extracts characters by position.
+- `sub(pattern, replacement, x)` replaces the first match in each element.
+
+These functions answer different questions. For example, if the protein ID always occupies positions 2 to 11 in the header, `substr()` is appropriate. If we want to remove the leading `>`, `sub()` is more appropriate.
+:::
 
 ### [Quick exercise: Using `sub()` and `substr()`.]{style="color:darkseagreen"}
 
@@ -109,28 +156,68 @@ sub(">","",names_ase)
 ### What about `regexpr()`?
 
 ```{r}
-# regexpr returns the indices of the string where the match begins and the length of the match
-(r <- regexpr("(.*)DNA(.*)",fastanames[1:200])) #find all the lines with "DNA" (only 200 lines to don't make it too long)
-#which ones?
-(dna <- which(r > 0, arr.ind = TRUE))
-dna.length <- attr(r,"match.length")[dna]
-#extract the results with a loop
+# regexpr() returns the position where the match begins.
+# The match length is stored as an attribute.
+# Here we search for headers containing the word "DNA".
+r <- regexpr(pattern = "(.*)DNA(.*)", text = fastanames[1:200])
+r
+
+# Which elements had a match?
+dna <- which(r > 0, arr.ind = TRUE)
+dna
+
+# Extract the length of each match.
+dna.length <- attr(r, "match.length")[dna]
+
+# Extract matched headers with a loop.
 nombres <- list()
-for (i in 1:length(dna)){
-  nombres[[i]] <- substr(fastanames[dna[i]], 1, 1 + dna.length[i])
+for (i in seq_along(dna)) {
+  nombres[[i]] <- substr(fastanames[dna[i]], 1, dna.length[i])
 }
 head(nombres)
 ```
 
+## [Quick exercise: choosing a regular expression tool]{style="color:darkseagreen"}
+
+You want to find all FASTA headers that contain the word `recombinase`. Which function is most directly useful?
+
+```{r regex-tool-exercise, echo = FALSE, results = 'asis'}
+opts <- c(
+  answer = 'grep("recombinase", fastanames, value = TRUE)',
+  "substr(fastanames, 1, 10)",
+  'sub(">", "", fastanames)',
+  "length(fastanames)"
+)
+cat("**Select the right answer**", mcq(opts))
+```
+
+You want to remove the initial `>` from FASTA headers. Which function is most appropriate?
+
+```{r regex-sub-exercise, echo = FALSE, results = 'asis'}
+opts <- c(
+  'grep(">", fastanames)',
+  "substr(fastanames, 2, 11)",
+  answer = 'sub(">", "", fastanames)',
+  'regexpr(">", fastanames)'
+)
+cat("**Select the right answer**", mcq(opts))
+```
+
 ## Working with sequences as objects
 
-The use or regular expressions is very convenient for some quick overview of the (multi)fasta files, but not for more specific analyses. Working with sequences can be facilitated with diverse packages, being `seqinr` and `Biostrings` the more widely used in the literature.
+Regular expressions are very convenient for a quick overview of FASTA files, but they do not understand sequences as biological objects. For more specific analyses, it is better to use sequence-aware packages. Two common options are `seqinr` and `Biostrings`.
 
 In the following example, we are reading the same protein multifasta and we will obtain basic statistics, subset and save fasta sequences using `SeqinR` *(=seqinr)*.
 
+::: callout-note
+## From text to sequence objects
+
+After `readLines()`, the FASTA file is just text. After `read.fasta()`, the same information is stored as a list of sequence objects. This changes how we access names, annotations and sequences.
+:::
+
 ```{r output.lines=(1:25)}
 #reading fasta and playing with it
-#install.packages("seqinr")
+if(!require(seqinr)) install.packages("seqinr", repos = "https://cran.rstudio.com/")
 library(seqinr)
 prots <- read.fasta("data/HER1410.fasta")
 str(prots)
@@ -144,6 +231,8 @@ seq <- getSequence(prots[[1]])
 getName(prots[[1]])
 paste(seq, collapse= "")
 paste(prots[[1]], collapse= "")
+# Amino acid composition and molecular weight.
+# Some seqinr functions expect uppercase characters and simple vectors.
 aaa(toupper(seq))
 aaa(toupper(unlist(seq)))
 aaa(toupper(as.vector(seq)))
@@ -174,6 +263,12 @@ Once you read the fasta, you can extract the headline name with `getName()` or t
 
 Finally, as in the example below with HER1410 genome sequence ([HER1410nt.fasta](data/HER1410nt.fasta)), you can also play with a nucleotide sequence and obtain some useful data, like the `GC()` content, the encoded proteins or the reverse complementary sequence with `rev()` and `comp()`, respectively.
 
+::: callout-tip
+## Biological interpretation matters
+
+Counting nucleotides, translating a sequence or calculating codon usage are technical operations. The biological interpretation depends on the molecule: genome, plasmid, coding sequence, partial sequence, strand, frame and annotation. Always write what the input sequence represents before interpreting the output.
+:::
+
 ```{r }
 #now the nt sequence
 plasmid_nt <- read.fasta("data/HER1410nt.fasta")
@@ -202,7 +297,7 @@ You can query to NCBI, Uniprot and other databases directly using seqinr. The *s
 
 To obtain a full list of the ACNUC sub-databases that you can access using *seqinr*, you can use the `choosebank()` function from *seqinr*. Then, you just need to select the database and query your sequence. However, as you can see in the example below it does not work currently. I mentioned this here because I used this previously and found it very useful. In case you want to try it again in the future you can check the examples in the [Reference 4](#r4) below.
 
-```{r error=TRUE}
+```{r error=TRUE, eval=TRUE}
 choosebank()
 #select genbank
 choosebank("swissprot")
@@ -217,7 +312,9 @@ Like *seqinr*, other R packages allow accessing to NCBI and other databases, inc
 
 `rentrez` is an R package that helps users query the NCBI's databases to download diverse type of data and metadata, including sequences or research papers.
 
-```{r }
+
+
+```{r eval=TRUE, error=TRUE}
 if(!require(rentrez)){
    install.packages("rentrez", repos = "https://cran.rstudio.com/")
 }
@@ -240,10 +337,10 @@ write(her1410_1,file="her1410_1.fasta")
 seq1 <- read.fasta("her1410_1.fasta")
 ```
 
-As you can see, you can very easily download the data from any NCBI database. Regarding sequences, the main drawback of the function `entrez_fecth()` is that the downloaded sequences are character objects and transform it into sequences that you can handle with *seqinr* or other packages is not straightforward and it requires some polishing (see [ref. 7](#r7)). Alternatively, you can save the data as a new fasta file in your computer before importing with *seqinr,* as in the following example.
+As you can see, you can very easily download the data from any NCBI database. Regarding sequences, the main drawback of the function `entrez_fetch()` is that the downloaded sequences are character objects and transform it into sequences that you can handle with *seqinr* or other packages is not always straightforward and it requires some polishing (see [ref. 7](#r7)). Alternatively, you can save the data as a new fasta file in your computer before importing with *seqinr,* as in the following example.
 
-```{r}
-#compare two files
+```{r kk, eval=TRUE}
+# compare two files
 her1410_2 <- entrez_fetch(db="nuccore", id=her1410$ids[2], rettype="fasta")
 write(her1410_2,file="her1410_2.fasta")
 seq2 <- read.fasta("her1410_2.fasta")
@@ -269,7 +366,7 @@ p + scale_fill_brewer(palette = "Dark2") + scale_color_brewer(palette = "Dark2")
 
 ## Example 1: Sequence logos with `ggseqlogo`
 
-R is very useful for many applications in Biochemistry and Molecular Biology, and *ggplot* is a very good example of that.
+R is very useful for many applications in Biochemistry and Molecular Biology, and `ggplot2` is a very good example of that. Sequence logos are a compact way to visualise how frequent each nucleotide or amino acid is at each position of an alignment or motif.
 
 ```{r}
 #script by Luis del Peso
@@ -327,9 +424,9 @@ Check out vignette and examples here: <http://yulab-smu.top/ggmsa/>
 
 See the [vignette](https://bioconductor.org/packages/devel/bioc/vignettes/drawProteins/inst/doc/drawProteins_BiocStyle.html) and some example here: <https://rforbiochemists.blogspot.com/>
 
-# Bioconductor
+# [Bioconductor]{style="color:darkblue"}
 
-Bioconductor is a repository of R packages for "the analysis and comprehension of high-throughput genomic data". It started 2002 as a platform for understanding analysis of microarray data, being the first R version 1996, and the first stable beta in 2000. Currently, it contains 2183 packages (release [3.16](https://bioconductor.org/news/bioc_3_16_release/), November 2, 2022) for diverse bioinformatics tasks. It also contains many learning resources, spanning [vignettes](https://bioconductor.org/help/package-vignettes/), [course materials](https://bioconductor.org/help/course-materials/), and [workflows](https://bioconductor.org/packages/release/BiocViews.html#___AnnotationData).
+Bioconductor is a repository of R packages for "the analysis and comprehension of high-throughput genomic data". It started 2002 as a platform for understanding analysis of microarray data, being the first R version 1996, and the first stable beta in 2000. For example, release [3.16](https://bioconductor.org/news/bioc_3_16_release/) included 2183 packages on November 2, 2022, covering diverse bioinformatics tasks. It also contains many learning resources, spanning [vignettes](https://bioconductor.org/help/package-vignettes/), [course materials](https://bioconductor.org/help/course-materials/), and [workflows](https://bioconductor.org/packages/release/BiocViews.html#___AnnotationData).
 
 The diversity of packages in Bioconductor allows working with widely used bioinformatics apps and file formats (fasta, fastq, BAM, SAM, vcf...), for different stages of sequence analysis, quantification, annotation... You can explore [packages by categories](https://bioconductor.org/packages/release/BiocViews.html#___Software) on the Bioconductor site.
 
@@ -337,19 +434,19 @@ The diversity of packages in Bioconductor allows working with widely used bioinf
 
 Some of the most common Bioconductor packages and functions are:
 
--   [**GenomicRanges**](http://bioconductor.org/packages/release/bioc/html/GenomicRanges.html): 'Ranges' to describe data and annotation; `GRanges()`, `GRangesList()`
+- [**GenomicRanges**](http://bioconductor.org/packages/release/bioc/html/GenomicRanges.html): 'Ranges' to describe data and annotation; `GRanges()`, `GRangesList()`
 
--   [**Biostrings**](https://bioconductor.org/packages/release/bioc/html/Biostrings.html): DNA and other sequences, `DNAStringSet()`
+- [**Biostrings**](https://bioconductor.org/packages/release/bioc/html/Biostrings.html): DNA and other sequences, `DNAStringSet()`
 
--   [**GenomicAlignments**](https://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html): Aligned reads; `GAlignemts()` and friends
+- [**GenomicAlignments**](https://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html): Aligned reads; `GAlignments()` and friends
 
--   [**GenomicFeatures**](https://bioconductor.org/packages/release/bioc/html/GenomicFeatures.html), [**AnnotationDbi**](https://bioconductor.org/packages/release/bioc/html/AnnotationDbi.html): annotation resources, `TxDb`, and `org` packages.
+- [**GenomicFeatures**](https://bioconductor.org/packages/release/bioc/html/GenomicFeatures.html), [**AnnotationDbi**](https://bioconductor.org/packages/release/bioc/html/AnnotationDbi.html): annotation resources, `TxDb`, and `org` packages.
 
--   [**SummarizedExperiment**](https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html): coordinating experimental data
+- [**SummarizedExperiment**](https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html): coordinating experimental data
 
--   [**rtracklayer**](https://bioconductor.org/packages/release/bioc/html/rtracklayer.html): import Genome annotations e.g BED, WIG, GTF, etc.
+- [**rtracklayer**](https://bioconductor.org/packages/release/bioc/html/rtracklayer.html): import Genome annotations e.g BED, WIG, GTF, etc.
 
--   [**Annotationhub**](https://bioconductor.org/packages/release/bioc/vignettes/AnnotationHub/inst/doc/AnnotationHub.html): access to Ensembl, UCSC, NCBI and other databases.
+- [**Annotationhub**](https://bioconductor.org/packages/release/bioc/vignettes/AnnotationHub/inst/doc/AnnotationHub.html): access to Ensembl, UCSC, NCBI and other databases.
 
 I recommend you to check the examples in the [reference 9](#ref9) below and other [workflows](https://bioconductor.org/packages/release/BiocViews.html#___AnnotationData) that you can find at Bioconductor.
 
@@ -378,6 +475,19 @@ I recommend you to check the examples in the [reference 9](#ref9) below and othe
 9.  ::: {#ref9}
     Bioconductor Workflow: Introduction to Bioconductor for Sequence Data: <https://www.bioconductor.org/packages/release/workflows/vignettes/sequencing/inst/doc/sequencing.html>
     :::
+
+::: callout-tip
+## Workflow for sequence projects
+
+A useful sequence-analysis workflow is:
+
+1.  Identify the input format: FASTA, GenBank, alignment, table or database result.
+2.  Start with simple text inspection when needed.
+3.  Convert the data into a sequence-aware object for biological operations.
+4.  Keep track of names, annotations and sequences separately.
+5.  Save intermediate or final sequences in reproducible files.
+6.  Plot results only after checking what the sequence object represents.
+:::
 
 # [Exercises]{style="color:green"}
 

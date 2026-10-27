@@ -7,7 +7,7 @@ categories:
   - Data visualization
   - Plot
   - Correlation
-  - Quantitive data
+  - Quantitative data
   - Categorical data
   - Boxplot
   - Scatterplot
@@ -17,6 +17,8 @@ categories:
 format: 
   html:
     page-layout: full
+    code-overflow: wrap
+    code-copy: true
 filters:
   - webr
 toc: true
@@ -24,38 +26,58 @@ toc-location: left
 toc-depth: 2
 number-sections: true
 number-depth: 3
-code-overflow: wrap
 link-external-icon: true
 link-external-newwindow: true 
 ---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
 ```{r wrap-hook, echo=FALSE}
 library(knitr)
 library(formatR)
 library(webexercises)
-opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
-#in RMD files, the default wd for R code chunks is the directory that contains the Rmd document. 
-#We change it here to share the working directory with all the Rmd files of the course
-knitr::opts_knit$set(root.dir = "~/Documents/GitHub/r4biochemists.github.io")
 
+# Keep code chunks as written in the .qmd file.
+# This avoids early wrapping caused by formatR::tidy_source().
+# It is especially useful in teaching materials, where comments are part
+# of the explanation.
+opts_chunk$set(tidy = FALSE)
+
+# In RMD/QMD files, the default wd for R code chunks is usually the directory
+# that contains the source document. In a Quarto/RStudio Project, try to avoid
+# absolute paths tied to one local computer.
+# If needed, uncomment and adapt the following line:
+# knitr::opts_knit$set(root.dir = normalizePath(".", winslash = "/", mustWork = TRUE))
 ```
 
-# Plot your data in R
+# [Plot your data in R]{style="color:darkblue"}
 
 ## Why do we make plots?
 
-Data visualization is a very important part of a data analysis because they can efficiently summarize large amounts of data in a graphical format and reveal new insights that are difficult to understand from the raw data. From a researcher's or data analyst's perspective, plotting datasets also helps you become familiar with the data and plan next steps in your analysis. It also allows you to identify statistical pitfalls with an initial plot.
+Data visualization is a central part of data analysis. A good plot can summarise many observations, reveal patterns that are difficult to see in a table, and help us decide what to do next. Plotting is also a useful diagnostic step: before running a statistical test, a quick graph can reveal outliers, non-linear relationships, group differences, or problems in the data structure.
 
 ::: {#Anscombe}
 :::
 
 ![**Anscombe's quartet**. Each of the four datasets consists of 11 data points (orange points) and have nearly identical statistical properties, including means, sample variances, Pearson's sample correlation (r), and linear regression line (blue lines). Modified from Anscombe FJ. Graphs in statistical analysis. Am Stat 1973;27:17--21](images/plots.png){width="400"}
 
-The above Figure is a well-known quartet highlights the importance of graphing data prior to analysis, and why statistical reviewers often ask for such graphs to be made available. As you can see the Pearson r^2^ is very similar, but the data are actually very different. Check out also the Dinosaurus example in the [reference 2 below](#refs).
+The figure above shows **Anscombe's quartet**, a classical example that highlights why data should be plotted before interpretation. The four datasets have very similar summary statistics and regression lines, but their patterns are clearly different. This is a reminder that numerical summaries are powerful, but they can also hide important structure in the data. Check also the Dinosaurus example in the [references](#references).
+
+::: callout-note
+## Plot first, test second
+
+A plot does not replace statistics, but it helps you decide whether a statistical summary is meaningful. Before interpreting a correlation, a p-value, or a group difference, always ask:
+
+- Is the relationship approximately linear?
+- Are there outliers?
+- Are the groups comparable?
+- Is the scale appropriate?
+- Does the plot support the question I want to answer?
+:::
 
 ## Which plot should I do with my data?
 
-There are many different types of graphs, each with their own strengths and use cases. One of the trickiest parts of the analysis process is choosing the right way to represent your data with one of these visualizations. The wrong chart can lead to confusion or misinterpretation of the data (see some examples of bad charts [here](https://www.analyticsvidhya.com/blog/2021/02/data-visualization-bad-representation-of-data/)).
+There are many types of graphs, each with different strengths. Choosing a plot is not only an aesthetic decision: the wrong plot can hide variation, exaggerate differences, or suggest a pattern that is not supported by the data.
 
 From a classical data analysis perspective, the first consideration in choosing the right plot is the nature of your variables. Some charts are recommended for numerical data (quantitative variables) and others for categorical data (qualitative variables). Then you should consider what role you want your data visualization to play, i.e., what question you want to answer or what message you want to convey. This depends on the number of variables as well as their distribution, grouping or correlation. There are some best practice guidelines, but ultimately you need to consider what is best for your data. What do you want to show? What chart best conveys your message? Is it a comparison between groups? Is it a frequency distribution of 1 variable?
 
@@ -64,6 +86,38 @@ From a classical data analysis perspective, the first consideration in choosing 
 For a guidance, you can use the *Chartchooser* above, by Andrew Abela, or the interactive website Visual Vocabulary [here](https://ft-interactive.github.io/visual-vocabulary/). Also, I strongly recommend you to check the [*FriendsDontLetFriends*](https://github.com/cxli233/FriendsDontLetFriends) repo with examples of very common mistakes when plotting data in biology.
 
 You can see a description of some of the most common plot types, with many examples on books and dedicated R websites. I suggest to take a look to some of the suggested [References](#References) below, or some **quick examples**, like those [here](https://intro2r.com/simple-base-r-plots.html) or [here](https://hbctraining.github.io/Intro-to-R/lessons/basic_plots_in_r.html). Rather than going through a wide list of plots, we are going to use some examples to learn some basic plotting and see the effect of plot selection in order to understand your data and use them to answer questions.
+
+------------------------------------------------------------------------
+
+## [Quick exercise (0): choosing a plot]{style="color:darkseagreen"}
+
+You measured the expression of a gene in two experimental groups and you want to compare the distribution of the numerical values in both groups.
+
+Which plot would be a good first choice?
+
+```{r plot-choice-groups, echo = FALSE, results = 'asis'}
+opts <- c(
+  "A pie chart",
+  "A line plot with sample number on the x-axis",
+  answer = "A boxplot or stripchart by group",
+  "A barplot of the raw measurements"
+)
+
+cat("**Select the right answer**", mcq(opts))
+```
+
+You measured two numerical variables in the same samples and want to explore whether they are related.
+
+```{r plot-choice-correlation, echo = FALSE, results = 'asis'}
+opts <- c(
+  "A barplot",
+  answer = "A scatterplot",
+  "A pie chart",
+  "A stacked histogram only"
+)
+
+cat("**Select the right answer**", mcq(opts))
+```
 
 ## Quick Plotting in R
 
@@ -82,27 +136,68 @@ In the table and the examples below you can see how to use `plot()` for differen
 For the following examples, we are going to review also some R functions to make up (mock or simulated) data restricted to certain distributions. For instance, using functions like `rnorm()` or `dnorm()` for generation of normal data or normal density curves. The same can be obtained for *Poisson* distribution with `dpois()` and `rpois()`.
 
 ```{r}
-#generate some sample data with normal distribution
+# Generate simulated data.
+# rnorm(500) creates 500 random values from a normal distribution.
 x <- rnorm(500)
+
+# Create a second variable that is related to x but includes random noise.
 y <- x + rnorm(500)
+
+# Plot one numerical vector against its index.
+# This is a quick diagnostic plot, but it may not answer a biological question.
 plot(x)
-hist(x,col="blue")
+
+# A histogram shows the distribution of one numerical variable.
+hist(x, col = "blue")
+
+# A scatterplot shows the relationship between two numerical variables.
 plot(x, y)
-plot(dnorm(0:100,mean=50,sd=5))
+
+# dnorm() gives the theoretical density of a normal distribution.
+# Here we plot a normal density curve with mean = 50 and sd = 5.
+plot(dnorm(0:100, mean = 50, sd = 5))
 ```
 
 We can also change some of the plot parameters to change the plot appearance.
 
 ```{r}
-#customized Example
-plot(x, y, pch = 21,
-    bg = rgb(1,0,0,0.5), # Fill color
-    col = "red", # Border color
-    cex = 3,      # Symbol size
-    lwd = 3)      # Border width
+# Customized example.
+# pch = 21 is a point symbol that has both border and fill.
+plot(x, y,
+     pch = 21,
+     bg = rgb(1, 0, 0, 0.5), # Fill color with 50% transparency
+     col = "red",            # Border color
+     cex = 3,                # Symbol size
+     lwd = 3)                # Border width
 ```
 
 Note that **colors** can be specified as a name or code (RGB or HEX). In the case of RGB code, we provide the three values in the range \[0,1\] for red, green, and blue. We can also introduce an optional fourth value that correspond to the alpha, also from 0 (transparent) to 1 (opaque). See [below](#plot-customization) for more details about changing points and line shape and colors.
+
+## [Quick exercise (Ia): plot parameters]{style="color:darkseagreen"}
+
+In base R graphics, which argument usually controls point shape?
+
+```{r plot-params-pch, echo = FALSE, results = 'asis'}
+opts <- c(
+  "cex",
+  answer = "pch",
+  "lwd",
+  "xlab"
+)
+cat("**Select the right answer**", mcq(opts))
+```
+
+In `rgb(1, 0, 0, 0.5)`, what does the fourth value control?
+
+```{r plot-params-alpha, echo = FALSE, results = 'asis'}
+opts <- c(
+  "The amount of red",
+  "The size of the point",
+  answer = "The transparency or alpha value",
+  "The x-axis range"
+)
+cat("**Select the right answer**", mcq(opts))
+```
 
 ------------------------------------------------------------------------
 
@@ -145,12 +240,12 @@ boxplot(new_vec)
 
 Here's how to interpret this boxplot:
 
--   The bottom whisker displays the minimum value (excluding outliers).
--   The bottom line of the box displays the first quartile value.
--   The black bar in the middle of the box displays the second quartile value (also known as the **median**).
--   The top line of the box displays the third quartile value.
--   The top whisker displays the maximum value (excluding outliers).
--   Outliers are defined as points exceeding 1.5 times the interquartile range (Q3-Q1).
+- The bottom whisker displays the minimum value (excluding outliers).
+- The bottom line of the box displays the first quartile value.
+- The black bar in the middle of the box displays the second quartile value (also known as the **median**).
+- The top line of the box displays the third quartile value.
+- The top whisker displays the maximum value (excluding outliers).
+- Outliers are defined as points exceeding 1.5 times the interquartile range (Q3-Q1).
 
 We can also easily calculate the quartiles of a given dataset in R by using the `quantile()` function.
 
@@ -174,23 +269,42 @@ If you have not worked with the R3 lesson yet, you can take a quick look at how 
 Now let's play with different plots of our data and try to save one.
 
 ```{r}
-#open the data
-coli_genomes <- read.csv(file = 'data/coli_genomes_renamed.csv', strip.white = TRUE, stringsAsFactors = TRUE)
-#attach it to save time and code writing (optional!)
+# Open the data saved in R3.
+# strip.white = TRUE removes extra spaces in character variables.
+# stringsAsFactors = TRUE is used here to make categorical variables explicit.
+coli_genomes <- read.csv(file = "data/coli_genomes_renamed.csv",
+                         strip.white = TRUE,
+                         stringsAsFactors = TRUE)
+
+# attach() allows us to write Year instead of coli_genomes$Year.
+# This is convenient for short examples, but it can make scripts less explicit.
+# In longer scripts, prefer coli_genomes$Year.
 attach(coli_genomes)
-#one variable
+
+# One numerical variable: quick plot against the observation index.
 plot(Year)
-#histogram
+
+# One numerical variable: histogram of its distribution.
 hist(Year)
-#a factor
+
+# One categorical variable: counts per category.
 plot(Source)
-#two variables
+
+# Two numerical variables: scatterplot.
 plot(Contigs, kmer)
-#factor + numeric variable and saving the plot
-png(file="plot1.png")  #give it a file name
-plot(Source,Contigs)  #construct the plot
-dev.off()  #save
-detach(coli_genomes) #detach
+
+# Factor + numerical variable, saved to a PNG file.
+# Step 1: open the graphics device.
+png(file = "plot1.png")
+
+# Step 2: create the plot.
+plot(Source, Contigs)
+
+# Step 3: close the device. Without dev.off(), the file may not be written correctly.
+dev.off()
+
+# Detach the data frame when we finish using attached variables.
+detach(coli_genomes)
 ```
 
 As shown in the example, in order to save a plot, we must follow three steps:
@@ -203,7 +317,7 @@ As shown in the example, in order to save a plot, we must follow three steps:
 
 Alternatively, you can save the plot using the **Plot** menu or the **Plots panel**: *Export* --\> *Save as Image* or *Save as PDF.*
 
-# Create complex plots in base R
+# [Create complex plots in base R]{style="color:darkblue"}
 
 ## Add more elements
 
@@ -242,13 +356,43 @@ Then, to fully check the correlation (and avoid situations like in the Anscombe'
 Let's obtain and plot the linear model:
 
 ```{r, fig.width=12, fig.height=6}
-#linear model
+# Build a linear model.
+# The formula reads: contigs1kb is modelled as a function of Contigs.
 modelito <- lm(coli_genomes$contigs1kb ~ coli_genomes$Contigs)
-summary(modelito)  #is the linear model significant???
+
+# summary() gives information about the fitted model, including coefficients
+# and statistical tests. Do not interpret this without checking the plot.
+summary(modelito)
 ```
 
 ::: callout-tip
 Remember that the results of `lm()`, `cor.test()`, and all other tests, are R objects (usually lists) than can be used to retrieve the results or plot the values.
+
+## [Quick exercise (IIa): linear model layers]{style="color:darkseagreen"}
+
+Which function adds a straight regression line to an existing base R scatterplot?
+
+```{r lm-abline-exercise, echo = FALSE, results = 'asis'}
+opts <- c(
+  "lm()",
+  "cor.test()",
+  answer = "abline()",
+  "hist()"
+)
+cat("**Select the right answer**", mcq(opts))
+```
+
+Which function is used to calculate a Pearson correlation test between two vectors?
+
+```{r cor-test-exercise, echo = FALSE, results = 'asis'}
+opts <- c(
+  "lm()",
+  answer = "cor.test()",
+  "abline()",
+  "par()"
+)
+cat("**Select the right answer**", mcq(opts))
+```
 :::
 
 ```{r, fig.width=12, fig.height=6}
@@ -295,8 +439,11 @@ Now, you have a quick info about possible variable correlations.
 For this exercise we are going to use a dataset called [*zebrafish_data.csv*](data/Zebrafish_data.csv). This file contains the results of an experiment in which a collaborator scored the number of metastatic cancer cells upon the expression of different transcripts of the EFNA3 gene. Each transcript is cloned into a pLoC plasmid, and we have negative (empty plasmid) and positive controls (wt EFNA3 transcript), as well as four transcript mutants. Let's import and check the data.
 
 ```{r, error=TRUE, fig.width=12, fig.height=6}
-#read data
+# Read the zebrafish dataset.
+# Each column corresponds to one experimental condition in the current wide format.
 ZFdata <- read.csv("data/Zebrafish_data.csv")
+
+# Always inspect the structure before plotting.
 str(ZFdata)
 ```
 
@@ -308,6 +455,12 @@ opts_p <- c("hist(ZFdata)",
 
 cat("**How would you construct barplots of the data from the six experimental conditions?**",longmcq(opts_p))
 ```
+
+::: callout-note
+## Raw observations are not frequencies
+
+The values in `ZFdata` are raw observations: numbers of metastatic cells measured under different conditions. A barplot is usually appropriate for frequencies, counts or summary values, but it is not a good first plot for raw replicate measurements. For raw observations by group, a stripchart, boxplot, histogram or violin plot is usually more informative.
+:::
 
 Let's see some examples:
 
@@ -375,7 +528,8 @@ Now, we are going to represent the same data again, introducing some more custom
 #we can save the par anytime, just in case 
 oldpar <- par()
 #you can recall this settings with par(oldpar)
-#new par settings
+# New par settings.
+# Use common axis limits to compare conditions fairly.
 par(mfrow = c(1, 3), cex.lab = 1, cex = 1, lwd = 2)
 #plotting
 hist(ZFdata$pLoC, col=rgb(1,0,0,0.5),  main="pLoc", ylim = c(0,20), xlim = c(0,120), xlab = "Number of Metastatic cells")
@@ -398,7 +552,8 @@ boxplot(ZFdata$NC1s, col=rgb(0,0,1,0.5), ylim = c(0,120), xlab = "Number of Meta
 Can you reproduce the above plots?
 
 ```{r, echo = TRUE, eval = FALSE, webex.hide = "Answer"}
-#new par settings
+# New par settings.
+# Use common axis limits to compare conditions fairly.
 par(mfrow = c(1, 3), cex.lab = 1, cex = 1, lwd = 2)
 #plotting
 hist(ZFdata$pLoC, col=rgb(1,0,0,0.5),  main="pLoc", ylim = c(0,20), xlim = c(0,120), xlab = "Number of Metastatic cells")
@@ -432,6 +587,26 @@ opts_p <- c("3 variables, WT, empty plasmid and 4 mutants",
    answer = "2 variables, the (1) plasmid/expressed transcript and (2) the number of metastatic cells")
 
 cat("**How many variables are there in the Zebrafish dataset?**",longmcq(opts_p))
+```
+
+::: callout-note
+## Wide and long tables
+
+The zebrafish table starts in a **wide** format: each condition is stored in a different column. For plotting grouped data, it is often easier to use a **long** or **stacked** format: one column contains the values and another column contains the group labels.
+:::
+
+## [Quick exercise (IIb): wide or long?]{style="color:darkseagreen"}
+
+A table has one column called `values` and another column called `condition`. Which format is this?
+
+```{r wide-long-exercise, echo = FALSE, results = 'asis'}
+opts <- c(
+  "Wide format",
+  answer = "Long or stacked format",
+  "A matrix only",
+  "A histogram"
+)
+cat("**Select the right answer**", mcq(opts))
 ```
 
 In data analysis (check Lesson [R6](r6.html)), particularly when you want to compare many variables in different groups, it is more handy to create a *stacked* table or *datamatrix*. Stacked table are also often referred to as *narrow* tables. In contrast, the tables with different conditions (of a same variable) in different columns are named *wide* table or *unstacked*. The code below shows how to *stack* and plot your data by groups using the function `stack()`.
@@ -643,9 +818,7 @@ plot(coli_genomes$contigs1kb ~ coli_genomes$Contigs, pch=21,bg=colorines, xlab="
 legend(100,200,legend=unique(coli_genomes$Source),fill=unique(colorines))
 ```
 
-# [Review exercises 1: R base plots]{style="color:darkgreen"}[^1]
-
-[^1]: Check proposed answers in the repo: <https://github.com/r4biochemists/r4biochemists.github.io/tree/main/answers2exercises>
+# [Review exercises 1: R base plots]{style="color:darkgreen"}
 
 #### 1. Let's suppose we have the expression data for two genes (GeneA and GeneB) in 50 patients, 30 with colon cancer and 20 with lung cancer. {#ex1}
 
@@ -671,7 +844,7 @@ legend(100,200,legend=unique(coli_genomes$Source),fill=unique(colorines))
 
 #### 3. A classic in biochemistry lab: Protein quantification (with special thanks to Carmen Mayoral). You have probably done that with Excel or GraphPad, but after this exercise I'm sure you'll consider a definitive upgrade in your protocols.
 
-**In our lab, we often purify recombinant DNA polymerases. We have recently purify a *WT* and *mutant* proteins, and we want to quantify the amount of pure proteins using a SDS-PAGE. To do so, we loaded decreasing volumes of the protein preparation (serial dilutions, but expresed as volume of the original sample in µL) along with known amounts (ng) of bovine seroalbumin (BSA) as a pattern, as in the image below. Bands were densitometer using [ImageJ](https://openwetware.org/wiki/Protein_Quantification_Using_ImageJ) opensource software (arbitrary units). The data are in three tables containing the BSA pattern (triplicates in [bsa_pattern.csv](data/bsa_pattern.csv)), the results for the wt protein ([curve_wt.csv](data/curve_wt.csv)) and for the mutant ([curve_mut.csv](data/curve_mut.csv)).**
+**In our lab, we often purify recombinant DNA polymerases. We have recently purify a *WT* and *mutant* proteins, and we want to quantify the amount of pure proteins using a SDS-PAGE. To do so, we loaded decreasing volumes of the protein preparation (serial dilutions, but expressed as volume of the original sample in µL) along with known amounts (ng) of bovine seroalbumin (BSA) as a pattern, as in the image below. Bands were densitometer using [ImageJ](https://openwetware.org/wiki/Protein_Quantification_Using_ImageJ) opensource software (arbitrary units). The data are in three tables containing the BSA pattern (triplicates in [bsa_pattern.csv](data/bsa_pattern.csv)), the results for the wt protein ([curve_wt.csv](data/curve_wt.csv)) and for the mutant ([curve_mut.csv](data/curve_mut.csv)).**
 
 ![](images/paste-188BFD52.png)
 
@@ -679,27 +852,39 @@ legend(100,200,legend=unique(coli_genomes$Source),fill=unique(colorines))
 
 2.  **Use the linear model to obtain the concentration (µM) of *wt* and *mutant* protein preparations. You can use the equation or check out the function `predict()` to directly interpolate the values. Consider the same molecular weight of 99 kDa for both proteins.**
 
-# GGplotting: Advanced plots with `ggplot2` library {#ggplot}
+# [GGplotting: Advanced plots with `ggplot2` library]{#ggplot style="color:darkblue"}
 
-Data visualization is one of the greatest advantage of R. One can quickly go from idea to data to graph with a unique balance of flexibility and ease.
+Data visualization is one of the great strengths of R. With the right tools, you can move from an idea to a useful figure quickly, while keeping the full workflow reproducible.
 
-There are many graphing options available in R. You already know that the graphing capabilities that come with a basic installation of R are already quite useful. There are also a number of packages for creating advances graphs like *grid*, *plotly*, or *lattice*. In this course we chose to use [**ggplot2**](https://ggplot2.tidyverse.org/) because it is widely used and also the basis of many derivative packages for specific advanced plots. The main advantage of ggplot is that it breaks plots into components in a way that allows beginners to create relatively complex and aesthetically pleasing plots using an intuitive and relatively easy-to-remember syntax. Moreover, although we are not working on it, it belongs to the set of libraries `tidyverse` and it is very well integrated with them.
+There are many graphing options available in R. You already know that the graphing capabilities that come with a basic installation of R are already quite useful. There are also a number of packages for creating advanced graphs like *grid*, *plotly*, or *lattice*. In this course we chose to use [**ggplot2**](https://ggplot2.tidyverse.org/) because it is widely used and also the basis of many derivative packages for specific advanced plots. The main advantage of ggplot is that it breaks plots into components in a way that allows beginners to create relatively complex and aesthetically pleasing plots using an intuitive and relatively easy-to-remember syntax. Moreover, although we are not working on it, it belongs to the set of libraries `tidyverse` and it is very well integrated with them.
 
 ![From: <https://ourcodingclub.github.io/tutorials/dataviz-beautification/>](images/paste-3D34E648.png){width="558"}
 
 I must say that ***ggplot*** is generally less intuitive for beginners. However, once you get used to it, even if you have to look for help or examples to obtain your plots, you will find that it is amazingly powerful and allows you to create perfect plot, with a high level of detail. This is because it uses a "graphing grammar" (see [Wilkinson et al.2000](https://www.tandfonline.com/doi/abs/10.1080/10618600.2000.10474897)), the *gg* of *ggplot2*. This is similar to the way that learning a language grammar can help you construct hundreds of different sentences from a small number of verbs, nouns, and adjectives, rather than memorizing each sentence. Similarly, by learning a small amount of the basic components of *ggplot2* and the [elements of its grammar]{.underline}, you will be able to create hundreds of different plots to represent the data exactly as the way you think it's the best way or even better. As with any language, the grammar of graphics can be [flexible]{.underline} and we may omit some elements o add more elements of the same type, just like we can add diverse kinds of complements (place, time...) to a sentence.
 
+::: callout-note
+## The `ggplot2` grammar in one sentence
+
+A `ggplot2` figure is built by adding layers: start with the data and aesthetic mapping, then add one or more geometries, and finally adjust scales, facets, coordinates and themes.
+
+``` r
+ggplot(data, aes(x = variable1, y = variable2)) +
+  geom_point() +
+  theme_classic()
+```
+:::
+
 From a general perspective (see ref. [3](https://ggplot2-book.org/index.html)), plots are composed of the **data**, the information you want to visualize, and a **mapping**, the description of how the data's variables are mapped to aesthetic attributes. There are five mapping components (again from ref. [3](https://ggplot2-book.org/index.html)):
 
--   A **layer** is a collection of geometric elements and statistical transformations. Geometric elements, **geom**s for short, represent what you actually see in the plot: points, lines, polygons, maps, etc. Statistical transformations, **stat**s for short, summarize the data: for example, binning and counting observations to create a histogram, or fitting a linear model.
+- A **layer** is a collection of geometric elements and statistical transformations. Geometric elements, **geom**s for short, represent what you actually see in the plot: points, lines, polygons, maps, etc. Statistical transformations, **stat**s for short, summarize the data: for example, binning and counting observations to create a histogram, or fitting a linear model.
 
--   **Scale**s or aesthetic map is required to map values in the data space to values in the space. This includes the use of colour, shape or size. Scales also draw the legend and axes, which make it possible to read the original data values from the plot (an inverse mapping).
+- **Scale**s or aesthetic map is required to map values in the data space to values in the space. This includes the use of colour, shape or size. Scales also draw the legend and axes, which make it possible to read the original data values from the plot (an inverse mapping).
 
--   A **coord**, or coordinate system, describes how data coordinates are mapped to the plane of the graphic. It also provides axes and gridlines to help read the graph. We normally use the Cartesian coordinate system, but a number of others are available, including polar coordinates and map projections.
+- A **coord**, or coordinate system, describes how data coordinates are mapped to the plane of the graphic. It also provides axes and gridlines to help read the graph. We normally use the Cartesian coordinate system, but a number of others are available, including polar coordinates and map projections.
 
--   A **facet** specifies how (usually a factor type vector) to break up and display subsets of data as small multiples. This is also known as conditioning or latticing.
+- A **facet** specifies how (usually a factor type vector) to break up and display subsets of data as small multiples. This is also known as conditioning or latticing.
 
--   A **theme** controls the finer points of display, like the font size and background colour. While the defaults in ggplot2 have been chosen with care, you may need to consult other references to create an attractive plot.
+- A **theme** controls the finer points of display, like the font size and background colour. While the defaults in ggplot2 have been chosen with care, you may need to consult other references to create an attractive plot.
 
 Let's see all those element through some examples.
 
@@ -710,8 +895,7 @@ Let's start strong. We are going to generate a complex plot in one code line usi
 ::: callout-note
 This is a quite large dataframe, if your plotting is too slow or crash your R session, you can randomly select some rows using the function `sample()`
 
-Example:
-`vaccines_short <- vaccines[sample(1:nrow(vaccines),100000),]`
+Example: `vaccines_short <- vaccines[sample(1:nrow(vaccines),100000),]`
 :::
 
 ```{r}
@@ -749,6 +933,20 @@ Now, we can add some data to generate a dot plot:
 
 What happened? Where are my points? We added the data and it allows to plot the axis, but we also need to add the type of plot, that is, the *geom*etry layer. We usually build the final plot adding (just with `+`) more layers to the previous plot object.
 
+## [Quick exercise (IVa): ggplot layers]{style="color:darkseagreen"}
+
+Why does `ggplot(vaccines, aes(x = YearWeekISO, y = FirstDose))` not show points by itself?
+
+```{r ggplot-layer-exercise, echo = FALSE, results = 'asis'}
+opts <- c(
+  "Because the data frame is too large.",
+  "Because aes() only works with factors.",
+  answer = "Because no geom layer has been added yet.",
+  "Because ggplot2 cannot plot dates."
+)
+cat("**Select the right answer**", mcq(opts))
+```
+
 ```{r}
 (p <- p + geom_point())
 ```
@@ -762,7 +960,7 @@ ggplot(vaccines, aes(x = YearWeekISO, y = log10(FirstDose), col=TargetGroup)) +
 
 That is, quite a complex plot in just one code line.
 
-# Diversity of plots with *ggplot*
+# [Diversity of plots with *ggplot*]{style="color:darkblue"}
 
 ## Example 2: From R base plot to personalized ggplot
 
@@ -954,7 +1152,7 @@ We did the plot in different stages, to check each of the variables and the scal
 
 As you noticed, axis customization may entail adjust the *limits* with `limits()`, the axis expansion below and above those limits with `expand()`, and other aspects as the axis ticks *with* `breaks()`*.* We also can add/remove a legend with the argument `guides()`*.*
 
-# Beyond `ggplot`
+# [Beyond `ggplot`]{style="color:darkblue"}
 
 As mentioned above, *ggplot* is already an standard and the base of many derivative packages. We are going to see a couple of examples, but there are many, including packages for specific tasks, like working with maps or sequences. We will see in the lesson [R8](r9.html) the packages `ggmsa()` and `ggseqlogo()`.
 
@@ -979,26 +1177,25 @@ ggplotly(plots2custom)
 
 ```
 
-
 # [Review exercises 2: `ggplot`]{style="color:green"}
 
 #### 1. The table [coli_curve.csv](data/coli_curve.csv) contains the growth curves of three *E. coli* strains. Plot the curves as *scatterplot* and lines containing the 90% confidence interval for the three strains.
 
 Tips.
 
--   Check the ggplot *geom* `geom_smooth()` for the confidence interval.
+- Check out `geom_smooth()` for the confidence interval.
 
--   Also, it would be better if you color the data by strains, but keep the information of each sample measure using, for instance, the point shape.
+- Also, it would be better if you color the data by strains, but keep the information of each sample measure using, for instance, the point shape.
 
-#### 2. The table [*microbe_download.csv*](data/microbe_download.csv) contains the data of worldwide human deceases associated with antimicrobial resistance, as indicated in the column *Counterfactual* (data from <https://vizhub.healthdata.org/microbe/>). Explore the data and use it to reproduce the following barplots.
+#### 2. The table [*microbe_download.csv*](data/microbe_download.csv) contains the data of worldwide human diseases associated with antimicrobial resistance, as indicated in the column *Counterfactual* (data from <https://vizhub.healthdata.org/microbe/>). Explore the data and use it to reproduce the following barplots.
 
 Tips.
 
--   You will need to check `geom_errorbar()` for the first plot.
+- You will need to check `geom_errorbar()` for the first plot.
 
--   For the second plot, you will need to order the data by the *total* number of Deaths.
+- For the second plot, you will need to order the data by the *total* number of Deaths.
 
--   Also, adjust the plot margins in order to show all the x-axis labels.
+- Also, adjust the plot margins in order to show all the x-axis labels.
 
 ![](images/paste-CB40FF4F.png)
 
@@ -1006,32 +1203,43 @@ Tips.
 
 # [Extra exercises]{style="color:green"}
 
--   Solved exercises from NCI-NIH: <https://btep.ccr.cancer.gov/docs/data-visualization-with-r/Practice_Exercises/ExercisesLesson2/>
+- Solved exercises from NCI-NIH: <https://btep.ccr.cancer.gov/docs/data-visualization-with-r/Practice_Exercises/ExercisesLesson2/>
 
--   Solved exercises from *Babraham Institute* `ggplot` course:
+- Solved exercises from *Babraham Institute* `ggplot` course:
 
-    -   Text: <https://www.bioinformatics.babraham.ac.uk/training/ggplot_course/Intro%20to%20ggplot2%20Exercises.pdf>
+  - Text: <https://www.bioinformatics.babraham.ac.uk/training/ggplot_course/Intro%20to%20ggplot2%20Exercises.pdf>
 
-    -   Data: <https://www.bioinformatics.babraham.ac.uk/training/ggplot_course/ggplot_data_files.zip>
+  - Data: <https://www.bioinformatics.babraham.ac.uk/training/ggplot_course/ggplot_data_files.zip>
 
-    -   Answers: <https://www.bioinformatics.babraham.ac.uk/training/ggplot_course/ggplot_exercise_answers.html>
+  - Answers: <https://www.bioinformatics.babraham.ac.uk/training/ggplot_course/ggplot_exercise_answers.html>
 
--   R Bloggers exercises with `ggplot2`: <https://www.r-bloggers.com/2016/09/advanced-base-graphics-exercises/>
+- R Bloggers exercises with `ggplot2`: <https://www.r-bloggers.com/2016/09/advanced-base-graphics-exercises/>
 
--   More solved exercises (with a Bioinformatics flavor!!):
+- More solved exercises (with a Bioinformatics flavor!!):
 
-    -   Text: <https://www.bioinformatics.babraham.ac.uk/training/Core_R_Plotting/Core%20R%20Plotting%20Exercises.pdf>
+  - Text: <https://www.bioinformatics.babraham.ac.uk/training/Core_R_Plotting/Core%20R%20Plotting%20Exercises.pdf>
 
-    -   Data: <https://www.bioinformatics.babraham.ac.uk/training/Core_R_Plotting/Core%20R%20Plotting%20Data.zip>
+  - Data: <https://www.bioinformatics.babraham.ac.uk/training/Core_R_Plotting/Core%20R%20Plotting%20Data.zip>
 
-    -   Answers: <https://www.bioinformatics.babraham.ac.uk/training/Core_R_Plotting/core_r_plotting_exericse_answers.nb.html>
+  - Answers: <https://www.bioinformatics.babraham.ac.uk/training/Core_R_Plotting/core_r_plotting_exericse_answers.nb.html>
 
-# References
+::: callout-tip
+## General plotting workflow
 
+A useful workflow for plotting is:
+
+1.  Inspect the data with `str()`, `summary()` and quick plots.
+2.  Choose a plot that matches the variables and the question.
+3.  Start with a simple plot.
+4.  Add labels, colors and layers only when they clarify the message.
+5.  Save the final figure in a reproducible way.
+:::
+
+# References {#references}
 
 1.  *R in action.* Robert I. Kabacoff. March 2022 ISBN 9781617296055
 
-2.  Who needs dataviz anyway: [https://rpubs.com/tylerotto/DinosaurusDozen](https://rpubs.com/tylerotto/DinosaurusDozenhttps://rpubs.com/tylerotto/DinosaurusDozen)
+2.  Who needs dataviz anyway: [Dinosaurus Dozen](https://rpubs.com/tylerotto/DinosaurusDozen)
 
 3.  R Graphics Cookbook: <https://r-graphics.org/> (Chapter 2).
 
@@ -1041,32 +1249,29 @@ Tips.
 
 6.  I also advise checking articles and posts that you can find with Google, such as:
 
-    -   How to choose the right chart for your data: <https://dexibit.com/how-to-choose-the-right-chart-to-visualize-your-data/>
+    - How to choose the right chart for your data: <https://dexibit.com/how-to-choose-the-right-chart-to-visualize-your-data/>
 
-    -   ♨️♨️ Friends Don't Let Friends Make Bad Graphs ♨️♨️: <https://github.com/cxli233/FriendsDontLetFriends>
+    - ♨️♨️ Friends Don't Let Friends Make Bad Graphs ♨️♨️: <https://github.com/cxli233/FriendsDontLetFriends>
 
-    -   How to choose the Right Chart for Data Visualization: <https://www.analyticsvidhya.com/blog/2021/09/how-to-choose-the-right-chart-for-data-visualization/>
+    - How to choose the Right Chart for Data Visualization: <https://www.analyticsvidhya.com/blog/2021/09/how-to-choose-the-right-chart-for-data-visualization/>
 
-    -   Basic plots in R: <https://hbctraining.github.io/Intro-to-R/lessons/basic_plots_in_r.html>
+    - Basic plots in R: <https://hbctraining.github.io/Intro-to-R/lessons/basic_plots_in_r.html>
 
-    -   R Base Plotting: <https://rstudio-pubs-static.s3.amazonaws.com/84527_6b8334fd3d9348579681b24d156e7e9d.html>
+    - R Base Plotting: <https://rstudio-pubs-static.s3.amazonaws.com/84527_6b8334fd3d9348579681b24d156e7e9d.html>
 
-    -   Base plotting in R: <https://towardsdatascience.com/base-plotting-in-r-eb365da06b22>
-    
+    - Base plotting in R: <https://towardsdatascience.com/base-plotting-in-r-eb365da06b22>
 
 7.  R Graphics Cookbook: <https://r-graphics.org/> (I recommend the Appendix A: Understanding ggplot).
 
 8.  **GGplot cheatsheet:** <https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf>
 
-
 9.  `ggplot2` in "Introducción a la ciencia de datos" (Spanish!): <http://rafalab.dfci.harvard.edu/dslibro/ggplot2.html>
 
-10.  **"Una breve introducción a ggplot" by Prof. José Ramón Berrendero \@UAM (Spanish!):** <http://verso.mat.uam.es/~joser.berrendero/R/introggplot2.html>
+10. **"Una breve introducción a ggplot" by Prof. José Ramón Berrendero \@UAM (Spanish!):** <http://verso.mat.uam.es/~joser.berrendero/R/introggplot2.html>
 
-11.  Color palettes in R: <https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/>
+11. Color palettes in R: <https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/>
 
-12.  Awesome `ggplot2` addons and tricks: <https://github.com/erikgahner/awesome-ggplot2>
-
+12. Awesome `ggplot2` addons and tricks: <https://github.com/erikgahner/awesome-ggplot2>
 
 # Session Info
 

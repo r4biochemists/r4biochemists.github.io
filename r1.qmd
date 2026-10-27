@@ -55,11 +55,11 @@ In R, the **class** of a variable refers to the specific type or category of the
 
 Finally, in R, *NA*, *NaN*, and *NULL* are special **values** used to represent specific situations or indicate missing or undefined data:
 
--   **NA**: NA stands for "Not Available" or "Missing Value". It is used to represent missing or undefined values in R. The value NA belong to different data types, such as logical, numeric, character, etc. For example, if a value is missing in a numeric vector, it can be represented as NA. NA values are often ignored or excluded from computations or operations unless explicitly handled.
+- **NA**: NA stands for "Not Available" or "Missing Value". It is used to represent missing or undefined values in R. The value NA belong to different data types, such as logical, numeric, character, etc. For example, if a value is missing in a numeric vector, it can be represented as NA. NA values are often ignored or excluded from computations or operations unless explicitly handled.
 
--   *NaN*: NaN stands for "Not a Number". It is a special value used to represent undefined or unrepresentable results of arithmetic operations that do not yield a numeric value. NaN is typically encountered when performing calculations that involve undefined operations, such as dividing zero by zero or taking the square root of a negative number.
+- *NaN*: NaN stands for "Not a Number". It is a special value used to represent undefined or unrepresentable results of arithmetic operations that do not yield a numeric value. NaN is typically encountered when performing calculations that involve undefined operations, such as dividing zero by zero or taking the square root of a negative number.
 
--   *NULL*: NULL is a special object in R that represents the absence of a value or an empty object. It is often used to indicate the absence of a valid object or as a placeholder. NULL is different from NA, as it represents the absence of any value or object altogether.
+- *NULL*: NULL is a special object in R that represents the absence of a value or an empty object. It is often used to indicate the absence of a valid object or as a placeholder. NULL is different from NA, as it represents the absence of any value or object altogether.
 
 ```{r}
 #| echo: true
@@ -79,6 +79,45 @@ A_NA<-na
 ```
 
 To summarize, variables are used refer to specific data objects that are the containers or entities that hold data. The data types specify the kind of values that can be stored within data objects. Data types determine how the data is interpreted and how operations are performed on the data objects.
+
+::: {.callout-note}
+## Assignment in R: `<-`, `=` and RStudio shortcuts
+
+In R, we will usually use `<-` to assign values to objects:
+
+```r
+x <- 5
+```
+
+In many simple cases, `=` can also be used for assignment:
+
+```r
+x = 5
+```
+
+However, in this course we will follow a simple convention:
+
+- Use `<-` to create or modify objects.
+- Use `=` to specify arguments inside function calls.
+- Use `==` to compare values.
+
+For example:
+
+```r
+x <- 5
+read.csv(file = "data/my_file.csv", header = TRUE)
+x == 5
+```
+
+This convention makes the code easier to read. In the first line, `<-` creates an object called `x`. In the second line, `file =` and `header =` do not create objects called `file` or `header`; they specify argument values for the function `read.csv()`. In the third line, `==` checks whether two values are equal.
+
+In RStudio, some installations provide a shortcut to insert the assignment operator `<-`:
+
+- **macOS**: `Option` + `-`
+- **Windows/Linux**: often `Alt` + `-`
+
+However, this shortcut may depend on your keyboard layout and RStudio configuration. In my Windows 11 computer, it inserts a `<-` within scripts and the Quarto chunks, but an `=` in text sections. If it does not insert `<-` on your computer, simply type `<-` manually or check the available shortcuts in **Tools > Keyboard Shortcuts Help**. You can also modify shortcuts from **Tools > Modify Keyboard Shortcuts**.
+:::
 
 # [Basic built-in functions]{style="color:darkblue"}
 
@@ -107,6 +146,7 @@ Functions usually require arguments, which are the values or variables that are 
 ls()
 class(A_Number)
 log(A_Number)
+
 help("log")
 log(A_Number,base=2)
 log(A_Number,2)
@@ -181,13 +221,13 @@ xor(b>"A",a!=5)
 
 In R, a data structure refers to the way data is organized and stored in memory. It determines how the data can be accessed, manipulated, and processed. Data structures in R provide a way to store and organize data objects. Data objects, on the other hand, are specific instances of data that are stored within the data structures. They are the actual values or elements that are held by the data structures. There are five types of basic data structures: - **homogeneous**: All elements must be of the same type. - **Vectors**: One-dimensional collection of numeric, character, or logical data. - **Matrices**: Two-dimensional collection of numeric, character, or logical data. - **Arrays**: n-dimensional collection of numeric, character, or logical data. A matrix is just a specific type of array where n=2. Arrays and matrices are just vectors with the attribute `dim`. Applying this attribute sets a number of dimensions that the vector is divided into and allows retrieval of the elements and its representation in a specific way.
 
--   **heterogeneous**: Elements can be of different types.
-    -   **Lists**: An ordered collection of objects (called components) that can be of the same or different types.
-    -   **Data frames**: Just a type of list that is represented as a matrix and has some restrictions:
-        -   The components must be vectors (numeric, character, or logical), factors, numeric matrices, lists, or other data frames.
-        -   Matrices, lists, and data frames provide as many variables to the new data frame as they have columns, elements, or variables, respectively.
-        -   Numeric vectors, logicals, and factors are included as is, and by default, character vectors are coerced to be factors, whose levels are the unique values appearing in the vector.
-        -   Vector structures appearing as variables of the data frame must all have the same length, and matrix structures must all have the same row size.
+- **heterogeneous**: Elements can be of different types.
+  - **Lists**: An ordered collection of objects (called components) that can be of the same or different types.
+  - **Data frames**: Just a type of list that is represented as a matrix and has some restrictions:
+    - The components must be vectors (numeric, character, or logical), factors, numeric matrices, lists, or other data frames.
+    - Matrices, lists, and data frames provide as many variables to the new data frame as they have columns, elements, or variables, respectively.
+    - Numeric vectors, logicals, and factors are included as is, and by default, character vectors are coerced to be factors, whose levels are the unique values appearing in the vector.
+    - Vector structures appearing as variables of the data frame must all have the same length, and matrix structures must all have the same row size.
 
 ## [Vectors]{style="color:blue"}
 

@@ -1,0 +1,31 @@
+{
+    "id": "3C199DE7",
+    "path": "~/Documents/GitHub/r4biochemists.github.io/r3.qmd",
+    "project_path": "r3.qmd",
+    "type": "quarto_markdown",
+    "hash": "4161187007",
+    "contents": "",
+    "dirty": false,
+    "created": 1730657864909.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "source_window_id": "",
+        "Source": "Source",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "15292:9294.400390625",
+        "cursorPosition": "96,121",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1762339780,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1762339780494,
+    "read_only": false,
+    "read_only_alternatives": []
+}
