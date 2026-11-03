@@ -40,7 +40,7 @@ opts_chunk$set(tidy=FALSE)
 
 # [Working directory and file paths in R]{style="color:darkblue"}
 
-When working with R, we often need to read data from files and write results back to disk. These files can be simple text files, comma-separated tables, spreadsheet exports, or more specialised formats used in biological data analysis.
+When working with R, we often need to read data from files and write results back to disk. These files can be simple text files, comma-separated tables, spreadsheet exports (e.g. MS Excel files), or more specialised formats used in biological data analysis.
 
 Before reading or writing files, R needs to know **where to look for them**. By default, R reads and writes files in the current *working directory (wd)*. You can think of the working directory as the folder where R is currently "standing".
 

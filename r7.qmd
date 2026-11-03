@@ -499,7 +499,7 @@ Add a short `README.md` explaining the aim of the project and the role of each f
 
 #### 2. Convert one previous exercise into a report
 
-Choose one analysis from R3-R6 and convert it into an R Markdown or Quarto report. The report should include:
+Choose one or more exercises from R3 and convert it into an R Markdown or Quarto report. The report should include:
 
 - a short objective,
 - data import,
@@ -525,7 +525,7 @@ Then render the document from a clean R session.
 
 #### 5. Project discussion
 
-In your group, answer:
+In your document, answer the following questions:
 
 - What would another student need to reproduce your project?
 - Which files are essential?
