@@ -499,15 +499,14 @@ Add a short `README.md` explaining the aim of the project and the role of each f
 
 #### 2. Convert one previous exercise into a report
 
-Choose one or more exercises from R3 and convert it into an R Markdown or Quarto report. The report should include:
+Choose one or more exercises from R3 and convert it into an R Markdown or Quarto report. The report may include different steps, such as the following examples:
 
 - a short objective,
 - data import,
 - data inspection,
 - one transformation step,
 - one figure or summary table,
-- a short interpretation,
-- `sessionInfo()`.
+- a short interpretation
 
 #### 3. Make the analysis portable
 
