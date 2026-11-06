@@ -967,7 +967,7 @@ mean(colis$seqs)
 ```r
 Year
 AMR
-VF
+Vir
 CRISPR
 Integron
 ```
